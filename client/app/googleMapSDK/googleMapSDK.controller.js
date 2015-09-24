@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('triviziApp')
-  .controller('GoogleMapSDKCtrl', function ($scope, uiGmapGoogleMapApi, $filter) {
+  .controller('GoogleMapSDKCtrl', function ($scope, $http, uiGmapGoogleMapApi, $filter) {
      // google maps sdk ======================================================
         uiGmapGoogleMapApi.then(function(maps) {
 	        

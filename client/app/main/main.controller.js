@@ -1,7 +1,5 @@
 'use strict';
 
-var googleMapSDK = require('../googleMapSDK/googleMapSDK.controller');
-
 angular.module('triviziApp')
     .controller('MainCtrl', function($scope, $http, $filter) {
         // accordion functions ======================================================
@@ -78,7 +76,7 @@ angular.module('triviziApp')
             });
             $scope.newThing = '';
             
-            googleMapSDK.expediaReturn($scope.specificLocation); 
+            expediaReturn($scope.specificLocation); 
         };
         
         
