@@ -7,15 +7,20 @@ angular.module('triviziApp', [
         'btford.socket-io',
         'ui.router',
         'ui.bootstrap',
-        'validation.match'
+        'validation.match',
+        'uiGmapgoogle-maps'
     ])
-    .config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
+    .config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, uiGmapGoogleMapApiProvider) {
         $urlRouterProvider
             .otherwise('/');
 
         $locationProvider.html5Mode(true);
 
-
+        uiGmapGoogleMapApiProvider.configure({
+            key: 'AIzaSyCjuDL15bvE4jtO6vS7o2KX0Sco8I0G2UE',
+            //v: '3.20', //defaults to latest 3.X anyhow
+            libraries: 'places'
+        });
         $httpProvider.interceptors.push('authInterceptor');
     })
 
