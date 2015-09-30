@@ -14,24 +14,20 @@ module.exports = function(config) {
       // bower:js
       'client/bower_components/jquery/dist/jquery.js',
       'client/bower_components/angular/angular.js',
-      'client/bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
-      'client/bower_components/angular-cookies/angular-cookies.js',
-      'client/bower_components/angular-simple-logger/dist/index.js',
-      'client/bower_components/lodash/lodash.js',
-      'client/bower_components/angular-google-maps/dist/angular-google-maps.js',
       'client/bower_components/angular-resource/angular-resource.js',
+      'client/bower_components/angular-cookies/angular-cookies.js',
       'client/bower_components/angular-sanitize/angular-sanitize.js',
+      'client/bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
+      'client/bower_components/lodash/dist/lodash.compat.js',
       'client/bower_components/angular-socket-io/socket.js',
       'client/bower_components/angular-ui-router/release/angular-ui-router.js',
+      'client/bower_components/angular-validation-match/dist/angular-validation-match.min.js',
       'client/bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'node_modules/socket.io-client/socket.io.js',
       'client/app/app.js',
-      'client/app/app.coffee',
       'client/app/**/*.js',
-      'client/app/**/*.coffee',
       'client/components/**/*.js',
-      'client/components/**/*.coffee',
       'client/app/**/*.jade',
       'client/components/**/*.jade',
       'client/app/**/*.html',
@@ -41,8 +37,7 @@ module.exports = function(config) {
     preprocessors: {
       '**/*.jade': 'ng-jade2js',
       '**/*.html': 'html2js',
-      'client/{app,components}/**/*.js': 'babel',
-      '**/*.coffee': 'coffee',
+      'client/{app,components}/**/*.js': 'babel'
     },
 
     ngHtml2JsPreprocessor: {

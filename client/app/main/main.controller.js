@@ -1,7 +1,7 @@
 'use strict';
+(function() {
 
-angular.module('triviziApp')
-    .controller('MainCtrl', function($scope, $http, $filter) {
+function MainController($scope, $http, socket, $filter) {
         // accordion functions ======================================================
         $scope.oneAtATime = true;
 
@@ -108,5 +108,9 @@ angular.module('triviziApp')
 
 
         // End accordion functions ======================================================
+}
 
-    });
+angular.module('triviziApp')
+  .controller('MainController', MainController);
+
+})();

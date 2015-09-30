@@ -1,4 +1,4 @@
-// Generated on 2015-09-09 using generator-angular-fullstack 3.0.0-rc7-patch.0
+// Generated on 2015-09-30 using generator-angular-fullstack 3.0.0-rc8
 'use strict';
 
 module.exports = function (grunt) {
@@ -227,7 +227,8 @@ module.exports = function (grunt) {
           '/es5-shim/',
           /font-awesome\.css/,
           /bootstrap\.css/,
-          /bootstrap-sass-official/
+          /bootstrap-sass-official/,
+          /bootstrap-social\.css/
         ]
       },
       client: {
