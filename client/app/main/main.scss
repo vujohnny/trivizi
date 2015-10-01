@@ -10,16 +10,14 @@ $blue: #1061f6;
 $yellow: #ffeb00;
 $orange: #feb900;
 $red: #cd381f;
-$green: #1ea251;
+$green: #7ed321;
 $light-grey: #eee;
 $medium-grey: #999;
 $dark-grey: #666;
 
 
 // media queries
-$break-phone: 640px;
-$break-tablet: 768px;
-$break-desktop: 1200px;
+$break-phone: 768px;
 
 
 // reusable margins
@@ -30,7 +28,16 @@ $medium-margin: 1.2em;
 // reusable styles
 .typography {
   font-family: $font-stack; 
+  font-weight: normal;
   margin: 0;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
 }
 
 .no-padding {
@@ -42,50 +49,54 @@ $medium-margin: 1.2em;
   color: $orange;
 }
 
+.green {
+	color: $green;
+}
+
 .black {
   color: 000;
 }
 
 
 // site styles =====================================================================================================
-#logo {
-  
-  font-size: 1.7em;
-  margin-top: $small-margin;
-  margin-bottom: $small-margin;
-  
+
+.navbar-brand {
+
   i {
     color: $orange;
-    font-size: 1.5em;
+    margin-right: .4em;
   }
   
 }
 
-.panel {
-  margin-bottom: 5px !important; // overwrite custom bootstrap styles bc of directives
-}
-
-.panel-title {
-  
-  a {
-    text-decoration: none;
-  }
-  
-  &:hover {
+.intro-text {
+	
+	margin: 20vh auto 0 auto;
+	max-width: 670px;
+	line-height: 1.5em;
+   
+    span {
+		color: $green;
+		cursor: pointer;
+		font-weight: 600;
+		border-bottom: 1px solid $green;
+	}
+	
+	.caret {
+		border-bottom: 0;
+	}
+	
+	@media screen and (max-width: $break-phone) {
+		
+		h1 {
+			font-size: 1.2em;
+		}
+		
+	}
     
-    a {
-      text-decoration: none;
-      color: $orange;
-    }
-    
-  }
-  
-}
-
-#searchTextField {
-  width: 100%;
 }
 
 #googleMap { 
-  height: 100vh; 
+	height: 100vh; 
+	display: none;
 }
