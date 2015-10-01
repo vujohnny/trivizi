@@ -1,12 +1,79 @@
 <navbar></navbar>
 
-<div class="typography row">
+<div class="typography row" ng-controller="MainController">
 	<div class="container">
 		<div class="intro-text text-center">
 			
-			<div class="form-group"><h1>My budget is <div class="input-group"><span class="input-group-addon">$</span><input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"></div> and I want</h1></div>
+			<div class="form-group">
+				<h1>My budget is 
+					<div class="input-group">
+						<span class="input-group-addon">$</span>
+						<input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"></div> and I want
+					</div>
+				</h1>
+			</div>
 			
-			<div><h1>to travel somewhere <span class="green">Romantic<span class="caret"></span></span> For <span class="green">2<span class="caret"></span></span></h1></div>
+			<div>
+				<h1>to travel somewhere 
+
+<span class="dropdown" dropdown>
+    <a href="" class="dropdown-toggle" dropdown-toggle>
+        Romantic<span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu" dropdown-menu>
+      <li> 
+        <a ng-click="action1()">Romantic</a>
+      </li>
+      <li>
+        <a ng-click="action2()">Tropical</a>
+      </li>
+      <li>
+        <a ng-click="action3()">Pets Ok</a>
+      </li>
+      <li>
+        <a ng-click="action4()">Party</a>
+      </li>
+      <li>
+        <a ng-click="action4()">Family</a>
+      </li>
+    </ul>
+</span>
+					For 
+					
+					<span class="dropdown" dropdown>
+    <a href="" class="dropdown-toggle" dropdown-toggle>
+        2<span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu" dropdown-menu>
+      <li> 
+        <a ng-click="action1()">1</a>
+      </li>
+      <li>
+        <a ng-click="action2()">2</a>
+      </li>
+      <li>
+        <a ng-click="action3()">3</a>
+      </li>
+      <li>
+        <a ng-click="action4()">4</a>
+      </li>
+      <li>
+        <a ng-click="action4()">5</a>
+      </li>
+      <li>
+        <a ng-click="action4()">6</a>
+      </li>
+      <li>
+        <a ng-click="action4()">7</a>
+      </li>
+      <li>
+        <a ng-click="action4()">8</a>
+      </li>
+    </ul>
+</span>
+					
+				</h1>
+			</div>
 			
 			<div><h1>From <span class="green">December 1<span class="caret"></span></span> to <span class="green">December 10<span class="caret"></span></span>.</h1></div>
 			
@@ -14,6 +81,6 @@
 	</div>
 </div> <!-- end intro text -->
     
-<div class="col-md-8">
+<div class="col-md-8" ng-controller="GoogleMapSDKCtrl">
 	<div id="googleMap"></div>
 </div> <!-- end google maps -->

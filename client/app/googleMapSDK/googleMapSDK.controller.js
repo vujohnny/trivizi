@@ -5,6 +5,7 @@ angular.module('triviziApp')
      // google maps sdk ======================================================
         uiGmapGoogleMapApi.then(function(maps) {
 	        
+	        alert('test');
 	        
 	        // google maps variables
 	        var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
