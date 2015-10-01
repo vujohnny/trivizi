@@ -39,11 +39,11 @@ $medium-margin: 1.2em;
 }
 
 .orange {
-	color: $orange;
+  color: $orange;
 }
 
 .black {
-	color: 000;
+  color: 000;
 }
 
 
@@ -62,30 +62,30 @@ $medium-margin: 1.2em;
 }
 
 .panel {
-	margin-bottom: 5px !important; // overwrite custom bootstrap styles bc of directives
+  margin-bottom: 5px !important; // overwrite custom bootstrap styles bc of directives
 }
 
 .panel-title {
-	
-	a {
-		text-decoration: none;
-	}
-	
-	&:hover {
-		
-		a {
-			text-decoration: none;
-			color: $orange;
-		}
-		
-	}
-	
+  
+  a {
+    text-decoration: none;
+  }
+  
+  &:hover {
+    
+    a {
+      text-decoration: none;
+      color: $orange;
+    }
+    
+  }
+  
 }
 
 #searchTextField {
-	width: 100%;
+  width: 100%;
 }
 
 #googleMap { 
-	height: 100vh; 
+  height: 100vh; 
 }

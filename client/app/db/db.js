@@ -6,6 +6,7 @@ angular.module('triviziApp')
       .state('db', {
         url: '/db',
         templateUrl: 'app/db/db.html',
-        controller: 'DbCtrl'
+        controller: 'DBController',
+        controllerAs: 'db'
       });
   });
