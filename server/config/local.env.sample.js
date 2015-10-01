@@ -9,6 +9,9 @@ module.exports = {
   DOMAIN:           'http://localhost:9000',
   SESSION_SECRET:   'trivizi-secret',
 
+  FACEBOOK_ID:      'app-id',
+  FACEBOOK_SECRET:  'secret',
+
   // Control debug level for modules using visionmedia/debug
   DEBUG: ''
 };

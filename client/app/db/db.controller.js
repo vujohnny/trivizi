@@ -1,29 +1,33 @@
 'use strict';
+(function() {
+
+function DBController($scope, $http, socket, $filter) {
+  var self = this;
+  this.awesomeThings = [];
+
+  $http.get('/api/things').then(function(response) {
+    self.awesomeThings = response.data;
+    socket.syncUpdates('thing', self.awesomeThings);
+  });
+
+  this.addThing = function() {
+    if (self.newThing === '') {
+      return;
+    }
+    $http.post('/api/things', { name: self.newThing });
+    self.newThing = '';
+  };
+
+  this.deleteThing = function(thing) {
+    $http.delete('/api/things/' + thing._id);
+  };
+
+  $scope.$on('$destroy', function() {
+    socket.unsyncUpdates('thing');
+  });
+}
 
 angular.module('triviziApp')
-  .controller('DbCtrl', function ($scope, $http, socket) {
-            $scope.awesomeThings = [];
+  .controller('DBController', DBController);
 
-        $http.get('/api/things').then(function(response) {
-            $scope.awesomeThings = response.data;
-            socket.syncUpdates('thing', $scope.awesomeThings);
-        });
-
-        $scope.addThing = function() {
-            if ($scope.newThing === '') {
-                return;
-            }
-            $http.post('/api/things', {
-                name: $scope.newThing
-            });
-            $scope.newThing = '';
-        };
-
-        $scope.deleteThing = function(thing) {
-            $http.delete('/api/things/' + thing._id);
-        };
-
-        $scope.$on('$destroy', function() {
-            socket.unsyncUpdates('thing');
-        });
-  });
+})();
