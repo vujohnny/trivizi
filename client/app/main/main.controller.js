@@ -37,7 +37,8 @@ function MainController($scope, $http, socket, $filter, uiGmapGoogleMapApi) {
 		
 		$scope.showMap = function() {			
 			$(".intro-text").fadeOut("slow",function(){
-				$("#results-container").fadeIn("slow", function(){
+				$("#googleMap").css("visibility", "visible");
+				$("#results-container, .top-menu").fadeIn("slow", function(){
 				});
 			});
         }

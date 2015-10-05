@@ -57,6 +57,10 @@ $medium-margin: 1.2em;
   color: 000;
 }
 
+.bold {
+	font-weight: bold;
+}
+
 // style reset
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -70,7 +74,7 @@ input::-webkit-inner-spin-button {
 #logo {
 	background: url("../assets/images/logo.png") no-repeat 0 0;
     background-size: 100%;
-    width: 4em;
+    width: 3em;
     margin-top: .5em;
 }
 
@@ -84,6 +88,7 @@ input::-webkit-inner-spin-button {
 }
 
 .budgetInput {
+	background-color: transparent;
 	border: none;
 	outline: none;
 	width: 85px;
@@ -96,6 +101,10 @@ input::-webkit-inner-spin-button {
 		width: 40px;
 	}
 		
+}
+
+.no-line-height {
+	line-height: normal;
 }
 
 .where-drop-down {
@@ -121,10 +130,8 @@ input::-webkit-inner-spin-button {
 
 .intro-text {
    
-/*
    	margin: 20vh auto 0 auto;
-	line-height: 1.5em;
-*/
+	//line-height: 1.5em;
    
     span {
 		color: $green;
@@ -151,4 +158,5 @@ input::-webkit-inner-spin-button {
 	height: 100vh; 
 	width: 100%;
 	//display: none;
+	visibility: hidden;
 }

@@ -1,6 +1,68 @@
 <navbar></navbar>
 
 <div class="typography row" ng-controller="MainController">
+	
+	<div class="top-menu typography row">
+		
+		<div class="col-sm-3">
+			Budget: 
+			<span class="green bold">$<input type="number" ng-model="budgetAmount" class="budgetInput no-line-height" placeholder="1000" min="25" max="9999">
+		</div>
+		
+		<div class="col-sm-3">Where:
+			<span class="dropdown green bold" dropdown>
+			    <span class="dropdown-toggle" dropdown-toggle>
+			        <span class="placeHolderLocation">Romantic</span> {{specificLocation}}<span class="caret"></span>
+			    </span>
+			    <ul class="where-drop-down dropdown-menu disable-drop" dropdown-menu>
+					<li>
+				    	<input id="searchTextField2" type="text" ng-model="specificLocation" ng-change="emptyPlace()">
+				    </li>
+				    
+				    <hr>
+				    
+				    <li ng-repeat="places in typesOfPlaces">
+				    	<input type="checkbox" name="{{places}}" value="{{places}}" ng-model="placeSelected">{{places}}
+				    </li>
+
+			    </ul>
+			</span>
+		</div>
+		<div class="col-sm-2">
+			For: 
+			<select ng-model="numberOfAdults.value" ng-options="v for v in numberOfAdults.values" class="adult-drop-down green bold"></select>
+		</div>
+		
+		<div class="col-sm-2">
+			From: 
+			<span class="dropdown green bold" dropdown>
+			    <span class="dropdown-toggle" dropdown-toggle>
+			        {{arriveDate.defaultValue | date:'MMM dd' }}<span class="caret"></span>
+			    </span>
+			    <div class="when-drop-down dropdown-menu disable-drop" dropdown-menu>
+					<div class="when-calendar">
+						<datepicker ng-model="arriveDate.defaultValue" min-date="arriveDate.minDate" max-date="arriveDate.maxDate" show-weeks="arriveDate.showweeks" datepicker-mode="arriveDate.mode" max-mode="arriveDate.mode"></datepicker>
+					</div>
+			    </div>
+			</span>
+		</div>
+		
+		<div class="col-sm-2">
+			To: 
+			<span class="dropdown green bold" dropdown>
+			    <span class="dropdown-toggle" dropdown-toggle>
+			        {{departDate.defaultValue | date:'MMM dd' }}<span class="caret"></span>
+			    </span>
+			    <div class="when-drop-down dropdown-menu disable-drop" dropdown-menu>
+					<div class="when-calendar">
+						<datepicker ng-model="departDate.defaultValue" min-date="departDate.minDate" max-date="departDate.maxDate" show-weeks="departDate.showweeks" datepicker-mode="departDate.mode" max-mode="departDate.mode"></datepicker>
+					</div>
+			    </div>
+			</span>
+		</div>
+		
+	</div> <!-- end row for top nav -->
+	
 	<div class="container">
 		<div class="intro-text text-center">
 			
@@ -66,16 +128,16 @@
 				</h1>
 			</div>
 			
-			<button class="seekdeer btn btn-default btn-lg" ng-click="seekDeer()">SeekDeer</button>
+<!-- 			<button class="seekdeer btn btn-default btn-lg" ng-click="seekDeer()">SeekDeer</button> -->
 			
 		</div> <!-- end intro text -->
 	</div> <!--  end container -->
-</div> <!-- end row -->
+</div> <!-- end row for intro text-->
 
 <div id="results-container">
 	<div class="results"></div>
 </div>
     
-<div class="col-md-12" ng-controller="GoogleMapSDKCtrl">
+<div class="row-fluid" ng-controller="GoogleMapSDKCtrl">
 	<div id="googleMap"></div>
 </div> <!-- end google maps -->
