@@ -1,19 +1,34 @@
-.bookLink {
-	
-	a {
-		color: #fff;
-		
-		&:hover {
-			text-decoration: none;
-		}
-		
-	}
-	
+#results-container {
+    margin: 0 0 20px;
+    padding: 20px;
+    width: 100%;
+    overflow-x: auto;
+    background: #eee;
+    border: 1px solid #ccc;
+    display: none;
 }
-.results {
-	height: auto;
-	max-height: 540px;
-	overflow: auto;
+
+#results-container>div {
+    width: 600em;
+}
+
+.hotel-item {
+    background: #fff;
+    border: 1px solid #e4e4e4;
+    float:left;
+    margin-left: 20px;
+    padding: 20px;
+	min-height: 190px;
+	max-height: 210px;
+    min-width: 350px;
+    max-width: 400px;
+}
+
+.hotel-item:first-of-type {
+    margin-left: 0;
+}
+
+.hotel-item:last-of-type {
 }
 
 .hotelTitle {
@@ -28,4 +43,17 @@
 
 .tripAdvisorRating {
 	margin: 5px 0;
+}
+
+.bookLink {
+	
+	a {
+		color: #fff;
+		
+		&:hover {
+			text-decoration: none;
+		}
+		
+	}
+	
 }
