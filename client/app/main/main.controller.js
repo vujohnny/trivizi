@@ -166,12 +166,12 @@ function MainController($scope, $http, socket, $filter, uiGmapGoogleMapApi) {
                     destinationString = specificLocation,
                     arrivalDate = $scope.calendarArrive,
                     departureDate = $scope.calendarDepart,
-                    sort = 'PRICE', 
-                    maxResults = '20';
+                    //sort = 'PRICE', 
+                    maxResults = '30';
                                     
                 $.ajax({
                     type: 'GET',
-                    url: 'http://api.ean.com/ean-services/rs/hotel/v3/list?locale='+locale+'&destinationString='+destinationString+'&apiKey='+apiKey+'&minorRev='+minorRev+'&departureDate='+departureDate+'&arrivalDate='+arrivalDate+'&curencyCode='+curencyCode+'&cid='+cid+'&numberOfResults='+maxResults+'&room1='+adults+'&sort='+sort+'',
+                    url: 'http://api.ean.com/ean-services/rs/hotel/v3/list?locale='+locale+'&destinationString='+destinationString+'&apiKey='+apiKey+'&minorRev='+minorRev+'&departureDate='+departureDate+'&arrivalDate='+arrivalDate+'&curencyCode='+curencyCode+'&cid='+cid+'&numberOfResults='+maxResults+'&room1='+adults+'&sort=',
                     async: false,
                     contentType: "application/json",
                     dataType: 'jsonp',
@@ -184,13 +184,14 @@ function MainController($scope, $http, socket, $filter, uiGmapGoogleMapApi) {
 	                        
 	                        var averageRate = v.RoomRateDetailsList.RoomRateDetails.RateInfos.RateInfo.ChargeableRateInfo["@averageRate"];
 	                        var totalRate = v.RoomRateDetailsList.RoomRateDetails.RateInfos.RateInfo.ChargeableRateInfo["@total"];
+	                        var hotelImg = v.thumbNailUrl.replace("_t", "_b");
 	                        
 							locations.push({
 	                            lat: v.latitude, 
                             	lng: v.longitude,
                             	hotelName: v.name, 
                             	hotelDescription: v.shortDescription, 
-                            	hotelThumb: v.thumbNailUrl,  
+                            	hotelThumb: hotelImg,  
                             	hotelRating: v.tripAdvisorRating, 
                             	hotelRatingImg: v.tripAdvisorRatingUrl,
                             	hotelRateAverage: averageRate, 
