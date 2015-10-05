@@ -6,7 +6,7 @@
 		
 		<div class="col-sm-3">
 			Budget: 
-			<span class="green bold">$<input type="number" ng-model="budgetAmount" class="budgetInput no-line-height" placeholder="1000" min="25" max="9999">
+			<span class="green bold">$<input type="number" ng-model="budgetAmount" class="budgetInput no-line-height" placeholder="1000" min="25" max="9999"></span>
 		</div>
 		
 		<div class="col-sm-3">Where:
@@ -67,14 +67,14 @@
 		<div class="intro-text text-center">
 			
 			<div>
-				<h1>My budget is <span class="green">$</span><input type="number" ng-model="budgetAmount" class="budgetInput" placeholder="1000" min="25" max="9999"> and I want</h1>
+				<h1>My budget is <span class="underline"><span class="green" style="padding-bottom: 2px;">$</span><input type="number" ng-model="budgetAmount" class="budgetInput" placeholder="1000" min="25" max="9999"><span class="caret"></span></span> and I want</h1>
 			</div>
 			
 			<div>
 				<h1>to travel somewhere 
 
 					<span class="dropdown" dropdown>
-					    <span class="dropdown-toggle" dropdown-toggle>
+					    <span class="dropdown-toggle underline" dropdown-toggle>
 					        <span class="placeHolderLocation">Romantic</span> {{specificLocation}}<span class="caret"></span>
 					    </span>
 					    <ul class="where-drop-down dropdown-menu disable-drop" dropdown-menu>
@@ -93,7 +93,7 @@
 					
 					For 
 					
-					<select ng-model="numberOfAdults.value" ng-options="v for v in numberOfAdults.values" class="adult-drop-down"></select>
+					<span class="underline"><select ng-model="numberOfAdults.value" ng-options="v for v in numberOfAdults.values" class="adult-drop-down arrow-disable"></select><span class="caret"></span></span>
 					
 				</h1>
 			</div>
@@ -102,7 +102,7 @@
 				<h1>From 
 					
 					<span class="dropdown" dropdown>
-					    <span class="dropdown-toggle" dropdown-toggle>
+					    <span class="dropdown-toggle underline" dropdown-toggle>
 					        {{arriveDate.defaultValue | date:'MMMM dd' }}<span class="caret"></span>
 					    </span>
 					    <div class="when-drop-down dropdown-menu disable-drop" dropdown-menu>
@@ -115,7 +115,7 @@
 					to 
 					
 					<span class="dropdown" dropdown>
-					    <span class="dropdown-toggle" dropdown-toggle>
+					    <span class="dropdown-toggle underline" dropdown-toggle>
 					        {{departDate.defaultValue | date:'MMMM dd' }}<span class="caret"></span>
 					    </span>
 					    <div class="when-drop-down dropdown-menu disable-drop" dropdown-menu>
@@ -123,7 +123,7 @@
 								<datepicker ng-model="departDate.defaultValue" min-date="departDate.minDate" max-date="departDate.maxDate" show-weeks="departDate.showweeks" datepicker-mode="departDate.mode" max-mode="departDate.mode"></datepicker>
 							</div>
 					    </div>
-					</span>.
+					</span>
 					
 				</h1>
 			</div>

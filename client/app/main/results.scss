@@ -1,7 +1,12 @@
-.top-menu {
-	background-color: #ececec;
-    padding: 20px;
-    display: none;
+.markerDisplay {
+	font-weight: bold;
+    font-size: 1.4em;
+    
+    .tripAdvisorRating {	
+		margin: 5px 0;
+		width: 5em; 
+    }
+    
 }
 
 #results-container {
@@ -9,58 +14,55 @@
     padding: 10px;
     width: 100%;
     overflow-x: auto;
-    background: #666;
     border: 1px solid #ccc;
     display: none;
+    
+    .hotelAverage {
+	   	position: absolute;
+	    margin-top: -79px;
+	    padding: 10px;
+	    background-color: rgba(153, 153, 153, .85);
+	    font-size: 3em;
+	    font-weight: bold;
+	    color: #fff;
+    }
+    
+    .hotelTitle {
+		font-weight: normal;
+	    text-decoration: underline;
+	    margin-bottom: 10px;
+	}
+	
+	.hotelTotal {
+		margin: 10px 0;
+	}
+	
+	.hotelImg {
+	    width: 250px;
+	    height: 200px;
+	}
+	
+	.hotel-item {
+	   	//border: 1px solid #e4e4e4;
+	    float:left;
+	    max-width: 250px;
+	}
+	
+	.hotel-item:first-of-type {
+	    margin-left: 0;
+	}
+	
+	.hotel-item:last-of-type {
+	}
+	
+	.tripAdvisorRating {	
+		width: 80px; 
+    }
+    
 }
 
 #results-container>div {
     width: 600em;
 }
 
-.hotel-item {
-    background: #fff;
-    border: 1px solid #e4e4e4;
-    float:left;
-    margin-left: 20px;
-    padding: 20px;
-	min-height: 190px;
-	max-height: 210px;
-    min-width: 350px;
-    max-width: 400px;
-}
 
-.hotel-item:first-of-type {
-    margin-left: 0;
-}
-
-.hotel-item:last-of-type {
-}
-
-.hotelTitle {
-	font-weight: bold;
-}
-
-.hotelImg {
-    height: 10em;
-    float: left;
-    margin-right: 1em;
-    max-width: 13em;
-}
-
-.tripAdvisorRating {
-	margin: 5px 0;
-}
-
-.bookLink {
-	
-	a {
-		color: #fff;
-		
-		&:hover {
-			text-decoration: none;
-		}
-		
-	}
-	
-}

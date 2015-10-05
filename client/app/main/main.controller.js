@@ -96,10 +96,10 @@ function MainController($scope, $http, socket, $filter, uiGmapGoogleMapApi) {
                     lat: 38.4740022,
                     lng: -95.426484
                 },
-                zoom: 3,
+                zoom: 2,
                 scrollwheel: false,
-                draggable: false,
-                disableDefaultUI: true
+                //draggable: false,
+                //disableDefaultUI: true
             });
             
             
@@ -167,7 +167,7 @@ function MainController($scope, $http, socket, $filter, uiGmapGoogleMapApi) {
                     arrivalDate = $scope.calendarArrive,
                     departureDate = $scope.calendarDepart,
                     //sort = 'PRICE', 
-                    maxResults = '30';
+                    maxResults = '40';
                                     
                 $.ajax({
                     type: 'GET',
@@ -184,8 +184,12 @@ function MainController($scope, $http, socket, $filter, uiGmapGoogleMapApi) {
 	                        
 	                        var averageRate = v.RoomRateDetailsList.RoomRateDetails.RateInfos.RateInfo.ChargeableRateInfo["@averageRate"];
 	                        var totalRate = v.RoomRateDetailsList.RoomRateDetails.RateInfos.RateInfo.ChargeableRateInfo["@total"];
-	                        var hotelImg = v.thumbNailUrl.replace("_t", "_b");
 	                        
+	                        var roundedAverage = Math.round(averageRate);
+	                        var roundedTotal = Math.round(totalRate);
+	                        
+	                        var hotelImg = v.thumbNailUrl.replace("_t", "_b");
+	                        	                        
 							locations.push({
 	                            lat: v.latitude, 
                             	lng: v.longitude,
@@ -195,7 +199,9 @@ function MainController($scope, $http, socket, $filter, uiGmapGoogleMapApi) {
                             	hotelRating: v.tripAdvisorRating, 
                             	hotelRatingImg: v.tripAdvisorRatingUrl,
                             	hotelRateAverage: averageRate, 
+                            	hotelRoundedAverage: roundedAverage,
                             	hotelRateTotal: totalRate, 
+                            	hotelRoundedTotal: roundedTotal,
                             	hotelLink: v.deepLink 
                             });
 	                        
@@ -207,7 +213,7 @@ function MainController($scope, $http, socket, $filter, uiGmapGoogleMapApi) {
 	                        
 							if(locations[i].hotelRateTotal < $scope.budgetAmount) {
 																
-		                        var hotelResults = "<div class=\"hotel-item\"><img src=\"http://images.travelnow.com/"+locations[i].hotelThumb+"\" alt=\""+locations[i].hotelName+"\" class=\"hotelImg\"> <span class=\"hotelTitle\">"+locations[i].hotelName+"</span> <br>Average Nightly: $"+locations[i].hotelRateAverage+"<br> Total: $"+locations[i].hotelRateTotal+"<br><img src=\""+locations[i].hotelRatingImg+"\" class=\"tripAdvisorRating\"><br><button type=\"button\" class=\"bookLink btn btn-primary\"><a href=\""+locations[i].hotelLink+"\" target=\"_blank\">Seek Deer <i class=\"fa fa-hand-peace-o\"></i></a></button></div>";
+		                        var hotelResults = "<div class=\"hotel-item\"><img src=\"http://images.travelnow.com/"+locations[i].hotelThumb+"\" alt=\""+locations[i].hotelName+"\" class=\"hotelImg\"><div class=\"hotelAverage\">$"+locations[i].hotelRoundedAverage+"</div><div class=\"hotelTotal\">Total: $"+locations[i].hotelRoundedTotal+"</div><a href=\""+locations[i].hotelLink+"\" target=\"_blank\"><div class=\"hotelTitle\">"+locations[i].hotelName+"</div></a><div class=\"hotelRating\"><img src=\""+locations[i].hotelRatingImg+"\" class=\"tripAdvisorRating\"></div></div>";
 	                                                        
 	                                                        
 	                            // set new makers on the map and side nav
@@ -218,8 +224,7 @@ function MainController($scope, $http, socket, $filter, uiGmapGoogleMapApi) {
 	                            // on marker click show hotel info
 	                            google.maps.event.addListener(marker, 'click', (function(marker, i) {
 	                                return function() {
-	                                    infowindow.setContent("<img src=\"http://images.travelnow.com/"+locations[i].hotelThumb+"\" alt=\""+locations[i].hotelName+"\" class=\"hotelImg\"> <span class=\"hotelTitle\">"+locations[i].hotelName+"</span> <br>Average Nightly: $"+locations[i].hotelRateAverage+"<br> Total: $"+locations[i].hotelRateTotal+"<br><img src=\""+locations[i].hotelRatingImg+"\" class=\"tripAdvisorRating\"><br><button type=\"button\" class=\"bookLink btn btn-primary\"><a href=\""+locations[i].hotelLink+"\" target=\"_blank\">Seek Deer <i class=\"fa fa-hand-peace-o\"></i></a></button><hr>"); 	
-	                                    // ^^^ tried using var hotelResults from #212 but that only showed the first return
+	                                    infowindow.setContent("<div class=\"markerDisplay\"><span class=\"markerTotal\">$"+locations[i].hotelRoundedTotal+"</span> <span class=\"medium-grey\">|</span> <img src=\""+locations[i].hotelRatingImg+"\" class=\"tripAdvisorRating\"></div>"); 	
 	                                                                        
 	                                    infowindow.open(map, marker);
 	                                }
