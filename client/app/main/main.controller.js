@@ -98,7 +98,7 @@ function MainController($scope, $http, socket, $filter, uiGmapGoogleMapApi) {
                 },
                 zoom: 2,
                 scrollwheel: false,
-                styles: [{"featureType":"administrative","elementType":"all","stylers":[{"visibility":"on"},{"lightness":33}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2e5d4"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#c5dac6"}]},{"featureType":"poi.park","elementType":"labels","stylers":[{"visibility":"on"},{"lightness":20}]},{"featureType":"road","elementType":"all","stylers":[{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"color":"#c5c6c6"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#e4d7c6"}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#fbfaf7"}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"on"},{"color":"#acbcc9"}]}]
+                styles: [{"featureType":"landscape.man_made","elementType":"geometry","stylers":[{"color":"#f7f1df"}]},{"featureType":"landscape.natural","elementType":"geometry","stylers":[{"color":"#d0e3b4"}]},{"featureType":"landscape.natural.terrain","elementType":"geometry","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"poi.business","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"poi.medical","elementType":"geometry","stylers":[{"color":"#fbd3da"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#bde6ab"}]},{"featureType":"road","elementType":"geometry.stroke","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ffe15f"}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#efd151"}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"road.local","elementType":"geometry.fill","stylers":[{"color":"black"}]},{"featureType":"transit.station.airport","elementType":"geometry.fill","stylers":[{"color":"#cfb2db"}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#a2daf2"}]}]
                 //draggable: false,
                 //disableDefaultUI: true
             });
@@ -115,26 +115,28 @@ function MainController($scope, $http, socket, $filter, uiGmapGoogleMapApi) {
                 markersArray.push(marker);
 			}
 			
-			// google recommended way to remove markers, 3 functions below
-			$scope.setMapOnAll = function(map) {
-			  for (var i = 0; i < markersArray.length; i++) {
-			    markersArray[i].setMap(map);
-			  }
-			}
-			$scope.clearMarkers = function() {
-			  $scope.setMapOnAll(null);
-			}
-			$scope.deleteMarkers = function() {
-			  $scope.clearMarkers();
-			  markersArray = [];
-			  $('.results').empty(); 
+			// remove markers
+			$scope.deleteMarkers = function() {		
+								
+				for (var i = 0; i < markersArray.length; i++) {
+					markersArray[i].setMap(null);
+				}			  
+				
+				markersArray = [];
+				locations = [];
+				$('.results').empty(); 
+							  
 			}
 			
 
 			// init autocomplete on input search
-            var input = document.getElementById('searchTextField');
             var options = {types: ['(cities)']};
+            
+            var input = document.getElementById('searchTextField');
             var autocomplete = new google.maps.places.Autocomplete(input, options);
+            
+            var inputTop = document.getElementById('searchTextFieldTop');
+            var autocompleteTop = new google.maps.places.Autocomplete(inputTop, options);
             
             // disables the drop down from closing
             $('.disable-drop').click(function(event){
@@ -152,12 +154,22 @@ function MainController($scope, $http, socket, $filter, uiGmapGoogleMapApi) {
                 }
 			}
 			
+			$scope.panMapTop = function(specificLocation) {
+				var place = autocompleteTop.getPlace();
+                if (place.geometry.viewport) {
+                    map.fitBounds(place.geometry.viewport);
+                } else {
+                    map.setCenter(place.geometry.location);
+                }
+			}
+			
 			
 			// expedia return ------------------------------------------
 			$scope.expediaReturn = function(specificLocation) {
-				
+								
 				// expedia required call parameters
                 var place = autocomplete.getPlace(),
+                	placeTop = autocompleteTop.getPlace(),
                 	apiKey = '70303auc6h8hqutunreio3u8pl',
                     cid = '55505',
                     minorRev = '99',
@@ -179,6 +191,8 @@ function MainController($scope, $http, socket, $filter, uiGmapGoogleMapApi) {
 
                     success: function(data) {
 	                    						
+						// on success remove old markers and prep new ones
+						$scope.deleteMarkers();
 						console.log(data);	
 						
                         $.each(data.HotelListResponse.HotelList.HotelSummary, function(k, v) {
@@ -250,6 +264,12 @@ function MainController($scope, $http, socket, $filter, uiGmapGoogleMapApi) {
                 } else {
                     map.setCenter(place.geometry.location);
                 }
+                
+                if (placeTop.geometry.viewport) {
+                    map.fitBounds(placeTop.geometry.viewport);
+                } else {
+                    map.setCenter(placeTop.geometry.location);
+                }
 			} 
 
             // end expedia return ------------------------------------------------------------
@@ -259,6 +279,12 @@ function MainController($scope, $http, socket, $filter, uiGmapGoogleMapApi) {
             google.maps.event.addListener(autocomplete, 'place_changed', function() {
 	            $scope.specificLocation = autocomplete.getPlace().formatted_address;
 	            $scope.panMap();
+	            $scope.seekDeer($scope.specificLocation); // <---------- make sure to remove this later to apply this function to the submit button
+            }); 
+            
+            google.maps.event.addListener(autocompleteTop, 'place_changed', function() {
+	            $scope.specificLocation = autocompleteTop.getPlace().formatted_address;
+	            $scope.panMapTop();
 	            $scope.seekDeer($scope.specificLocation); // <---------- make sure to remove this later to apply this function to the submit button
             }); 
 
