@@ -228,7 +228,7 @@ function MainController($scope, $http, socket, $filter, uiGmapGoogleMapApi) {
 	                        
 							if(locations[i].hotelRateTotal < $scope.budgetAmount) {
 																
-		                        var hotelResults = "<div class=\"hotel-item\"><img src=\"http://images.travelnow.com/"+locations[i].hotelThumb+"\" alt=\""+locations[i].hotelName+"\" class=\"hotelImg\"><div class=\"hotelAverage\">$"+locations[i].hotelRoundedAverage+"</div><div class=\"hotelTotal\">Total: $"+locations[i].hotelRoundedTotal+"</div><a href=\""+locations[i].hotelLink+"\" target=\"_blank\"><div class=\"hotelTitle\">"+locations[i].hotelName+"</div></a><div class=\"hotelRating\"><img src=\""+locations[i].hotelRatingImg+"\" class=\"tripAdvisorRating\"></div></div>";
+		                        var hotelResults = "<div class=\"hotel-item typography\"><img src=\"http://images.travelnow.com/"+locations[i].hotelThumb+"\" alt=\""+locations[i].hotelName+"\" class=\"hotelImg\"><div class=\"hotelAverage\">$"+locations[i].hotelRoundedAverage+"</div><div class=\"hotelTotal\">Total: $"+locations[i].hotelRoundedTotal+"</div><a href=\""+locations[i].hotelLink+"\" target=\"_blank\"><div class=\"hotelTitle\">"+locations[i].hotelName+"</div></a><div class=\"hotelRating\"><img src=\""+locations[i].hotelRatingImg+"\" class=\"tripAdvisorRating\"></div></div>";
 	                                                        
 	                                                        
 	                            // set new makers on the map and side nav
@@ -239,7 +239,7 @@ function MainController($scope, $http, socket, $filter, uiGmapGoogleMapApi) {
 	                            // on marker click show hotel info
 	                            google.maps.event.addListener(marker, 'click', (function(marker, i) {
 	                                return function() {
-	                                    infowindow.setContent("<div class=\"markerDisplay\"><span class=\"markerTotal\">$"+locations[i].hotelRoundedTotal+"</span> <span class=\"medium-grey\">|</span> <img src=\""+locations[i].hotelRatingImg+"\" class=\"tripAdvisorRating\"></div>"); 	
+	                                    infowindow.setContent("<div class=\"markerDisplay typography\"><span class=\"markerTotal\">$"+locations[i].hotelRoundedTotal+"</span> <span class=\"medium-grey\">|</span> <img src=\""+locations[i].hotelRatingImg+"\" class=\"tripAdvisorRating\"></div>"); 	
 	                                                                        
 	                                    infowindow.open(map, marker);
 	                                }
