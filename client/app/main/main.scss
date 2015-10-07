@@ -1,43 +1,19 @@
-// site variables ===================================================================================================
-
 // webfont style
 $font-stack: Open Sans, sans-serif;
 
-
 // site colors
-$light-blue: #82cfeb;
-$blue: #1061f6;
-$yellow: #ffeb00;
 $orange: #feb900;
-$red: #cd381f;
 $green: #7ed321;
-$light-grey: #eee;
-$medium-grey: #999;
-$dark-grey: #666;
-
+$grey: #999;
 
 // media queries
 $break-phone: 768px;
-
-
-// reusable margins
-$small-margin: 1em;
-$medium-margin: 1.2em;
-
 
 // reusable styles
 .typography {
   font-family: $font-stack; 
   font-weight: normal;
   margin: 0;
-}
-
-.left {
-	float: left;
-}
-
-.right {
-	float: right;
 }
 
 .no-padding {
@@ -53,19 +29,11 @@ $medium-margin: 1.2em;
 	color: $green;
 }
 
-.medium-grey {
-  color: $medium-grey;
+// boostrap style reset
+select::-ms-expand {
+    display: none;
 }
 
-.black {
-  color: 000;
-}
-
-.bold {
-	font-weight: bold;
-}
-
-// style reset
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -81,19 +49,7 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     appearance: none;
     outline: 0;
-}
-
-.underline {
-	border-bottom: 1px solid $green;
-}
-
-
-// site styles =====================================================================================================
-
-.logo {
-    width: 90px;
-    margin-top: 10px;
-}
+}	
 
 .navbar-default {
 	background: none;
@@ -103,6 +59,13 @@ input::-webkit-inner-spin-button {
 		margin-top: 20px;
 	}
 	
+}
+
+// site styles =====================================================================================================
+
+.logo {
+    width: 90px;
+    margin-top: 10px;
 }
 
 .top-menu {
@@ -147,11 +110,8 @@ input::-webkit-inner-spin-button {
 	
 }
 
-select::-ms-expand {
-    display: none;
-}
-
 .adult-drop-down {
+	outline: 0;
 	border: none;
 	color: $green;
 	border-radius: 0px;
@@ -160,10 +120,8 @@ select::-ms-expand {
 }
 
 .intro-text {
-   
    	margin: 20vh auto 0 auto;
-	//line-height: 1.5em;
-   
+   	   
     span {
 		color: $green;
 		cursor: pointer;
@@ -186,6 +144,28 @@ select::-ms-expand {
 		
 	}
     
+}
+
+.when-calendar {
+	width: 100%;
+	
+	table {
+		width: 100%;
+		
+		.btn-default[disabled], .btn-default {
+			border: 0;
+		}
+		
+		.btn-info.active {
+			background-color: $grey;	
+		}
+		
+		.text-info {
+			color: $orange;
+		}
+		
+	}
+	
 }
 
 #googleMap { 
