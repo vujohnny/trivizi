@@ -2,6 +2,12 @@
 (function() {
 
 function MainController($scope, $http, socket, $filter, uiGmapGoogleMapApi) {
+	
+		/*
+			* view info setup, 
+			* dropboxes, 
+			* select inputs
+		*/
         
         $scope.typesOfPlaces = ['Romantic', 'Tropical', 'Party', 'Pets Ok', 'Family'];
         
@@ -28,18 +34,25 @@ function MainController($scope, $http, socket, $filter, uiGmapGoogleMapApi) {
             mode: "month"
         };
         
+        /*
+	        * global functions for views
+	        * div class specific functions
+	        * main seekdeer function submit
+	        * only place to gather div specific functions
+	    */
+	    
+	    $('.disable-drop').click(function(event){
+			event.stopPropagation();
+		});
+	                
         $scope.emptyPlace = function() {
-	        $('.placeHolderLocation').empty(); //<------- need to bind selected categories and push to db
+	        $('.placeHolderLocation').empty();
         };
-        
-        
-		// -----------------------------------------------------------------------------------
-		
+        		
 		$scope.showMap = function() {			
 			$(".intro-text").fadeOut("slow",function(){
 				$("#googleMap").css("visibility", "visible");
-				$("#results-container, .top-menu").fadeIn("slow", function(){
-				});
+				$("#results-container, .top-menu").fadeIn("slow", function(){});
 			});
         }
 
@@ -53,250 +66,232 @@ function MainController($scope, $http, socket, $filter, uiGmapGoogleMapApi) {
             $scope.expediaReturn($scope.specificLocation); 
         };
         
-		        $scope.$watch("arriveDate.defaultValue", function(){
-		            $scope.calendarArrive = $filter('date')($scope.arriveDate.defaultValue, 'MM/dd/yyyy');
-		            //console.log("From: " + $scope.calendarArrive);
-		        });
-		        
-		        $scope.$watch("departDate.defaultValue", function(){
-		            $scope.calendarDepart = $filter('date')($scope.departDate.defaultValue, 'MM/dd/yyyy');
-		            //console.log("To: " + $scope.calendarDepart);
-		        });
-		        
-		        $scope.$watch("budgetAmount", function(){
-		            //console.log($scope.budgetAmount);
-		        }); 
-		        
-		        $scope.$watch("numberOfAdults.value  ", function(){
-		            //console.log($scope.numberOfAdults.value);
-		        }); 
-		     
-		     
-        // -----------------------------------------------------------------------------------
+        /*
+	        * watch functions for
+	        * input fields
+	        * budget, where, adults, calendar
+	    */        
+	    
+        $scope.$watch("arriveDate.defaultValue", function(){
+            $scope.calendarArrive = $filter('date')($scope.arriveDate.defaultValue, 'MM/dd/yyyy');
+            //console.log("From: " + $scope.calendarArrive);
+        });
         
+        $scope.$watch("departDate.defaultValue", function(){
+            $scope.calendarDepart = $filter('date')($scope.departDate.defaultValue, 'MM/dd/yyyy');
+            //console.log("To: " + $scope.calendarDepart);
+        });
         
-        // google maps sdk ---------------------------------------------------------------
-        uiGmapGoogleMapApi.then(function(maps) {
-	        
-	        //alert('test');
-	        
-	        // google maps variables
-	        var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-            	labelIndex = 0,
-				infowindow = new google.maps.InfoWindow(),
-				marker,
-				markersArray = [],
-				locations = [],
-				i;
-				
-			
-			// init google map on view
-            var map = new google.maps.Map(document.getElementById('googleMap'), {
-                center: {
-                    lat: 38.4740022,
-                    lng: -95.426484
-                },
-                zoom: 2,
-                scrollwheel: false,
-                styles: [{"featureType":"landscape.man_made","elementType":"geometry","stylers":[{"color":"#f7f1df"}]},{"featureType":"landscape.natural","elementType":"geometry","stylers":[{"color":"#d0e3b4"}]},{"featureType":"landscape.natural.terrain","elementType":"geometry","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"poi.business","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"poi.medical","elementType":"geometry","stylers":[{"color":"#fbd3da"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#bde6ab"}]},{"featureType":"road","elementType":"geometry.stroke","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ffe15f"}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#efd151"}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"road.local","elementType":"geometry.fill","stylers":[{"color":"black"}]},{"featureType":"transit.station.airport","elementType":"geometry.fill","stylers":[{"color":"#cfb2db"}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#a2daf2"}]}]
-                //draggable: false,
-                //disableDefaultUI: true
-            });
-            
-            
-            // set markers from results on map
-			$scope.markersDisplay = function(lat, lng) {
-				marker = new google.maps.Marker({
-                    position: {lat, lng},
-                    map: map,
-                    label: labels[labelIndex++ % labels.length],
-                    animation: google.maps.Animation.DROP
-                });
-                markersArray.push(marker);
-			}
-			
-			// remove markers
-			$scope.deleteMarkers = function() {		
-								
-				for (var i = 0; i < markersArray.length; i++) {
-					markersArray[i].setMap(null);
-				}			  
-				
-				markersArray = [];
-				locations = [];
-				$('.results').empty(); 
-							  
-			}
-			
-
-			// init autocomplete on input search
-            var options = {types: ['(cities)']};
-            
-            var input = document.getElementById('searchTextField');
-            var autocomplete = new google.maps.places.Autocomplete(input, options);
-            
-            var inputTop = document.getElementById('searchTextFieldTop');
-            var autocompleteTop = new google.maps.places.Autocomplete(inputTop, options);
-            
-            // disables the drop down from closing
-            $('.disable-drop').click(function(event){
-				event.stopPropagation();
-			});
-
-
-			// move map to city and call expedia api
-			$scope.panMap = function(specificLocation) {
-				var place = autocomplete.getPlace();
-                if (place.geometry.viewport) {
-                    map.fitBounds(place.geometry.viewport);
-                } else {
-                    map.setCenter(place.geometry.location);
-                }
-			}
-			
-			$scope.panMapTop = function(specificLocation) {
-				var place = autocompleteTop.getPlace();
-                if (place.geometry.viewport) {
-                    map.fitBounds(place.geometry.viewport);
-                } else {
-                    map.setCenter(place.geometry.location);
-                }
-			}
-			
-			
-			// expedia return ------------------------------------------
-			$scope.expediaReturn = function(specificLocation) {
-								
-				// expedia required call parameters
-                var place = autocomplete.getPlace(),
-                	placeTop = autocompleteTop.getPlace(),
-                	apiKey = '70303auc6h8hqutunreio3u8pl',
-                    cid = '55505',
-                    minorRev = '99',
-                    locale = 'en_US',
-                    curencyCode = 'USD',
-                    adults = $scope.numberOfAdults.value,
-                    destinationString = specificLocation,
-                    arrivalDate = $scope.calendarArrive,
-                    departureDate = $scope.calendarDepart,
-                    //sort = 'PRICE', 
-                    maxResults = '40';
-                                    
-                $.ajax({
-                    type: 'GET',
-                    url: 'http://api.ean.com/ean-services/rs/hotel/v3/list?locale='+locale+'&destinationString='+destinationString+'&apiKey='+apiKey+'&minorRev='+minorRev+'&departureDate='+departureDate+'&arrivalDate='+arrivalDate+'&curencyCode='+curencyCode+'&cid='+cid+'&numberOfResults='+maxResults+'&room1='+adults+'&sort=',
-                    async: false,
-                    contentType: "application/json",
-                    dataType: 'jsonp',
-
-                    success: function(data) {
-	                    						
-						// on success remove old markers and prep new ones
-						$scope.deleteMarkers();
-						console.log(data);	
-						
-                        $.each(data.HotelListResponse.HotelList.HotelSummary, function(k, v) {
-	                        
-	                        var averageRate = v.RoomRateDetailsList.RoomRateDetails.RateInfos.RateInfo.ChargeableRateInfo["@averageRate"];
-	                        var totalRate = v.RoomRateDetailsList.RoomRateDetails.RateInfos.RateInfo.ChargeableRateInfo["@total"];
-	                        
-	                        var roundedAverage = Math.round(averageRate);
-	                        var roundedTotal = Math.round(totalRate);
-	                        
-	                        var hotelImg = v.thumbNailUrl.replace("_t", "_b");
-	                        	                        
-							locations.push({
-	                            lat: v.latitude, 
-                            	lng: v.longitude,
-                            	hotelName: v.name, 
-                            	hotelDescription: v.shortDescription, 
-                            	hotelThumb: hotelImg,  
-                            	hotelRating: v.tripAdvisorRating, 
-                            	hotelRatingImg: v.tripAdvisorRatingUrl,
-                            	hotelRateAverage: averageRate, 
-                            	hotelRoundedAverage: roundedAverage,
-                            	hotelRateTotal: totalRate, 
-                            	hotelRoundedTotal: roundedTotal,
-                            	hotelLink: v.deepLink 
-                            });
-	                        
-                        });
-                        
-                        
-                        // build hotel template
-                        for (i = 0; i < locations.length; i++) {
-	                        
-							if(locations[i].hotelRateTotal < $scope.budgetAmount) {
-																
-		                        var hotelResults = "<div class=\"hotel-item typography\"><img src=\"http://images.travelnow.com/"+locations[i].hotelThumb+"\" alt=\""+locations[i].hotelName+"\" class=\"hotelImg\"><div class=\"hotelAverage\">$"+locations[i].hotelRoundedAverage+"</div><div class=\"hotelTotal\">Total: $"+locations[i].hotelRoundedTotal+"</div><a href=\""+locations[i].hotelLink+"\" target=\"_blank\"><div class=\"hotelTitle\">"+locations[i].hotelName+"</div></a><div class=\"hotelRating\"><img src=\""+locations[i].hotelRatingImg+"\" class=\"tripAdvisorRating\"></div></div>";
-	                                                        
-	                                                        
-	                            // set new makers on the map and side nav
-	                            $scope.markersDisplay(locations[i].lat, locations[i].lng);
-								$('.results').append(hotelResults);
-								
-								
-	                            // on marker click show hotel info
-	                            google.maps.event.addListener(marker, 'click', (function(marker, i) {
-	                                return function() {
-	                                    infowindow.setContent("<div class=\"markerDisplay typography\"><span class=\"markerTotal\">$"+locations[i].hotelRoundedTotal+"</span> <span class=\"medium-grey\">|</span> <img src=\""+locations[i].hotelRatingImg+"\" class=\"tripAdvisorRating\"></div>"); 	
-	                                                                        
-	                                    infowindow.open(map, marker);
-	                                }
-	                            })(marker, i));
-
-							} else {
-							  
-							}
-                                   
-                        }
-                        
-                    },
-					
-					// if error on return display error
-                    error: function(e) {console.log(e.message);}
-                    
-                });
-                
-                // autocomplete location pan map to that city
-                if (place.geometry.viewport) {
-                    map.fitBounds(place.geometry.viewport);
-                } else {
-                    map.setCenter(place.geometry.location);
-                }
-                
-                if (placeTop.geometry.viewport) {
-                    map.fitBounds(placeTop.geometry.viewport);
-                } else {
-                    map.setCenter(placeTop.geometry.location);
-                }
-			} 
-
-            // end expedia return ------------------------------------------------------------
-            
-			
-            // event handler for autocomplete change
-            google.maps.event.addListener(autocomplete, 'place_changed', function() {
-	            $scope.specificLocation = autocomplete.getPlace().formatted_address;
-	            $scope.panMap();
-	            $scope.seekDeer($scope.specificLocation); // <---------- make sure to remove this later to apply this function to the submit button
-            }); 
-            
-            google.maps.event.addListener(autocompleteTop, 'place_changed', function() {
-	            $scope.specificLocation = autocompleteTop.getPlace().formatted_address;
-	            $scope.panMapTop();
-	            $scope.seekDeer($scope.specificLocation); // <---------- make sure to remove this later to apply this function to the submit button
-            }); 
-
-
+        $scope.$watch("budgetAmount", function(){
+            //console.log($scope.budgetAmount);
         }); 
-        // end google maps sdk ----------------------------------------------------------------
         
-		        
-		        
+        $scope.$watch("numberOfAdults.value  ", function(){
+            //console.log($scope.numberOfAdults.value);
+        }); 
+		          
+        /*
+	        * google maps promise
+	        * is loaded asynchronously
+	        * check app.js file for api key & params 
+	    */
+	    
+		uiGmapGoogleMapApi.then(function(maps) {
+	        	
+	        	/*
+					* google maps required vars
+			    */        
+			    
+		        var // marker windows
+		        	labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+		        	resultsContainer = ".results",
+	            	labelIndex = 0,
+					infowindow = new google.maps.InfoWindow(),
+					i,
+					
+					// marker vars
+					marker,
+					markersArray = [],
+					locations = [],
+					
+					//autocomplete inputs
+					options = {types: ['(cities)']},
+					input = document.getElementById('searchTextField'),
+					autocomplete = new google.maps.places.Autocomplete(input, options),
+					inputTop = document.getElementById('searchTextFieldTop'),
+					autocompleteTop = new google.maps.places.Autocomplete(inputTop, options),					
+					
+					// map init
+					snazzyMap = [{"featureType":"poi","elementType":"labels.text.fill","stylers":[{"color":"#747474"},{"lightness":"23"}]},{"featureType":"poi.attraction","elementType":"geometry.fill","stylers":[{"color":"#f38eb0"}]},{"featureType":"poi.government","elementType":"geometry.fill","stylers":[{"color":"#ced7db"}]},{"featureType":"poi.medical","elementType":"geometry.fill","stylers":[{"color":"#ffa5a8"}]},{"featureType":"poi.park","elementType":"geometry.fill","stylers":[{"color":"#c7e5c8"}]},{"featureType":"poi.place_of_worship","elementType":"geometry.fill","stylers":[{"color":"#d6cbc7"}]},{"featureType":"poi.school","elementType":"geometry.fill","stylers":[{"color":"#c4c9e8"}]},{"featureType":"poi.sports_complex","elementType":"geometry.fill","stylers":[{"color":"#b1eaf1"}]},{"featureType":"road","elementType":"geometry","stylers":[{"lightness":"100"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"},{"lightness":"100"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ffd4a5"}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"color":"#ffe9d2"}]},{"featureType":"road.local","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.local","elementType":"geometry.fill","stylers":[{"weight":"3.00"}]},{"featureType":"road.local","elementType":"geometry.stroke","stylers":[{"weight":"0.30"}]},{"featureType":"road.local","elementType":"labels.text","stylers":[{"visibility":"on"}]},{"featureType":"road.local","elementType":"labels.text.fill","stylers":[{"color":"#747474"},{"lightness":"36"}]},{"featureType":"road.local","elementType":"labels.text.stroke","stylers":[{"color":"#e9e5dc"},{"lightness":"30"}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"visibility":"on"},{"lightness":"100"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#d2e7f7"}]}],
+					map = new google.maps.Map(document.getElementById('googleMap'), {
+		                center: {
+		                    lat: 38.4740022,
+		                    lng: -95.426484
+		                },
+		                zoom: 2,
+		                scrollwheel: false,
+		                styles: snazzyMap
+	            	});
+	            
+	            
+			    /*
+					* google maps functions 
+					* for markers, pan map functions
+			    */      
+				
+				$scope.markersDisplay = function(lat, lng) {
+					marker = new google.maps.Marker({
+	                    position: {lat, lng},
+	                    map: map,
+	                    label: labels[labelIndex++ % labels.length],
+	                    animation: google.maps.Animation.DROP
+	                });
+	                markersArray.push(marker);
+				}
+				
+				$scope.deleteMarkers = function() {		
+									
+					for (var i = 0; i < markersArray.length; i++) {
+						markersArray[i].setMap(null);
+					}			  
+					
+					markersArray = [];
+					locations = [];
+					$(resultsContainer).empty(); 
+								  
+				}
+	            
+				$scope.panMap = function(specificLocation) {
+					var place = autocomplete.getPlace();
+	                if (place.geometry.viewport) {
+	                    map.fitBounds(place.geometry.viewport);
+	                } else {
+	                    map.setCenter(place.geometry.location);
+	                }
+				}
+				
+				$scope.panMapTop = function(specificLocation) {
+					var place = autocompleteTop.getPlace();
+	                if (place.geometry.viewport) {
+	                    map.fitBounds(place.geometry.viewport);
+	                } else {
+	                    map.setCenter(place.geometry.location);
+	                }
+				}
+				
+				google.maps.event.addListener(autocomplete, 'place_changed', function() {
+		            $scope.specificLocation = autocomplete.getPlace().formatted_address;
+		            $scope.panMap();
+		            $scope.seekDeer($scope.specificLocation);
+	            }); 
+	            
+	            google.maps.event.addListener(autocompleteTop, 'place_changed', function() {
+		            $scope.specificLocation = autocompleteTop.getPlace().formatted_address;
+		            $scope.panMapTop();
+		            $scope.seekDeer($scope.specificLocation);
+	            }); 
+	            				
+				/*
+					* ean api call 
+					* returns ean hotel listings
+			    */ 
+			    
+				$scope.expediaReturn = function(specificLocation) {
+									
+					/*
+						* ean request url required parameters
+				    */  
+				    
+	                var // account specific parameters
+	                	apiKey = '70303auc6h8hqutunreio3u8pl',
+	                    cid = '55505',
+	                    minorRev = '99',
+	                    
+	                    // search parameters
+	                    locale = 'en_US',
+	                    curencyCode = 'USD',
+	                    adults = $scope.numberOfAdults.value,
+	                    destinationString = specificLocation,
+	                    arrivalDate = $scope.calendarArrive,
+	                    departureDate = $scope.calendarDepart,
+	                    maxResults = '40';
+	               
+					/*
+						* ean request ajax call
+				    */
+	                                
+	                $.ajax({
+	                    type: 'GET',
+	                    url: 'http://api.ean.com/ean-services/rs/hotel/v3/list?locale='+locale+'&destinationString='+destinationString+'&apiKey='+apiKey+'&minorRev='+minorRev+'&departureDate='+departureDate+'&arrivalDate='+arrivalDate+'&curencyCode='+curencyCode+'&cid='+cid+'&numberOfResults='+maxResults+'&room1='+adults+'',
+	                    async: false,
+	                    contentType: "application/json",
+	                    dataType: 'jsonp',
+	
+	                    success: function(data) {
+		                    						
+							$scope.deleteMarkers();
+							//console.log(data);	
+	                        $.each(data.HotelListResponse.HotelList.HotelSummary, function(k, v) {
+		                        
+		                        var averageRate = v.RoomRateDetailsList.RoomRateDetails.RateInfos.RateInfo.ChargeableRateInfo["@averageRate"];
+		                        var totalRate = v.RoomRateDetailsList.RoomRateDetails.RateInfos.RateInfo.ChargeableRateInfo["@total"];
+		                        
+		                        var roundedAverage = Math.round(averageRate);
+		                        var roundedTotal = Math.round(totalRate);
+		                        
+		                        var hotelImg = v.thumbNailUrl.replace("_t", "_b");
+		                        	                        
+								locations.push({
+		                            lat: v.latitude, 
+	                            	lng: v.longitude,
+	                            	hotelName: v.name, 
+	                            	hotelDescription: v.shortDescription, 
+	                            	hotelThumb: hotelImg,  
+	                            	hotelRating: v.tripAdvisorRating, 
+	                            	hotelRatingImg: v.tripAdvisorRatingUrl,
+	                            	hotelRateAverage: averageRate, 
+	                            	hotelRoundedAverage: roundedAverage,
+	                            	hotelRateTotal: totalRate, 
+	                            	hotelRoundedTotal: roundedTotal,
+	                            	hotelLink: v.deepLink 
+	                            });
+	                        });
+	                        
+	                        /*
+								* setup results
+								* displat results as markers on map
+								* append marker windows
+								* append side results
+						    */
+						    
+	                        for (i = 0; i < locations.length; i++) {
+		                        
+								if(locations[i].hotelRateTotal < $scope.budgetAmount) {
+																	
+			                        var hotelResults = "<div class=\"hotel-item typography\"><img src=\"http://images.travelnow.com/"+locations[i].hotelThumb+"\" alt=\""+locations[i].hotelName+"\" class=\"hotelImg\"><div class=\"hotelAverage\">$"+locations[i].hotelRoundedAverage+"</div><div class=\"hotelTotal\">Total: $"+locations[i].hotelRoundedTotal+"</div><a href=\""+locations[i].hotelLink+"\" target=\"_blank\"><div class=\"hotelTitle\">"+locations[i].hotelName+"</div></a><div class=\"hotelRating\"><img src=\""+locations[i].hotelRatingImg+"\" class=\"tripAdvisorRating\"></div></div>";
+		                          	$(resultsContainer).append(hotelResults);                        
+		                            $scope.markersDisplay(locations[i].lat, locations[i].lng);
+									
+		                            google.maps.event.addListener(marker, 'click', (function(marker, i) {
+		                                return function() {
+		                                    infowindow.setContent("<div class=\"markerDisplay typography\"><span class=\"markerTotal\">$"+locations[i].hotelRoundedTotal+"</span> <span class=\"medium-grey\">|</span> <img src=\""+locations[i].hotelRatingImg+"\" class=\"tripAdvisorRating\"></div>"); 	
+		                                    infowindow.open(map, marker);
+		                                }
+		                            })(marker, i));
+	
+								} else {}
+	                        }
+	                    }, // end success return from ean
+						
+	                    error: function(e) {console.log(e.message);}
+	                    // end error return from ean
+	                    
+				}); // end ajax call
+	                
+			} // end ean request 
+			
+        }); // end google maps promise
+        
 	} // end MainController
 
-angular.module('triviziApp')
-  .controller('MainController', MainController);
-
-})();
+angular.module('triviziApp').controller('MainController', MainController);})();
