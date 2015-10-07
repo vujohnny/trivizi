@@ -9,10 +9,10 @@ $fa-font-path: "../bower_components/font-awesome/fonts";
  */
 
 .browserupgrade {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
+	margin: 0.2em 0;
+	background: #ccc;
+	color: #000;
+	padding: 0.2em 0;
 }
 
 // webfont style
@@ -30,18 +30,22 @@ $break-phone: 768px;
 
 // reusable styles
 .typography {
-  font-family: $font-stack; 
-  font-weight: normal;
-  margin: 0;
+	font-family: $font-stack; 
+	font-weight: normal;
+	margin: 0;
+}
+
+.bold {
+	font-weight: bold;
 }
 
 .no-padding {
-  padding: 0;
-  margin: 0;
+	padding: 0;
+	margin: 0;
 }
 
 .orange {
-  color: $orange;
+  	color: $orange;
 }
 
 .green {

@@ -283,7 +283,7 @@ function MainController($scope, $http, socket, $filter, uiGmapGoogleMapApi) {
 									
 									
 									// results side navigation populate					
-			                        var hotelResults = "<div id=\""+locations[i].hotelId+"\" class=\"hotel-item typography\" onClick=\"highlightMarker()\"><img src=\"http://images.travelnow.com/"+locations[i].hotelThumb+"\" alt=\""+locations[i].hotelName+"\" class=\"hotelImg\"><div class=\"hotelAverage\">$"+locations[i].hotelRoundedAverage+"<div class=\"hotelPerNight\">per night</div></div><div class=\"hotelTotal\">Total: $"+locations[i].hotelRoundedTotal+"</div><a href=\""+locations[i].hotelLink+"\" target=\"_blank\"><div class=\"hotelTitle\">"+locations[i].hotelName+"</div></a><div class=\"hotelRating\"><img src=\""+locations[i].hotelRatingImg+"\" class=\"tripAdvisorRating\"></div></div>";
+			                        var hotelResults = "<div id=\""+locations[i].hotelId+"\" class=\"hotel-item typography\"><img src=\"http://images.travelnow.com/"+locations[i].hotelThumb+"\" alt=\""+locations[i].hotelName+"\" class=\"hotelImg\"><div class=\"hotelAverage\">$"+locations[i].hotelRoundedAverage+"<div class=\"hotelPerNight\">per night</div></div><div class=\"hotelTotal\">Total: $"+locations[i].hotelRoundedTotal+"</div><a href=\""+locations[i].hotelLink+"\" target=\"_blank\"><div class=\"hotelTitle\">"+locations[i].hotelName+"</div></a><div class=\"hotelRating\"><img src=\""+locations[i].hotelRatingImg+"\" class=\"tripAdvisorRating\"></div></div>";
 		                          	$(resultsContainer).append(hotelResults);       
 		                          	          
 									
@@ -300,7 +300,7 @@ function MainController($scope, $http, socket, $filter, uiGmapGoogleMapApi) {
 	
 								} else {}
 	                        }
-	                        console.log($scope.hotelResultsItem);
+
 	                    }, // end success return from ean
 						
 	                    error: function(e) {console.log(e.message);}
