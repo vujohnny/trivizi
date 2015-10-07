@@ -12,17 +12,24 @@
 #results-container {
 	overflow: auto;
 	max-height: 100vh;
-    display: none;
+    //display: none; // <----- hide intro text
     
     .hotelAverage {
 	   	position: relative;
-	    margin-top: -79px;
+	    margin-top: -90px;
 	    padding: 10px;
 	    background-color: rgba(153, 153, 153, 0.85);
 	    font-size: 3em;
 	    font-weight: bold;
 	    color: #fff;
 	    float: left;
+    }
+    
+    .hotelPerNight {
+	  	font-size: .2em;
+	    font-weight: normal;
+	    font-style: italic;
+	    text-align: center;
     }
     
     .hotelTitle {
@@ -36,7 +43,7 @@
 	}
 	
 	.hotelImg {
-	    width: 250px;
+	    width: 100%;
 	    height: 200px;
 	}
 	
@@ -44,10 +51,16 @@
 	    width: 250px;
 	    clear: both;
 	    margin: 25px auto 40px auto;
+	    padding: 5px;
 	}
 	
 	.tripAdvisorRating {	
 		width: 80px; 
+    }
+    
+    .activeResult {
+	    background-color: $light-grey;
+	    border: 1px solid $green;
     }
     
 }

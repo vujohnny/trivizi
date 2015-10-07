@@ -10,7 +10,7 @@ function MainController($scope, $http, socket, $filter, uiGmapGoogleMapApi) {
 		*/
         
         $scope.typesOfPlaces = ['Romantic', 'Tropical', 'Party', 'Pets Ok', 'Family'];
-        
+                
         $scope.numberOfAdults = {
 			"type": "select", 
 			"name": "totalAdults",
@@ -150,15 +150,27 @@ function MainController($scope, $http, socket, $filter, uiGmapGoogleMapApi) {
 				}
 				
 				$scope.deleteMarkers = function() {		
-									
 					for (var i = 0; i < markersArray.length; i++) {
 						markersArray[i].setMap(null);
 					}			  
-					
 					markersArray = [];
 					locations = [];
-					$(resultsContainer).empty(); 
-								  
+					//$(resultsContainer).empty(); 
+				}
+				
+				$scope.highlightResult = function(hotelId, hotelLat, hotelLng) {
+					//console.log(hotelId+","+hotelLat+","+hotelLng);
+					var selectedId = hotelId;
+					$(".results .hotel-item").removeClass("activeResult");
+					$(".results #"+selectedId+"").addClass("activeResult");
+					
+					var highlightResult = document.getElementById(selectedId);
+					var topPos = highlightResult.offsetTop - 75;
+					document.getElementById('results-container').scrollTop = topPos;
+				}
+				
+				$scope.highlightMarker = function() {
+					alert();
 				}
 	            
 				$scope.panMap = function(specificLocation) {
@@ -214,7 +226,7 @@ function MainController($scope, $http, socket, $filter, uiGmapGoogleMapApi) {
 	                    destinationString = specificLocation,
 	                    arrivalDate = $scope.calendarArrive,
 	                    departureDate = $scope.calendarDepart,
-	                    maxResults = '40';
+	                    maxResults = '40'
 	               
 					/*
 						* ean request ajax call
@@ -244,6 +256,7 @@ function MainController($scope, $http, socket, $filter, uiGmapGoogleMapApi) {
 								locations.push({
 		                            lat: v.latitude, 
 	                            	lng: v.longitude,
+	                            	hotelId: v.hotelId,
 	                            	hotelName: v.name, 
 	                            	hotelDescription: v.shortDescription, 
 	                            	hotelThumb: hotelImg,  
@@ -254,7 +267,7 @@ function MainController($scope, $http, socket, $filter, uiGmapGoogleMapApi) {
 	                            	hotelRateTotal: totalRate, 
 	                            	hotelRoundedTotal: roundedTotal,
 	                            	hotelLink: v.deepLink 
-	                            });
+	                            });                
 	                        });
 	                        
 	                        /*
@@ -267,27 +280,34 @@ function MainController($scope, $http, socket, $filter, uiGmapGoogleMapApi) {
 	                        for (i = 0; i < locations.length; i++) {
 		                        
 								if(locations[i].hotelRateTotal < $scope.budgetAmount) {
-																	
-			                        var hotelResults = "<div class=\"hotel-item typography\"><img src=\"http://images.travelnow.com/"+locations[i].hotelThumb+"\" alt=\""+locations[i].hotelName+"\" class=\"hotelImg\"><div class=\"hotelAverage\">$"+locations[i].hotelRoundedAverage+"</div><div class=\"hotelTotal\">Total: $"+locations[i].hotelRoundedTotal+"</div><a href=\""+locations[i].hotelLink+"\" target=\"_blank\"><div class=\"hotelTitle\">"+locations[i].hotelName+"</div></a><div class=\"hotelRating\"><img src=\""+locations[i].hotelRatingImg+"\" class=\"tripAdvisorRating\"></div></div>";
-		                          	$(resultsContainer).append(hotelResults);                        
-		                            $scope.markersDisplay(locations[i].lat, locations[i].lng);
 									
+									
+									// results side navigation populate					
+			                        var hotelResults = "<div id=\""+locations[i].hotelId+"\" class=\"hotel-item typography\" onClick=\"highlightMarker()\"><img src=\"http://images.travelnow.com/"+locations[i].hotelThumb+"\" alt=\""+locations[i].hotelName+"\" class=\"hotelImg\"><div class=\"hotelAverage\">$"+locations[i].hotelRoundedAverage+"<div class=\"hotelPerNight\">per night</div></div><div class=\"hotelTotal\">Total: $"+locations[i].hotelRoundedTotal+"</div><a href=\""+locations[i].hotelLink+"\" target=\"_blank\"><div class=\"hotelTitle\">"+locations[i].hotelName+"</div></a><div class=\"hotelRating\"><img src=\""+locations[i].hotelRatingImg+"\" class=\"tripAdvisorRating\"></div></div>";
+		                          	$(resultsContainer).append(hotelResults);       
+		                          	          
+									
+									// map markers populate
+									$scope.markersDisplay(locations[i].lat, locations[i].lng);
 		                            google.maps.event.addListener(marker, 'click', (function(marker, i) {
 		                                return function() {
-		                                    infowindow.setContent("<div class=\"markerDisplay typography\"><span class=\"markerTotal\">$"+locations[i].hotelRoundedTotal+"</span> <span class=\"medium-grey\">|</span> <img src=\""+locations[i].hotelRatingImg+"\" class=\"tripAdvisorRating\"></div>"); 	
+		                                    infowindow.setContent("<div id=\""+locations[i].hotelId+"\" class=\"markerDisplay typography\"><span class=\"markerTotal\">$"+locations[i].hotelRoundedTotal+"</span> <span class=\"medium-grey\">|</span> <img src=\""+locations[i].hotelRatingImg+"\" class=\"tripAdvisorRating\"></div>"); 	
 		                                    infowindow.open(map, marker);
+		                                    $scope.highlightResult(locations[i].hotelId, locations[i].lat, locations[i].lng);
 		                                }
 		                            })(marker, i));
+		                            
 	
 								} else {}
 	                        }
+	                        console.log($scope.hotelResultsItem);
 	                    }, // end success return from ean
 						
 	                    error: function(e) {console.log(e.message);}
 	                    // end error return from ean
 	                    
 				}); // end ajax call
-	                
+	            	            
 			} // end ean request 
 			
         }); // end google maps promise

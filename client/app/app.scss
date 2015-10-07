@@ -15,6 +15,39 @@ $fa-font-path: "../bower_components/font-awesome/fonts";
   padding: 0.2em 0;
 }
 
+// webfont style
+$font-stack: Open Sans, sans-serif;
+
+// site colors
+$orange: #feb900;
+$green: #7ed321;
+$grey: #999;
+$light-green: #caeca5;
+$light-grey: #ececec;
+
+// media queries
+$break-phone: 768px;
+
+// reusable styles
+.typography {
+  font-family: $font-stack; 
+  font-weight: normal;
+  margin: 0;
+}
+
+.no-padding {
+  padding: 0;
+  margin: 0;
+}
+
+.orange {
+  color: $orange;
+}
+
+.green {
+	color: $green;
+}
+
 // Component styles are injected through grunt
 // injector
 @import 'admin/admin.scss';

@@ -1,35 +1,4 @@
-// webfont style
-$font-stack: Open Sans, sans-serif;
-
-// site colors
-$orange: #feb900;
-$green: #7ed321;
-$grey: #999;
-
-// media queries
-$break-phone: 768px;
-
-// reusable styles
-.typography {
-  font-family: $font-stack; 
-  font-weight: normal;
-  margin: 0;
-}
-
-.no-padding {
-  padding: 0;
-  margin: 0;
-}
-
-.orange {
-  color: $orange;
-}
-
-.green {
-	color: $green;
-}
-
-// boostrap style reset
+// boostrap style reset for main view
 select::-ms-expand {
     display: none;
 }
@@ -61,7 +30,7 @@ input::-webkit-inner-spin-button {
 	
 }
 
-// site styles =====================================================================================================
+// site styles
 
 .logo {
     width: 90px;
@@ -71,7 +40,7 @@ input::-webkit-inner-spin-button {
 .top-menu {
 	background-color: #ececec;
     padding: 20px;
-    display: none;
+    //display: none; <-- hide intro text
 }
 
 .budgetInput {
@@ -121,6 +90,7 @@ input::-webkit-inner-spin-button {
 
 .intro-text {
    	margin: 20vh auto 0 auto;
+   	display: none; //<-- hide intro text
    	   
     span {
 		color: $green;
@@ -171,5 +141,5 @@ input::-webkit-inner-spin-button {
 #googleMap { 
 	height: 100vh; 
 	width: 100%;
-	visibility: hidden;
+	//visibility: hidden; <-- hide intro text
 }
