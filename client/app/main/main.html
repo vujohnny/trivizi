@@ -1,19 +1,148 @@
 <navbar></navbar>
 
-<div class="typography row">
+<div class="typography row" ng-controller="MainController">
+	
+	<div class="top-menu typography row">
+		
+		<div class="col-sm-2 col-md-offset-1">
+			Budget: 
+			<span class="green bold">$<input type="number" ng-model="budgetAmount" class="budgetInput no-line-height" placeholder="1000" min="25" max="9999"></span>
+		</div>
+		
+		<div class="col-sm-3">Where:
+			<span class="dropdown green bold" dropdown>
+			    <span class="dropdown-toggle" dropdown-toggle>
+			        <span class="placeHolderLocation">Romantic</span> {{specificLocation}}<span class="caret"></span>
+			    </span>
+			    <ul class="where-drop-down dropdown-menu disable-drop" dropdown-menu>
+					<li>
+				    	<input id="searchTextFieldTop" type="text" ng-model="specificLocation" ng-change="emptyPlace()">
+				    </li>
+				    
+				    <hr>
+				    
+				    <li ng-repeat="places in typesOfPlaces">
+				    	<input type="checkbox" name="{{places}}" value="{{places}}" ng-model="placeSelected">{{places}}
+				    </li>
+
+			    </ul>
+			</span>
+		</div>
+		<div class="col-sm-2">
+			For: 
+			<select ng-model="numberOfAdults.value" ng-options="v for v in numberOfAdults.values" class="adult-drop-down green bold"></select>
+		</div>
+		
+		<div class="col-sm-2">
+			From: 
+			<span class="dropdown green bold" dropdown>
+			    <span class="dropdown-toggle" dropdown-toggle>
+			        {{arriveDate.defaultValue | date:'MMM dd' }}<span class="caret"></span>
+			    </span>
+			    <div class="when-drop-down dropdown-menu disable-drop" dropdown-menu>
+					<div class="when-calendar">
+						<datepicker ng-model="arriveDate.defaultValue" min-date="arriveDate.minDate" max-date="arriveDate.maxDate" show-weeks="arriveDate.showweeks" datepicker-mode="arriveDate.mode" max-mode="arriveDate.mode"></datepicker>
+					</div>
+			    </div>
+			</span>
+		</div>
+		
+		<div class="col-sm-2">
+			To: 
+			<span class="dropdown green bold" dropdown>
+			    <span class="dropdown-toggle" dropdown-toggle>
+			        {{departDate.defaultValue | date:'MMM dd' }}<span class="caret"></span>
+			    </span>
+			    <div class="when-drop-down dropdown-menu disable-drop" dropdown-menu>
+					<div class="when-calendar">
+						<datepicker ng-model="departDate.defaultValue" min-date="departDate.minDate" max-date="departDate.maxDate" show-weeks="departDate.showweeks" datepicker-mode="departDate.mode" max-mode="departDate.mode"></datepicker>
+					</div>
+			    </div>
+			</span>
+		</div>
+		
+	</div> <!-- end row for top nav -->
+	
 	<div class="container">
 		<div class="intro-text text-center">
 			
-			<div class="form-group"><h1>My budget is <div class="input-group"><span class="input-group-addon">$</span><input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"></div> and I want</h1></div>
+			<div>
+				<h1>My budget is <span class="underline"><span class="green">$</span><input type="number" ng-model="budgetAmount" class="budgetInput" placeholder="1000" min="25" max="9999"><span class="caret"></span></span> and I want</h1>
+			</div>
 			
-			<div><h1>to travel somewhere <span class="green">Romantic<span class="caret"></span></span> For <span class="green">2<span class="caret"></span></span></h1></div>
+			<div>
+				<h1>to travel somewhere 
+
+					<span class="dropdown" dropdown>
+					    <span class="dropdown-toggle underline" dropdown-toggle>
+					        <span class="placeHolderLocation">Romantic</span> {{specificLocation}}<span class="caret"></span>
+					    </span>
+					    <ul class="where-drop-down dropdown-menu disable-drop" dropdown-menu>
+							<li>
+						    	<input id="searchTextField" type="text" ng-model="specificLocation" ng-change="emptyPlace()">
+						    </li>
+						    
+						    <hr>
+						    
+						    <li ng-repeat="places in typesOfPlaces">
+						    	<input type="checkbox" name="{{places}}" value="{{places}}" ng-model="placeSelected">{{places}}
+						    </li>
+
+					    </ul>
+					</span>
+					
+					For 
+					
+					<span class="underline"><select ng-model="numberOfAdults.value" ng-options="v for v in numberOfAdults.values" class="adult-drop-down arrow-disable"></select><span class="caret"></span></span>
+					
+				</h1>
+			</div>
 			
-			<div><h1>From <span class="green">December 1<span class="caret"></span></span> to <span class="green">December 10<span class="caret"></span></span>.</h1></div>
-			
+			<div>
+				<h1>From 
+					
+					<span class="dropdown" dropdown>
+					    <span class="dropdown-toggle underline" dropdown-toggle>
+					        {{arriveDate.defaultValue | date:'MMMM dd' }}<span class="caret"></span>
+					    </span>
+					    <div class="when-drop-down dropdown-menu disable-drop" dropdown-menu>
+							<div class="when-calendar">
+								<datepicker ng-model="arriveDate.defaultValue" min-date="arriveDate.minDate" max-date="arriveDate.maxDate" show-weeks="arriveDate.showweeks" datepicker-mode="arriveDate.mode" max-mode="arriveDate.mode"></datepicker>
+							</div>
+					    </div>
+					</span>
+								
+					to 
+					
+					<span class="dropdown" dropdown>
+					    <span class="dropdown-toggle underline" dropdown-toggle>
+					        {{departDate.defaultValue | date:'MMMM dd' }}<span class="caret"></span>
+					    </span>
+					    <div class="when-drop-down dropdown-menu disable-drop" dropdown-menu>
+							<div class="when-calendar">
+								<datepicker ng-model="departDate.defaultValue" min-date="departDate.minDate" max-date="departDate.maxDate" show-weeks="departDate.showweeks" datepicker-mode="departDate.mode" max-mode="departDate.mode"></datepicker>
+							</div>
+					    </div>
+					</span>
+					
+				</h1>
+			</div>
+						
+		</div> <!-- end top menu -->
+	</div> <!--  end container -->
+</div> <!-- end row for top menu-->
+
+
+<div class="row-fluid" ng-controller="GoogleMapSDKCtrl">
+	
+	<div class="col-md-3 no-padding">
+		<div id="results-container">
+			<div class="results"></div>
 		</div>
-	</div>
-</div> <!-- end intro text -->
-    
-<div class="col-md-8">
-	<div id="googleMap"></div>
-</div> <!-- end google maps -->
+	</div> <!-- end results -->
+	
+	<div class="col-md-9 no-padding">
+		<div id="googleMap"></div>
+	</div> <!-- end google maps -->
+	
+</div> <!-- end GoogleMapSDKCtrl -->

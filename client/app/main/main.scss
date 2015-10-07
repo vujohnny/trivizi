@@ -1,43 +1,19 @@
-// site variables ===================================================================================================
-
 // webfont style
 $font-stack: Open Sans, sans-serif;
 
-
 // site colors
-$light-blue: #82cfeb;
-$blue: #1061f6;
-$yellow: #ffeb00;
 $orange: #feb900;
-$red: #cd381f;
 $green: #7ed321;
-$light-grey: #eee;
-$medium-grey: #999;
-$dark-grey: #666;
-
+$grey: #999;
 
 // media queries
 $break-phone: 768px;
-
-
-// reusable margins
-$small-margin: 1em;
-$medium-margin: 1.2em;
-
 
 // reusable styles
 .typography {
   font-family: $font-stack; 
   font-weight: normal;
   margin: 0;
-}
-
-.left {
-	float: left;
-}
-
-.right {
-	float: right;
 }
 
 .no-padding {
@@ -53,37 +29,111 @@ $medium-margin: 1.2em;
 	color: $green;
 }
 
-.black {
-  color: 000;
+// boostrap style reset
+select::-ms-expand {
+    display: none;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.arrow-disable::-ms-expand {	
+	display: none; 
+	outline: 0;
+}
+
+.arrow-disable{
+    -webkit-appearance: none;
+    appearance: none;
+    outline: 0;
+}	
+
+.navbar-default {
+	background: none;
+	border: 0;
+	
+	.navbar-right {
+		margin-top: 20px;
+	}
+	
+}
 
 // site styles =====================================================================================================
 
-.navbar-brand {
+.logo {
+    width: 90px;
+    margin-top: 10px;
+}
 
-  i {
-    color: $orange;
-    margin-right: .4em;
-  }
-  
+.top-menu {
+	background-color: #ececec;
+    padding: 20px;
+    display: none;
+}
+
+.budgetInput {
+	background-color: transparent;
+	border: none;
+	outline: none;
+	width: 85px;
+	color: $green;
+	line-height: 50px;
+	font-weight: bold;
+	
+	@media screen and (max-width: $break-phone) {
+		line-height: 23px;
+		width: 40px;
+	}
+		
+}
+
+.no-line-height {
+	line-height: normal;
+}
+
+.where-drop-down {
+	
+	li {
+		font-size: 1em;
+		line-height: 20px;
+		font-weight: normal;
+		color: #000;
+		
+		input {
+			margin: 0 7px;
+		}
+		
+	}
+	
+}
+
+.adult-drop-down {
+	outline: 0;
+	border: none;
+	color: $green;
+	border-radius: 0px;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 .intro-text {
-	
-	margin: 20vh auto 0 auto;
-	max-width: 670px;
-	line-height: 1.5em;
-   
+   	margin: 20vh auto 0 auto;
+   	   
     span {
 		color: $green;
 		cursor: pointer;
 		font-weight: 600;
-		border-bottom: 1px solid $green;
 	}
 	
 	.caret {
 		border-bottom: 0;
+	    border-top: 7px solid;
+		border-right: 5px solid transparent;
+		border-left: 5px solid transparent;
+		margin: 0px 0px 0px 7px;
 	}
 	
 	@media screen and (max-width: $break-phone) {
@@ -96,7 +146,30 @@ $medium-margin: 1.2em;
     
 }
 
+.when-calendar {
+	width: 100%;
+	
+	table {
+		width: 100%;
+		
+		.btn-default[disabled], .btn-default {
+			border: 0;
+		}
+		
+		.btn-info.active {
+			background-color: $grey;	
+		}
+		
+		.text-info {
+			color: $orange;
+		}
+		
+	}
+	
+}
+
 #googleMap { 
 	height: 100vh; 
-	display: none;
+	width: 100%;
+	visibility: hidden;
 }
