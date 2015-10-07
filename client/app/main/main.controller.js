@@ -155,7 +155,7 @@ function MainController($scope, $http, socket, $filter, uiGmapGoogleMapApi) {
 					}			  
 					markersArray = [];
 					locations = [];
-					//$(resultsContainer).empty(); 
+					$(resultsContainer).empty(); 
 				}
 				
 				$scope.highlightResult = function(hotelId, hotelLat, hotelLng) {
