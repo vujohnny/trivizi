@@ -151,6 +151,7 @@ function MainController($scope, $http, socket, $filter) {
 			}			  
 			markersArray = [];
 			locations = [];
+			$(resultsContainer).empty();
 		}
 		
 		$scope.highlightResult = function(hotelId, hotelLat, hotelLng) {
