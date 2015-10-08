@@ -109,7 +109,7 @@ function MainController($scope, $http, socket, $filter, uiGmapGoogleMapApi) {
 					
 					// marker vars
 					marker,
-					iconBase = 'assets/images/custom-marker.png',
+					myIcon = new google.maps.MarkerImage("assets/images/custom-marker.png", null, null, null, new google.maps.Size(25,36)),
 					markersArray = [],
 					locations = [],
 					
@@ -142,7 +142,7 @@ function MainController($scope, $http, socket, $filter, uiGmapGoogleMapApi) {
 					marker = new google.maps.Marker({
 	                    position: {lat, lng},
 	                    map: map,
-	                    //icon: iconBase,
+	                    icon: myIcon,
 	                    animation: google.maps.Animation.DROP
 	                });
 	                markersArray.push(marker);
@@ -164,7 +164,7 @@ function MainController($scope, $http, socket, $filter, uiGmapGoogleMapApi) {
 					$(".results #"+selectedId+"").addClass("activeResult");
 					
 					var highlightResult = document.getElementById(selectedId);
-					var topPos = highlightResult.offsetTop - 75;
+					var topPos = highlightResult.offsetTop - 85;
 					document.getElementById('results-container').scrollTop = topPos;
 				}
 				
@@ -225,7 +225,7 @@ function MainController($scope, $http, socket, $filter, uiGmapGoogleMapApi) {
 	                    destinationString = specificLocation,
 	                    arrivalDate = $scope.calendarArrive,
 	                    departureDate = $scope.calendarDepart,
-	                    maxResults = '40'
+	                    maxResults = '25'
 	               
 					/*
 						* ean request ajax call
