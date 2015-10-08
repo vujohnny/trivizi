@@ -103,14 +103,13 @@ function MainController($scope, $http, socket, $filter, uiGmapGoogleMapApi) {
 			    */        
 			    
 		        var // marker windows
-		        	labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
 		        	resultsContainer = ".results",
-	            	labelIndex = 0,
 					infowindow = new google.maps.InfoWindow(),
 					i,
 					
 					// marker vars
 					marker,
+					iconBase = 'assets/images/custom-marker.png',
 					markersArray = [],
 					locations = [],
 					
@@ -143,7 +142,7 @@ function MainController($scope, $http, socket, $filter, uiGmapGoogleMapApi) {
 					marker = new google.maps.Marker({
 	                    position: {lat, lng},
 	                    map: map,
-	                    label: labels[labelIndex++ % labels.length],
+	                    //icon: iconBase,
 	                    animation: google.maps.Animation.DROP
 	                });
 	                markersArray.push(marker);
