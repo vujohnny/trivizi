@@ -66,3 +66,17 @@
 }
 
 
+// disable intro text and go straight to maps
+/*
+.top-menu, #results-container {
+	display: block;
+}
+
+.intro-text {
+	display: none;
+}
+
+#googleMap {
+	visibility: visible;
+}
+*/
