@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <base href="/">
-    <title>trivizi</title>
+    <title>Trivizi</title>
     <meta name="description" content="Travel on a budget to anywhere in the world. Compare destinations from all over the world that you might have not even considered. Research locations for special events and groups. This is your destination to go for you next vacation.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -22,6 +22,7 @@
     <!-- endbuild -->
     <!-- google webfonts and maps api-->
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800'>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script> 
     <!-- end google webfonts -->
   </head>
   <body ng-app="triviziApp">
@@ -74,8 +75,6 @@
       <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
       <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
       <script src="bower_components/lodash/lodash.js"></script>
-      <script src="bower_components/angular-simple-logger/dist/angular-simple-logger.js"></script>
-      <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
       <script src="bower_components/angular-socket-io/socket.js"></script>
       <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
       <script src="bower_components/angular-validation-match/dist/angular-validation-match.min.js"></script>
@@ -99,9 +98,6 @@
       <script src="app/main/main.js"></script>
       <script src="components/auth/auth.service.js"></script>
       <script src="components/auth/user.service.js"></script>
-      <script src="components/filter-budget/filter-budget.directive.js"></script>
-      <script src="components/filter-when/filter-when.directive.js"></script>
-      <script src="components/filter-where/filter-where.directive.js"></script>
       <script src="components/footer/footer.directive.js"></script>
       <script src="components/modal/modal.service.js"></script>
       <script src="components/mongoose-error/mongoose-error.directive.js"></script>

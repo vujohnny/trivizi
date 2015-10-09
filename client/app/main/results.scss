@@ -1,31 +1,81 @@
-.bookLink {
-	
-	a {
-		color: #fff;
-		
-		&:hover {
-			text-decoration: none;
-		}
-		
+.markerDisplay {
+	font-weight: bold;
+    font-size: 1.4em;
+    
+    .tripAdvisorRating {	
+		margin: 5px 0;
+		width: 5em; 
+    }
+    
+}
+
+#results-container {
+	overflow: auto;
+    display: none;
+    
+    .hotelAverage {
+	   	position: relative;
+	    margin-top: -90px;
+	    padding: 10px;
+	    background-color: rgba(153, 153, 153, 0.85);
+	    font-size: 3em;
+	    font-weight: bold;
+	    color: #fff;
+	    float: left;
+    }
+    
+    .hotelPerNight {
+	  	font-size: .2em;
+	    font-weight: normal;
+	    font-style: italic;
+	    text-align: center;
+    }
+    
+    .hotelTitle {
+		font-weight: normal;
+	    text-decoration: underline;
+	    margin-bottom: 10px;
 	}
 	
-}
-.results {
-	height: auto;
-	max-height: 540px;
-	overflow: auto;
+	.hotelTotal {
+		margin: 10px 0;
+	}
+	
+	.hotelImg {
+	    width: 100%;
+	    height: 200px;
+	}
+	
+	.hotel-item {
+	    width: 250px;
+	    clear: both;
+	    margin: 25px auto 40px auto;
+	    padding: 5px;
+	}
+	
+	.tripAdvisorRating {	
+		width: 80px; 
+    }
+    
+    .activeResult {
+	    //background-color: $light-green;
+	    border: 1px solid $salmon;
+    }
+    
 }
 
-.hotelTitle {
-	font-weight: bold;
+
+// disable intro text and go straight to maps
+/*
+.top-menu, #results-container {
+	display: block;
 }
 
-.hotelImg {
-	height: 9em;
-    float: left;
-    margin-right: 1em;
+.intro-text {
+	display: none;
 }
 
-.tripAdvisorRating {
-	margin: 5px 0;
+#googleMap {
+	visibility: visible;
 }
+*/
