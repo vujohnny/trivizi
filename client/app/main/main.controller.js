@@ -215,11 +215,11 @@ function MainController($scope, $http, socket, $filter) {
                 destinationString = specificLocation,
                 arrivalDate = $scope.calendarArrive,
                 departureDate = $scope.calendarDepart,
-                maxResults = '25'
+                maxResults = '200'
                             
-								/*
-						* ean request ajax call
-				    */
+			/*
+				* ean request ajax call
+		    */
 	                                
             $.ajax({
                 type: 'GET',
