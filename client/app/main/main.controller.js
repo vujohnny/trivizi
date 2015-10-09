@@ -4,11 +4,44 @@
 function MainController($scope, $http, socket, $filter) {
 	
 		/*
-			* view info setup, 
-			* dropboxes, 
-			* select inputs
-		*/		        
+			* global vars for google maps & results
+			* views info init, dropboxes, select inputs
+		*/	
+		
+        var // results vars
+			resultsContainer = ".results",
+			resultsHotelItem = ".hotel-item",
         
+			// marker windows
+        	resultsContainer = ".results",
+			infowindow = new google.maps.InfoWindow(),
+			i,
+			
+			// marker vars
+			marker,
+			myIcon = new google.maps.MarkerImage("assets/images/custom-marker.png", null, null, null, new google.maps.Size(25,36)),
+			markersArray = [],
+			locations = [],
+			
+			//autocomplete inputs
+			options = {types: ['(cities)']},
+			input = document.getElementById('searchTextField'),
+			autocomplete = new google.maps.places.Autocomplete(input, options),
+			inputTop = document.getElementById('searchTextFieldTop'),
+			autocompleteTop = new google.maps.places.Autocomplete(inputTop, options),					
+			
+			// map init
+			snazzyMap = [{"featureType":"poi","elementType":"labels.text.fill","stylers":[{"color":"#747474"},{"lightness":"23"}]},{"featureType":"poi.attraction","elementType":"geometry.fill","stylers":[{"color":"#f38eb0"}]},{"featureType":"poi.government","elementType":"geometry.fill","stylers":[{"color":"#ced7db"}]},{"featureType":"poi.medical","elementType":"geometry.fill","stylers":[{"color":"#ffa5a8"}]},{"featureType":"poi.park","elementType":"geometry.fill","stylers":[{"color":"#c7e5c8"}]},{"featureType":"poi.place_of_worship","elementType":"geometry.fill","stylers":[{"color":"#d6cbc7"}]},{"featureType":"poi.school","elementType":"geometry.fill","stylers":[{"color":"#c4c9e8"}]},{"featureType":"poi.sports_complex","elementType":"geometry.fill","stylers":[{"color":"#b1eaf1"}]},{"featureType":"road","elementType":"geometry","stylers":[{"lightness":"100"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"},{"lightness":"100"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ffd4a5"}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"color":"#ffe9d2"}]},{"featureType":"road.local","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.local","elementType":"geometry.fill","stylers":[{"weight":"3.00"}]},{"featureType":"road.local","elementType":"geometry.stroke","stylers":[{"weight":"0.30"}]},{"featureType":"road.local","elementType":"labels.text","stylers":[{"visibility":"on"}]},{"featureType":"road.local","elementType":"labels.text.fill","stylers":[{"color":"#747474"},{"lightness":"36"}]},{"featureType":"road.local","elementType":"labels.text.stroke","stylers":[{"color":"#e9e5dc"},{"lightness":"30"}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"visibility":"on"},{"lightness":"100"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#d2e7f7"}]}],
+			map = new google.maps.Map(document.getElementById('googleMap'), {
+                center: {
+                    lat: 38.4740022,
+                    lng: -95.426484
+                },
+                zoom: 3,
+                scrollwheel: false,
+                styles: snazzyMap
+        	});		
+		        
         $scope.typesOfPlaces = ['Romantic', 'Tropical', 'Party', 'Pets Ok', 'Family'];
   
         $scope.numberOfAdults = {
@@ -89,46 +122,6 @@ function MainController($scope, $http, socket, $filter) {
         $scope.$watch("numberOfAdults.value  ", function(){
             //console.log($scope.numberOfAdults.value);
         }); 
-		          
-        /*
-	        * google maps promise
-	        * is loaded asynchronously
-	        * check app.js file for api key & params 
-	    */
-        	
-    	/*
-			* google maps required vars
-	    */      
-	    
-        var // marker windows
-        	resultsContainer = ".results",
-			infowindow = new google.maps.InfoWindow(),
-			i,
-			
-			// marker vars
-			marker,
-			myIcon = new google.maps.MarkerImage("assets/images/custom-marker.png", null, null, null, new google.maps.Size(25,36)),
-			markersArray = [],
-			locations = [],
-			
-			//autocomplete inputs
-			options = {types: ['(cities)']},
-			input = document.getElementById('searchTextField'),
-			autocomplete = new google.maps.places.Autocomplete(input, options),
-			inputTop = document.getElementById('searchTextFieldTop'),
-			autocompleteTop = new google.maps.places.Autocomplete(inputTop, options),					
-			
-			// map init
-			snazzyMap = [{"featureType":"poi","elementType":"labels.text.fill","stylers":[{"color":"#747474"},{"lightness":"23"}]},{"featureType":"poi.attraction","elementType":"geometry.fill","stylers":[{"color":"#f38eb0"}]},{"featureType":"poi.government","elementType":"geometry.fill","stylers":[{"color":"#ced7db"}]},{"featureType":"poi.medical","elementType":"geometry.fill","stylers":[{"color":"#ffa5a8"}]},{"featureType":"poi.park","elementType":"geometry.fill","stylers":[{"color":"#c7e5c8"}]},{"featureType":"poi.place_of_worship","elementType":"geometry.fill","stylers":[{"color":"#d6cbc7"}]},{"featureType":"poi.school","elementType":"geometry.fill","stylers":[{"color":"#c4c9e8"}]},{"featureType":"poi.sports_complex","elementType":"geometry.fill","stylers":[{"color":"#b1eaf1"}]},{"featureType":"road","elementType":"geometry","stylers":[{"lightness":"100"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"},{"lightness":"100"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ffd4a5"}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"color":"#ffe9d2"}]},{"featureType":"road.local","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.local","elementType":"geometry.fill","stylers":[{"weight":"3.00"}]},{"featureType":"road.local","elementType":"geometry.stroke","stylers":[{"weight":"0.30"}]},{"featureType":"road.local","elementType":"labels.text","stylers":[{"visibility":"on"}]},{"featureType":"road.local","elementType":"labels.text.fill","stylers":[{"color":"#747474"},{"lightness":"36"}]},{"featureType":"road.local","elementType":"labels.text.stroke","stylers":[{"color":"#e9e5dc"},{"lightness":"30"}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"visibility":"on"},{"lightness":"100"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#d2e7f7"}]}],
-			map = new google.maps.Map(document.getElementById('googleMap'), {
-                center: {
-                    lat: 38.4740022,
-                    lng: -95.426484
-                },
-                zoom: 3,
-                scrollwheel: false,
-                styles: snazzyMap
-        	});
         
 	    /*
 			* google maps functions 
@@ -157,16 +150,12 @@ function MainController($scope, $http, socket, $filter) {
 		$scope.highlightResult = function(hotelId, hotelLat, hotelLng) {
 			//console.log(hotelId+","+hotelLat+","+hotelLng);
 			var selectedId = hotelId;
-			$(".results .hotel-item").removeClass("activeResult");
-			$(".results #"+selectedId+"").addClass("activeResult");
+			$(resultsContainer+" "+resultsHotelItem).removeClass("activeResult");
+			$(resultsContainer+" #"+selectedId+"").addClass("activeResult");
 			
 			var highlightResult = document.getElementById(selectedId);
 			var topPos = highlightResult.offsetTop - 85;
 			document.getElementById('results-container').scrollTop = topPos;
-		}
-		
-		$scope.highlightMarker = function() {
-			alert();
 		}
         
 		$scope.panMap = function(specificLocation) {
@@ -207,8 +196,12 @@ function MainController($scope, $http, socket, $filter) {
 		$scope.expediaReturn = function(specificLocation) {
 							
 			/*
-				* ean request url required parameters
-		    */  
+				* ean request $http call
+				* $http() returns a $promise that we can add handlers with .then()
+				* if getting cross origin error install 
+				* http://bit.ly/1zhiKzg or 
+				* use jquery ajax call instead of angular $http request
+			*/ 
 		    
             var // account specific parameters
             	apiKey = '70303auc6h8hqutunreio3u8pl',
@@ -220,27 +213,23 @@ function MainController($scope, $http, socket, $filter) {
                 curencyCode = 'USD',
                 adults = $scope.numberOfAdults.value,
                 destinationString = specificLocation,
-                arrivalDate = $scope.calendarArrive,
-                departureDate = $scope.calendarDepart,
+                arrivalDate = '11/19/2015', //$scope.calendarArrive,
+                departureDate = '11/20/2015', //$scope.calendarDepart,
                 maxResults = '25'
-           
-			/*
-				* ean request ajax call
-		    */
                             
-            $http({
-			    method: 'GET',
-                url: 'http://api.ean.com/ean-services/rs/hotel/v3/list?locale='+locale+'&destinationString='+destinationString+'&apiKey='+apiKey+'&minorRev='+minorRev+'&departureDate='+departureDate+'&arrivalDate='+arrivalDate+'&curencyCode='+curencyCode+'&cid='+cid+'&numberOfResults='+maxResults+'&room1='+adults+'',
-                async: false,
-                contentType: "application/json",
-                dataType: 'jsonp'
-			})
-			
-			.success(function (data) {
-			    //console.log(data);
-
-			    $scope.deleteMarkers();	
-                $.each(data.HotelListResponse.HotelList.HotelSummary, function(k, v) {
+			$scope.dataService = function() {
+				return $http({
+					url: 'http://api.ean.com/ean-services/rs/hotel/v3/list?locale='+locale+'&destinationString='+destinationString+'&apiKey='+apiKey+'&minorRev='+minorRev+'&departureDate='+departureDate+'&arrivalDate='+arrivalDate+'&curencyCode='+curencyCode+'&cid='+cid+'&numberOfResults='+maxResults+'&room1='+adults+'',
+				});
+			}
+						
+			$scope.dataService().then(function(dataResponse) {
+				
+				$scope.deleteMarkers();	
+				$scope.data = dataResponse.data;
+				//console.log($scope.data);
+				
+                $.each($scope.data.HotelListResponse.HotelList.HotelSummary, function(k, v) {
                     
                     var averageRate = v.RoomRateDetailsList.RoomRateDetails.RateInfos.RateInfo.ChargeableRateInfo["@averageRate"];
                     var totalRate = v.RoomRateDetailsList.RoomRateDetails.RateInfos.RateInfo.ChargeableRateInfo["@total"];
@@ -274,13 +263,15 @@ function MainController($scope, $http, socket, $filter) {
 					* append side results
 			    */
 			    
-                for (i = 0; i < locations.length; i++) {
-                    
+					
+				for (i = 0; i < locations.length; i++) {
+                
 					if(locations[i].hotelRateTotal < $scope.budgetAmount) {
 						
 						// results side navigation populate					
                         var hotelResults = "<div id=\""+locations[i].hotelId+"\" class=\"hotel-item typography\"><img src=\"http://images.travelnow.com/"+locations[i].hotelThumb+"\" alt=\""+locations[i].hotelName+"\" class=\"hotelImg\"><div class=\"hotelAverage\">$"+locations[i].hotelRoundedAverage+"<div class=\"hotelPerNight\">per night</div></div><div class=\"hotelTotal\">Total: $"+locations[i].hotelRoundedTotal+"</div><a href=\""+locations[i].hotelLink+"\" target=\"_blank\"><div class=\"hotelTitle\">"+locations[i].hotelName+"</div></a><div class=\"hotelRating\"><img src=\""+locations[i].hotelRatingImg+"\" class=\"tripAdvisorRating\"></div></div>";
-                      	$(resultsContainer).append(hotelResults);       
+                      	$(resultsContainer).append(hotelResults);    
+                      	   
                       	          
 						// map markers populate
 						$scope.markersDisplay(locations[i].lat, locations[i].lng);
@@ -294,12 +285,12 @@ function MainController($scope, $http, socket, $filter) {
 
 					} else {}
 					
-                } // end success return
-			    
-			}) // end $http call
-			
+                } // end loop
+                
+			}); // end success promise
+						
 		} // end ean request 
-        
+		
 	} // end MainController
 
 angular.module('triviziApp').controller('MainController', MainController);})();

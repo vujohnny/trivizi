@@ -137,8 +137,10 @@ input::-webkit-inner-spin-button {
 	
 }
 
+#googleMap, #results-container {
+	height: 85vh; 
+}
+
 #googleMap { 
-	height: 100vh; 
-	width: 100%;
 	visibility: hidden;
 }
