@@ -213,8 +213,8 @@ function MainController($scope, $http, socket, $filter) {
                 curencyCode = 'USD',
                 adults = $scope.numberOfAdults.value,
                 destinationString = specificLocation,
-                arrivalDate = '11/19/2015', //$scope.calendarArrive,
-                departureDate = '11/20/2015', //$scope.calendarDepart,
+                arrivalDate = $scope.calendarArrive,
+                departureDate = $scope.calendarDepart,
                 maxResults = '25'
                             
 			$scope.dataService = function() {
