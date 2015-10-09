@@ -6,11 +6,11 @@
 		
 		<div class="col-sm-2 col-md-offset-1">
 			Budget: 
-			<span class="green bold">$<input type="number" ng-model="budgetAmount" class="budgetInput no-line-height" placeholder="1000" min="25" max="9999"></span>
+			<span class="salmon bold">$<input type="number" ng-model="budgetAmount" class="budgetInput no-line-height" placeholder="1000" min="25" max="9999"></span>
 		</div>
 		
 		<div class="col-sm-3">Where:
-			<span class="dropdown green bold" dropdown>
+			<span class="dropdown salmon bold" dropdown>
 			    <span class="dropdown-toggle" dropdown-toggle>
 			        <span class="placeHolderLocation">Romantic</span> {{specificLocation}}<span class="caret"></span>
 			    </span>
@@ -30,12 +30,12 @@
 		</div>
 		<div class="col-sm-2">
 			For: 
-			<select ng-model="numberOfAdults.value" ng-options="v for v in numberOfAdults.values" class="adult-drop-down green bold"></select>
+			<select ng-model="numberOfAdults.value" ng-options="v for v in numberOfAdults.values" class="adult-drop-down salmon bold"></select>
 		</div>
 		
 		<div class="col-sm-2">
 			From: 
-			<span class="dropdown green bold" dropdown>
+			<span class="dropdown salmon bold" dropdown>
 			    <span class="dropdown-toggle" dropdown-toggle>
 			        {{arriveDate.defaultValue | date:'MMM dd' }}<span class="caret"></span>
 			    </span>
@@ -49,7 +49,7 @@
 		
 		<div class="col-sm-2">
 			To: 
-			<span class="dropdown green bold" dropdown>
+			<span class="dropdown salmon bold" dropdown>
 			    <span class="dropdown-toggle" dropdown-toggle>
 			        {{departDate.defaultValue | date:'MMM dd' }}<span class="caret"></span>
 			    </span>
@@ -67,7 +67,7 @@
 		<div class="intro-text text-center">
 			
 			<div>
-				<h1>My budget is <span class="underline"><span class="green">$</span><input type="number" ng-model="budgetAmount" class="budgetInput" placeholder="1000" min="25" max="9999"><span class="caret"></span></span> and I want</h1>
+				<h1>My budget is <span class="underline"><span class="salmon">$</span><input type="number" ng-model="budgetAmount" class="budgetInput" placeholder="1000" min="25" max="9999"><span class="caret"></span></span> and I want</h1>
 			</div>
 			
 			<div>

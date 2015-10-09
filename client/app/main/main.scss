@@ -23,10 +23,7 @@ input::-webkit-inner-spin-button {
 .navbar-default {
 	background: none;
 	border: 0;
-	
-	.navbar-right {
-		margin-top: 20px;
-	}
+	margin-top: 20px;
 	
 }
 
@@ -48,7 +45,7 @@ input::-webkit-inner-spin-button {
 	border: none;
 	outline: none;
 	width: 85px;
-	color: $green;
+	color: $salmon;
 	line-height: 50px;
 	font-weight: bold;
 	
@@ -82,7 +79,7 @@ input::-webkit-inner-spin-button {
 .adult-drop-down {
 	outline: 0;
 	border: none;
-	color: $green;
+	color: $salmon;
 	border-radius: 0px;
     background-color: transparent;
     cursor: pointer;
@@ -92,7 +89,7 @@ input::-webkit-inner-spin-button {
    	margin: 20vh auto 0 auto;
    	   
     span {
-		color: $green;
+		color: $salmon;
 		cursor: pointer;
 		font-weight: 600;
 	}

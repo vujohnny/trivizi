@@ -22,6 +22,8 @@ $font-stack: Open Sans, sans-serif;
 $orange: #feb900;
 $green: #7ed321;
 $grey: #999;
+$salmon: #e3005a;
+$light-salmon: #faf2f5;
 $light-green: #ecffd7;
 $light-grey: #ececec;
 
@@ -50,6 +52,10 @@ $break-phone: 768px;
 
 .green {
 	color: $green;
+}
+
+.salmon {
+	color: $salmon;
 }
 
 // Component styles are injected through grunt
