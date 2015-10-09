@@ -217,77 +217,85 @@ function MainController($scope, $http, socket, $filter) {
                 departureDate = $scope.calendarDepart,
                 maxResults = '25'
                             
-			$scope.dataService = function() {
-				return $http({
-					url: 'http://api.ean.com/ean-services/rs/hotel/v3/list?locale='+locale+'&destinationString='+destinationString+'&apiKey='+apiKey+'&minorRev='+minorRev+'&departureDate='+departureDate+'&arrivalDate='+arrivalDate+'&curencyCode='+curencyCode+'&cid='+cid+'&numberOfResults='+maxResults+'&room1='+adults+'',
-				});
-			}
-						
-			$scope.dataService().then(function(dataResponse) {
-				
-				$scope.deleteMarkers();	
-				$scope.data = dataResponse.data;
-				//console.log($scope.data);
-				
-                $.each($scope.data.HotelListResponse.HotelList.HotelSummary, function(k, v) {
-                    
-                    var averageRate = v.RoomRateDetailsList.RoomRateDetails.RateInfos.RateInfo.ChargeableRateInfo["@averageRate"];
-                    var totalRate = v.RoomRateDetailsList.RoomRateDetails.RateInfos.RateInfo.ChargeableRateInfo["@total"];
-                    
-                    var roundedAverage = Math.round(averageRate);
-                    var roundedTotal = Math.round(totalRate);
-                    
-                    var hotelImg = v.thumbNailUrl.replace("_t", "_b");
-                    	                        
-					locations.push({
-                        lat: v.latitude, 
-                    	lng: v.longitude,
-                    	hotelId: v.hotelId,
-                    	hotelName: v.name, 
-                    	hotelDescription: v.shortDescription, 
-                    	hotelThumb: hotelImg,  
-                    	hotelRating: v.tripAdvisorRating, 
-                    	hotelRatingImg: v.tripAdvisorRatingUrl,
-                    	hotelRateAverage: averageRate, 
-                    	hotelRoundedAverage: roundedAverage,
-                    	hotelRateTotal: totalRate, 
-                    	hotelRoundedTotal: roundedTotal,
-                    	hotelLink: v.deepLink 
-                    });                
-                });
-                
-                /*
-					* setup results
-					* displat results as markers on map
-					* append marker windows
-					* append side results
-			    */
-			    
-					
-				for (i = 0; i < locations.length; i++) {
-                
-					if(locations[i].hotelRateTotal < $scope.budgetAmount) {
-						
-						// results side navigation populate					
-                        var hotelResults = "<div id=\""+locations[i].hotelId+"\" class=\"hotel-item typography\"><img src=\"http://images.travelnow.com/"+locations[i].hotelThumb+"\" alt=\""+locations[i].hotelName+"\" class=\"hotelImg\"><div class=\"hotelAverage\">$"+locations[i].hotelRoundedAverage+"<div class=\"hotelPerNight\">per night</div></div><div class=\"hotelTotal\">Total: $"+locations[i].hotelRoundedTotal+"</div><a href=\""+locations[i].hotelLink+"\" target=\"_blank\"><div class=\"hotelTitle\">"+locations[i].hotelName+"</div></a><div class=\"hotelRating\"><img src=\""+locations[i].hotelRatingImg+"\" class=\"tripAdvisorRating\"></div></div>";
-                      	$(resultsContainer).append(hotelResults);    
-                      	   
-                      	          
-						// map markers populate
-						$scope.markersDisplay(locations[i].lat, locations[i].lng);
-                        google.maps.event.addListener(marker, 'click', (function(marker, i) {
-                            return function() {
-                                infowindow.setContent("<div id=\""+locations[i].hotelId+"\" class=\"markerDisplay typography\"><span class=\"markerTotal\">$"+locations[i].hotelRoundedTotal+"</span> <span class=\"medium-grey\">|</span> <img src=\""+locations[i].hotelRatingImg+"\" class=\"tripAdvisorRating\"></div>"); 	
-                                infowindow.open(map, marker);
-                                $scope.highlightResult(locations[i].hotelId, locations[i].lat, locations[i].lng);
-                            }
-                        })(marker, i));
+								/*
+						* ean request ajax call
+				    */
+	                                
+            $.ajax({
+                type: 'GET',
+                url: 'http://api.ean.com/ean-services/rs/hotel/v3/list?locale='+locale+'&destinationString='+destinationString+'&apiKey='+apiKey+'&minorRev='+minorRev+'&departureDate='+departureDate+'&arrivalDate='+arrivalDate+'&curencyCode='+curencyCode+'&cid='+cid+'&numberOfResults='+maxResults+'&room1='+adults+'',
+                async: false,
+                contentType: "application/json",
+                dataType: 'jsonp',
 
-					} else {}
-					
-                } // end loop
-                
-			}); // end success promise
+                success: function(data) {
+                    						
+					$scope.deleteMarkers();
+					//console.log(data);	
+                    $.each(data.HotelListResponse.HotelList.HotelSummary, function(k, v) {
+                        
+                        var averageRate = v.RoomRateDetailsList.RoomRateDetails.RateInfos.RateInfo.ChargeableRateInfo["@averageRate"];
+                        var totalRate = v.RoomRateDetailsList.RoomRateDetails.RateInfos.RateInfo.ChargeableRateInfo["@total"];
+                        
+                        var roundedAverage = Math.round(averageRate);
+                        var roundedTotal = Math.round(totalRate);
+                        
+                        var hotelImg = v.thumbNailUrl.replace("_t", "_b");
+                        	                        
+						locations.push({
+                            lat: v.latitude, 
+                        	lng: v.longitude,
+                        	hotelId: v.hotelId,
+                        	hotelName: v.name, 
+                        	hotelDescription: v.shortDescription, 
+                        	hotelThumb: hotelImg,  
+                        	hotelRating: v.tripAdvisorRating, 
+                        	hotelRatingImg: v.tripAdvisorRatingUrl,
+                        	hotelRateAverage: averageRate, 
+                        	hotelRoundedAverage: roundedAverage,
+                        	hotelRateTotal: totalRate, 
+                        	hotelRoundedTotal: roundedTotal,
+                        	hotelLink: v.deepLink 
+                        });                
+                    });
+                    
+                    /*
+						* setup results
+						* displat results as markers on map
+						* append marker windows
+						* append side results
+				    */
+				    
+                    for (i = 0; i < locations.length; i++) {
+                        
+						if(locations[i].hotelRateTotal < $scope.budgetAmount) {
+							
+							
+							// results side navigation populate					
+	                        var hotelResults = "<div id=\""+locations[i].hotelId+"\" class=\"hotel-item typography\"><img src=\"http://images.travelnow.com/"+locations[i].hotelThumb+"\" alt=\""+locations[i].hotelName+"\" class=\"hotelImg\"><div class=\"hotelAverage\">$"+locations[i].hotelRoundedAverage+"<div class=\"hotelPerNight\">per night</div></div><div class=\"hotelTotal\">Total: $"+locations[i].hotelRoundedTotal+"</div><a href=\""+locations[i].hotelLink+"\" target=\"_blank\"><div class=\"hotelTitle\">"+locations[i].hotelName+"</div></a><div class=\"hotelRating\"><img src=\""+locations[i].hotelRatingImg+"\" class=\"tripAdvisorRating\"></div></div>";
+                          	$(resultsContainer).append(hotelResults);       
+                          	          
+							
+							// map markers populate
+							$scope.markersDisplay(locations[i].lat, locations[i].lng);
+                            google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                                return function() {
+                                    infowindow.setContent("<div id=\""+locations[i].hotelId+"\" class=\"markerDisplay typography\"><span class=\"markerTotal\">$"+locations[i].hotelRoundedTotal+"</span> <span class=\"medium-grey\">|</span> <img src=\""+locations[i].hotelRatingImg+"\" class=\"tripAdvisorRating\"></div>"); 	
+                                    infowindow.open(map, marker);
+                                    $scope.highlightResult(locations[i].hotelId, locations[i].lat, locations[i].lng);
+                                }
+                            })(marker, i));
+                            
+
+						} else {}
+                    }
+
+                }, // end success return from ean
+				
+                error: function(e) {console.log(e.message);}
+                // end error return from ean
+                    
+			}); // end ajax call
 						
 		} // end ean request 
 		
