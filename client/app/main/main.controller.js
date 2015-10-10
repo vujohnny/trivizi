@@ -41,6 +41,8 @@ function MainController($scope, $http, socket, $filter) {
                 scrollwheel: false,
                 styles: snazzyMap
         	});		
+		
+		$scope.budgetAmount = 1000;
 		        
         $scope.typesOfPlaces = ['Romantic', 'Tropical', 'Party', 'Pets Ok', 'Family'];
   
@@ -154,7 +156,7 @@ function MainController($scope, $http, socket, $filter) {
 			$(resultsContainer+" #"+selectedId+"").addClass("activeResult");
 			
 			var highlightResult = document.getElementById(selectedId);
-			var topPos = highlightResult.offsetTop - 85;
+			var topPos = highlightResult.offsetTop - 105;
 			document.getElementById('results-container').scrollTop = topPos;
 		}
         
@@ -213,8 +215,8 @@ function MainController($scope, $http, socket, $filter) {
                 curencyCode = 'USD',
                 adults = $scope.numberOfAdults.value,
                 destinationString = specificLocation,
-                arrivalDate = $scope.calendarArrive,
-                departureDate = $scope.calendarDepart,
+                arrivalDate = $scope.calendarArrive, //'11/19/2015',
+                departureDate = $scope.calendarDepart, //'11/20/2015',
                 maxResults = '50'
                             
 			/*
@@ -240,7 +242,7 @@ function MainController($scope, $http, socket, $filter) {
                         var roundedAverage = Math.round(averageRate);
                         var roundedTotal = Math.round(totalRate);
                         
-                        var hotelImg = v.thumbNailUrl.replace("_t", "_b");
+                        var hotelImg = v.thumbNailUrl.replace("_t", "_z");
                         	                        
 						locations.push({
                             lat: v.latitude, 
@@ -258,7 +260,7 @@ function MainController($scope, $http, socket, $filter) {
                         	hotelLink: v.deepLink 
                         });                
                     });
-                    
+							
                     /*
 						* setup results
 						* displat results as markers on map
@@ -272,7 +274,7 @@ function MainController($scope, $http, socket, $filter) {
 							
 							
 							// results side navigation populate					
-	                        var hotelResults = "<div id=\""+locations[i].hotelId+"\" class=\"hotel-item typography\"><img src=\"http://images.travelnow.com/"+locations[i].hotelThumb+"\" alt=\""+locations[i].hotelName+"\" class=\"hotelImg\"><div class=\"hotelAverage\">$"+locations[i].hotelRoundedAverage+"<div class=\"hotelPerNight\">per night</div></div><div class=\"hotelTotal\">Total: $"+locations[i].hotelRoundedTotal+"</div><a href=\""+locations[i].hotelLink+"\" target=\"_blank\"><div class=\"hotelTitle\">"+locations[i].hotelName+"</div></a><div class=\"hotelRating\"><img src=\""+locations[i].hotelRatingImg+"\" class=\"tripAdvisorRating\"></div></div>";
+	                        var hotelResults = "<div id=\""+locations[i].hotelId+"\" class=\"hotel-item typography\"><img src=\"http://images.travelnow.com/"+locations[i].hotelThumb+"\" alt=\""+locations[i].hotelName+"\" class=\"hotelImg\" onError=\"var newImgPath = $(this).attr('src').replace('z','b'); $(this).attr('src', newImgPath);\"><div class=\"hotelAverage\">$"+locations[i].hotelRoundedAverage+"<div class=\"hotelPerNight\">per night</div></div><div class=\"hotelTotal\">Total: $"+locations[i].hotelRoundedTotal+"</div><a href=\""+locations[i].hotelLink+"\" target=\"_blank\"><div class=\"hotelTitle\">"+locations[i].hotelName+"</div></a><div class=\"hotelRating\"><img src=\""+locations[i].hotelRatingImg+"\" class=\"tripAdvisorRating\"></div></div>";
                           	$(resultsContainer).append(hotelResults);       
                           	          
 							

@@ -12,6 +12,14 @@
 #results-container {
 	overflow: auto;
     display: none;
+    	
+	.hotel-item {
+	    width: 330px;
+	    height: 330px;
+	    margin: 20px 10px 30px auto;
+	    padding: 5px;
+	    float: left;
+	}
     
     .hotelAverage {
 	   	position: relative;
@@ -43,14 +51,7 @@
 	
 	.hotelImg {
 	    width: 100%;
-	    height: 200px;
-	}
-	
-	.hotel-item {
-	    width: 250px;
-	    clear: both;
-	    margin: 25px auto 40px auto;
-	    padding: 5px;
+	    height: 225px;
 	}
 	
 	.tripAdvisorRating {	
