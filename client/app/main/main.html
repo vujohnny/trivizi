@@ -1,18 +1,8 @@
 <navbar></navbar>
 
 <div class="typography row" ng-controller="MainController">
-	
-	
-	
-	
-	<button ng-click="testPush()">example of button working correctly</button>
-    <input id="testSearchTextField" type="text" ng-model="specificLocation">
-    <div ng-repeat="item in testArray">{{item}}</div>
-	
-	
-	
-	
-	<div class="top-menu typography row">
+
+    <div class="top-menu typography row">
 		
 		<div class="col-sm-2 col-md-offset-1">
 			Budget: 
@@ -26,7 +16,8 @@
 			    </span>
 			    <ul class="where-drop-down dropdown-menu disable-drop" dropdown-menu>
 					<li>
-				    	<input id="searchTextFieldTop" type="text" ng-model="specificLocation" ng-change="emptyPlace()">
+<!--				    	<input id="searchTextFieldTop" type="text" ng-model="specificLocation" ng-change="emptyPlace()">-->
+                        <input id="navLocationField" type="text" ng-model="specificLocation"  ng-change="emptyPlace()">
 				    </li>
 				    
 				    <hr>
@@ -141,14 +132,34 @@
 						
 		</div> <!-- end intro text -->
 	</div> <!--  end container -->
-</div> <!-- end row for intro text-->
 
 
-<div class="row-fluid" ng-controller="GoogleMapSDKCtrl">
-	
+	<!--- results list with google maps -->
+
 	<div class="col-md-6 no-padding">
 		<div id="results-container">
-			<div class="results">
+			<div class="results" ng-repeat="item in resultsList">
+                
+                <div id="{{item.id}}" class="hotel-item typography">
+
+                    <img src="http://images.travelnow.com/{{item.listImg}}" alt="{{item.name}}" class="hotelImg">
+
+                    <div class="hotelAverage">${{item.roundedAverage}}
+                        <div class="hotelPerNight">per night</div>
+                    </div>
+
+                    <div class="hotelTotal">Total: ${{item.roundedTotal}}</div>
+
+                    <a href="{{item.link}}" target="_blank">
+                        <div class="hotelTitle">{{item.name}}</div>
+                    </a>
+
+                    <div class="hotelRating">
+                        <img src="{{item.ratingImg}}" class="tripAdvisorRating">
+                    </div>
+
+                </div>  
+
 			</div>
 		</div>
 	</div> <!-- end results -->
