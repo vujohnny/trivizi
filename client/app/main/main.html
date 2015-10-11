@@ -2,6 +2,16 @@
 
 <div class="typography row" ng-controller="MainController">
 	
+	
+	
+	
+	<button ng-click="testPush()">example of button working correctly</button>
+    <input id="testSearchTextField" type="text" ng-model="specificLocation">
+    <div ng-repeat="item in testArray">{{item}}</div>
+	
+	
+	
+	
 	<div class="top-menu typography row">
 		
 		<div class="col-sm-2 col-md-offset-1">
@@ -37,7 +47,7 @@
 			From: 
 			<span class="dropdown salmon bold calendar-adjust" dropdown>
 			    <span class="dropdown-toggle" dropdown-toggle>
-			        {{arriveDate.defaultValue | date:'MMM dd' }}<span class="caret"></span>
+			        {{arriveDate.defaultValue | date:'EEE, MMM dd' }}<span class="caret"></span>
 			    </span>
 			    <div class="when-drop-down dropdown-menu disable-drop" dropdown-menu>
 					<div class="when-calendar">
@@ -51,7 +61,7 @@
 			To: 
 			<span class="dropdown salmon bold" dropdown>
 			    <span class="dropdown-toggle" dropdown-toggle>
-			        {{departDate.defaultValue | date:'MMM dd' }}<span class="caret"></span>
+			        {{departDate.defaultValue | date:'EEE, MMM dd' }}<span class="caret"></span>
 			    </span>
 			    <div class="when-drop-down dropdown-menu disable-drop" dropdown-menu>
 					<div class="when-calendar">
@@ -138,11 +148,12 @@
 	
 	<div class="col-md-6 no-padding">
 		<div id="results-container">
-			<div class="results"></div>
+			<div class="results">
+			</div>
 		</div>
 	</div> <!-- end results -->
 	
-		<div class="col-md-6 no-padding">
+	<div class="col-md-6 no-padding">
 		<div id="googleMap"></div>
 	</div> <!-- end google maps -->
 	

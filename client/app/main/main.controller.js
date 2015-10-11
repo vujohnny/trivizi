@@ -3,6 +3,44 @@
 
 function MainController($scope, $http, socket, $filter) {
 	
+    // init google maps auto complete input
+    var options = {
+        types: ['(cities)']
+    },
+    input = document.getElementById('testSearchTextField'),
+    autocomplete = new google.maps.places.Autocomplete(input, options);
+
+    // sample array
+    $scope.testArray = [{
+        name: 'item1'
+    }];
+
+    // function to test a push into array
+    $scope.testPush = function () {
+        $scope.testArray.push({
+            name: 'item2'
+        });
+    }
+
+    // change listener for google input autocomplete
+    $scope.inputChanged = google.maps.event.addListener(autocomplete, 'place_changed', function () {
+
+        // set var as location
+        $scope.specificLocation = autocomplete.getPlace().formatted_address;
+        
+        $http.jsonp('https://api.github.com/repos/bvasko/Bootstrap-Select-Box?callback=JSON_CALLBACK')
+        	.then(function (response) {
+            	$scope.testArray.push({
+                    name: $scope.specificLocation
+                });
+        });
+
+    });
+    
+    
+    
+		
+	
 		/*
 			* global vars for google maps & results
 			* views info init, dropboxes, select inputs
@@ -24,11 +62,13 @@ function MainController($scope, $http, socket, $filter) {
 			locations = [],
 			
 			//autocomplete inputs
+/*
 			options = {types: ['(cities)']},
 			input = document.getElementById('searchTextField'),
 			autocomplete = new google.maps.places.Autocomplete(input, options),
 			inputTop = document.getElementById('searchTextFieldTop'),
-			autocompleteTop = new google.maps.places.Autocomplete(inputTop, options),					
+			autocompleteTop = new google.maps.places.Autocomplete(inputTop, options),	
+*/				
 			
 			// map init
 			snazzyMap = [{"featureType":"poi","elementType":"labels.text.fill","stylers":[{"color":"#747474"},{"lightness":"23"}]},{"featureType":"poi.attraction","elementType":"geometry.fill","stylers":[{"color":"#f38eb0"}]},{"featureType":"poi.government","elementType":"geometry.fill","stylers":[{"color":"#ced7db"}]},{"featureType":"poi.medical","elementType":"geometry.fill","stylers":[{"color":"#ffa5a8"}]},{"featureType":"poi.park","elementType":"geometry.fill","stylers":[{"color":"#c7e5c8"}]},{"featureType":"poi.place_of_worship","elementType":"geometry.fill","stylers":[{"color":"#d6cbc7"}]},{"featureType":"poi.school","elementType":"geometry.fill","stylers":[{"color":"#c4c9e8"}]},{"featureType":"poi.sports_complex","elementType":"geometry.fill","stylers":[{"color":"#b1eaf1"}]},{"featureType":"road","elementType":"geometry","stylers":[{"lightness":"100"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"},{"lightness":"100"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ffd4a5"}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"color":"#ffe9d2"}]},{"featureType":"road.local","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.local","elementType":"geometry.fill","stylers":[{"weight":"3.00"}]},{"featureType":"road.local","elementType":"geometry.stroke","stylers":[{"weight":"0.30"}]},{"featureType":"road.local","elementType":"labels.text","stylers":[{"visibility":"on"}]},{"featureType":"road.local","elementType":"labels.text.fill","stylers":[{"color":"#747474"},{"lightness":"36"}]},{"featureType":"road.local","elementType":"labels.text.stroke","stylers":[{"color":"#e9e5dc"},{"lightness":"30"}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"visibility":"on"},{"lightness":"100"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#d2e7f7"}]}],
@@ -146,7 +186,6 @@ function MainController($scope, $http, socket, $filter) {
 			}			  
 			markersArray = [];
 			locations = [];
-			$(resultsContainer).empty();
 		}
 		
 		$scope.highlightResult = function(hotelId, hotelLat, hotelLng) {
@@ -158,6 +197,17 @@ function MainController($scope, $http, socket, $filter) {
 			var highlightResult = document.getElementById(selectedId);
 			var topPos = highlightResult.offsetTop - 105;
 			document.getElementById('results-container').scrollTop = topPos;
+		}
+		
+		$scope.buildList = function(id, image, name, priceAvg, priceTtl, link, rating){
+			//console.log(id, image, name, priceAvg, priceTtl, link, rating);
+			$scope.testArray.push({id: id, name: name});
+			//$scope.$apply(function () { $scope.testArray.push({id: id, name: name}); });
+			$scope.$apply($scope.testArray);
+			//console.log(id, name);
+			console.log($scope.testArray);
+			//$(resultsContainer).empty();
+			
 		}
         
 		$scope.panMap = function(specificLocation) {
@@ -178,17 +228,19 @@ function MainController($scope, $http, socket, $filter) {
             }
 		}
 		
-		google.maps.event.addListener(autocomplete, 'place_changed', function() {
+/*
+		$scope.autoCompleteRegular = google.maps.event.addListener(autocomplete, 'place_changed', function() {
             $scope.specificLocation = autocomplete.getPlace().formatted_address;
             $scope.panMap();
             $scope.seekDeer($scope.specificLocation);
         }); 
         
-        google.maps.event.addListener(autocompleteTop, 'place_changed', function() {
+        $scope.autoCompleteTop = google.maps.event.addListener(autocompleteTop, 'place_changed', function() {
             $scope.specificLocation = autocompleteTop.getPlace().formatted_address;
             $scope.panMapTop();
             $scope.seekDeer($scope.specificLocation);
         }); 
+*/
         				
 		/*
 			* ean api call 
@@ -215,9 +267,9 @@ function MainController($scope, $http, socket, $filter) {
                 curencyCode = 'USD',
                 adults = $scope.numberOfAdults.value,
                 destinationString = specificLocation,
-                arrivalDate = $scope.calendarArrive, //'11/19/2015',
-                departureDate = $scope.calendarDepart, //'11/20/2015',
-                maxResults = '50'
+                arrivalDate = '11/19/2015', //$scope.calendarArrive, //'11/19/2015',
+                departureDate = '11/20/2015', //$scope.calendarDepart, //'11/20/2015',
+                maxResults = '2'
                             
 			/*
 				* ean request ajax call
@@ -274,10 +326,13 @@ function MainController($scope, $http, socket, $filter) {
 							
 							
 							// results side navigation populate					
-	                        var hotelResults = "<div id=\""+locations[i].hotelId+"\" class=\"hotel-item typography\"><img src=\"http://images.travelnow.com/"+locations[i].hotelThumb+"\" alt=\""+locations[i].hotelName+"\" class=\"hotelImg\" onError=\"var newImgPath = $(this).attr('src').replace('z','b'); $(this).attr('src', newImgPath);\"><div class=\"hotelAverage\">$"+locations[i].hotelRoundedAverage+"<div class=\"hotelPerNight\">per night</div></div><div class=\"hotelTotal\">Total: $"+locations[i].hotelRoundedTotal+"</div><a href=\""+locations[i].hotelLink+"\" target=\"_blank\"><div class=\"hotelTitle\">"+locations[i].hotelName+"</div></a><div class=\"hotelRating\"><img src=\""+locations[i].hotelRatingImg+"\" class=\"tripAdvisorRating\"></div></div>";
-                          	$(resultsContainer).append(hotelResults);       
-                          	          
-							
+/*
+ 	                        var hotelResults = "<div id=\""+locations[i].hotelId+"\" class=\"hotel-item typography\"><img src=\"http://images.travelnow.com/"+locations[i].hotelThumb+"\" alt=\""+locations[i].hotelName+"\" class=\"hotelImg\" onError=\"var newImgPath = $(this).attr('src').replace('z','b'); $(this).attr('src', newImgPath);\"><div class=\"hotelAverage\">$"+locations[i].hotelRoundedAverage+"<div class=\"hotelPerNight\">per night</div></div><div class=\"hotelTotal\">Total: $"+locations[i].hotelRoundedTotal+"</div><a href=\""+locations[i].hotelLink+"\" target=\"_blank\"><div class=\"hotelTitle\">"+locations[i].hotelName+"</div></a><div class=\"hotelRating\"><img src=\""+locations[i].hotelRatingImg+"\" class=\"tripAdvisorRating\"></div></div>";
+							$(resultsContainer).append(hotelResults); 
+*/
+                          	$scope.buildList(locations[i].hotelId, locations[i].hotelThumb, locations[i].hotelName, locations[i].hotelRoundedAverage, locations[i].hotelRoundedTotal, locations[i].hotelLink, locations[i].hotelRatingImg);
+                          	
+                          	      
 							// map markers populate
 							$scope.markersDisplay(locations[i].lat, locations[i].lng);
                             google.maps.event.addListener(marker, 'click', (function(marker, i) {
@@ -288,9 +343,10 @@ function MainController($scope, $http, socket, $filter) {
                                 }
                             })(marker, i));
                             
-
 						} else {}
                     }
+                    
+                    $scope.$apply();
 
                 }, // end success return from ean
 				
