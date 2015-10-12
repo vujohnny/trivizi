@@ -16,8 +16,7 @@
 			    </span>
 			    <ul class="where-drop-down dropdown-menu disable-drop" dropdown-menu>
 					<li>
-<!--				    	<input id="searchTextFieldTop" type="text" ng-model="specificLocation" ng-change="emptyPlace()">-->
-                        <input id="navLocationField" type="text" ng-model="specificLocation"  ng-change="emptyPlace()">
+                        <input id="navLocationField" type="text" ng-model="specificLocation">
 				    </li>
 				    
 				    <hr>
@@ -80,7 +79,7 @@
 					    </span>
 					    <ul class="where-drop-down dropdown-menu disable-drop" dropdown-menu>
 							<li>
-						    	<input id="searchTextField" type="text" ng-model="specificLocation" ng-change="emptyPlace()">
+						    	<input id="searchTextField" type="text" ng-model="specificLocation">
 						    </li>
 						    
 						    <hr>
@@ -140,9 +139,9 @@
 		<div id="results-container">
 			<div class="results" ng-repeat="item in resultsList">
                 
-                <div id="{{item.id}}" class="hotel-item typography">
-
-                    <img src="http://images.travelnow.com/{{item.listImg}}" alt="{{item.name}}" class="hotelImg">
+                <div id="{{item.id}}" class="hotel-item typography" ng-click="highlightMarker(item.markerId)">
+                            
+                    <img ng-src="http://images.travelnow.com/{{item.listImg}}" alt="{{item.name}}" class="hotelImg">
 
                     <div class="hotelAverage">${{item.roundedAverage}}
                         <div class="hotelPerNight">per night</div>

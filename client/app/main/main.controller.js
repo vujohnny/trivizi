@@ -69,27 +69,10 @@ function MainController($scope, $http, socket, $filter) {
         };
         
         /*
-	        * global functions for views
-	        * div class specific functions
+	        * global functions for views, maps, builds
 	        * main seekdeer function submit
-	        * only place to gather div specific functions
 	    */
-	    
-	    $('.disable-drop').click(function(event){
-			event.stopPropagation();
-		});
-	                
-        $scope.emptyPlace = function() {
-	        $('.placeHolderLocation').empty();
-        };
-        		
-		$scope.showMap = function() {			
-			$(".intro-text").fadeOut("slow",function(){
-				$("#googleMap").css("visibility", "visible");
-				$("#results-container, .top-menu").fadeIn("slow", function(){});
-			});
-        }
-
+    
         $scope.seekDeer = function() {
             //console.log("inside getCurrentValue");
             $http.post('/api/things', {
@@ -100,6 +83,17 @@ function MainController($scope, $http, socket, $filter) {
             $scope.navPanMap();
             $scope.eanReturn($scope.destination);
         };
+	    
+	    $('.disable-drop').click(function(event){
+			event.stopPropagation();
+		});
+        		
+		$scope.showMap = function() {			
+			$(".intro-text").fadeOut("slow",function(){
+				$("#googleMap").css("visibility", "visible");
+				$("#results-container, .top-menu").fadeIn("slow", function(){});
+			});
+        }
         
 	    /*
 			* google maps functions 
@@ -134,10 +128,24 @@ function MainController($scope, $http, socket, $filter) {
 			var topPos = highlightResult.offsetTop - 105;
 			document.getElementById('results-container').scrollTop = topPos;
 		}
+        
+        $scope.highlightMarker = function(hotelInfo) {
+            google.maps.event.trigger(hotelInfo,'click');
+        }
 		
         $scope.buildReturn = function(lat, lng, id, name, shortDescription, listImg, rating, ratingImg, rateAverage, roundedAverage, rateTotal, roundedTotal, link) {
             
             if(rateTotal < $scope.budgetAmount) { 			  
+                
+                // map markers and pan map to city
+                $scope.markersDisplay(lat, lng);           
+                google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                    return function() {
+                        $scope.highlightResult(id, lat, lng);
+                        infowindow.setContent("<div id=\""+id+"\" class=\"markerDisplay typography\"><span class=\"markerTotal\">$"+roundedTotal+"</span> <span class=\"medium-grey\">|</span> <img src=\""+ratingImg+"\" class=\"tripAdvisorRating\"></div>"); 	
+                        infowindow.open(map, marker);
+                    }
+                })(marker, i));
                 
                 // build navigation list
                 $scope.resultsList.push({
@@ -147,18 +155,10 @@ function MainController($scope, $http, socket, $filter) {
                     ratingImg: ratingImg,
                     roundedAverage: roundedAverage,
                     roundedTotal: roundedTotal,
-                    link: link
+                    link: link,
+                    markerId: marker
                 });
-                
-                // map markers and pan map to city
-                $scope.markersDisplay(lat, lng);
-                google.maps.event.addListener(marker, 'click', (function(marker, i) {
-                    return function() {
-                        infowindow.setContent("<div id=\""+id+"\" class=\"markerDisplay typography\"><span class=\"markerTotal\">$"+roundedTotal+"</span> <span class=\"medium-grey\">|</span> <img src=\""+ratingImg+"\" class=\"tripAdvisorRating\"></div>"); 	
-                        infowindow.open(map, marker);
-                        $scope.highlightResult(id, lat, lng);
-                    }
-                })(marker, i));
+  
             } else {}
         }
         
