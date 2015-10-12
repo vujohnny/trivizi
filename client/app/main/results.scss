@@ -60,21 +60,21 @@
     
     .activeResult {
 	    //background-color: $light-green;
-	    border: 1px solid $salmon;
+	    outline: 1px solid $salmon;
     }
     
 }
 
 
 // disable intro text and go straight to maps
-.top-menu, #results-container {
-	display: block;
-}
-
-.intro-text {
-	display: none;
-}
-
-#googleMap {
-	visibility: visible;
-}
+//.top-menu, #results-container {
+//	display: block;
+//}
+//
+//.intro-text {
+//	display: none;
+//}
+//
+//#googleMap {
+//	visibility: visible;
+//}

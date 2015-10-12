@@ -16,7 +16,7 @@
 			    </span>
 			    <ul class="where-drop-down dropdown-menu disable-drop" dropdown-menu>
 					<li>
-                        <input id="navLocationField" type="text" ng-model="specificLocation">
+                        <input id="navLocationField" type="text" ng-model="specificLocation" ng-change="emptyPlace()">
 				    </li>
 				    
 				    <hr>
@@ -79,7 +79,7 @@
 					    </span>
 					    <ul class="where-drop-down dropdown-menu disable-drop" dropdown-menu>
 							<li>
-						    	<input id="searchTextField" type="text" ng-model="specificLocation">
+						    	<input id="introLocationField" type="text" ng-model="specificLocation" ng-change="emptyPlace()">
 						    </li>
 						    
 						    <hr>
