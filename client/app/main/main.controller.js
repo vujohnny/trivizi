@@ -39,6 +39,11 @@ function MainController($scope, $http, socket, $filter) {
                     lng: -95.426484
                 },
                 zoom: 3,
+                zoomControl: true,
+                zoomControlOptions: {
+                    style: google.maps.ZoomControlStyle.SMALL,
+                    position: google.maps.ControlPosition.LEFT_TOP
+                },
                 scrollwheel: false,
                 styles: snazzyMap
         	});		
@@ -172,7 +177,9 @@ function MainController($scope, $http, socket, $filter) {
 		$scope.navPanMap = function(destination) {
 			var place = navAutocomplete.getPlace();
             if (place.geometry.viewport) {
-                map.fitBounds(place.geometry.viewport);
+                //map.fitBounds(place.geometry.viewport);
+                map.setCenter(place.geometry.location);
+                map.setZoom(14);
             } else {
                 map.setCenter(place.geometry.location);
             }
@@ -181,21 +188,25 @@ function MainController($scope, $http, socket, $filter) {
         $scope.introPanMap = function(destination) {
 			var place = introAutocomplete.getPlace();
             if (place.geometry.viewport) {
-                map.fitBounds(place.geometry.viewport);
+                //map.fitBounds(place.geometry.viewport);
+                map.setCenter(place.geometry.location);
+                map.setZoom(14);
             } else {
                 map.setCenter(place.geometry.location);
             }
 		}
 		
-        $scope.navLocationChanged = google.maps.event.addListener(navAutocomplete, 'place_changed', function () {
+        $scope.navLocationChanged = google.maps.event.addListener(navAutocomplete, 'place_changed', function (e) {
             $scope.navPanMap();
             $scope.destination = navAutocomplete.getPlace().formatted_address;
+            $scope.specificLocation = $scope.destination; // for main view, should remain different to seperate category
             $scope.seekDeer($scope.destination);
         });
     
         $scope.introLocationChanged = google.maps.event.addListener(introAutocomplete, 'place_changed', function () {
             $scope.introPanMap();
             $scope.destination = introAutocomplete.getPlace().formatted_address;
+            $scope.specificLocation = $scope.destination; // for main view, should remain different to seperate category
             $scope.seekDeer($scope.destination);
         });
         				
@@ -203,7 +214,7 @@ function MainController($scope, $http, socket, $filter) {
             * ean request $http call
             * $http() returns a $promise that we can add handlers with .then()
             * if getting cross origin error install 
-            * http://bit.ly/1zhiKzg or 
+            * http://bit.ly/1zhiKzg 
         */ 
     
         $scope.eanReturn = function(destination) {
@@ -217,8 +228,8 @@ function MainController($scope, $http, socket, $filter) {
                     "locale": "en_US",  
                     "cid": "55505",
                     "destinationString": destination,
-                    "arrivalDate": "11/19/2015", //$scope.calendarArrive,
-                    "departureDate": "11/20/2015", //$scope.calendarDepart,
+                    "arrivalDate": $scope.calendarArrive, //"11/19/2015", //$scope.calendarArrive,
+                    "departureDate": $scope.calendarDepart, //"11/20/2015", //$scope.calendarDepart,
                     "curencyCode": "USD",
                     "numberOfResults": "20",
                     "room1": $scope.numberOfAdults.value                    
