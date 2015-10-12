@@ -146,7 +146,7 @@ function MainController($scope, $http, socket, $filter) {
         }
 		
         $scope.buildReturn = function(lat, lng, id, name, shortDescription, listImg, rating, ratingImg, rateAverage, roundedAverage, rateTotal, roundedTotal, link) {
-            // display items only within budget and only 20 items total
+           
             if(rateTotal < $scope.budgetAmount && $scope.resultsList.length < 20) { 			  
                 
                 // map markers and pan map to city
@@ -173,7 +173,6 @@ function MainController($scope, $http, socket, $filter) {
   
             } else {}
             
-            console.log($scope.resultsList.length);
         }
         
 		$scope.navPanMap = function(destination) {
@@ -230,8 +229,8 @@ function MainController($scope, $http, socket, $filter) {
                     "locale": "en_US",  
                     "cid": "55505",
                     "destinationString": destination,
-                    "arrivalDate": "11/19/2015", //"11/19/2015", //$scope.calendarArrive,
-                    "departureDate": "11/20/2015", //"11/20/2015", //$scope.calendarDepart,
+                    "arrivalDate": $scope.calendarArrive, //"11/19/2015", //$scope.calendarArrive,
+                    "departureDate": $scope.calendarDepart, //"11/20/2015", //$scope.calendarDepart,
                     "curencyCode": "USD",
                     "numberOfResults": "200",
                     "room1": $scope.numberOfAdults.value                    
