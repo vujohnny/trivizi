@@ -23,7 +23,7 @@ function MainController($scope, $http, socket, $filter) {
 			markersArray = [],
 			
 			//autocomplete inputs
-            options = {types: ['(cities)']},
+            options = {types: ['geocode']},
             
             navInput = document.getElementById('navLocationField'),
             navAutocomplete = new google.maps.places.Autocomplete(navInput, options),
@@ -54,9 +54,7 @@ function MainController($scope, $http, socket, $filter) {
         	});		
 		
 		$scope.budgetAmount = 1000;
-    
-    	$scope.resultsList = [];
-		        
+    		        
         $scope.typesOfPlaces = ['Romantic', 'Tropical', 'Party', 'Pets Ok', 'Family'];
   
         $scope.numberOfAdults = {
@@ -94,7 +92,7 @@ function MainController($scope, $http, socket, $filter) {
             });
             $scope.newThing = '';
             $scope.showMap();
-            $scope.eanReturn($scope.destination);
+            $scope.eanReturn($scope.specificLocation);
         };
 	    
 	    $('.disable-drop').click(function(event){
@@ -150,7 +148,7 @@ function MainController($scope, $http, socket, $filter) {
         $scope.highlightMarker = function(hotelMarker) {
             google.maps.event.trigger(hotelMarker,'click');
             map.setCenter(hotelMarker.getPosition());
-            map.setZoom(15);
+            //map.setZoom(15);
         }
 		
         $scope.buildReturn = function(lat, lng, id, name, shortDescription, listImg, rating, ratingImg, rateAverage, roundedAverage, rateTotal, roundedTotal, link, listImgFall) {
@@ -179,45 +177,32 @@ function MainController($scope, $http, socket, $filter) {
                     link: link,
                     markerId: marker
                 });
-  
+                  
             } else {}
             
         }
         
-		$scope.navPanMap = function(destination) {
-			var place = navAutocomplete.getPlace();
+        $scope.panMap = function(id, firstMarker) {
+            var place = $scope.destination;
             if (place.geometry.viewport) {
-                //map.fitBounds(place.geometry.viewport);
-                map.setCenter(place.geometry.location);
-                map.setZoom(14);
+                map.setCenter(firstMarker.getPosition());
+                google.maps.event.trigger(firstMarker,'click');
+                map.setZoom(15);
             } else {
                 map.setCenter(place.geometry.location);
-            }
-		}
-        
-        $scope.introPanMap = function(destination) {
-			var place = introAutocomplete.getPlace();
-            if (place.geometry.viewport) {
-                //map.fitBounds(place.geometry.viewport);
-                map.setCenter(place.geometry.location);
-                map.setZoom(14);
-            } else {
-                map.setCenter(place.geometry.location);
-            }
-		}
-		
+            }            
+        }
+	
         $scope.navLocationChanged = google.maps.event.addListener(navAutocomplete, 'place_changed', function (e) {
-            $scope.destination = navAutocomplete.getPlace().formatted_address;
-            $scope.specificLocation = $scope.destination; // for main view, should remain different to seperate category
-            $scope.navPanMap();
-            $scope.seekDeer($scope.destination);
+            $scope.destination = navAutocomplete.getPlace();
+            $scope.specificLocation = $scope.destination.formatted_address;
+            $scope.seekDeer($scope.destination.formatted_address);
         });
     
         $scope.introLocationChanged = google.maps.event.addListener(introAutocomplete, 'place_changed', function () {
-            $scope.destination = introAutocomplete.getPlace().formatted_address;
-            $scope.specificLocation = $scope.destination; // for main view, should remain different to seperate category
-            $scope.introPanMap();
-            $scope.seekDeer($scope.destination);
+            $scope.destination = introAutocomplete.getPlace();
+            $scope.specificLocation = $scope.destination.formatted_address;
+            $scope.seekDeer($scope.destination.formatted_address);
         });
         				
         /*
@@ -270,6 +255,8 @@ function MainController($scope, $http, socket, $filter) {
                         $scope.buildReturn(lat, lng, id, name, shortDescription, listImg, rating, ratingImg, rateAverage, roundedAverage, rateTotal, roundedTotal, link, listImgFall);
 
                     }); // end each loop
+                
+                    $scope.panMap($scope.resultsList[0].id, $scope.resultsList[0].markerId);
                 }); // end promise for http request
             
         } // end ean request    
