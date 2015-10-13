@@ -39,12 +39,17 @@ function MainController($scope, $http, socket, $filter) {
                     lng: -95.426484
                 },
                 zoom: 3,
+                mapTypeControl: false,
                 zoomControl: true,
+                scaleControl: true,
+                streetViewControl: true,
+                scrollwheel: false,
                 zoomControlOptions: {
-                    style: google.maps.ZoomControlStyle.SMALL,
                     position: google.maps.ControlPosition.LEFT_TOP
                 },
-                scrollwheel: false,
+                streetViewControlOptions: {
+                    position: google.maps.ControlPosition.LEFT_TOP
+                },
                 styles: snazzyMap
         	});		
 		
@@ -95,7 +100,8 @@ function MainController($scope, $http, socket, $filter) {
 	    $('.disable-drop').click(function(event){
 			event.stopPropagation();
 		});
-    
+        
+        // change this to ng-if, ng-change on divs once categories are in
         $scope.emptyPlace = function() {
 	        $('.placeHolderLocation').empty();
         };
@@ -199,16 +205,16 @@ function MainController($scope, $http, socket, $filter) {
 		}
 		
         $scope.navLocationChanged = google.maps.event.addListener(navAutocomplete, 'place_changed', function (e) {
-            $scope.navPanMap();
             $scope.destination = navAutocomplete.getPlace().formatted_address;
             $scope.specificLocation = $scope.destination; // for main view, should remain different to seperate category
+            $scope.navPanMap();
             $scope.seekDeer($scope.destination);
         });
     
         $scope.introLocationChanged = google.maps.event.addListener(introAutocomplete, 'place_changed', function () {
-            $scope.introPanMap();
             $scope.destination = introAutocomplete.getPlace().formatted_address;
             $scope.specificLocation = $scope.destination; // for main view, should remain different to seperate category
+            $scope.introPanMap();
             $scope.seekDeer($scope.destination);
         });
         				
