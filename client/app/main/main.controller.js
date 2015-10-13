@@ -142,7 +142,7 @@ function MainController($scope, $http, socket, $filter) {
         
         $scope.highlightMarker = function(hotelMarker) {
             google.maps.event.trigger(hotelMarker,'click');
-            map.setCenter(marker.getPosition(hotelMarker));
+            map.setCenter(hotelMarker.getPosition());
         }
 		
         $scope.buildReturn = function(lat, lng, id, name, shortDescription, listImg, rating, ratingImg, rateAverage, roundedAverage, rateTotal, roundedTotal, link, listImgFall) {
