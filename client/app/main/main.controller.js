@@ -140,8 +140,9 @@ function MainController($scope, $http, socket, $filter) {
             $(resultsContainer).animate({ scrollTop: topPos }, 500); 
 		}
         
-        $scope.highlightMarker = function(hotelInfo) {
-            google.maps.event.trigger(hotelInfo,'click');
+        $scope.highlightMarker = function(hotelMarker) {
+            google.maps.event.trigger(hotelMarker,'click');
+            map.setCenter(marker.getPosition(hotelMarker));
         }
 		
         $scope.buildReturn = function(lat, lng, id, name, shortDescription, listImg, rating, ratingImg, rateAverage, roundedAverage, rateTotal, roundedTotal, link, listImgFall) {
