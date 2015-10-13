@@ -137,6 +137,9 @@ function MainController($scope, $http, socket, $filter) {
 			var highlightResult = document.getElementById(selectedId);
 			var topPos = highlightResult.offsetTop;
 			document.getElementById('results-container').scrollTop = topPos;
+            
+            console.log(highlightResult);
+            console.log(topPos);
 		}
         
         $scope.highlightMarker = function(hotelInfo) {
@@ -239,6 +242,7 @@ function MainController($scope, $http, socket, $filter) {
 
                     //console.log(response.data);
                     $scope.deleteMarkers();
+                    $scope.resultsList = [];
                     $.each(response.data.HotelListResponse.HotelList.HotelSummary, function(k, v) {
 
                         var lat 				= v.latitude, 
