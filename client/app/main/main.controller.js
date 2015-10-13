@@ -134,11 +134,9 @@ function MainController($scope, $http, socket, $filter) {
 			$(resultsContainer+" "+resultsHotelItem).removeClass("activeResult");
 			$(resultsContainer+" #"+selectedId+"").addClass("activeResult");
 			
-			var highlightResult = document.getElementById(selectedId);
-			var topPos = highlightResult.offsetTop;
-			document.getElementById('results-container').scrollTop = topPos;
-            
-            console.log(highlightResult);
+			var topPos = $("#"+selectedId).offset().top;
+			//document.getElementById('results-container').scrollTop = topPos;
+            $("#results-container").animate({ scrollTop: topPos }, 500);
             console.log(topPos);
 		}
         

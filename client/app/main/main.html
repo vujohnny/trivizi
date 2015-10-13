@@ -135,32 +135,30 @@
 
 	<!--- results list with google maps -->
 
-	<div class="col-sm-6 no-padding">
-		<div id="results-container">
-			<div class="col-sm-6 results" ng-repeat="item in resultsList">
-                
-                <div id="{{item.id}}" class="hotel-item typography" ng-click="highlightMarker(item.markerId)">
-                            
-                    <img ng-src="http://images.travelnow.com/{{item.listImg}}" fallback-src="http://images.travelnow.com/{{item.listImgFall}}" alt="{{item.name}}" class="hotelImg">
+    <div id="results-container" class="col-sm-6 no-padding">
+        <div class="col-sm-6 results" ng-repeat="item in resultsList">
 
-                    <div class="hotelAverage">${{item.roundedAverage}}
-                        <div class="hotelPerNight">per night</div>
-                    </div>
+            <div id="{{item.id}}" class="hotel-item typography" ng-click="highlightMarker(item.markerId)">
 
-                    <div class="hotelTotal">Total: ${{item.roundedTotal}}</div>
+                <img ng-src="http://images.travelnow.com/{{item.listImg}}" fallback-src="http://images.travelnow.com/{{item.listImgFall}}" alt="{{item.name}}" class="hotelImg">
 
-                    <a href="{{item.link}}" target="_blank">
-                        <div class="hotelTitle">{{item.name}}</div>
-                    </a>
+                <div class="hotelAverage">${{item.roundedAverage}}
+                    <div class="hotelPerNight">per night</div>
+                </div>
 
-                    <div class="hotelRating">
-                        <img src="{{item.ratingImg}}" class="tripAdvisorRating">
-                    </div>
+                <div class="hotelTotal">Total: ${{item.roundedTotal}}</div>
 
-                </div>  
+                <a href="{{item.link}}" target="_blank">
+                    <div class="hotelTitle">{{item.name}}</div>
+                </a>
 
-			</div>
-		</div>
+                <div class="hotelRating">
+                    <img src="{{item.ratingImg}}" class="tripAdvisorRating">
+                </div>
+
+            </div>  
+
+        </div>
 	</div> <!-- end results -->
 	
 	<div class="col-sm-6 no-padding">
