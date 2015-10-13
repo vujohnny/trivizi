@@ -135,13 +135,13 @@
 
 	<!--- results list with google maps -->
 
-	<div class="col-md-6 no-padding">
+	<div class="col-sm-6 no-padding">
 		<div id="results-container">
-			<div class="results" ng-repeat="item in resultsList">
+			<div class="col-sm-6 results" ng-repeat="item in resultsList">
                 
                 <div id="{{item.id}}" class="hotel-item typography" ng-click="highlightMarker(item.markerId)">
                             
-                    <img ng-src="http://images.travelnow.com/{{item.listImg}}" alt="{{item.name}}" class="hotelImg">
+                    <img ng-src="http://images.travelnow.com/{{item.listImg}}" fallback-src="http://images.travelnow.com/{{item.listImgFall}}" alt="{{item.name}}" class="hotelImg">
 
                     <div class="hotelAverage">${{item.roundedAverage}}
                         <div class="hotelPerNight">per night</div>
@@ -163,7 +163,7 @@
 		</div>
 	</div> <!-- end results -->
 	
-	<div class="col-md-6 no-padding">
+	<div class="col-sm-6 no-padding">
 		<div id="googleMap"></div>
 	</div> <!-- end google maps -->
 	

@@ -109,11 +109,9 @@ input::-webkit-inner-spin-button {
 	}
 	
 	@media screen and (max-width: $break-phone) {
-		
 		h1 {
 			font-size: 1.2em;
 		}
-		
 	}
     
 }
@@ -141,14 +139,14 @@ input::-webkit-inner-spin-button {
 }
 
 #googleMap, #results-container {
-	height: 85vh; 
+	height: 90vh; 
 }
 
 #googleMap { 
 	visibility: hidden;
 	
 	@media screen and (max-width: $break-phone) {
-		visibility: hidden !important;
+		display: none !important;
 	}
 	
 }

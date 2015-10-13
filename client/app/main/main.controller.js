@@ -13,7 +13,6 @@ function MainController($scope, $http, socket, $filter) {
 			resultsHotelItem = ".hotel-item",
         
 			// marker windows
-        	resultsContainer = ".results",
 			infowindow = new google.maps.InfoWindow(),
 			i,
 			
@@ -99,7 +98,7 @@ function MainController($scope, $http, socket, $filter) {
         $scope.emptyPlace = function() {
 	        $('.placeHolderLocation').empty();
         };
-        		
+    
 		$scope.showMap = function() {			
 			$(".intro-text").fadeOut("slow",function(){
 				$("#googleMap").css("visibility", "visible");
@@ -130,14 +129,13 @@ function MainController($scope, $http, socket, $filter) {
             $(resultsContainer).empty();
 		}
 		
-		$scope.highlightResult = function(hotelId, hotelLat, hotelLng) {
-			//console.log(hotelId+","+hotelLat+","+hotelLng);
-			var selectedId = hotelId;
+		$scope.highlightResult = function(id) {
+			var selectedId = id;
 			$(resultsContainer+" "+resultsHotelItem).removeClass("activeResult");
 			$(resultsContainer+" #"+selectedId+"").addClass("activeResult");
 			
 			var highlightResult = document.getElementById(selectedId);
-			var topPos = highlightResult.offsetTop - 105;
+			var topPos = highlightResult.offsetTop;
 			document.getElementById('results-container').scrollTop = topPos;
 		}
         
@@ -145,7 +143,7 @@ function MainController($scope, $http, socket, $filter) {
             google.maps.event.trigger(hotelInfo,'click');
         }
 		
-        $scope.buildReturn = function(lat, lng, id, name, shortDescription, listImg, rating, ratingImg, rateAverage, roundedAverage, rateTotal, roundedTotal, link) {
+        $scope.buildReturn = function(lat, lng, id, name, shortDescription, listImg, rating, ratingImg, rateAverage, roundedAverage, rateTotal, roundedTotal, link, listImgFall) {
            
             if(rateTotal < $scope.budgetAmount && $scope.resultsList.length < 20) { 			  
                 
@@ -153,9 +151,9 @@ function MainController($scope, $http, socket, $filter) {
                 $scope.markersDisplay(lat, lng);           
                 google.maps.event.addListener(marker, 'click', (function(marker, i) {
                     return function() {
-                        $scope.highlightResult(id, lat, lng);
                         infowindow.setContent("<div id=\""+id+"\" class=\"markerDisplay typography\"><span class=\"markerTotal\">$"+roundedTotal+"</span> <span class=\"medium-grey\">|</span> <img src=\""+ratingImg+"\" class=\"tripAdvisorRating\"></div>"); 	
                         infowindow.open(map, marker);
+                        $scope.highlightResult(id);
                     }
                 })(marker, i));
                 
@@ -164,6 +162,7 @@ function MainController($scope, $http, socket, $filter) {
                     id: id,
                     name: name,
                     listImg: listImg,
+                    listImgFall: listImgFall,
                     ratingImg: ratingImg,
                     roundedAverage: roundedAverage,
                     roundedTotal: roundedTotal,
@@ -229,8 +228,8 @@ function MainController($scope, $http, socket, $filter) {
                     "locale": "en_US",  
                     "cid": "55505",
                     "destinationString": destination,
-                    "arrivalDate": $scope.calendarArrive, //"11/19/2015", //$scope.calendarArrive,
-                    "departureDate": $scope.calendarDepart, //"11/20/2015", //$scope.calendarDepart,
+                    "arrivalDate": "11/19/2015", //"11/19/2015", //$scope.calendarArrive,
+                    "departureDate": "11/20/2015", //"11/20/2015", //$scope.calendarDepart,
                     "curencyCode": "USD",
                     "numberOfResults": "200",
                     "room1": $scope.numberOfAdults.value                    
@@ -247,7 +246,8 @@ function MainController($scope, $http, socket, $filter) {
                             id		 			= v.hotelId,
                             name 				= v.name, 
                             shortDescription 	= v.shortDescription, 
-                            listImg 			= v.thumbNailUrl.replace("_t", "_b"),	                	                	
+                            listImg 			= v.thumbNailUrl.replace("_t", "_z"),
+                            listImgFall			= v.thumbNailUrl.replace("_t", "_b"),
                             rating				= v.tripAdvisorRating, 
                             ratingImg			= v.tripAdvisorRatingUrl,
                             rateAverage 		= v.RoomRateDetailsList.RoomRateDetails.RateInfos.RateInfo.ChargeableRateInfo["@averageRate"],
@@ -256,7 +256,7 @@ function MainController($scope, $http, socket, $filter) {
                             roundedTotal 		= Math.round(rateTotal),
                             link				= v.deepLink.replace(/&amp;/g, '&');
                         
-                        $scope.buildReturn(lat, lng, id, name, shortDescription, listImg, rating, ratingImg, rateAverage, roundedAverage, rateTotal, roundedTotal, link);
+                        $scope.buildReturn(lat, lng, id, name, shortDescription, listImg, rating, ratingImg, rateAverage, roundedAverage, rateTotal, roundedTotal, link, listImgFall);
 
                     }); // end each loop
                 }); // end promise for http request
@@ -290,3 +290,20 @@ function MainController($scope, $http, socket, $filter) {
 	} // end MainController
 
 angular.module('triviziApp').controller('MainController', MainController);})();
+
+
+/*
+    * angular directive for image source fallback
+    * in case image size isnt provided
+*/        
+	    
+angular.module('triviziApp').directive('fallbackSrc', function () {
+    var fallbackSrc = {
+        link: function postLink(scope, iElement, iAttrs) {
+            iElement.bind('error', function() {
+            angular.element(this).attr("src", iAttrs.fallbackSrc);
+            });
+        }
+    }
+    return fallbackSrc;
+});
