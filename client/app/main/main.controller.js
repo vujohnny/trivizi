@@ -121,6 +121,7 @@ function MainController($scope, $http, socket, $filter) {
 		$scope.markersDisplay = function(lat, lng) {
 			marker = new google.maps.Marker({
                 position: {lat, lng},
+                optimized: false,
                 map: map,
                 icon: myIcon,
                 animation: google.maps.Animation.DROP
@@ -149,6 +150,7 @@ function MainController($scope, $http, socket, $filter) {
         $scope.highlightMarker = function(hotelMarker) {
             google.maps.event.trigger(hotelMarker,'click');
             map.setCenter(hotelMarker.getPosition());
+            map.setZoom(15);
         }
 		
         $scope.buildReturn = function(lat, lng, id, name, shortDescription, listImg, rating, ratingImg, rateAverage, roundedAverage, rateTotal, roundedTotal, link, listImgFall) {

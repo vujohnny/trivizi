@@ -44,6 +44,12 @@ input::-webkit-inner-spin-button {
 	background-color: #ececec;
     padding: 20px;
     display: none;
+    /*font-size: 1.3vw;
+    
+    @media screen and (max-width: $break-phone) {
+		font-size: 3vw;
+	}*/
+	
 }
 
 .budgetInput {
