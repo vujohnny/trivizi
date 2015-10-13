@@ -134,11 +134,10 @@
 
 
 	<!--- results list with google maps -->
+    <div id="results-container" class="col-sm-6 typography">
+        <div class="results" ng-repeat="item in resultsList">
 
-    <div id="results-container" class="col-sm-6 no-padding">
-        <div class="col-sm-6 results" ng-repeat="item in resultsList">
-
-            <div id="{{item.id}}" class="hotel-item typography" ng-click="highlightMarker(item.markerId)">
+            <div id="{{item.id}}" class="col-sm-6 hotel-item" ng-click="highlightMarker(item.markerId)">
 
                 <img ng-src="http://images.travelnow.com/{{item.listImg}}" fallback-src="http://images.travelnow.com/{{item.listImgFall}}" alt="{{item.name}}" class="hotelImg">
 

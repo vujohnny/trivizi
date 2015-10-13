@@ -9,8 +9,9 @@ function MainController($scope, $http, socket, $filter) {
 		*/	
 		
         var // results vars
-			resultsContainer = ".results",
+			resultsItem = ".results",
 			resultsHotelItem = ".hotel-item",
+            resultsContainer = "#results-container",
         
 			// marker windows
 			infowindow = new google.maps.InfoWindow(),
@@ -126,18 +127,17 @@ function MainController($scope, $http, socket, $filter) {
 				markersArray[i].setMap(null);
 			}			  
 			markersArray = [];
-            $(resultsContainer).empty();
+            $(resultsItem).empty();
 		}
 		
-		$scope.highlightResult = function(id) {
-			var selectedId = id;
-			$(resultsContainer+" "+resultsHotelItem).removeClass("activeResult");
-			$(resultsContainer+" #"+selectedId+"").addClass("activeResult");
+		$scope.highlightResult = function(hotelId, hotelLat, hotelLng) {
+			var selectedId = hotelId;
+			$(resultsItem+" "+resultsHotelItem).removeClass("activeResult");
+			$(resultsItem+" #"+selectedId+"").addClass("activeResult");
 			
-			var topPos = $("#"+selectedId).offset().top;
-			//document.getElementById('results-container').scrollTop = topPos;
-            $("#results-container").animate({ scrollTop: topPos }, 500);
-            console.log(topPos);
+			var highlightResult = document.getElementById(selectedId);
+			var topPos = highlightResult.offsetTop - 25;
+            $(resultsContainer).animate({ scrollTop: topPos }, 500); 
 		}
         
         $scope.highlightMarker = function(hotelInfo) {
