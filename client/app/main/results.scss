@@ -11,7 +11,16 @@
 
 #results-container {
 	overflow: auto;
+    position: relative;
     display: none;
+    	
+	.hotel-item {
+        height: auto;
+        padding: 10px;
+        margin: 10px auto;
+        position: relative;
+        cursor: pointer;
+	}
     
     .hotelAverage {
 	   	position: relative;
@@ -34,7 +43,7 @@
     .hotelTitle {
 		font-weight: normal;
 	    text-decoration: underline;
-	    margin-bottom: 10px;
+	    height: 45px;
 	}
 	
 	.hotelTotal {
@@ -43,14 +52,12 @@
 	
 	.hotelImg {
 	    width: 100%;
-	    height: 200px;
-	}
-	
-	.hotel-item {
-	    width: 250px;
-	    clear: both;
-	    margin: 25px auto 40px auto;
-	    padding: 5px;
+	    height: 25vh;
+        
+        @media screen and (max-width: $break-phone) {
+            height: 35vh;
+        }
+            
 	}
 	
 	.tripAdvisorRating {	
@@ -59,23 +66,21 @@
     
     .activeResult {
 	    //background-color: $light-green;
-	    border: 1px solid $salmon;
+	    outline: 1px solid $salmon;
     }
     
 }
 
 
 // disable intro text and go straight to maps
-/*
-.top-menu, #results-container {
-	display: block;
-}
-
-.intro-text {
-	display: none;
-}
-
-#googleMap {
-	visibility: visible;
-}
-*/
+//.top-menu, #results-container {
+//	display: block;
+//}
+//
+//.intro-text {
+//	display: none;
+//}
+//
+//#googleMap {
+//	visibility: visible;
+//}

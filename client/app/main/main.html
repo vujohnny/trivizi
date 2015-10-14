@@ -1,8 +1,8 @@
 <navbar></navbar>
 
 <div class="typography row" ng-controller="MainController">
-	
-	<div class="top-menu typography row">
+
+    <div class="top-menu typography row">
 		
 		<div class="col-sm-2 col-md-offset-1">
 			Budget: 
@@ -10,13 +10,13 @@
 		</div>
 		
 		<div class="col-sm-3">Where:
-			<span class="dropdown salmon bold" dropdown>
+			<span class="dropdown salmon bold calendar-adjust" dropdown>
 			    <span class="dropdown-toggle" dropdown-toggle>
 			        <span class="placeHolderLocation">Romantic</span> {{specificLocation}}<span class="caret"></span>
 			    </span>
 			    <ul class="where-drop-down dropdown-menu disable-drop" dropdown-menu>
 					<li>
-				    	<input id="searchTextFieldTop" type="text" ng-model="specificLocation" ng-change="emptyPlace()">
+                        <input id="navLocationField" type="text" ng-model="specificLocation" ng-change="emptyPlace()">
 				    </li>
 				    
 				    <hr>
@@ -30,14 +30,14 @@
 		</div>
 		<div class="col-sm-2">
 			For: 
-			<select ng-model="numberOfAdults.value" ng-options="v for v in numberOfAdults.values" class="adult-drop-down salmon bold"></select>
+			<select ng-model="numberOfAdults.value" ng-options="v for v in numberOfAdults.values" class="adult-drop-down salmon bold arrow-disable"></select>
 		</div>
 		
 		<div class="col-sm-2">
 			From: 
-			<span class="dropdown salmon bold" dropdown>
+			<span class="dropdown salmon bold calendar-adjust" dropdown>
 			    <span class="dropdown-toggle" dropdown-toggle>
-			        {{arriveDate.defaultValue | date:'MMM dd' }}<span class="caret"></span>
+			        {{arriveDate.defaultValue | date:'EEE, MMM dd' }}<span class="caret"></span>
 			    </span>
 			    <div class="when-drop-down dropdown-menu disable-drop" dropdown-menu>
 					<div class="when-calendar">
@@ -51,7 +51,7 @@
 			To: 
 			<span class="dropdown salmon bold" dropdown>
 			    <span class="dropdown-toggle" dropdown-toggle>
-			        {{departDate.defaultValue | date:'MMM dd' }}<span class="caret"></span>
+			        {{departDate.defaultValue | date:'EEE, MMM dd' }}<span class="caret"></span>
 			    </span>
 			    <div class="when-drop-down dropdown-menu disable-drop" dropdown-menu>
 					<div class="when-calendar">
@@ -67,19 +67,19 @@
 		<div class="intro-text text-center">
 			
 			<div>
-				<h1>My budget is <span class="underline"><span class="salmon">$</span><input type="number" ng-model="budgetAmount" class="budgetInput" placeholder="1000" min="25" max="9999"><span class="caret"></span></span> and I want</h1>
+				<h1>My budget is <span class="salmon">$</span><input type="number" ng-model="budgetAmount" class="budgetInput" placeholder="1000" min="25" max="9999"><span class="caret"></span> and I want</h1>
 			</div>
 			
 			<div>
 				<h1>to travel somewhere 
 
-					<span class="dropdown" dropdown>
-					    <span class="dropdown-toggle underline" dropdown-toggle>
+					<span class="dropdown salmon" dropdown>
+					    <span class="dropdown-toggle" dropdown-toggle>
 					        <span class="placeHolderLocation">Romantic</span> {{specificLocation}}<span class="caret"></span>
 					    </span>
 					    <ul class="where-drop-down dropdown-menu disable-drop" dropdown-menu>
 							<li>
-						    	<input id="searchTextField" type="text" ng-model="specificLocation" ng-change="emptyPlace()">
+						    	<input id="introLocationField" type="text" ng-model="specificLocation" ng-change="emptyPlace()">
 						    </li>
 						    
 						    <hr>
@@ -93,7 +93,8 @@
 					
 					For 
 					
-					<span class="underline"><select ng-model="numberOfAdults.value" ng-options="v for v in numberOfAdults.values" class="adult-drop-down arrow-disable"></select><span class="caret"></span></span>
+					<span class="bold">
+						<select ng-model="numberOfAdults.value" ng-options="v for v in numberOfAdults.values" class="adult-drop-down arrow-disable"></select><span class="caret"></span></span>
 					
 				</h1>
 			</div>
@@ -101,8 +102,8 @@
 			<div>
 				<h1>From 
 					
-					<span class="dropdown" dropdown>
-					    <span class="dropdown-toggle underline" dropdown-toggle>
+					<span class="dropdown salmon" dropdown>
+					    <span class="dropdown-toggle" dropdown-toggle>
 					        {{arriveDate.defaultValue | date:'MMMM dd' }}<span class="caret"></span>
 					    </span>
 					    <div class="when-drop-down dropdown-menu disable-drop" dropdown-menu>
@@ -114,8 +115,8 @@
 								
 					to 
 					
-					<span class="dropdown" dropdown>
-					    <span class="dropdown-toggle underline" dropdown-toggle>
+					<span class="dropdown salmon" dropdown>
+					    <span class="dropdown-toggle" dropdown-toggle>
 					        {{departDate.defaultValue | date:'MMMM dd' }}<span class="caret"></span>
 					    </span>
 					    <div class="when-drop-down dropdown-menu disable-drop" dropdown-menu>
@@ -128,20 +129,38 @@
 				</h1>
 			</div>
 						
-		</div> <!-- end top menu -->
+		</div> <!-- end intro text -->
 	</div> <!--  end container -->
-</div> <!-- end row for top menu-->
 
 
-<div class="row-fluid">
-	
-	<div class="col-md-3 no-padding">
-		<div id="results-container">
-			<div class="results"></div>
-		</div>
+	<!--- results list with google maps -->
+    <div id="results-container" class="col-sm-6 typography">
+        <div class="results" ng-repeat="item in resultsList">
+
+            <div id="{{item.id}}" class="col-sm-6 hotel-item" ng-click="highlightMarker(item.markerId)" ng-class='{activeResult:$first}'>
+
+                <img ng-src="http://images.travelnow.com/{{item.listImg}}" fallback-src="http://images.travelnow.com/{{item.listImgFall}}" alt="{{item.name}}" class="hotelImg">
+
+                <div class="hotelAverage">${{item.roundedAverage}}
+                    <div class="hotelPerNight">per night</div>
+                </div>
+
+                <div class="hotelTotal">Total: ${{item.roundedTotal}}</div>
+
+                <a href="{{item.link}}" target="_blank">
+                    <div class="hotelTitle">{{item.name}}</div>
+                </a>
+
+                <div class="hotelRating">
+                    <img src="{{item.ratingImg}}" class="tripAdvisorRating">
+                </div>
+
+            </div>  
+
+        </div>
 	</div> <!-- end results -->
 	
-	<div class="col-md-9 no-padding">
+	<div class="col-sm-6 no-padding">
 		<div id="googleMap"></div>
 	</div> <!-- end google maps -->
 	

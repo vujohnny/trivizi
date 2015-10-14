@@ -24,20 +24,32 @@ input::-webkit-inner-spin-button {
 	background: none;
 	border: 0;
 	margin-top: 20px;
-	
+	//text-align: center;
+}
+
+.caret {
+	//display: none;
+	color: $salmon;
 }
 
 // site styles
 
 .logo {
-    width: 90px;
-    margin-top: 10px;
+    width: 7em;
+    margin-top: 1em;
+    margin-left: 1em;
 }
 
 .top-menu {
 	background-color: #ececec;
     padding: 20px;
     display: none;
+    /*font-size: 1.3vw;
+    
+    @media screen and (max-width: $break-phone) {
+		font-size: 3vw;
+	}*/
+	
 }
 
 .budgetInput {
@@ -46,8 +58,9 @@ input::-webkit-inner-spin-button {
 	outline: none;
 	width: 85px;
 	color: $salmon;
-	line-height: 50px;
 	font-weight: bold;
+	margin-bottom: -6px;
+	line-height: 50px;
 	
 	@media screen and (max-width: $break-phone) {
 		line-height: 23px;
@@ -89,7 +102,6 @@ input::-webkit-inner-spin-button {
    	margin: 20vh auto 0 auto;
    	   
     span {
-		color: $salmon;
 		cursor: pointer;
 		font-weight: 600;
 	}
@@ -103,11 +115,9 @@ input::-webkit-inner-spin-button {
 	}
 	
 	@media screen and (max-width: $break-phone) {
-		
 		h1 {
 			font-size: 1.2em;
 		}
-		
 	}
     
 }
@@ -127,7 +137,7 @@ input::-webkit-inner-spin-button {
 		}
 		
 		.text-info {
-			color: $orange;
+			color: $salmon;
 		}
 		
 	}
@@ -135,9 +145,14 @@ input::-webkit-inner-spin-button {
 }
 
 #googleMap, #results-container {
-	height: 85vh; 
+	height: 90vh; 
 }
 
 #googleMap { 
 	visibility: hidden;
+	
+	@media screen and (max-width: $break-phone) {
+		display: none !important;
+	}
+	
 }
