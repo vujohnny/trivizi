@@ -67,7 +67,10 @@ $break-phone: 768px;
 @import 'main/main.scss';
 @import 'main/results.scss';
 @import '../components/footer/footer.scss';
+@import '../components/google-map/google-map.scss';
+@import '../components/intro-text/intro-text.scss';
 @import '../components/modal/modal.scss';
 @import '../components/oauth-buttons/oauth-buttons.scss';
+@import '../components/results-list/results-list.scss';
 @import '../components/social/social.scss';
 // endinjector

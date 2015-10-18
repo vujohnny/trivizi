@@ -1,0 +1,26 @@
+<!--- results list with google maps -->
+<div id="results-container" class="col-sm-6 typography">
+    <div class="results" ng-repeat="item in resultsList">
+
+        <div id="{{item.id}}" class="col-sm-6 hotel-item" ng-click="highlightMarker(item.markerId)" ng-class='{activeResult:$first}'>
+
+            <img ng-src="http://images.travelnow.com/{{item.listImg}}" fallback-src="http://images.travelnow.com/{{item.listImgFall}}" alt="{{item.name}}" class="hotelImg">
+
+            <div class="hotelAverage">${{item.roundedAverage}}
+                <div class="hotelPerNight">per night</div>
+            </div>
+
+            <div class="hotelTotal">Total: ${{item.roundedTotal}}</div>
+
+            <a href="{{item.link}}" target="_blank">
+                <div class="hotelTitle">{{item.name}}</div>
+            </a>
+
+            <div class="hotelRating">
+                <img src="{{item.ratingImg}}" class="tripAdvisorRating">
+            </div>
+
+        </div>  
+
+    </div>
+</div> <!-- end results -->
