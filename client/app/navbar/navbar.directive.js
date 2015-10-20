@@ -3,7 +3,7 @@
 angular.module('triviziApp')
   .directive('navbar', function () {
     return {
-      templateUrl: 'components/navbar/navbar.html',
+      templateUrl: 'app/navbar/navbar.html',
       restrict: 'E',
       controller: 'NavbarCtrl'
     };

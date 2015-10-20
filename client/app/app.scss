@@ -37,11 +37,6 @@ $break-phone: 768px;
 	margin: 0;
 }
 
-.bold {
-	font-weight: bold;
-	cursor: pointer;
-}
-
 .no-padding {
 	padding: 0;
 	margin: 0;
@@ -63,14 +58,10 @@ $break-phone: 768px;
 // injector
 @import 'admin/admin.scss';
 @import 'db/db.scss';
-@import 'googleMapSDK/googleMapSDK.scss';
+@import 'footer/footer.scss';
 @import 'main/main.scss';
 @import 'main/results.scss';
-@import '../components/footer/footer.scss';
-@import '../components/google-map/google-map.scss';
-@import '../components/intro-text/intro-text.scss';
 @import '../components/modal/modal.scss';
 @import '../components/oauth-buttons/oauth-buttons.scss';
-@import '../components/results-list/results-list.scss';
 @import '../components/social/social.scss';
 // endinjector
