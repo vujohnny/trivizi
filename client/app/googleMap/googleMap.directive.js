@@ -5,10 +5,8 @@ angular.module('triviziApp')
         return {
             templateUrl: 'app/googleMap/googleMap.html',
             restrict: 'EA',
-            controller: function ($scope, $element, ean) {
-
-                $scope.awesomeVariable = "Awesome Content lives here!"
-
+            controller: function ($scope, $element) {
+                //$scope.awesomeVariable = "variable example passed to link"
             },
             link: function ($scope, $element, $attrs, ean) {
 
@@ -65,14 +63,31 @@ angular.module('triviziApp')
                     $scope.destination = navAutocomplete.getPlace();
                     $scope.specificLocation = $scope.destination.formatted_address;
                     $scope.seekDeer($scope.destination.formatted_address);
-                    console.log($scope.specificLocation);
                 });
+                
+//                $scope.introLocationChanged = google.maps.event.addListener(introAutocomplete, 'place_changed', function () {
+//                    $scope.destination = introAutocomplete.getPlace();
+//                    $scope.specificLocation = $scope.destination.formatted_address;
+//                    $scope.seekDeer($scope.destination.formatted_address);
+//                });                
 
                 $scope.showMap = function () {
                     $(".intro-text").fadeOut("slow", function () {
                         $("#googleMap").css("visibility", "visible");
                         $("#results-container, .top-menu").fadeIn("slow", function () {});
                     });
+                }
+                
+                $scope.highlightResult = function (hotelId, hotelLat, hotelLng) {
+                    var selectedId = hotelId;
+                    $(resultsItem+" "+resultsHotelItem).removeClass("activeResult");
+                    //$(".btn-book").removeClass("btn-on");
+                    $(resultsItem+" #"+selectedId+"").addClass("activeResult");
+                    //$(resultsItem+" #"+selectedId+" .hotelInfo .btn-book").addClass("btn-on");
+
+                    var highlightResult = document.getElementById(selectedId);
+                    var topPos = highlightResult.offsetTop - 25;
+                    $(resultsContainer).animate({ scrollTop: topPos }, 500); 
                 }
 
                 $scope.markersDisplay = function (lat, lng) {
@@ -93,19 +108,7 @@ angular.module('triviziApp')
                         markersArray[i].setMap(null);
                     }
                     markersArray = [];
-                    $($scope.resultsItem).empty();
-                }
-
-                $scope.highlightResult = function (hotelId, hotelLat, hotelLng) {
-                    var selectedId = hotelId;
-                    $(resultsItem+" "+resultsHotelItem).removeClass("activeResult");
-                    //$(".btn-book").removeClass("btn-on");
-                    $(resultsItem+" #"+selectedId+"").addClass("activeResult");
-                    //$(resultsItem+" #"+selectedId+" .hotelInfo .btn-book").addClass("btn-on");
-
-                    var highlightResult = document.getElementById(selectedId);
-                    var topPos = highlightResult.offsetTop - 25;
-                    $(resultsContainer).animate({ scrollTop: topPos }, 500); 
+                    $(resultsItem).empty();
                 }
 
                 $scope.highlightMarker = function (hotelMarker) {
@@ -156,19 +159,6 @@ angular.module('triviziApp')
 
                 }
 
-                /*
-                		$scope.emptyPlace = function() {
-                	        $('.placeHolderLocation').empty();
-                        };
-                    
-                    
-                        $scope.introLocationChanged = google.maps.event.addListener(introAutocomplete, 'place_changed', function () {
-                            $scope.destination = introAutocomplete.getPlace();
-                            $scope.specificLocation = $scope.destination.formatted_address;
-                            $scope.seekDeer($scope.destination.formatted_address);
-                        });
-                */
-
-            },
+            }
         };
     });
