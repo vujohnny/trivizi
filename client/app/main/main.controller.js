@@ -3,17 +3,6 @@
 
 function MainController($scope, $http, socket, $filter, ean) {
 	
-		/*
-			* global vars for google maps & results
-			* views info init, dropboxes, select inputs
-		*/	
-		
-        var // results vars
-			resultsItem = ".results",
-			resultsHotelItem = ".hotel-item",
-            resultsContainer = "#results-container"
-        		
-		
 		$scope.budgetAmount = 1000;
     		        
         $scope.typesOfPlaces = ['Romantic', 'Tropical', 'Party', 'Pets Ok', 'Family'];
@@ -52,7 +41,7 @@ function MainController($scope, $http, socket, $filter, ean) {
                 name: "$"+$scope.budgetAmount+" | "+$scope.calendarArrive+" - "+$scope.calendarDepart+" | "+$scope.specificLocation
             });
             $scope.newThing = '';
-            $scope.showMap();
+            //$scope.showMap();
             ean.eanRequest($scope);
         };
 	    
