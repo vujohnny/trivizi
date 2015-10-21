@@ -128,7 +128,7 @@ angular.module('triviziApp')
                     }
                 }
 
-                $scope.buildReturn = function (lat, lng, id, name, shortDescription, listImg, rating, ratingImg, rateAverage, roundedAverage, rateTotal, roundedTotal, link, listImgFall) {
+                $scope.buildReturn = function (lat, lng, id, name, shortDescription, listImg, rating, ratingImg, rateAverage, roundedAverage, rateTotal, roundedTotal, link, listImgFall, totalNights) {
 
                     if (rateTotal < $scope.budgetAmount && $scope.resultsList.length < 20) {
 
@@ -152,7 +152,8 @@ angular.module('triviziApp')
                             roundedAverage: roundedAverage,
                             roundedTotal: roundedTotal,
                             link: link,
-                            markerId: marker
+                            markerId: marker,
+                            totalNights: totalNights
                         });
 
                     } else {}

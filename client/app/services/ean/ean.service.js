@@ -21,7 +21,7 @@ angular.module('triviziApp')
                     "cid": "55505",
                     "destinationString": $scope.specificLocation,
                     "arrivalDate": "11/19/2015", //"11/19/2015", //$scope.calendarArrive,
-                    "departureDate": "11/20/2015", //"11/20/2015", //$scope.calendarDepart,
+                    "departureDate": "11/25/2015", //"11/20/2015", //$scope.calendarDepart,
                     "curencyCode": "USD",
                     "numberOfResults": "200",
                     "room1": $scope.numberOfAdults.value                    
@@ -29,7 +29,7 @@ angular.module('triviziApp')
             })
                 .then(function (response) {
 
-                    //console.log(response.data);
+                    console.log(response.data);
                     $scope.deleteMarkers();
                     $scope.resultsList = [];
                     $.each(response.data.HotelListResponse.HotelList.HotelSummary, function(k, v) {
@@ -47,9 +47,10 @@ angular.module('triviziApp')
                             roundedAverage 		= Math.round(rateAverage),
                             rateTotal 			= v.RoomRateDetailsList.RoomRateDetails.RateInfos.RateInfo.ChargeableRateInfo["@total"],
                             roundedTotal 		= Math.round(rateTotal),
+                            totalNights 		= v.RoomRateDetailsList.RoomRateDetails.RateInfos.RateInfo.ChargeableRateInfo.NightlyRatesPerRoom["@size"],
                             link				= v.deepLink.replace(/&amp;/g, '&');
                         
-                        $scope.buildReturn(lat, lng, id, name, shortDescription, listImg, rating, ratingImg, rateAverage, roundedAverage, rateTotal, roundedTotal, link, listImgFall);
+                        $scope.buildReturn(lat, lng, id, name, shortDescription, listImg, rating, ratingImg, rateAverage, roundedAverage, rateTotal, roundedTotal, link, listImgFall, totalNights);
 
                     }); // end each loop
                 
