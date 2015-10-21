@@ -156,8 +156,6 @@ angular.module('triviziApp')
 
                 }
 
-
-
                 /*
                 		$scope.emptyPlace = function() {
                 	        $('.placeHolderLocation').empty();
