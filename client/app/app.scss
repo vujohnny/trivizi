@@ -58,10 +58,11 @@ $break-phone: 768px;
 // injector
 @import 'admin/admin.scss';
 @import 'db/db.scss';
+@import 'filterNav/filterNav.scss';
 @import 'footer/footer.scss';
 @import 'googleMap/googleMap.scss';
 @import 'main/main.scss';
-@import 'main/results.scss';
+@import 'resultsList/resultsList.scss';
 @import '../components/modal/modal.scss';
 @import '../components/oauth-buttons/oauth-buttons.scss';
 // endinjector

@@ -9,31 +9,30 @@ input::-webkit-inner-spin-button {
     margin: 0;
 }
 
-.arrow-disable::-ms-expand {	
-	display: none; 
-	outline: 0;
+.arrow-disable::-ms-expand {
+    display: none;
+    outline: 0;
 }
 
-.arrow-disable{
+.arrow-disable {
     -webkit-appearance: none;
     appearance: none;
     outline: 0;
-}	
+}
 
 .navbar-default {
-	background: none;
-	border: 0;
-	margin-top: 20px;
-	//text-align: center;
+    background: none;
+    border: 0;
+    margin-top: 20px;
+    //text-align: center;
 }
 
 .caret {
-	//display: none;
-	color: $salmon;
+    //display: none;
+    color: $salmon;
 }
 
 // site styles
-
 .logo {
     width: 7em;
     margin-top: 1em;
@@ -41,7 +40,7 @@ input::-webkit-inner-spin-button {
 }
 
 .top-menu {
-	background-color: #ececec;
+    background-color: #ececec;
     padding: 20px;
     display: none;
     /*font-size: 1.3vw;
@@ -49,104 +48,90 @@ input::-webkit-inner-spin-button {
     @media screen and (max-width: $break-phone) {
 		font-size: 3vw;
 	}*/
-	
 }
 
 .budgetInput {
-	background-color: transparent;
-	border: none;
-	outline: none;
-	width: 85px;
-	color: $salmon;
-	font-weight: bold;
-	margin-bottom: -6px;
-	line-height: 50px;
-	
-	@media screen and (max-width: $break-phone) {
-		line-height: 23px;
-		width: 40px;
-	}
-		
+    background-color: transparent;
+    border: none;
+    outline: none;
+    width: 85px;
+    color: $salmon;
+    font-weight: bold;
+    margin-bottom: -6px;
+    line-height: 50px;
+    @media screen and (max-width: $break-phone) {
+        line-height: 23px;
+        width: 40px;
+    }
 }
 
 .no-line-height {
-	line-height: normal;
+    line-height: normal;
 }
 
 .where-drop-down {
-	
-	li {
-		font-size: 1em;
-		line-height: 20px;
-		font-weight: normal;
-		color: #000;
-		
-		input {
-			margin: 0 7px;
-		}
-		
-	}
-	
+    li {
+        font-size: 1em;
+        line-height: 20px;
+        font-weight: normal;
+        color: #000;
+        input {
+            margin: 0 7px;
+        }
+    }
 }
 
 .adult-drop-down {
-	outline: 0;
-	border: none;
-	color: $salmon;
-	border-radius: 0px;
+    outline: 0;
+    border: none;
+    color: $salmon;
+    border-radius: 0px;
     background-color: transparent;
     cursor: pointer;
 }
 
 .intro-text {
-   	margin: 20vh auto 0 auto;
-   	   
+    margin: 20vh auto 0 auto;
     span {
-		cursor: pointer;
-		font-weight: 600;
-	}
-	
-	.caret {
-		border-bottom: 0;
-	    border-top: 7px solid;
-		border-right: 5px solid transparent;
-		border-left: 5px solid transparent;
-		margin: 0px 0px 0px 7px;
-	}
-	
-	@media screen and (max-width: $break-phone) {
-		h1 {
-			font-size: 1.2em;
-		}
-	}
-    
+        cursor: pointer;
+        font-weight: 600;
+    }
+    .caret {
+        border-bottom: 0;
+        border-top: 7px solid;
+        border-right: 5px solid transparent;
+        border-left: 5px solid transparent;
+        margin: 0px 0px 0px 7px;
+    }
+    @media screen and (max-width: $break-phone) {
+        h1 {
+            font-size: 1.2em;
+        }
+    }
 }
 
 .when-calendar {
-	width: 100%;
-	
-	table {
-		width: 100%;
-		
-		.btn-default[disabled], .btn-default {
-			border: 0;
-		}
-		
-		.btn-info.active {
-			background-color: $grey;	
-		}
-		
-		.text-info {
-			color: $salmon;
-		}
-		
-	}
-	
+    width: 100%;
+    table {
+        width: 100%;
+        .btn-default[disabled],
+        .btn-default {
+            border: 0;
+        }
+        .btn-info.active {
+            background-color: $grey;
+        }
+        .text-info {
+            color: $salmon;
+        }
+    }
 }
 
-#googleMap, #results-container {
-	height: 90vh; 
+#googleMap,
+#results-container {
+    height: 90vh;
 }
+
 
 /*
 #googleMap { 

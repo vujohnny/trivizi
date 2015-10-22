@@ -1,4 +1,5 @@
 <!--<navbar></navbar>-->
+<input id="navLocationField" type="text" ng-model="specificLocation" ng-change="emptyPlace()">
 
 <div class="typography row" ng-controller="MainController">
 	
@@ -86,126 +87,13 @@
 	<!--- results list with google maps -->
     <div id="results-container" class="col-sm-6 typography">
 
-        <div class="row typography top-menu">
-
-            <div class="filterBlock col-sm-2">
-                <div class="filterTitle">Budget:</div>
-                <div class="filterValue">
-                    <span class="salmon">
-                        $<input type="number" ng-model="budgetAmount" class="budgetInput no-line-height" placeholder="1000" min="25" max="9999">
-                    </span>
-                </div>
-            </div>
-
-            <div class="filterBlock col-sm-3">
-                <div class="filterTitle">Where:</div>
-                <div class="filterValue">
-                    <span class="dropdown salmon" dropdown>
-                        <span class="dropdown-toggle" dropdown-toggle>
-                            <span class="placeHolderLocation">Romantic</span> {{ specificLocation | limitTo: 17 }}{{specificLocation.length > 12 ? '...' : ''}}
-                        </span>
-                        <ul class="where-drop-down dropdown-menu disable-drop" dropdown-menu>
-                            <li>
-                                <input id="navLocationField" type="text" ng-model="specificLocation" ng-change="emptyPlace()">
-                            </li>
-
-                            <hr>
-
-                            <li ng-repeat="places in typesOfPlaces">
-                                <input type="checkbox" name="{{places}}" value="{{places}}" ng-model="placeSelected">{{places}}
-                            </li>
-
-                        </ul>
-                    </span>
-                </div>
-            </div>
-            
-            <div class="filterBlock col-sm-1">
-                <div class="filterTitle">For:</div> 
-                <div class="filterValue">
-                    <select ng-model="numberOfAdults.value" ng-options="v for v in numberOfAdults.values" class="adult-drop-down salmon arrow-disable"></select>
-                </div>
-            </div>
-
-            <div class="filterBlock col-sm-3">
-                <div class="filterTitle">From:</div>
-                <div class="filterValue">
-                    <span class="dropdown salmon" dropdown>
-                        <span class="dropdown-toggle" dropdown-toggle>
-                            {{arriveDate.defaultValue | date:'EEE, MMM dd' }}
-                        </span>
-                        <div class="when-drop-down dropdown-menu disable-drop" dropdown-menu>
-                            <div class="when-calendar">
-                                <datepicker ng-model="arriveDate.defaultValue" min-date="arriveDate.minDate" max-date="arriveDate.maxDate" show-weeks="arriveDate.showweeks" datepicker-mode="arriveDate.mode" max-mode="arriveDate.mode"></datepicker>
-                            </div>
-                        </div>
-                    </span>
-                </div>
-            </div>
-
-            <div class="filterBlock col-sm-3">
-                <div class="filterTitle">To:</div>
-                <div class="filterValue">
-                    <span class="dropdown salmon" dropdown>
-                        <span class="dropdown-toggle" dropdown-toggle>
-                            {{departDate.defaultValue | date:'EEE, MMM dd' }}
-                        </span>
-                        <div class="when-drop-down dropdown-menu disable-drop" dropdown-menu>
-                            <div class="when-calendar">
-                                <datepicker ng-model="departDate.defaultValue" min-date="departDate.minDate" max-date="departDate.maxDate" show-weeks="departDate.showweeks" datepicker-mode="departDate.mode" max-mode="departDate.mode"></datepicker>
-                            </div>
-                        </div>
-                    </span>
-                </div>
-            </div>
-
-        </div> <!-- end row for top nav -->        
+        <filter-nav></filter-nav>
         
         
-        
-        <div class="results" ng-repeat="item in resultsList">
+		<results-list></results-list>        
 
-            <div id="{{item.id}}" class="col-sm-6 hotel-item" ng-click="highlightMarker(item.markerId)" ng-class='{activeResult:$first}'>
-                
-                <div class="hotelImgContainer">
-                    <img ng-src="http://images.travelnow.com/{{item.listImg}}" fallback-src="http://images.travelnow.com/{{item.listImgFall}}" alt="{{item.name}}" class="hotelImg">
-                </div>
-                
-                <div class="hotelAverageContainer">
-                    <span class="hotelAvgPrice">${{item.roundedAverage}}</span>
-                    <span class="hotelPerNight">/Night</span>
-                    <span class="hotelRatingContainer">
-                        <img src="{{item.ratingImg}}" class="tripAdvisorRating">
-                    </span>
-                </div>
-                
-                <div class="hotelInfo text-center">
-                    <div class="hotelTitle">
-                        <span>{{item.name}}</span>
-                    </div>
-                    <div class="hotelTotal">
-                        Total for {{item.totalNights}} nights: 
-                        <strong>${{item.roundedTotal}}</strong>
-                    </div>
-                    <a href="{{item.link}}" target="_blank">
-                        <button class="btn btn-default btn-book">Book Now</button>
-                    </a>    
-                </div>
-
-            </div>  
-
-        </div>
 	</div> <!-- end results -->
-    
-    
-    
-    
-    
-    
-    
-    
-    
-	
+
     <google-map></google-map>
 	
 </div> <!-- end main view -->
