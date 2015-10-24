@@ -5,19 +5,17 @@ angular.module('triviziApp')
         return {
             templateUrl: 'app/googleMap/googleMap.html',
             restrict: 'EA',
-            //require: '^filterNav',
-            controller: function ($scope, $element) {
-            },
-            link: function ($scope, $element, $attrs, ean) {
-
+            require: '^?filterNavCtrl',
+            link: function ($scope, $element, $attrs, filterNavCtrl) {
+                
+                filterNavCtrl.setupInput();
+                //console.log($scope.fooBar);
+                                
                 /*
                  * required google map vars for map initialization 
                  * ie markers, marker windows, styles, map options
                  */
-                
-                //console.log(filterNav.sexyVariable);
-                $scope.navInput = document.getElementById('navLocationField');
-                                
+                                                                
                 var resultsItem = ".results",
                     resultsHotelItem = ".hotel-item",
                     resultsContainer = "#results-container",
@@ -31,8 +29,8 @@ angular.module('triviziApp')
                     options = {
                         types: ['geocode']
                     },
-                    //navInput = document.getElementById('navLocationField'),
-                    navAutocomplete = new google.maps.places.Autocomplete($scope.navInput, options),
+                    navInput = document.getElementById('navLocationField'),
+                    navAutocomplete = new google.maps.places.Autocomplete(navInput, options),
                     //introInput = document.getElementById('introLocationField'),
                     //introAutocomplete = new google.maps.places.Autocomplete(introInput, options),
 

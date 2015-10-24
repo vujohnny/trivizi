@@ -2,7 +2,7 @@
 (function () {
 
     function MainController($scope, $http, socket, $filter, ean) {
-
+        
         $scope.budgetAmount = 1000;
 
         $scope.typesOfPlaces = ['Romantic', 'Tropical', 'Party', 'Pets Ok', 'Family'];
@@ -36,7 +36,6 @@
          */
 
         $scope.seekDeer = function () {
-            //console.log("inside getCurrentValue");
             $http.post('/api/things', {
                 name: "$" + $scope.budgetAmount + " | " + $scope.calendarArrive + " - " + $scope.calendarDepart + " | " + $scope.specificLocation
             });
