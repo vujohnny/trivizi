@@ -8,7 +8,7 @@ angular.module('triviziApp')
             require: '^?filterNavCtrl',
             link: function ($scope, $element, $attrs, filterNavCtrl) {
                 
-                filterNavCtrl.setupInput();
+                //filterNavCtrl.setupInput();
                 //console.log($scope.fooBar);
                                 
                 /*
