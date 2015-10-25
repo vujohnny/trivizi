@@ -34,11 +34,10 @@
                 name: "$" + $scope.budgetAmount + " | " + $scope.calendarArrive + " - " + $scope.calendarDepart + " | " + $scope.specificLocation
             });
             $scope.newThing = '';
-            //$scope.showMap();
             ean.eanRequest($scope);
         };
 
-    } // end MainController
+    }
 
     angular.module('triviziApp').controller('MainController', MainController);
 })();
