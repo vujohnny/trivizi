@@ -1,6 +1,7 @@
 .markerDisplay {
     font-weight: bold;
     font-size: 1.4em;
+
     .tripAdvisorRating {
         margin: 5px 0;
         width: 5em;
@@ -13,13 +14,14 @@
     display: none;
     height: 100vh;
     background-color: $highlight-grey;
-    
+
     .hotel-item {
         height: auto;
         padding: 10px;
         margin: 10px auto;
         position: relative;
         cursor: pointer;
+
         .hotel-item-container {
             background-color: #ffffff;
             outline: 1px solid $border-grey;
@@ -37,24 +39,46 @@
         float: left;
     }
 
+    .hotelInfo {
+        .btn-book {
+            width: 90%;
+            margin: 0 20px 20px 20px;
+            color: $blue;
+            border-color: $blue;
+            font-size: 1.2em;
+            font-weight: 600;
+            &:hover {
+                background-color: $blue;
+                color: #ffffff;
+            }
+        }
+    }
+
     .hotelAverageContainer {
         position: relative;
-        bottom: 65px;
-        padding: 10px;
+        width: 100%;
+        height: 65px;
+        top: -70px;
+        padding: 10px 25px 15px 10px;
+
         .hotelAverageContainerPrice {
             color: #ffffff;
             float: left;
+
             .hotelAvgPrice {
                 font-size: 2.5em;
                 font-weight: bold;
             }
         }
+
         .hotelRatingContainer {
             float: right;
+
             .ratingCount {
                 color: #ffffff;
                 margin-top: .5em;
             }
+
             .tripAdvisorRating {
                 width: 80px;
             }
@@ -62,46 +86,72 @@
     }
 
     .hotelPerNight {
-        font-size: 1em;
-        font-weight: normal;
-        font-style: italic;
-        text-align: center;
+        font-size: .8em;
+        font-weight: 600;
         margin-left: -0.3em;
     }
 
     .hotelTitle {
-        clear: both;
+        width: 100%;
+        height: 70px;
+        display: table;
+        text-align: center;
+
+        span {
+            display: table-cell;
+            vertical-align: middle;
+            font-size: 1.2em;
+            font-weight: 600;
+            padding: 20px 0 0;
+        }
     }
 
     .hotelTotal {
-        margin: 10px 0;
+        margin: 20px 0;
     }
 
     .hotelImgContainer {
-        position:relative;
-        display:inline-block;
+        position: relative;
+        display: inline-block;
         width: 100%;
     }
 
     .hotelImgContainer:after {
-        content:'';
-        position:absolute;
-        left:0; top:0;
-        width:100%; height:100%;
-        display:inline-block;
-        background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.55) 100%); /* FF3.6+ */
-        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.55)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
-        background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.55) 100%); /* Chrome10+,Safari5.1+ */
-        background: -o-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.55) 100%); /* Opera 11.10+ */
-        background: -ms-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.55) 100%); /* IE10+ */
-        background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.55) 100%); /* W3C */
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        display: inline-block;
+        background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.55) 100%);
+
+        /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0.55)), color-stop(100%, rgba(0, 0, 0, 0)));
+
+        /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.55) 100%);
+
+        /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.55) 100%);
+
+        /* Opera 11.10+ */
+        background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.55) 100%);
+
+        /* IE10+ */
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.55) 100%);
+
+        /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 );
+
+        /* IE6-9 */
     }
 
     .hotelImg {
         width: 100%;
         height: 20vw;
-        display:block;
+        display: block;
+
         @media screen and (max-width: $break-phone) {
             height: 60vw;
         }
@@ -110,7 +160,6 @@
     .activeResult {
         outline: 1px solid $salmon;
     }
-
 }
 
 // disable intro text and go straight to maps
