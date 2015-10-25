@@ -6,6 +6,10 @@ angular.module('triviziApp')
             restrict: 'EA',
             link: function($scope, $element, $attrs) {
                 $scope.typesOfPlaces = ['Romantic', 'Tropical', 'Party', 'Pets Ok', 'Family'];
+                
+                $scope.emptyPlace = function() {
+                	$('.placeHolderLocation').remove(); //<-- need to remove this function once categories are working
+                }
             }
         };
     });

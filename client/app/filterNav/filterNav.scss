@@ -1,5 +1,10 @@
 .filterBlock {
 	border: 1px solid $border-grey;
 	border-left: 0;
-	padding: 1em;
+	padding: 1.5em;
+	background-color: #ffffff;
+	&:hover {
+		background-color: $highlight-grey;
+		cursor: pointer;
+	}
 }
