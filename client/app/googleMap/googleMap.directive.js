@@ -5,11 +5,7 @@ angular.module('triviziApp')
         return {
             templateUrl: 'app/googleMap/googleMap.html',
             restrict: 'EA',
-            require: '^?filterNavCtrl',
-            link: function ($scope, $element, $attrs, filterNavCtrl) {
-                
-                //filterNavCtrl.setupInput();
-                //console.log($scope.fooBar);
+            link: function ($scope, $element, $attrs) {
                                 
                 /*
                  * required google map vars for map initialization 

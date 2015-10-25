@@ -1,8 +1,8 @@
 'use strict';
-(function () {
+(function() {
 
     function MainController($scope, $http, socket, $filter, ean) {
-        
+
         $scope.budgetAmount = 1000;
 
         $scope.typesOfPlaces = ['Romantic', 'Tropical', 'Party', 'Pets Ok', 'Family'];
@@ -35,7 +35,7 @@
          * main seekdeer function submit
          */
 
-        $scope.seekDeer = function () {
+        $scope.seekDeer = function() {
             $http.post('/api/things', {
                 name: "$" + $scope.budgetAmount + " | " + $scope.calendarArrive + " - " + $scope.calendarDepart + " | " + $scope.specificLocation
             });
@@ -44,7 +44,7 @@
             ean.eanRequest($scope);
         };
 
-        $('.disable-drop').click(function (event) {
+        $('.disable-drop').click(function(event) {
             event.stopPropagation();
         });
 
@@ -54,21 +54,21 @@
          * budget, where, adults, calendar
          */
 
-        $scope.$watch("arriveDate.defaultValue", function () {
+        $scope.$watch("arriveDate.defaultValue", function() {
             $scope.calendarArrive = $filter('date')($scope.arriveDate.defaultValue, 'MM/dd/yyyy');
             //console.log("From: " + $scope.calendarArrive);
         });
 
-        $scope.$watch("departDate.defaultValue", function () {
+        $scope.$watch("departDate.defaultValue", function() {
             $scope.calendarDepart = $filter('date')($scope.departDate.defaultValue, 'MM/dd/yyyy');
             //console.log("To: " + $scope.calendarDepart);
         });
 
-        $scope.$watch("budgetAmount", function () {
+        $scope.$watch("budgetAmount", function() {
             //console.log($scope.budgetAmount);
         });
 
-        $scope.$watch("numberOfAdults.value  ", function () {
+        $scope.$watch("numberOfAdults.value  ", function() {
             //console.log($scope.numberOfAdults.value);
         });
 
@@ -83,10 +83,10 @@
  * in case image size isnt provided
  */
 
-angular.module('triviziApp').directive('fallbackSrc', function () {
+angular.module('triviziApp').directive('fallbackSrc', function() {
     var fallbackSrc = {
         link: function postLink(scope, iElement, iAttrs) {
-            iElement.bind('error', function () {
+            iElement.bind('error', function() {
                 angular.element(this).attr("src", iAttrs.fallbackSrc);
             });
         }
