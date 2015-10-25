@@ -11,6 +11,10 @@ angular.module('triviziApp')
                  * required google map vars for map initialization 
                  * ie markers, marker windows, styles, map options
                  */
+
+                 $('.disable-drop').click(function (event) {
+                    event.stopPropagation();
+                });
                                                                 
                 var resultsItem = ".results",
                     resultsHotelItem = ".hotel-item",
