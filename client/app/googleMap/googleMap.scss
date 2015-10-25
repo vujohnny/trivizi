@@ -2,11 +2,20 @@
     height: 100vh;
 }
 
-#googleMap { 
-	visibility: hidden;
-	
-	@media screen and (max-width: $break-phone) {
-		display: none !important;
-	}
-	
+#googleMap {
+    visibility: hidden;
+
+    @media screen and (max-width: $break-phone) {
+        display: none !important;
+    }
+}
+
+.markerDisplay {
+    font-weight: bold;
+    font-size: 1.4em;
+
+    .ratingImg {
+        margin: 5px 0;
+        width: 5em;
+    }
 }

@@ -74,9 +74,9 @@ angular.module('triviziApp')
                 $scope.highlightResult = function (hotelId, hotelLat, hotelLng) {
                     var selectedId = hotelId;
                     $(resultsItem+" "+resultsHotelItem).removeClass("activeResult");
-                    //$(".btn-book").removeClass("btn-on");
+                    $(".btn-book").removeClass("btn-on");
                     $(resultsItem+" #"+selectedId+"").addClass("activeResult");
-                    //$(resultsItem+" #"+selectedId+" .hotelInfo .btn-book").addClass("btn-on");
+                    $(resultsItem+" #"+selectedId+" .hotelInfoContainer .btn-book").addClass("btn-on");
 
                     var highlightResult = document.getElementById(selectedId);
                     var topPos = highlightResult.offsetTop - 25;
@@ -129,7 +129,7 @@ angular.module('triviziApp')
                         $scope.markersDisplay(lat, lng);
                         google.maps.event.addListener(marker, 'click', (function (marker, i) {
                             return function () {
-                                infowindow.setContent("<div id=\"" + id + "\" class=\"markerDisplay typography\"><span class=\"markerTotal\">$" + roundedTotal + "</span> <span class=\"medium-grey\">|</span> <img src=\"" + ratingImg + "\" class=\"tripAdvisorRating\"></div>");
+                                infowindow.setContent("<div id=\"" + id + "\" class=\"markerDisplay typography\"><span class=\"markerTotal\">$" + roundedTotal + "</span> <span class=\"medium-grey\">|</span> <img src=\"" + ratingImg + "\" class=\"ratingImg\"></div>");
                                 infowindow.open(map, marker);
                                 $scope.highlightResult(id);
                             }
