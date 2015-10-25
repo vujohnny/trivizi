@@ -1,11 +1,8 @@
 <div class="results" ng-repeat="item in resultsList">
-
     <div id="{{item.id}}" class="col-sm-6 hotel-item" ng-click="highlightMarker(item.markerId)" ng-class='{activeResult:$first}'>
-
         <div class="hotelImgContainer">
             <img ng-src="http://images.travelnow.com/{{item.listImg}}" fallback-src="http://images.travelnow.com/{{item.listImgFall}}" alt="{{item.name}}" class="hotelImg">
         </div>
-
         <div class="hotelAverageContainer">
             <span class="hotelAvgPrice">${{item.roundedAverage}}</span>
             <span class="hotelPerNight">/Night</span>
@@ -13,7 +10,6 @@
                 <img src="{{item.ratingImg}}" class="tripAdvisorRating">
             </div>
         </div>
-
         <div class="hotelInfo text-center">
             <div class="hotelTitle">
                 <span>{{item.name}}</span>
@@ -26,7 +22,5 @@
                 <button class="btn btn-default btn-book">Book Now</button>
             </a>
         </div>
-
     </div>
-
 </div>
