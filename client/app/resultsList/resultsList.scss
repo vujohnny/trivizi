@@ -5,10 +5,6 @@
     height: 100vh;
     background-color: $highlight-grey;
 
-    .activeResult {
-        outline: 1px solid $salmon;
-    }
-
     .hotel-item {
         height: auto;
         padding: 10px;
@@ -19,6 +15,7 @@
         .hotel-item-container {
             background-color: #ffffff;
             outline: 1px solid $border-grey;
+            position: relative;
 
             .hotelImgContainer {
                 position: relative;
@@ -36,116 +33,115 @@
                 }
             }
 
-            .hotelImgContainer:after {
-                content: '';
+            .hotelSummary {
                 position: absolute;
-                left: 0;
-                top: 0;
                 width: 100%;
-                height: 100%;
-                display: inline-block;
-                background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.55) 100%);
+                height: 65px;
+                margin-top: -70px;
+                padding: 10px;
+                background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 90%);
 
                 /* FF3.6+ */
-                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0.55)), color-stop(100%, rgba(0, 0, 0, 0)));
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0.7)), color-stop(90%, rgba(0, 0, 0, 0)));
 
                 /* Chrome,Safari4+ */
-                background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.55) 100%);
+                background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 90%);
 
                 /* Chrome10+,Safari5.1+ */
-                background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.55) 100%);
+                background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 90%);
 
                 /* Opera 11.10+ */
-                background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.55) 100%);
+                background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 90%);
 
                 /* IE10+ */
-                background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.55) 100%);
+                background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 90%);
 
                 /* W3C */
                 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 );
 
                 /* IE6-9 */
-            }
-        }
 
-        .hotelSummary {
-            position: absolute;
-            width: 100%;
-            height: 65px;
-            margin-top: -70px;
-            padding: 10px 25px 15px 10px;
-
-            .hotelPerNight {
-                font-size: .8em;
-                font-weight: 600;
-                margin-left: -0.3em;
-            }
-
-            .hotelPriceContainer {
-                color: #ffffff;
-                float: left;
-
-                .hotelAvgPrice {
-                    font-size: 2.5em;
-                    font-weight: bold;
-                }
-            }
-
-            .hotelRatingContainer {
-                float: right;
-
-                .ratingCount {
-                    color: #ffffff;
-                    margin-top: .5em;
-                }
-
-                .ratingImg {
-                    width: 80px;
-                }
-            }
-        }
-
-        .hotelInfoContainer {
-            position: relative;
-
-            .hotelTitle {
-                width: 100%;
-                height: 70px;
-                display: table;
-                text-align: center;
-
-                span {
-                    display: table-cell;
-                    vertical-align: middle;
-                    font-size: 1.2em;
+                .hotelPerNight {
+                    font-size: .8em;
                     font-weight: 600;
-                    padding: 20px 0 0;
+                    margin-left: -0.3em;
                 }
-            }
 
-            .hotelTotal {
-                margin: 20px 0;
-            }
-
-            .btn-book {
-                width: 90%;
-                margin: 0 20px 20px 20px;
-                color: $blue;
-                border-color: $blue;
-                font-size: 1.2em;
-                font-weight: 600;
-
-                &:hover {
-                    background-color: $blue;
+                .hotelPriceContainer {
                     color: #ffffff;
+                    float: left;
+
+                    .hotelAvgPrice {
+                        font-size: 2.5em;
+                        font-weight: bold;
+                    }
+                }
+
+                .hotelRatingContainer {
+                    float: right;
+
+                    .ratingCount {
+                        color: #ffffff;
+                        margin-top: .5em;
+                    }
+
+                    .ratingImg {
+                        width: 80px;
+                    }
                 }
             }
 
-            .btn-on {
-                background-color: $blue;
-                color: #ffffff;
+            .hotelInfoContainer {
+                position: relative;
+
+                .hotelTitle {
+                    width: 100%;
+                    height: 70px;
+                    display: table;
+                    text-align: center;
+
+                    span {
+                        display: table-cell;
+                        vertical-align: middle;
+                        font-size: 1.2em;
+                        font-weight: 600;
+                        padding: 20px 0 0;
+                    }
+                }
+
+                .hotelTotal {
+                    margin: 20px 0;
+                }
+
+                .hotelLink {
+                    display: table;
+                    width: 100%;
+
+                    .btn-book {
+                        width: 90%;
+                        margin: 20px 0;
+                        color: $blue;
+                        border-color: $blue;
+                        font-size: 1.2em;
+                        font-weight: 600;
+
+                        &:hover {
+                            background-color: $blue;
+                            color: #ffffff;
+                        }
+                    }
+
+                    .btn-on {
+                        background-color: $blue;
+                        color: #ffffff;
+                    }
+                }
             }
         }
+    }
+
+    .activeResult {
+        outline: 1px solid $salmon !important;
     }
 }
 

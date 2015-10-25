@@ -1,7 +1,7 @@
 <div id="results-container" class="col-lg-12 typography">
     <div class="results" ng-repeat="item in resultsList">
-        <div id="{{item.id}}" class="col-sm-6 hotel-item" ng-click="highlightMarker(item.markerId)" ng-class="{'activeResult':$first}">
-            <div class="hotel-item-container">
+        <div id="{{item.id}}" class="col-sm-6 hotel-item" ng-click="highlightMarker(item.markerId)">
+            <div class="hotel-item-container" ng-class="{'activeResult':$first}">
 
                 <!-- hotel image window -->
                 <div class="hotelImgContainer">
@@ -32,9 +32,11 @@
                         Total for {{item.totalNights}} nights:
                         <strong>${{item.roundedTotal}}</strong>
                     </div>
-                    <a href="{{item.link}}" target="_blank">
-                        <button class="btn btn-default btn-book" ng-class="{'btn-on' : $first}">Book Now</button>
-                    </a>
+                    <div class="hotelLink">
+                        <a href="{{item.link}}" target="_blank">
+                            <button class="btn btn-default btn-book" ng-class="{'btn-on' : $first}">Book Now</button>
+                        </a>
+                    </div>
 
                 </div>
 

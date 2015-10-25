@@ -73,9 +73,9 @@ angular.module('triviziApp')
                 
                 $scope.highlightResult = function (hotelId, hotelLat, hotelLng) {
                     var selectedId = hotelId;
-                    $(resultsItem+" "+resultsHotelItem).removeClass("activeResult");
+                    $(resultsItem+" "+resultsHotelItem+" .hotel-item-container").removeClass("activeResult");
                     $(".btn-book").removeClass("btn-on");
-                    $(resultsItem+" #"+selectedId+"").addClass("activeResult");
+                    $(resultsItem+" #"+selectedId+" .hotel-item-container").addClass("activeResult");
                     $(resultsItem+" #"+selectedId+" .hotelInfoContainer .btn-book").addClass("btn-on");
 
                     var highlightResult = document.getElementById(selectedId);
