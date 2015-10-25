@@ -1,0 +1,16 @@
+.when-calendar {
+    width: 100%;
+    table {
+        width: 100%;
+        .btn-default[disabled],
+        .btn-default {
+            border: 0;
+        }
+        .btn-info.active {
+            background-color: $grey;
+        }
+        .text-info {
+            color: $salmon;
+        }
+    }
+}

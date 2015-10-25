@@ -2,7 +2,6 @@
 
 angular.module('triviziApp')
   .service('ean', function ($http) {
-    // AngularJS will instantiate a singleton by calling "new" on this function
     /*
         * ean request $http call
         * $http() returns a $promise that we can add handlers with .then()
