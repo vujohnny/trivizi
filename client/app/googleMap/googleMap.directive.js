@@ -31,8 +31,6 @@ angular.module('triviziApp')
                     },
                     navInput = document.getElementById('navLocationField'),
                     navAutocomplete = new google.maps.places.Autocomplete(navInput, options),
-                    //introInput = document.getElementById('introLocationField'),
-                    //introAutocomplete = new google.maps.places.Autocomplete(introInput, options),
 
                     snazzyMap = [{"featureType":"water","elementType":"geometry","stylers":[{"color":"#a0d6d1"},{"lightness":17}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#dedede"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#dedede"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#dedede"},{"lightness":18}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":16}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#f1f1f1"},{"lightness":21}]},{"elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#ffffff"},{"lightness":16}]},{"elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#333333"},{"lightness":40}]},{"elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#f2f2f2"},{"lightness":19}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#fefefe"},{"lightness":20}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#fefefe"},{"lightness":17},{"weight":1.2}]}],
                     map = new google.maps.Map(document.getElementById('googleMap'), {
@@ -47,10 +45,10 @@ angular.module('triviziApp')
                         streetViewControl: true,
                         scrollwheel: false,
                         zoomControlOptions: {
-                            position: google.maps.ControlPosition.LEFT_TOP
+                            position: google.maps.ControlPosition.LEFT_CENTER
                         },
                         streetViewControlOptions: {
-                            position: google.maps.ControlPosition.LEFT_TOP
+                            position: google.maps.ControlPosition.LEFT_CENTER
                         },
                         styles: snazzyMap
                     });
@@ -64,13 +62,7 @@ angular.module('triviziApp')
                     $scope.destination = navAutocomplete.getPlace();
                     $scope.specificLocation = $scope.destination.formatted_address;
                     $scope.seekDeer($scope.destination.formatted_address);
-                });
-                
-//                $scope.introLocationChanged = google.maps.event.addListener(introAutocomplete, 'place_changed', function () {
-//                    $scope.destination = introAutocomplete.getPlace();
-//                    $scope.specificLocation = $scope.destination.formatted_address;
-//                    $scope.seekDeer($scope.destination.formatted_address);
-//                });                
+                });              
 
                 $scope.showMap = function () {
                     $(".intro-text").fadeOut("slow", function () {
@@ -129,7 +121,7 @@ angular.module('triviziApp')
                     }
                 }
 
-                $scope.buildReturn = function (lat, lng, id, name, shortDescription, listImg, rating, ratingImg, rateAverage, roundedAverage, rateTotal, roundedTotal, link, listImgFall, totalNights) {
+                $scope.buildReturn = function (lat, lng, id, name, shortDescription, listImg, rating, ratingImg, ratingCount, rateAverage, roundedAverage, rateTotal, roundedTotal, link, listImgFall, totalNights) {
 
                     if (rateTotal < $scope.budgetAmount && $scope.resultsList.length < 20) {
 
@@ -150,6 +142,7 @@ angular.module('triviziApp')
                             listImg: listImg,
                             listImgFall: listImgFall,
                             ratingImg: ratingImg,
+                            ratingCount: ratingCount,
                             roundedAverage: roundedAverage,
                             roundedTotal: roundedTotal,
                             link: link,

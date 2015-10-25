@@ -36,12 +36,13 @@ angular.module('triviziApp')
                         var lat 				= v.latitude, 
                             lng 				= v.longitude,
                             id		 			= v.hotelId,
-                            name 				= v.name, 
+                            name 				= v.name.replace("&amp;","&"), 
                             shortDescription 	= v.shortDescription, 
                             listImg 			= v.thumbNailUrl.replace("_t", "_z"),
                             listImgFall			= v.thumbNailUrl.replace("_t", "_b"),
                             rating				= v.tripAdvisorRating, 
                             ratingImg			= v.tripAdvisorRatingUrl,
+                            ratingCount         = v.tripAdvisorReviewCount,
                             rateAverage 		= v.RoomRateDetailsList.RoomRateDetails.RateInfos.RateInfo.ChargeableRateInfo["@averageRate"],
                             roundedAverage 		= Math.round(rateAverage),
                             rateTotal 			= v.RoomRateDetailsList.RoomRateDetails.RateInfos.RateInfo.ChargeableRateInfo["@total"],
@@ -49,7 +50,7 @@ angular.module('triviziApp')
                             totalNights 		= v.RoomRateDetailsList.RoomRateDetails.RateInfos.RateInfo.ChargeableRateInfo.NightlyRatesPerRoom["@size"],
                             link				= v.deepLink.replace(/&amp;/g, '&');
                         
-                        $scope.buildReturn(lat, lng, id, name, shortDescription, listImg, rating, ratingImg, rateAverage, roundedAverage, rateTotal, roundedTotal, link, listImgFall, totalNights);
+                        $scope.buildReturn(lat, lng, id, name, shortDescription, listImg, rating, ratingImg, ratingCount, rateAverage, roundedAverage, rateTotal, roundedTotal, link, listImgFall, totalNights);
 
                     }); // end each loop
                 
