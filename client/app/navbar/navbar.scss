@@ -1,0 +1,17 @@
+.navbar-default {
+    background: none;
+    border: 0;
+    position: absolute;
+    margin-top: 2em;
+
+    .logo {
+        width: 8em;
+    }
+
+    .navbar-nav > li > a {
+        padding-top: 0;
+        font-weight: 600;
+        color: $salmon;
+        font-size: 1.2em;
+    }
+}
