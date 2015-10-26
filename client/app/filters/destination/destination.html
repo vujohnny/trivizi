@@ -1,0 +1,16 @@
+<div class="filterValue">
+	<span class="dropdown salmon" dropdown>
+		<span class="dropdown-toggle" dropdown-toggle>
+			<span class="placeHolderLocation">Romantic</span> {{ specificLocation | limitTo: 13 }}{{specificLocation.length > 12 ? '...' : ''}}
+		</span>
+		<ul class="where-drop-down dropdown-menu disable-drop" dropdown-menu>
+			<li>
+				<input id="navLocationField" type="text" ng-model="specificLocation" ng-change="emptyPlace()">
+			</li>
+			<hr>
+			<li ng-repeat="places in typesOfPlaces">
+				<input type="checkbox" name="{{places}}" value="{{places}}" ng-model="placeSelected">{{places}}
+			</li>
+		</ul>
+	</span>
+</div>

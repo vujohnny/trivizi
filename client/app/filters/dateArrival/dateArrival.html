@@ -1,0 +1,12 @@
+<div class="filterValue">
+	<span class="dropdown salmon" dropdown>
+		<span class="dropdown-toggle" dropdown-toggle>
+			{{arriveDate.defaultValue | date:'EEE, MMM dd' }}
+		</span>
+		<div class="when-drop-down dropdown-menu disable-drop" dropdown-menu>
+			<div class="when-calendar">
+				<datepicker ng-model="arriveDate.defaultValue" min-date="arriveDate.minDate" max-date="arriveDate.maxDate" show-weeks="arriveDate.showweeks" datepicker-mode="arriveDate.mode" max-mode="arriveDate.mode"></datepicker>
+			</div>
+		</div>
+	</span>
+</div>

@@ -1,0 +1,33 @@
+<div class="col-lg-12 typography">
+    <div class="results" ng-repeat="item in resultsList">
+        <div id="{{item.id}}" class="col-sm-6 hotel-item" ng-click="highlightMarker(item.markerId)" ng-class='{activeResult:$first}'>
+            <div class="hotel-item-container">
+                <div class="hotelImgContainer">
+                    <img ng-src="{{item.listImg}}" fallback-src="{{item.listImgFall}}" alt="{{item.name}}" class="hotelImg">
+                </div>
+                <div class="hotelAverageContainer">
+                    <div class="hotelAverageContainerPrice">
+                        <span class="hotelAvgPrice">${{item.roundedAverage}}</span>
+                        <span class="hotelPerNight">/Night</span>
+                    </div>
+                    <div class="hotelRatingContainer">
+                        <div class="ratingCount">{{item.ratingCount}} reviews</div>
+                        <img src="{{item.ratingImg}}" class="tripAdvisorRating">
+                    </div>
+                </div>
+                <div class="hotelInfo text-center">
+                    <div class="hotelTitle">
+                        <span>{{item.name}}</span>
+                    </div>
+                    <div class="hotelTotal">
+                        Total for {{item.totalNights}} nights:
+                        <strong>${{item.roundedTotal}}</strong>
+                    </div>
+                    <a href="{{item.link}}" target="_blank">
+                        <button class="btn btn-default btn-book">Book Now</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
