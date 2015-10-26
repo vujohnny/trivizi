@@ -29,6 +29,10 @@
             //console.log("To: " + $scope.calendarDepart);
         });
 
+        $scope.$watch("priceSlider", function(){
+            //console.log($scope.priceSlider);
+        }); 
+
         $scope.seekDeer = function() {
             $http.post('/api/things', {
                 name: "$" + $scope.budgetAmount + " | " + $scope.calendarArrive + " - " + $scope.calendarDepart + " | " + $scope.specificLocation

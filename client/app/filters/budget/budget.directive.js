@@ -6,7 +6,10 @@ angular.module('triviziApp')
             templateUrl: 'app/filters/budget/budget.html',
             restrict: 'EA',
             link: function($scope, $element, $attrs) {
-                $scope.budgetAmount = 1000;
+                $scope.priceSlider = 50;
+                // $scope.$on("slideEnded", function() {
+                // 	console.log($scope.priceSlider); 
+                // });
             }
         };
     });

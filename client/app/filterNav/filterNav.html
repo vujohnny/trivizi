@@ -1,22 +1,41 @@
 <div class="row typography top-menu">
-    <div class="filterBlock col-lg-2">
+
+    <div class="filterBlock col-lg-2"  ng-click="budgetDetails = ! budgetDetails">
         <div class="filterTitle">Budget:</div>
-        <budget></budget>
+        <div class="salmon no-padding">${{priceSlider}}</div>
+        <!-- <budget></budget> -->
     </div>
+
     <div class="filterBlock col-lg-3">
         <div class="filterTitle">Where:</div>
         <destination></destination>
     </div>
+
     <div class="filterBlock col-lg-1">
         <div class="filterTitle">For:</div>
         <headcount></headcount>
     </div>
+
     <div class="filterBlock col-lg-3">
         <div class="filterTitle">From:</div>
         <date-arrival></date-arrival>
     </div>
+
     <div class="filterBlock col-lg-3">
         <div class="filterTitle">To:</div>
         <date-departure></date-departure>
     </div>
+
+</div>
+
+
+<div class="row typography">
+
+    <div class="customDrop" ng-show="budgetDetails">
+        <div class="upTriangle">
+            <i class="fa fa-caret-up"></i>
+        </div>
+        <budget></budget>
+    </div>
+
 </div>
