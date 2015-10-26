@@ -2,7 +2,7 @@
 
     <div class="filterBlock col-lg-2"  ng-click="budgetDetails = ! budgetDetails">
         <div class="filterTitle">Budget:</div>
-        <div class="salmon no-padding">
+        <div class="salmon">
             ${{priceSlider}}
         </div>
         <!-- <budget></budget> -->
@@ -10,7 +10,7 @@
 
     <div class="filterBlock col-lg-3" ng-click="destinationDetails = ! destinationDetails">
         <div class="filterTitle">Where:</div>
-        <div class="salmon no-padding">
+        <div class="salmon">
             <span class="placeHolderLocation">Romantic</span> {{ specificLocation | limitTo: 13 }}{{specificLocation.length > 12 ? '...' : ''}}
         </div>
         
@@ -21,9 +21,12 @@
         <headcount></headcount>
     </div>
 
-    <div class="filterBlock col-lg-3">
+    <div class="filterBlock col-lg-3" ng-click="arrivalDetails = ! arrivalDetails">
         <div class="filterTitle">From:</div>
-        <date-arrival></date-arrival>
+        <div class="salmon">
+            {{arriveDate.defaultValue | date:'EEE, MMM dd' }}
+        </div>
+        <!-- <date-arrival></date-arrival> -->
     </div>
 
     <div class="filterBlock col-lg-3">
@@ -48,6 +51,13 @@
             <i class="fa fa-caret-up"></i>
         </div>
         <destination></destination>
+    </div>
+
+    <div id="arrivalDetailsContainer" class="customDrop" ng-show="arrivalDetails">
+        <div class="upTriangle">
+            <i class="fa fa-caret-up"></i>
+        </div>
+        <date-arrival></date-arrival>
     </div>
 
 </div>
