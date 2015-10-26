@@ -1,7 +1,7 @@
 'use strict';
 (function() {
 
-    function MainController($scope, $http, socket, $filter, ean) {
+    function MainController($scope, $http, socket, $filter, ean, yelp) {
 
         $scope.arriveDate = {
             defaultValue: new Date(),
@@ -34,7 +34,8 @@
                 name: "$" + $scope.budgetAmount + " | " + $scope.calendarArrive + " - " + $scope.calendarDepart + " | " + $scope.specificLocation
             });
             $scope.newThing = '';
-            ean.eanRequest($scope);
+            //ean.eanRequest($scope);
+            yelp.yelpRequest($scope);
         };
 
     }

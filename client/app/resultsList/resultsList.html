@@ -3,7 +3,7 @@
         <div id="{{item.id}}" class="col-sm-6 hotel-item" ng-click="highlightMarker(item.markerId)" ng-class='{activeResult:$first}'>
             <div class="hotel-item-container">
                 <div class="hotelImgContainer">
-                    <img ng-src="http://images.travelnow.com/{{item.listImg}}" fallback-src="http://images.travelnow.com/{{item.listImgFall}}" alt="{{item.name}}" class="hotelImg">
+                    <img ng-src="{{item.listImg}}" fallback-src="{{item.listImgFall}}" alt="{{item.name}}" class="hotelImg">
                 </div>
                 <div class="hotelAverageContainer">
                     <div class="hotelAverageContainerPrice">
