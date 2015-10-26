@@ -17,8 +17,20 @@
 
     .upTriangle {
         position: absolute;
-        margin-top: -45px;
         font-size: 2em;
         color: $salmon;
+    }
+}
+
+#budgetDetailsContainer {
+    .upTriangle {
+        margin-top: -45px;
+    }
+}
+
+#destinationDetailsContainer {
+	.upTriangle {
+        margin-top: -45px;
+        margin-left: 160px;
     }
 }

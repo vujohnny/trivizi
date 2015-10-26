@@ -2,13 +2,18 @@
 
     <div class="filterBlock col-lg-2"  ng-click="budgetDetails = ! budgetDetails">
         <div class="filterTitle">Budget:</div>
-        <div class="salmon no-padding">${{priceSlider}}</div>
+        <div class="salmon no-padding">
+            ${{priceSlider}}
+        </div>
         <!-- <budget></budget> -->
     </div>
 
-    <div class="filterBlock col-lg-3">
+    <div class="filterBlock col-lg-3" ng-click="destinationDetails = ! destinationDetails">
         <div class="filterTitle">Where:</div>
-        <destination></destination>
+        <div class="salmon no-padding">
+            <span class="placeHolderLocation">Romantic</span> {{ specificLocation | limitTo: 13 }}{{specificLocation.length > 12 ? '...' : ''}}
+        </div>
+        
     </div>
 
     <div class="filterBlock col-lg-1">
@@ -31,11 +36,18 @@
 
 <div class="row typography">
 
-    <div class="customDrop" ng-show="budgetDetails">
+    <div id="budgetDetailsContainer" class="customDrop" ng-show="budgetDetails">
         <div class="upTriangle">
             <i class="fa fa-caret-up"></i>
         </div>
         <budget></budget>
+    </div>
+
+    <div id="destinationDetailsContainer" class="customDrop" ng-show="destinationDetails">
+        <div class="upTriangle">
+            <i class="fa fa-caret-up"></i>
+        </div>
+        <destination></destination>
     </div>
 
 </div>
