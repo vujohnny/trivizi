@@ -1,12 +1,6 @@
 <div class="filterValue">
-	<span class="dropdown salmon" dropdown>
-		<span class="dropdown-toggle" dropdown-toggle>
-			{{departDate.defaultValue | date:'EEE, MMM dd' }}
-		</span>
-		<div class="when-drop-down dropdown-menu disable-drop" dropdown-menu>
-			<div class="when-calendar">
-				<datepicker ng-model="departDate.defaultValue" min-date="departDate.minDate" max-date="departDate.maxDate" show-weeks="departDate.showweeks" datepicker-mode="departDate.mode" max-mode="departDate.mode"></datepicker>
-			</div>
-		</div>
-	</span>
+	<div class="calendar">
+		<div class="calendar-title text-center">Check-out</div>
+		<datepicker ng-model="departDate.defaultValue" min-date="departDate.minDate" max-date="departDate.maxDate" show-weeks="departDate.showweeks" max-mode="day"></datepicker>
+	</div>
 </div>

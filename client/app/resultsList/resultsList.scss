@@ -125,6 +125,7 @@
                         border-color: $blue;
                         font-size: 1.2em;
                         font-weight: 600;
+                        outline: none;
 
                         &:hover {
                             background-color: $blue;
@@ -135,6 +136,7 @@
                     .btn-on {
                         background-color: $blue;
                         color: #ffffff;
+                        outline: none;
                     }
                 }
             }

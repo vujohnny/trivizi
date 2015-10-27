@@ -29,9 +29,12 @@
         <!-- <date-arrival></date-arrival> -->
     </div>
 
-    <div class="filterBlock col-lg-3">
+    <div class="filterBlock col-lg-3" ng-click="departureDetails = ! departureDetails">
         <div class="filterTitle">To:</div>
-        <date-departure></date-departure>
+        <div class="salmon">
+            {{departDate.defaultValue | date:'EEE, MMM dd' }}
+        </div>
+        <!-- <date-departure></date-departure> -->
     </div>
 
 </div>
@@ -58,6 +61,13 @@
             <i class="fa fa-caret-up"></i>
         </div>
         <date-arrival></date-arrival>
+    </div>
+
+    <div id="departureDetailsContainer" class="customDrop" ng-show="departureDetails">
+        <div class="upTriangle">
+            <i class="fa fa-caret-up"></i>
+        </div>
+        <date-departure></date-departure>
     </div>
 
 </div>

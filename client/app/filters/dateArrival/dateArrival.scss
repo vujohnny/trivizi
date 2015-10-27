@@ -1,5 +1,9 @@
-.when-calendar {
+.calendar {
     width: 100%;
+    padding-top: 15px;
+    .calendar-title {
+        margin-bottom: -15px;
+    }
 
     table {
         width: 100%;
@@ -64,10 +68,6 @@ tbody {
     background-color: $salmon !important;
     outline: none;
 }
-
-// .when-calendar table .text-info {
-//     color: inherit !important;
-// }
 
 .pull-left, .pull-right {
     outline: none !important;

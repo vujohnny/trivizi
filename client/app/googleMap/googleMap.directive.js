@@ -124,7 +124,7 @@ angular.module('triviziApp')
 
                 $scope.buildReturn = function (lat, lng, id, name, shortDescription, listImg, rating, ratingImg, ratingCount, rateAverage, roundedAverage, rateTotal, roundedTotal, link, listImgFall, totalNights) {
 
-                    console.log($scope.priceSlider);
+                    //console.log($scope.priceSlider);
                     if (rateTotal < $scope.priceSlider && $scope.resultsList.length < 20) {
 
                         // map markers and pan map to city
