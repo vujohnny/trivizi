@@ -1,7 +1,7 @@
 .filterBlock {
     border: 1px solid $border-grey;
     border-left: 0;
-    padding: 1.5em;
+    padding: 1em;
     background-color: #ffffff;
 
     &:hover {
@@ -14,12 +14,6 @@
     background-color: $salmon;
     padding: 20px;
     color: #ffffff;
-
-    .upTriangle {
-        position: absolute;
-        font-size: 2em;
-        color: $salmon;
-    }
 }
 
 .upTriangle {
@@ -28,7 +22,8 @@
         color: $salmon;
         font-size: 3em;
         position: absolute;
-        margin-top: -6px;
+        margin-top: -10px;
+        margin-left: -10px;
         @media screen and (max-width: $break-phone) {
             display: none;
         }
