@@ -10,6 +10,8 @@ angular.module('triviziApp')
     */ 
     return {
     	eanRequest:function ($scope){
+            $scope.closeAllFilters();
+            
             $http({
                 method: 'jsonp',
                 url: 'http://api.ean.com/ean-services/rs/hotel/v3/list?callback=JSON_CALLBACK',
@@ -19,8 +21,8 @@ angular.module('triviziApp')
                     "locale": "en_US",  
                     "cid": "55505",
                     "destinationString": $scope.specificLocation,
-                    "arrivalDate": "11/19/2015", //"11/19/2015", //$scope.calendarArrive,
-                    "departureDate": "11/22/2015", //"11/20/2015", //$scope.calendarDepart,
+                    "arrivalDate": $scope.calendarArrive, //"11/19/2015", //$scope.calendarArrive,
+                    "departureDate": $scope.calendarDepart, //"11/20/2015", //$scope.calendarDepart,
                     "curencyCode": "USD",
                     "numberOfResults": "200",
                     "room1": $scope.numberOfAdults                    
@@ -28,7 +30,7 @@ angular.module('triviziApp')
             })
                 .then(function (response) {
 
-                    console.log(response.data);
+                    //console.log(response.data);
                     $scope.deleteMarkers();
                     $scope.resultsList = [];
                     $.each(response.data.HotelListResponse.HotelList.HotelSummary, function(k, v) {

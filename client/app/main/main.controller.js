@@ -40,6 +40,14 @@
             $scope.newThing = '';
             ean.eanRequest($scope);
         };
+        
+        $scope.closeAllFilters = function() {
+            $scope.destinationDetails = false;
+            $scope.budgetDetails=false; 
+            $scope.arrivalDetails=false; 
+            $scope.departureDetails=false; 
+            $scope.adultDetails=false;  
+        };
 
     }
 
