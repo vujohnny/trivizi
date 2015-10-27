@@ -21,11 +21,14 @@
 
         $scope.$watch("arriveDate.defaultValue", function() {
             $scope.calendarArrive = $filter('date')($scope.arriveDate.defaultValue, 'MM/dd/yyyy');
+            $scope.seekDeer();
+            $scope.departureDetails=true;
             //console.log("From: " + $scope.calendarArrive);
         });
 
         $scope.$watch("departDate.defaultValue", function() {
             $scope.calendarDepart = $filter('date')($scope.departDate.defaultValue, 'MM/dd/yyyy');
+            $scope.seekDeer();
             //console.log("To: " + $scope.calendarDepart);
         });
 
@@ -46,7 +49,7 @@
             $scope.budgetDetails=false; 
             $scope.arrivalDetails=false; 
             $scope.departureDetails=false; 
-            $scope.adultDetails=false;  
+            //$scope.adultDetails=false;  
         };
 
     }

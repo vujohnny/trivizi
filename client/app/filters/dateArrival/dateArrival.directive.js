@@ -5,6 +5,6 @@ angular.module('triviziApp')
         return {
             templateUrl: 'app/filters/dateArrival/dateArrival.html',
             restrict: 'EA',
-            link: function(scope, element, attrs) {}
+            link: function($scope, $element, $attrs) {}
         };
     });

@@ -7,9 +7,9 @@ angular.module('triviziApp')
             restrict: 'EA',
             link: function($scope, $element, $attrs) {
                 $scope.priceSlider = 50;
-                // $scope.$on("slideEnded", function() {
-                // 	console.log($scope.priceSlider); 
-                // });
+                 $scope.$on("slideEnded", function() {
+                 	$scope.seekDeer(); 
+                 });
             }
         };
     });
