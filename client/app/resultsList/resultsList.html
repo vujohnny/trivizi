@@ -5,6 +5,7 @@
 
                 <!-- hotel image window -->
                 <div class="hotelImgContainer">
+                    <div ng-class="{'loveIconOff': !isActive, 'loveIconOn': isActive}" ng-init="isActive = false" ng-click="isActive = !isActive"></div>
                     <img ng-src="http://images.travelnow.com/{{item.listImg}}" fallback-src="http://images.travelnow.com/{{item.listImgFall}}" alt="{{item.name}}" class="hotelImg">
                 </div>
 
@@ -40,7 +41,11 @@
 
                 </div>
 
-            </div> <!-- end hotel item container-->
-        </div> <!-- end hotel item -->
-    </div> <!-- end results item -->
-</div> <!-- end results container -->
+            </div>
+            <!-- end hotel item container-->
+        </div>
+        <!-- end hotel item -->
+    </div>
+    <!-- end results item -->
+</div>
+<!-- end results container -->
