@@ -5,7 +5,7 @@ angular.module('triviziApp')
             templateUrl: 'app/filters/destination/destination.html',
             restrict: 'EA',
             link: function($scope, $element, $attrs) {
-                $scope.typesOfPlaces = ['Romantic', 'Tropical', 'Party', 'Pets Ok', 'Family'];
+                $scope.typesOfPlaces = ['romantic', 'tropical', 'party', 'family'];
                 
                 $scope.emptyPlace = function() {
                 	$('.placeHolderLocation').remove(); //<-- need to remove this function once categories are working

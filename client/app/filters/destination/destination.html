@@ -1,30 +1,10 @@
-<!-- <div class="filterValue">
-	<span class="dropdown" dropdown>
-		<span class="dropdown-toggle" dropdown-toggle>
-			<span class="placeHolderLocation">Romantic</span> {{specificLocation}}
-		</span>
-		<ul class="where-drop-down dropdown-menu disable-drop" dropdown-menu>
-			<li>
-				<input id="navLocationField" type="text" ng-model="specificLocation" ng-change="emptyPlace()">
-			</li>
-			<hr>
-			<li ng-repeat="places in typesOfPlaces">
-				<input type="checkbox" name="{{places}}" value="{{places}}" ng-model="placeSelected">{{places}}
-			</li>
-		</ul>
-	</span>
-</div> -->
-
 <div class="filterValue">
-	<span class="dropdown" dropdown>
-		<ul class="where-drop-down">
-			<li>
-				<input id="navLocationField" type="text" ng-model="specificLocation" ng-change="emptyPlace()">
-			</li>
-			<hr>
-			<li ng-repeat="places in typesOfPlaces">
-				<input type="checkbox" name="{{places}}" value="{{places}}" ng-model="placeSelected">{{places}}
-			</li>
-		</ul>
-	</span>
+    <ul class="destination">
+        <li>
+            <input id="navLocationField" class="destinationSpecific" type="text" ng-model="specificLocation" ng-change="emptyPlace()" placeholder="Los Angeles, CA">
+        </li>
+        <li class="destinationCategories" ng-repeat="places in typesOfPlaces">
+            <div class="destinationCategory {{places}}"><span>{{places}}</span></div>
+        </li>
+    </ul>
 </div>

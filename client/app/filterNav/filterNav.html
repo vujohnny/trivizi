@@ -10,7 +10,7 @@
         </div>
     </div>
 
-    <div class="filterBlock col-lg-3" ng-click="budgetDetails=false; destinationDetails = ! destinationDetails; arrivalDetails=false; departureDetails=false">
+    <div class="filterBlock col-lg-3" ng-click="destinationDetails = ! destinationDetails; budgetDetails=false; arrivalDetails=false; departureDetails=false">
         <div class="filterTitle">Where:</div>
         <div class="salmon">
             <span class="placeHolderLocation">Romantic</span> {{ specificLocation | limitTo: 13 }}{{specificLocation.length > 12 ? '...' : ''}}
@@ -25,7 +25,7 @@
         <headcount></headcount>
     </div>
 
-    <div class="filterBlock col-lg-3" ng-click="budgetDetails=false; destinationDetails=false; arrivalDetails = ! arrivalDetails; departureDetails=false">
+    <div class="filterBlock col-lg-3" ng-click="arrivalDetails = ! arrivalDetails; budgetDetails=false; destinationDetails=false; departureDetails=false">
         <div class="filterTitle">From:</div>
         <div class="salmon">
             {{arriveDate.defaultValue | date:'EEE, MMM dd' }}
@@ -35,7 +35,7 @@
         </div>
     </div>
 
-    <div class="filterBlock col-lg-3" ng-click="budgetDetails=false; destinationDetails=false; arrivalDetails=false; departureDetails = ! departureDetails">
+    <div class="filterBlock col-lg-3" ng-click="arrivalDetails=false; departureDetails = ! departureDetails; budgetDetails=false; destinationDetails=false">
         <div class="filterTitle">To:</div>
         <div class="salmon">
             {{departDate.defaultValue | date:'EEE, MMM dd' }}
@@ -55,23 +55,14 @@
     </div>
 
     <div id="destinationDetailsContainer" class="customDrop" ng-show="destinationDetails">
-        <div class="upTriangle">
-            <i class="fa fa-caret-up"></i>
-        </div>
         <destination></destination>
     </div>
 
     <div id="arrivalDetailsContainer" class="customDrop" ng-show="arrivalDetails">
-        <div class="upTriangle">
-            <i class="fa fa-caret-up"></i>
-        </div>
         <date-arrival></date-arrival>
     </div>
 
     <div id="departureDetailsContainer" class="customDrop" ng-show="departureDetails">
-        <div class="upTriangle">
-            <i class="fa fa-caret-up"></i>
-        </div>
         <date-departure></date-departure>
     </div>
 
