@@ -22,16 +22,19 @@
     }
 }
 
-#budgetDetailsContainer {
-    .upTriangle {
-        margin-top: -45px;
-    }
-}
-
-#destinationDetailsContainer {
-	.upTriangle {
-        margin-top: -45px;
-        margin-left: 160px;
+.upTriangle {
+    text-align: center;
+    .fa {
+        color: $salmon;
+        font-size: 3em;
+        position: absolute;
+        margin-top: -6px;
+        @media screen and (max-width: $break-phone) {
+            display: none;
+        }
+        @media screen and (max-width: $break-tablet) {
+            display: none;
+        }
     }
 }
 

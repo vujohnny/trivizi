@@ -5,6 +5,9 @@
         <div class="salmon">
             ${{priceSlider}}
         </div>
+        <div class="upTriangle" ng-show="budgetDetails">
+            <i class="fa fa-caret-up"></i>
+        </div>
     </div>
 
     <div class="filterBlock col-lg-3" ng-click="budgetDetails=false; destinationDetails = ! destinationDetails; arrivalDetails=false; departureDetails=false">
@@ -12,7 +15,9 @@
         <div class="salmon">
             <span class="placeHolderLocation">Romantic</span> {{ specificLocation | limitTo: 13 }}{{specificLocation.length > 12 ? '...' : ''}}
         </div>
-        
+        <div class="upTriangle" ng-show="destinationDetails">
+            <i class="fa fa-caret-up"></i>
+        </div>
     </div>
 
     <div class="filterBlock col-lg-1">
@@ -25,12 +30,18 @@
         <div class="salmon">
             {{arriveDate.defaultValue | date:'EEE, MMM dd' }}
         </div>
+        <div class="upTriangle" ng-show="arrivalDetails">
+            <i class="fa fa-caret-up"></i>
+        </div>
     </div>
 
     <div class="filterBlock col-lg-3" ng-click="budgetDetails=false; destinationDetails=false; arrivalDetails=false; departureDetails = ! departureDetails">
         <div class="filterTitle">To:</div>
         <div class="salmon">
             {{departDate.defaultValue | date:'EEE, MMM dd' }}
+        </div>
+        <div class="upTriangle" ng-show="departureDetails">
+            <i class="fa fa-caret-up"></i>
         </div>
     </div>
 
@@ -40,9 +51,6 @@
 <div class="row typography">
 
     <div id="budgetDetailsContainer" class="customDrop" ng-show="budgetDetails">
-        <div class="upTriangle">
-            <i class="fa fa-caret-up"></i>
-        </div>
         <budget></budget>
     </div>
 
