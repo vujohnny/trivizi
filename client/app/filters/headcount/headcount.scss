@@ -1,9 +1,24 @@
-.adult-drop-down {
-    outline: 0;
-    border: none;
-    color: $salmon;
-    border-radius: 0px;
-    background-color: transparent;
-    cursor: pointer;
-    line-height: 1em;
+.adultCountContainer {
+    position: absolute;
+    z-index: 1;
+    float: left;
+    margin-left: -1em;
+    width: 100%;
+    margin-top: 14px;
+    .adultCount {
+        div {
+            font-size: 1em;
+            background: $light-grey;
+            outline: 1px solid $border-grey;
+            padding: 2em;
+            cursor: pointer;
+            color: #000000;
+            text-align: center;
+            width: auto;
+            &:hover {
+                background-color: $salmon;
+                color: #ffffff;
+            }
+        }
+    }
 }

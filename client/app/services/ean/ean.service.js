@@ -23,7 +23,7 @@ angular.module('triviziApp')
                     "departureDate": "11/22/2015", //"11/20/2015", //$scope.calendarDepart,
                     "curencyCode": "USD",
                     "numberOfResults": "200",
-                    "room1": $scope.numberOfAdults.value                    
+                    "room1": $scope.numberOfAdults                    
                 }
             })
                 .then(function (response) {
