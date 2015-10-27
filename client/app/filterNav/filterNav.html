@@ -1,14 +1,13 @@
 <div class="row typography top-menu">
 
-    <div class="filterBlock col-lg-2"  ng-click="budgetDetails = ! budgetDetails">
+    <div class="filterBlock col-lg-2"  ng-click="budgetDetails=true; destinationDetails=false; arrivalDetails=false; departureDetails=false">
         <div class="filterTitle">Budget:</div>
         <div class="salmon">
             ${{priceSlider}}
         </div>
-        <!-- <budget></budget> -->
     </div>
 
-    <div class="filterBlock col-lg-3" ng-click="destinationDetails = ! destinationDetails">
+    <div class="filterBlock col-lg-3" ng-click="budgetDetails=false; destinationDetails=true; arrivalDetails=false; departureDetails=false">
         <div class="filterTitle">Where:</div>
         <div class="salmon">
             <span class="placeHolderLocation">Romantic</span> {{ specificLocation | limitTo: 13 }}{{specificLocation.length > 12 ? '...' : ''}}
@@ -21,20 +20,18 @@
         <headcount></headcount>
     </div>
 
-    <div class="filterBlock col-lg-3" ng-click="arrivalDetails = ! arrivalDetails">
+    <div class="filterBlock col-lg-3" ng-click="budgetDetails=false; destinationDetails=false; arrivalDetails=true; departureDetails=false">
         <div class="filterTitle">From:</div>
         <div class="salmon">
             {{arriveDate.defaultValue | date:'EEE, MMM dd' }}
         </div>
-        <!-- <date-arrival></date-arrival> -->
     </div>
 
-    <div class="filterBlock col-lg-3" ng-click="departureDetails = ! departureDetails">
+    <div class="filterBlock col-lg-3" ng-click="budgetDetails=false; destinationDetails=false; arrivalDetails=false; departureDetails=true">
         <div class="filterTitle">To:</div>
         <div class="salmon">
             {{departDate.defaultValue | date:'EEE, MMM dd' }}
         </div>
-        <!-- <date-departure></date-departure> -->
     </div>
 
 </div>
