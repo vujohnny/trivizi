@@ -2,7 +2,9 @@
 (function() {
 
     function MainController($scope, $http, socket, $filter, ean) {
-
+        
+        /// needs to be moved to arrival and departure directives
+        
         $scope.arriveDate = {
             defaultValue: new Date(),
             minDate: new Date() - 1,
@@ -18,23 +20,19 @@
             showweeks: false,
             mode: "month"
         };
-
-        $scope.$watch("arriveDate.defaultValue", function() {
+        
+        $scope.arrivalChange = function() {
             $scope.calendarArrive = $filter('date')($scope.arriveDate.defaultValue, 'MM/dd/yyyy');
             $scope.seekDeer();
             $scope.departureDetails=true;
-            //console.log("From: " + $scope.calendarArrive);
-        });
-
-        $scope.$watch("departDate.defaultValue", function() {
+        }
+        
+        $scope.departureChange = function() {
             $scope.calendarDepart = $filter('date')($scope.departDate.defaultValue, 'MM/dd/yyyy');
             $scope.seekDeer();
-            //console.log("To: " + $scope.calendarDepart);
-        });
-
-        $scope.$watch("priceSlider", function(){
-            //console.log($scope.priceSlider);
-        }); 
+        }
+        
+        ////////////////////////////////////////////////
 
         $scope.seekDeer = function() {
             $http.post('/api/things', {
@@ -56,20 +54,3 @@
 
     angular.module('triviziApp').controller('MainController', MainController);
 })();
-
-
-/*
- * angular directive for image source fallback
- * in case image size isnt provided
- */
-
-angular.module('triviziApp').directive('fallbackSrc', function() {
-    var fallbackSrc = {
-        link: function postLink(scope, iElement, iAttrs) {
-            iElement.bind('error', function() {
-                angular.element(this).attr("src", iAttrs.fallbackSrc);
-            });
-        }
-    }
-    return fallbackSrc;
-});
