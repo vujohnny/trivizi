@@ -39,7 +39,6 @@
             width: 100%;
             height: 10vw;
             display: table;
-            background-size: cover;
             cursor: pointer;
             
             @media screen and (max-width: $break-phone) {
@@ -61,18 +60,22 @@
         
         .romantic {
             background: url('../assets/images/categories/romantic.jpg') no-repeat 0 0;
+            background-size: cover;
         }
         
         .tropical {
             background: url('../assets/images/categories/tropical.jpg') no-repeat 0 0;
+            background-size: cover;
         }
         
         .party {
             background: url('../assets/images/categories/party.jpg') no-repeat 0 0;
+            background-size: cover;
         }
         
         .family {
             background: url('../assets/images/categories/family.jpg') no-repeat 0 0;
+            background-size: cover;
         }
         
     }
