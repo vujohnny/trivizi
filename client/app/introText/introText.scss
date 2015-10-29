@@ -5,7 +5,6 @@
         width: 50%;
         margin: 30vh auto 0 auto;
         margin: 15vh auto 0 auto;
-        clear: both;
         font-size: 2em;
         color: $dark-grey;
         line-height: 1.7em;
@@ -14,8 +13,6 @@
             cursor: pointer;
             display: inline-block;
             font-weight: bold;
-            position: relative;
-            z-index: 1;
         }
     }
     button {
@@ -28,10 +25,22 @@
             color: #ffffff;
         }
     }
+    .upTriangle {
+        position: absolute;
+        top: -30px;
+        font-size: 1em;
+        margin-left: 13vw;
+    }
 }
 
 .destinationSpecific {
     color: #000000;
+}
+
+.introCustomDrop {
+    position: absolute;
+    width: 30vw;
+    margin-left: -13vw;
 }
 
 #budgetIntroDetailsContainer {
