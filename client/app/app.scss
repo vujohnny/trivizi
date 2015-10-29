@@ -20,26 +20,26 @@ $font-stack: Open Sans, sans-serif;
 
 // site colors
 $orange: #feb900;
-$green: #7ed321;
-$grey: #999;
+$green: #1be1a6;
+$grey: #7f7f7f;
 $salmon: #e3005a;
-$light-salmon: #faf2f5;
+$blue: #4a90e2;
+$medium-grey: #b4b4b4;
+$light-salmon: #ed6e9c;
 $light-green: #ecffd7;
-$light-grey: #ececec;
+$light-grey: #fafafa;
+$border-grey: #efefef;
+$highlight-grey: #fafafa;
 
 // media queries
 $break-phone: 768px;
+$break-tablet: 1200px;
 
 // reusable styles
 .typography {
 	font-family: $font-stack; 
 	font-weight: normal;
 	margin: 0;
-}
-
-.bold {
-	font-weight: bold;
-	cursor: pointer;
 }
 
 .no-padding {
@@ -63,11 +63,20 @@ $break-phone: 768px;
 // injector
 @import 'admin/admin.scss';
 @import 'db/db.scss';
-@import 'googleMapSDK/googleMapSDK.scss';
+@import 'filterNav/filterNav.scss';
+@import 'filters/budget/budget.scss';
+@import 'filters/dateArrival/dateArrival.scss';
+@import 'filters/dateDeparture/dateDeparture.scss';
+@import 'filters/destination/destination.scss';
+@import 'filters/headcount/headcount.scss';
+@import 'footer/footer.scss';
+@import 'fullText/fullText.scss';
+@import 'googleMap/googleMap.scss';
+@import 'introText/introText.scss';
 @import 'main/main.scss';
-@import 'main/results.scss';
-@import '../components/footer/footer.scss';
+@import 'mapContainer/mapContainer.scss';
+@import 'navbar/navbar.scss';
+@import 'resultsList/resultsList.scss';
 @import '../components/modal/modal.scss';
 @import '../components/oauth-buttons/oauth-buttons.scss';
-@import '../components/social/social.scss';
 // endinjector

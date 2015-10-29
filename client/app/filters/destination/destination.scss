@@ -1,0 +1,109 @@
+.destination {
+    font-weight: normal;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    
+    ::-webkit-input-placeholder {
+        color: $light-salmon;
+    }
+    :-moz-placeholder {
+        /* Firefox 18- */
+        color: $light-salmon;
+    }
+    ::-moz-placeholder {
+        /* Firefox 19+ */
+        color: $light-salmon;
+    }
+    :-ms-input-placeholder {
+        color: $light-salmon;
+    }
+    
+    .destinationSpecific {
+        width: 100%;
+        padding: .5em .8em;
+        background: #e3005a;
+        border: 0;
+        outline: 0;
+        color: #ffffff;
+        font-size: 2em;
+    }
+    
+    .destinationCategories {
+        width: 100%;
+
+        .destinationCategory {
+            color: #ffffff;
+            text-align: center;
+            text-transform: capitalize;
+            width: 100%;
+            height: 10vw;
+            display: table;
+            cursor: pointer;
+            
+            @media screen and (max-width: $break-phone) {
+                height: 20vw;
+            }
+            
+            span {
+                display: table-cell;
+                vertical-align: middle;
+                font-size: 3.5em;
+                font-weight: 600;
+                
+                @media screen and (max-width: $break-phone) {
+                    font-size: 2em;
+                }
+                
+            }
+        }
+        
+        .romantic {
+            background: url('../assets/images/categories/romantic.jpg') no-repeat 0 0;
+            background-size: cover;
+        }
+        
+        .tropical {
+            background: url('../assets/images/categories/tropical.jpg') no-repeat 0 0;
+            background-size: cover;
+        }
+        
+        .party {
+            background: url('../assets/images/categories/party.jpg') no-repeat 0 0;
+            background-size: cover;
+        }
+        
+        .family {
+            background: url('../assets/images/categories/family.jpg') no-repeat 0 0;
+            background-size: cover;
+        }
+        
+    }
+    
+    
+}
+
+.pac-container {
+    
+    .pac-icon {
+        display: none;
+    }
+    
+    .pac-matched {
+        color: $salmon;
+    }
+    
+    .pac-item-query {
+        font-size: 2em;
+        display: block;
+        clear: both;
+    }
+    
+    .pac-item {
+        color: $medium-grey;
+        font-size: 1em;
+        padding: 1em 1.5em;
+        cursor: pointer;
+    }
+        
+}

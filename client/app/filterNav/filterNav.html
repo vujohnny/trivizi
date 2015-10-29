@@ -1,0 +1,74 @@
+<div class="row typography top-menu">
+
+    <div class="filterBlock col-lg-2"  ng-click="budgetDetails = ! budgetDetails; destinationDetails=false; arrivalDetails=false; departureDetails=false; adultDetails=false">
+        <div class="filterTitle">Budget:</div>
+        <div class="salmon">
+            ${{priceSlider}}
+        </div>
+        <div class="upTriangle" ng-show="budgetDetails">
+            <i class="fa fa-caret-up"></i>
+        </div>
+    </div>
+
+    <div class="filterBlock col-lg-3" ng-click="destinationDetails = ! destinationDetails; budgetDetails=false; arrivalDetails=false; departureDetails=false; adultDetails=false">
+        <div class="filterTitle">Where:</div>
+        <div class="salmon">
+            <span class="placeHolderLocation">Romantic</span> {{ specificLocation | limitTo: 13 }}{{specificLocation.length > 12 ? '...' : ''}}
+        </div>
+        <div class="upTriangle" ng-show="destinationDetails">
+            <i class="fa fa-caret-up"></i>
+        </div>
+    </div>
+
+    <div class="filterBlock col-lg-1" ng-click="adultDetails = ! adultDetails; budgetDetails=false; destinationDetails=false; arrivalDetails=false; departureDetails=false">
+        <div class="filterTitle">For:</div>
+        <div class="salmon">
+            <div class="totalGuest"></div>
+        </div>
+        <div id="adultDetailsContainer" ng-show="adultDetails">
+            <headcount></headcount>
+        </div>
+    </div>
+
+    <div class="filterBlock col-lg-3" ng-click="arrivalDetails = ! arrivalDetails; budgetDetails=false; destinationDetails=false; departureDetails=false; adultDetails=false">
+        <div class="filterTitle">From:</div>
+        <div class="salmon">
+            {{arriveDate.defaultValue | date:'EEE, MMM dd' }}
+        </div>
+        <div class="upTriangle" ng-show="arrivalDetails">
+            <i class="fa fa-caret-up"></i>
+        </div>
+    </div>
+
+    <div class="filterBlock col-lg-3" ng-click="arrivalDetails=false; departureDetails = ! departureDetails; budgetDetails=false; destinationDetails=false; adultDetails=false">
+        <div class="filterTitle">To:</div>
+        <div class="salmon">
+            {{departDate.defaultValue | date:'EEE, MMM dd' }}
+        </div>
+        <div class="upTriangle" ng-show="departureDetails">
+            <i class="fa fa-caret-up"></i>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="row typography">
+
+    <div id="budgetDetailsContainer" class="customDrop" ng-show="budgetDetails">
+        <budget></budget>
+    </div>
+
+    <div id="destinationDetailsContainer" class="customDrop" ng-show="destinationDetails">
+        <destination></destination>
+    </div>
+    
+    <div id="arrivalDetailsContainer" class="customDrop" ng-show="arrivalDetails">
+        <date-arrival></date-arrival>
+    </div>
+
+    <div id="departureDetailsContainer" class="customDrop" ng-show="departureDetails">
+        <date-departure></date-departure>
+    </div>
+
+</div>

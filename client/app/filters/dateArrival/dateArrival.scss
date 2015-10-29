@@ -1,0 +1,85 @@
+.calendar {
+    width: 100%;
+    padding-top: 15px;
+    .calendar-title {
+        margin-bottom: -15px;
+    }
+
+    table {
+        width: 100%;
+
+        .btn-default[disabled],
+        .btn-default {
+            border: 0;
+        }
+    }
+}
+
+thead {
+    tr {
+        th {
+            .btn-default {
+                background: none !important;
+                outline: none;
+                color: #ffffff;
+                font-size: 1.5em;
+            }
+
+            small {
+            	width: 100%;
+                color: $grey;
+                background: $light-grey;
+                padding: 25px;
+                outline: 1px solid $border-grey;
+                float: left;
+            }
+        }
+    }
+}
+
+tbody {
+    tr {
+        td {
+            .btn-default {
+                color: $grey;
+            }
+
+            .text-muted, .text-info {
+                color: $border-grey;
+            }
+        }
+    }
+}
+
+.btn-sm, .btn-group-sm > .btn {
+    padding: 20px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 0px;
+    outline: 1px solid $border-grey;
+}
+
+.btn.disabled, .btn[disabled], fieldset[disabled] .btn {
+    color: $border-grey;
+    opacity: 1;
+}
+
+.when-calendar table .btn-info.active {
+    background-color: $salmon !important;
+    outline: none;
+}
+
+.pull-left, .pull-right {
+    outline: none !important;
+    background: none;
+    color: #fff !important;
+
+    &:hover {
+        background: none;
+        color: #fff;
+    }
+}
+
+.btn-info {
+    background-color: $salmon !important;
+}

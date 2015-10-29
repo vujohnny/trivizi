@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="65px" height="45px"
+	 viewBox="0 0 65 45" enable-background="new 0 0 65 45" xml:space="preserve">
+<title>love_on</title>
+<desc>Created with Sketch.</desc>
+<g>
+	<g id="Results" transform="translate(-390.000000, -102.000000)" sketch:type="MSArtboardGroup">
+		<g id="RESULTS" transform="translate(1.000000, 102.000000)" sketch:type="MSLayerGroup">
+			<g id="_x32_" transform="translate(389.000000, 0.000000)">
+				<g id="love_on">
+					<g id="pin">
+						<polygon id="Triangle-61-Copy" sketch:type="MSShapeGroup" fill="#CCCCCC" points="14,40 2,40 13.971,45 						">
+						</polygon>
+						<path id="Rectangle-211" sketch:type="MSShapeGroup" fill="#E11B5A" d="M2,0h61c1.104,0,2,0.896,2,2v36c0,1.104-0.896,2-2,2H2
+							c-1.104,0-2-0.896-2-2V2C0,0.896,0.896,0,2,0z"/>
+						<text transform="matrix(1 0 0 1 6.0103 27)" enable-background="new    "><tspan x="0" y="0" fill="#FFFFFF" font-family="'HelveticaNeue-Bold'" font-size="20">L</tspan><tspan x="11.86" y="0" fill="#FFFFFF" font-family="'HelveticaNeue-Bold'" font-size="20">O</tspan><tspan x="27.22" y="0" fill="#FFFFFF" font-family="'HelveticaNeue-Bold'" font-size="20">V</tspan><tspan x="40.419" y="0" fill="#FFFFFF" font-family="'HelveticaNeue-Bold'" font-size="20">E</tspan></text>
+					</g>
+				</g>
+			</g>
+		</g>
+	</g>
+	<g>
+		<g>
+			<defs>
+				<rect id="SVGID_1_" x="-654" y="-628" width="1400" height="1333"/>
+			</defs>
+			<clipPath id="SVGID_2_">
+				<use xlink:href="#SVGID_1_"  overflow="visible"/>
+			</clipPath>
+			<g clip-path="url(#SVGID_2_)">
+				<g>
+					<defs>
+						<polygon id="SVGID_3_" points="-250.029,-481 -262,-486 -250,-486 						"/>
+					</defs>
+					<clipPath id="SVGID_4_">
+						<use xlink:href="#SVGID_3_"  overflow="visible"/>
+					</clipPath>
+					<rect x="-267" y="-491" clip-path="url(#SVGID_4_)" fill="#CCCCCC" width="22" height="15"/>
+				</g>
+			</g>
+			<g clip-path="url(#SVGID_2_)">
+				<g id="Boostrap3-grid-system-layouts" sketch:type="MSPage">
+					<defs>
+						<rect id="SVGID_5_" x="-654" y="-628" width="1400" height="1333"/>
+					</defs>
+					<clipPath id="SVGID_6_">
+						<use xlink:href="#SVGID_5_"  overflow="visible"/>
+					</clipPath>
+					<g clip-path="url(#SVGID_6_)">
+						<g>
+							<defs>
+								<path id="SVGID_7_" d="M-264-524.003c0-1.103,0.894-1.997,1.999-1.997h61.003c1.104,0,1.999,0.892,1.999,1.997v36.006
+									c0,1.103-0.894,1.997-1.999,1.997h-61.003c-1.104,0-1.999-0.892-1.999-1.997V-524.003z"/>
+							</defs>
+							<clipPath id="SVGID_8_">
+								<use xlink:href="#SVGID_7_"  overflow="visible"/>
+							</clipPath>
+							<rect x="-269" y="-531" clip-path="url(#SVGID_8_)" fill="#E11B5A" width="75" height="50"/>
+						</g>
+					</g>
+					<g clip-path="url(#SVGID_6_)">
+						<g>
+							<defs>
+								<rect id="SVGID_9_" x="-654" y="-628" width="1400" height="1333"/>
+							</defs>
+							<clipPath id="SVGID_10_">
+								<use xlink:href="#SVGID_9_"  overflow="visible"/>
+							</clipPath>
+							<g clip-path="url(#SVGID_10_)">
+								<text transform="matrix(1 0 0 1 -255 -499)" fill="#FFFFFF" font-family="'OpenSans-Bold'" font-size="20">L</text>
+								<text transform="matrix(1 0 0 1 -243.7012 -499)" fill="#FFFFFF" font-family="'OpenSans-Bold'" font-size="20">o</text>
+								<text transform="matrix(1 0 0 1 -231.7178 -499)" fill="#FFFFFF" font-family="'OpenSans-Bold'" font-size="20">ve</text>
+							</g>
+						</g>
+					</g>
+				</g>
+			</g>
+		</g>
+	</g>
+</g>
+</svg>

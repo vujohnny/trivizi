@@ -13,6 +13,7 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(client) app/vendor.css -->
       <!-- bower:css -->
+      <link rel='stylesheet' href='bower_components/angularjs-slider/dist/rzslider.css' />
       <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,client}) app/app.css -->
@@ -78,6 +79,7 @@
       <script src="bower_components/angular-socket-io/socket.js"></script>
       <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
       <script src="bower_components/angular-validation-match/dist/angular-validation-match.min.js"></script>
+      <script src="bower_components/angularjs-slider/dist/rzslider.js"></script>
       <!-- endbower -->
       <script src="socket.io-client/socket.io.js"></script>
     <!-- endbuild -->
@@ -92,21 +94,29 @@
       <script src="app/admin/admin.js"></script>
       <script src="app/db/db.controller.js"></script>
       <script src="app/db/db.js"></script>
-      <script src="app/ean/ean.service.js"></script>
-      <script src="app/googleMapSDK/googleMapSDK.controller.js"></script>
-      <script src="app/googleMapSDK/googleMapSDK.js"></script>
+      <script src="app/filterNav/filterNav.directive.js"></script>
+      <script src="app/filters/budget/budget.directive.js"></script>
+      <script src="app/filters/dateArrival/dateArrival.directive.js"></script>
+      <script src="app/filters/dateDeparture/dateDeparture.directive.js"></script>
+      <script src="app/filters/destination/destination.directive.js"></script>
+      <script src="app/filters/headcount/headcount.directive.js"></script>
+      <script src="app/footer/footer.directive.js"></script>
+      <script src="app/fullText/fullText.directive.js"></script>
+      <script src="app/googleMap/googleMap.directive.js"></script>
+      <script src="app/introText/introText.directive.js"></script>
       <script src="app/main/main.controller.js"></script>
       <script src="app/main/main.js"></script>
+      <script src="app/mapContainer/mapContainer.directive.js"></script>
+      <script src="app/navbar/navbar.controller.js"></script>
+      <script src="app/navbar/navbar.directive.js"></script>
+      <script src="app/resultsList/resultsList.directive.js"></script>
+      <script src="app/services/ean/ean.service.js"></script>
       <script src="components/auth/auth.service.js"></script>
       <script src="components/auth/user.service.js"></script>
-      <script src="components/footer/footer.directive.js"></script>
       <script src="components/modal/modal.service.js"></script>
       <script src="components/mongoose-error/mongoose-error.directive.js"></script>
-      <script src="components/navbar/navbar.controller.js"></script>
-      <script src="components/navbar/navbar.directive.js"></script>
       <script src="components/oauth-buttons/oauth-buttons.controller.js"></script>
       <script src="components/oauth-buttons/oauth-buttons.directive.js"></script>
-      <script src="components/social/social.directive.js"></script>
       <script src="components/socket/socket.service.js"></script>
       <!-- endinjector -->
     <!-- endbuild -->

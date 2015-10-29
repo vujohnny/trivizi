@@ -1,0 +1,33 @@
+.budgetValue {
+    font-size: 2em;
+    font-weight: 600;
+    float: right;
+    margin-top: 10px;
+
+    // .budgetInput {
+    //     background-color: transparent;
+    //     border: none;
+    //     outline: none;
+    //     color: #fff;
+    // }
+}
+
+rzslider {
+    width: 80%;
+
+    .rz-bubble {
+        display: none;
+    }
+
+    .rz-pointer {
+        background-color: #ffffff !important;
+    }
+
+    .rz-selection {
+        background: $green !important;
+    }
+
+    .rz-active:after {
+        background-color: $salmon !important;
+    }
+}
