@@ -1,7 +1,6 @@
 #results-container {
     overflow: auto;
     position: relative;
-    display: none;
     height: 100vh;
     background-color: $highlight-grey;
 
@@ -162,18 +161,4 @@
     .activeResult {
         outline: 1px solid $salmon !important;
     }
-}
-
-// disable intro text and go straight to maps
-.top-menu,
-#results-container {
-    display: block;
-}
-
-.intro-text {
-    display: none;
-}
-
-#googleMap {
-    visibility: visible;
 }

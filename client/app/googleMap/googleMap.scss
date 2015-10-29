@@ -3,8 +3,6 @@
 }
 
 #googleMap {
-    visibility: hidden;
-
     @media screen and (max-width: $break-phone) {
         display: none !important;
     }
