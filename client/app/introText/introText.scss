@@ -6,18 +6,16 @@
         margin: 30vh auto 0 auto;
         margin: 15vh auto 0 auto;
         clear: both;
-        p {
-            font-size: 2em;
-            color: $dark-grey;
-            line-height: 1.7em;
-            .introSelect {
-                color: $salmon;
-                cursor: pointer;
-                display: inline-block;
-                font-weight: bold;
-                position: relative;
-                z-index: 1;
-            }
+        font-size: 2em;
+        color: $dark-grey;
+        line-height: 1.7em;
+        .introSelect {
+            color: $salmon;
+            cursor: pointer;
+            display: inline-block;
+            font-weight: bold;
+            position: relative;
+            z-index: 1;
         }
     }
     button {
@@ -33,5 +31,13 @@
 }
 
 .destinationSpecific {
-    color: #000000 !important;
+    color: #000000;
+}
+
+#budgetIntroDetailsContainer {
+    rzslider {
+        width: 100%;
+        margin: 15px auto;
+    }
+    //position: absolute;
 }
