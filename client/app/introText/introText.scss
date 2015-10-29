@@ -1,19 +1,36 @@
-.intro-text {
-    margin: 20vh auto 0 auto;
-    span {
-        cursor: pointer;
-        font-weight: 600;
+full-text {
+    display: none
+}
+
+.introContainer {
+    .introParagraph {
+        display: block;
+        padding: 0;
+        width: 40%;
+        margin: 30vh auto 0 auto;
+        clear: both;
+        p {
+            font-size: 2em;
+            color: $dark-grey;
+            line-height: 1.7em;
+            .introSelect {
+                color: $salmon;
+                cursor: pointer;
+                display: inline-block;
+                font-weight: bold;
+                position: relative;
+                z-index: 1;
+            }
+        }
     }
-    .caret {
-        border-bottom: 0;
-        border-top: 7px solid;
-        border-right: 5px solid transparent;
-        border-left: 5px solid transparent;
-        margin: 0px 0px 0px 7px;
-    }
-    @media screen and (max-width: $break-phone) {
-        h1 {
-            font-size: 1.2em;
+    button {
+        color: $salmon;
+        border-color: $salmon;
+        padding: 1em 6em;
+        margin-top: 2em;
+        &:hover {
+            background-color: $light-salmon;
+            color: #ffffff;
         }
     }
 }
