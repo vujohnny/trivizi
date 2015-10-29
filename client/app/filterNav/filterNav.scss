@@ -3,6 +3,10 @@
     border-left: 0;
     padding: 1em;
     background-color: #ffffff;
+    
+    .filterTitle {
+        font-size: .7em;
+    }
 
     &:hover {
         background-color: $highlight-grey;

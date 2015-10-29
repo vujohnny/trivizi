@@ -2,10 +2,10 @@
 
 <div class="introContainer text-center">
     <div class="introParagraph">
-        <p>My budget is <span class="introSelect" ng-click="budgetDetails = ! budgetDetails; destinationDetails=false; arrivalDetails=false; departureDetails=false; adultDetails=false">${{priceSlider}}<span class="caret"></span></span> and I want to travel somewhere <span class="introSelect" ng-click="destinationDetails = ! destinationDetails; budgetDetails=false; arrivalDetails=false; departureDetails=false; adultDetails=false"><span class="placeHolderLocation">Romantic</span> {{ specificLocation | limitTo: 13 }}{{specificLocation.length > 12 ? '...' : ''}}<span class="caret"></span></span> for <span class="introSelect" ng-click="adultDetails = ! adultDetails; budgetDetails=false; destinationDetails=false; arrivalDetails=false; departureDetails=false">2<span class="caret"></span></span> from <span class="introSelect" ng-click="arrivalDetails = ! arrivalDetails; budgetDetails=false; destinationDetails=false; departureDetails=false; adultDetails=false">{{arriveDate.defaultValue | date:'MMMM dd' }}<span class="caret"></span></span> to <span class="introSelect" ng-click="arrivalDetails=false; departureDetails = ! departureDetails; budgetDetails=false; destinationDetails=false; adultDetails=false">{{departDate.defaultValue | date:'MMMM dd' }}<span class="caret"></span></span>
+        <p>My budget is <span class="introSelect" ng-click="budgetDetails = ! budgetDetails; destinationDetails=false; arrivalDetails=false; departureDetails=false; adultDetails=false">${{priceSlider}}<span class="caret"></span></span> and I want to travel somewhere <span class="introSelect" ng-click="destinationDetails = ! destinationDetails; budgetDetails=false; arrivalDetails=false; departureDetails=false; adultDetails=false"><span class="placeHolderLocation">Romantic</span>{{ specificLocation | limitTo: 13 }}{{specificLocation.length > 12 ? '...' : ''}}<span class="caret"></span></span> for <span class="introSelect" ng-click="adultDetails = ! adultDetails; budgetDetails=false; destinationDetails=false; arrivalDetails=false; departureDetails=false">2<span class="caret"></span></span> from <span class="introSelect" ng-click="arrivalDetails = ! arrivalDetails; budgetDetails=false; destinationDetails=false; departureDetails=false; adultDetails=false">{{arriveDate.defaultValue | date:'MMMM dd' }}<span class="caret"></span></span> to <span class="introSelect" ng-click="arrivalDetails=false; departureDetails = ! departureDetails; budgetDetails=false; destinationDetails=false; adultDetails=false">{{departDate.defaultValue | date:'MMMM dd' }}<span class="caret"></span></span>
         </p>
     </div>
-    
+
     <button class="btn btn-default" ng-click="introSubmit()">Let's do this!</button>
 </div>
 
@@ -16,9 +16,10 @@
     </div>
 
     <div id="destinationDetailsContainer" class="customDrop" ng-show="destinationDetails">
-        <destination></destination>
+        <!--        <destination></destination>-->
+        <input id="navIntroLocationField" class="destinationSpecific" type="text" ng-model="specificLocation" placeholder="Los Angeles, CA">
     </div>
-    
+
     <div id="arrivalDetailsContainer" class="customDrop" ng-show="arrivalDetails">
         <date-arrival></date-arrival>
     </div>
