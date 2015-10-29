@@ -21,8 +21,8 @@ angular.module('triviziApp')
                             "locale": "en_US",
                             "cid": "55505",
                             "destinationString": $scope.specificLocation,
-                            "arrivalDate": $scope.calendarArrive, //"11/19/2015", //$scope.calendarArrive,
-                            "departureDate": $scope.calendarDepart, //"11/20/2015", //$scope.calendarDepart,
+                            "arrivalDate": "11/19/2015", //"11/19/2015", //$scope.calendarArrive,
+                            "departureDate": "11/20/2015", //"11/20/2015", //$scope.calendarDepart,
                             "curencyCode": "USD",
                             "numberOfResults": "200",
                             "room1": $scope.numberOfAdults

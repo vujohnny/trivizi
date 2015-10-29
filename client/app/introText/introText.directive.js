@@ -24,8 +24,8 @@ angular.module('triviziApp')
             link: function ($scope, $element, $attrs, ean) {
 
                 $scope.introSubmit = function () {
-                    //$("intro-text").remove();
-                    //$("#mainView").append("<full-text></full-text>");
+                    $("intro-text").remove();
+                    $("#mainView").append("<full-text></full-text>");
                     $scope.seekDeer();
                 }
             }
