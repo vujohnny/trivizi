@@ -34,8 +34,8 @@
                 name: "$" + $scope.budgetAmount + " | " + $scope.calendarArrive + " - " + $scope.calendarDepart + " | " + $scope.specificLocation
             });
             $scope.newThing = '';
-            //ean.eanRequest($scope);
-            yelp.yelpRequest($scope);
+            ean.eanRequest($scope);
+            //yelp.yelpRequest($scope);
         };
         
         $scope.closeAllFilters = function() {
