@@ -17,7 +17,10 @@
         and I want to go somewhere
 
         <div class="introSelect">
-            <span class="placeHolderLocation" ng-click="destinationIntroDetails = ! destinationIntroDetails; budgetIntroDetails=false; arrivalIntroDetails=false; departureIntroDetails=false; adultDetails=false">Romantic</span>{{specificIntroLocation}}<span class="caret"></span>
+            <span ng-click="destinationIntroDetails = ! destinationIntroDetails; budgetIntroDetails=false; arrivalIntroDetails=false; departureIntroDetails=false; adultDetails=false">
+                <span class="placeHolderLocation">Romantic</span>
+                {{specificIntroLocation}}<span class="caret"></span>
+            </span>
             <div id="destinatioIntronDetailsContainer" class="customDrop" ng-show="destinationIntroDetails">
                 <input id="navIntroLocationField" class="destinationSpecific" type="text" ng-model="specificIntroLocation" ng-change="emptyPlace()" placeholder="Los Angeles, CA">
             </div>
