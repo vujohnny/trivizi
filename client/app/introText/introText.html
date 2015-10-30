@@ -12,58 +12,53 @@
                 </div>
                 <budget></budget>
             </div>
-
         </div>
 
-        and I want to go to
+        and I want to go somewhere
 
-        <div class="introSelect" ng-click="destinationIntroDetails = ! destinationIntroDetails; budgetIntroDetails=false; arrivalIntroDetails=false; departureIntroDetails=false; adultDetails=false">
-            <span class="placeHolderLocation">Romantic</span>{{specificIntroLocation}}<span class="caret"></span>
+        <div class="introSelect">
+            <span class="placeHolderLocation" ng-click="destinationIntroDetails = ! destinationIntroDetails; budgetIntroDetails=false; arrivalIntroDetails=false; departureIntroDetails=false; adultDetails=false">Romantic</span>{{specificIntroLocation}}<span class="caret"></span>
+            <div id="destinatioIntronDetailsContainer" class="customDrop" ng-show="destinationIntroDetails">
+                <input id="navIntroLocationField" class="destinationSpecific" type="text" ng-model="specificIntroLocation" ng-change="emptyPlace()" placeholder="Los Angeles, CA">
+            </div>
         </div>
 
         for
 
         <div class="introSelect" ng-click="adultDetails = ! adultDetails; budgetIntroDetails=false; destinationDetails=false; arrivalIntroDetails=false; destinationIntroDetails=false">
-            2<span class="caret"></span>
+            <div class="salmon">
+                <span class="totalGuest"></span><span class="caret"></span>
+            </div>
+            <div id="adultDetailsContainer" ng-show="adultDetails">
+                <headcount></headcount>
+            </div>
         </div>
 
         from
 
-        <div class="introSelect" ng-click="arrivalIntroDetails = ! arrivalIntroDetails; budgetIntroDetails=false; destinationIntroDetails=false; departureIntroDetails=false; adultDetails=false">
-            {{arriveDate.defaultValue | date:'MMMM dd' }}<span class="caret"></span>
+        <div class="introSelect">
+            <span ng-click="arrivalIntroDetails = ! arrivalIntroDetails; budgetIntroDetails=false; destinationIntroDetails=false; departureIntroDetails=false; adultDetails=false">{{arriveDate.defaultValue | date:'MMMM dd' }}</span><span class="caret"></span>
             <div id="arrivalIntroDetailsContainer" class="customDrop" ng-show="arrivalIntroDetails">
+                <div class="upTriangle">
+                    <i class="fa fa-caret-up"></i>
+                </div>
                 <date-arrival></date-arrival>
             </div>
         </div>
 
         to
 
-        <div class="introSelect" ng-click="arrivalIntroDetails=false; departureIntroDetails = ! departureIntroDetails; budgetIntroDetails=false; destinationIntroDetails=false; adultDetails=false">
-            {{departDate.defaultValue | date:'MMMM dd' }}<span class="caret"></span>
+        <div class="introSelect">
+            <span ng-click="arrivalIntroDetails=false; departureIntroDetails = ! departureIntroDetails; budgetIntroDetails=false; destinationIntroDetails=false; adultDetails=false">{{departDate.defaultValue | date:'MMMM dd' }}</span><span class="caret"></span>
+            <div id="departureIntroDetailsContainer" class="customDrop" ng-show="departureIntroDetails">
+                <div class="upTriangle">
+                    <i class="fa fa-caret-up"></i>
+                </div>
+                <date-departure></date-departure>
+            </div>
         </div>
 
     </div>
 
     <button class="btn btn-default intro-button" ng-click="introSubmit()">Let's do this!</button>
-</div>
-
-
-
-<div class="row typography">
-
-
-    <div id="destinatioIntronDetailsContainer" class="customDrop" ng-show="destinationIntroDetails">
-        <input id="navIntroLocationField" class="destinationSpecific" type="text" ng-model="specificIntroLocation" ng-change="emptyPlace()" placeholder="Los Angeles, CA">
-    </div>
-
-    <!--
-    <div id="arrivalIntroDetailsContainer" class="customDrop" ng-show="arrivalIntroDetails">
-        <date-arrival></date-arrival>
-    </div>
--->
-
-    <div id="departureIntroDetailsContainer" class="customDrop" ng-show="departureIntroDetails">
-        <date-departure></date-departure>
-    </div>
-
 </div>
