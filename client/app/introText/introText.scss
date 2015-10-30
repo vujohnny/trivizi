@@ -2,7 +2,7 @@
     .introParagraph {
         display: block;
         padding: 0;
-        width: 50%;
+        width: 60%;
         margin: 30vh auto 0 auto;
         margin: 15vh auto 0 auto;
         font-size: 2em;
@@ -13,7 +13,7 @@
             position: absolute;
             top: -20px;
             font-size: 1em;
-            margin-left: 13vw;
+            margin-left: 10.5vw;
 
             .fa {
                 font-size: 2em;
@@ -107,19 +107,6 @@
 
 .destinationSpecific {
     color: #000000;
-}
-
-.introCustomDrop {
-    position: absolute;
-    width: 30vw;
-    margin-left: -13vw;
-}
-
-#budgetIntroDetailsContainer {
-    rzslider {
-        width: 100%;
-        margin: 15px auto;
-    }
 }
 
 #destinatioIntronDetailsContainer {

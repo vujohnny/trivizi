@@ -23,11 +23,11 @@ angular.module('triviziApp')
             },
             link: function($scope, $element, $attrs, ean) {
 
-                $("full-text").css('visibility', 'hidden');
+                //$("full-text").css('visibility', 'hidden');
 
                 $scope.introSubmit = function() {
-                    $("intro-text").hide();
-                    $("full-text").css('visibility', 'visible');
+                    //$("intro-text").hide();
+                    //$("full-text").css('visibility', 'visible');
                     $scope.seekDeer();
                 }
             }
