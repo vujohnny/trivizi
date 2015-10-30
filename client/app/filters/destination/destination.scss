@@ -1,3 +1,5 @@
+// full container
+
 .destination {
     font-weight: normal;
     list-style: none;
@@ -22,7 +24,7 @@
     .destinationSpecific {
         width: 100%;
         padding: .5em .8em;
-        background: #e3005a;
+        background: $salmon;
         border: 0;
         outline: 0;
         color: #ffffff;
@@ -106,4 +108,40 @@
         cursor: pointer;
     }
         
+}
+
+// intro container 
+
+
+.destinationSpecific {
+    color: #000000;
+}
+
+#destinationIntroDetailsContainer {
+    position: absolute;
+    padding: 0;
+    font-weight: normal;
+    ::-webkit-input-placeholder {
+        color: $light-salmon;
+    }
+    :-moz-placeholder {
+        /* Firefox 18- */
+        color: $light-salmon;
+    }
+    ::-moz-placeholder {
+        /* Firefox 19+ */
+        color: $light-salmon;
+    }
+    :-ms-input-placeholder {
+        color: $light-salmon;
+    }
+    input {
+        background: $salmon;
+        border: 0;
+        outline: 0;
+        padding: 0 .8em;
+        color: #ffffff;
+        font-size: .7em;
+        width: 20vw;
+    }
 }
