@@ -96,7 +96,7 @@ angular.module('triviziApp')
                     $scope.highlightMarker = function(hotelMarker) {
                         google.maps.event.trigger(hotelMarker, 'click');
                         map.setCenter(hotelMarker.getPosition());
-                        //map.setZoom(15);
+                        map.setZoom(13);
                     }
 
                     $scope.panMap = function(id, firstMarker) {
@@ -104,7 +104,7 @@ angular.module('triviziApp')
                         if (place.geometry.viewport) {
                             map.setCenter(firstMarker.getPosition());
                             google.maps.event.trigger(firstMarker, 'click');
-                            map.setZoom(15);
+                            map.setZoom(13);
                         } else {
                             map.setCenter(place.geometry.location);
                         }
