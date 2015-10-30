@@ -1,4 +1,5 @@
 .introContainer {
+    
     .introParagraph {
         display: block;
         padding: 0;
@@ -8,23 +9,68 @@
         font-size: 2em;
         color: $dark-grey;
         line-height: 1.7em;
+        
         .introSelect {
             color: $salmon;
             cursor: pointer;
             display: inline-block;
             font-weight: bold;
         }
+        
+        #arrivalIntroDetailsContainer {
+            position: absolute;
+            width: 25vw;
+            min-width: 310px;
+            margin-left: -7vw;
+            padding: 0;
+            z-index: 1;
+            
+            .calendar {
+                padding-top: 0;
+            }
+            
+            table {
+                
+                thead {
+                    
+                    tr{
+                        font-size: .4em;
+                    }
+                    
+                }
+                
+                tbody {
+                    line-height: 0;
+                }
+                
+            }
+            
+            .calendar-title {
+                display: none;
+            }
+            
+            tr {
+                line-height: 0;
+            }
+            
+            button,small {
+                padding: 1em;
+            }
+        }
     }
-    button {
+    
+    .intro-button {
         color: $salmon;
         border-color: $salmon;
         padding: 1em 6em;
         margin-top: 2em;
+        
         &:hover {
             background-color: $light-salmon;
             color: #ffffff;
         }
     }
+    
     .upTriangle {
         position: absolute;
         top: -30px;

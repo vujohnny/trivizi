@@ -31,6 +31,9 @@
 
         <div class="introSelect" ng-click="arrivalIntroDetails = ! arrivalIntroDetails; budgetIntroDetails=false; destinationIntroDetails=false; departureIntroDetails=false; adultDetails=false">
             {{arriveDate.defaultValue | date:'MMMM dd' }}<span class="caret"></span>
+            <div id="arrivalIntroDetailsContainer" class="customDrop" ng-show="arrivalIntroDetails">
+                <date-arrival></date-arrival>
+            </div>
         </div>
 
         to
@@ -41,7 +44,7 @@
 
     </div>
 
-    <button class="btn btn-default" ng-click="introSubmit()">Let's do this!</button>
+    <button class="btn btn-default intro-button" ng-click="introSubmit()">Let's do this!</button>
 </div>
 
 
@@ -53,9 +56,11 @@
         <input id="navIntroLocationField" class="destinationSpecific" type="text" ng-model="specificIntroLocation" ng-change="emptyPlace()" placeholder="Los Angeles, CA">
     </div>
 
+    <!--
     <div id="arrivalIntroDetailsContainer" class="customDrop" ng-show="arrivalIntroDetails">
         <date-arrival></date-arrival>
     </div>
+-->
 
     <div id="departureIntroDetailsContainer" class="customDrop" ng-show="departureIntroDetails">
         <date-departure></date-departure>
