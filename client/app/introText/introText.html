@@ -14,11 +14,11 @@
             </div>
         </div>
 
-        and I want to go to
+        and I want to go somewhere
 
         <div class="introSelect">
             <span ng-click="destinationIntroDetails = ! destinationIntroDetails; budgetIntroDetails=false; arrivalIntroDetails=false; departureIntroDetails=false; adultDetails=false">
-                <span class="placeHolderLocation">Santa Monica, CA</span>
+                <span class="placeHolderLocation">Romantic</span>
                 {{specificIntroLocation}}<span class="caret"></span>
             </span>
             <div id="destinationIntroDetailsContainer" class="customDrop" ng-show="destinationIntroDetails">
@@ -66,5 +66,5 @@
 
     </div>
 
-    <button class="btn btn-default intro-button" ng-click="introSubmit()">Let's do this!</button>
+    <button class="btn btn-default intro-button" ng-click="introText=false; fullText=true;">Let's do this!</button>
 </div>

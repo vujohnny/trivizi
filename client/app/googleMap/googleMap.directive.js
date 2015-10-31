@@ -44,6 +44,8 @@ angular.module('triviziApp')
                             styles: snazzyMap
                         });
 
+                    $scope.googleMap = map;
+
                     $scope.navLocationChanged = google.maps.event.addListener(navAutocomplete, 'place_changed', function(e) {
                         $scope.destination = navAutocomplete.getPlace();
                         $scope.specificLocation = $scope.destination.formatted_address;
@@ -113,6 +115,8 @@ angular.module('triviziApp')
                     $scope.buildReturn = function(lat, lng, id, name, shortDescription, listImg, rating, ratingImg, ratingCount, rateAverage, roundedAverage, rateTotal, roundedTotal, link, listImgFall, totalNights) {
 
                         //console.log($scope.priceSlider);
+                        google.maps.event.trigger($scope.googleMap, 'resize');
+
                         if (rateAverage < $scope.priceSlider && $scope.resultsList.length < 20) {
 
                             // map markers and pan map to city
