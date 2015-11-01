@@ -1,8 +1,12 @@
 .filterBlock {
     border: 1px solid $border-grey;
     border-left: 0;
-    padding: 1em;
+    padding: .8em;
     background-color: #ffffff;
+    
+    .filterTitle {
+        font-size: .7em;
+    }
 
     &:hover {
         background-color: $highlight-grey;
@@ -24,12 +28,12 @@
         position: absolute;
         margin-top: -10px;
         margin-left: -10px;
-        @media screen and (max-width: $break-phone) {
-            display: none;
-        }
-        @media screen and (max-width: $break-tablet) {
-            display: none;
-        }
+//        @media screen and (max-width: $break-phone) {
+//            display: none;
+//        }
+//        @media screen and (max-width: $break-tablet) {
+//            display: none;
+//        }
     }
 }
 

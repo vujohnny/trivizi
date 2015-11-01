@@ -1,19 +1,39 @@
+#budgetDetailsContainer {
+    min-height: 100px;
+}
+
+#budgetIntroDetailsContainer {
+    position: absolute;
+    width: 25vw;
+    margin-left: -10vw;
+    padding: 0 20px;
+    
+    .priceSliderContainer {
+        width: 100%;
+    }
+    rzslider {
+        margin: 15px auto;
+    }
+    rzslider span.rz-pointer {
+        top: -9px;
+        width: 22px;
+        height: 22px;
+    }
+}
+
 .budgetValue {
     font-size: 2em;
     font-weight: 600;
     float: right;
     margin-top: 10px;
+}
 
-    // .budgetInput {
-    //     background-color: transparent;
-    //     border: none;
-    //     outline: none;
-    //     color: #fff;
-    // }
+.priceSliderContainer {
+    width: 80%;
+    float: left;
 }
 
 rzslider {
-    width: 80%;
 
     .rz-bubble {
         display: none;
@@ -28,6 +48,6 @@ rzslider {
     }
 
     .rz-active:after {
-        background-color: $salmon !important;
+        background-color: #ffffff !important;
     }
 }

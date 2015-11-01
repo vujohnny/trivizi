@@ -4,9 +4,9 @@
             <div class="hotel-item-container" ng-class="{'activeResult':$first}">
 
                 <!-- hotel image window -->
-                <div class="hotelImgContainer">
+                <div class="hotelImgContainer" ng-switch on="respondProvider">
                     <div ng-class="{'loveIconOff': !isActive, 'loveIconOn': isActive}" ng-init="isActive = false" ng-click="isActive = !isActive"></div>
-                    <img ng-src="http://images.travelnow.com/{{item.listImg}}" fallback-src="http://images.travelnow.com/{{item.listImgFall}}" alt="{{item.name}}" class="hotelImg">
+                    <img ng-src="http://images.travelnow.com/{{item.listImg}}" fallback-src="http://images.travelnow.com/{{item.listImgFall}}" alt="{{item.name}}" class="hotelImg" ng-switch-default>
                 </div>
 
                 <!-- hotel summary window -->

@@ -1,3 +1,5 @@
+// full filter container
+
 .calendar {
     width: 100%;
     padding-top: 15px;
@@ -82,4 +84,52 @@ tbody {
 
 .btn-info {
     background-color: $salmon !important;
+}
+
+// intro container
+
+#arrivalIntroDetailsContainer, #departureIntroDetailsContainer {
+    position: absolute;
+    width: 25vw;
+    min-width: 310px;
+    margin-left: -7vw;
+    padding: 0;
+
+    .calendar {
+        padding-top: 0;
+    }
+
+    .upTriangle {
+        margin-left: 50%;
+    }
+
+    table {
+        thead {
+            tr {
+                font-size: .4em;
+
+                th {
+                    small {
+                        padding: 20px 10px;
+                    }
+                }
+            }
+        }
+
+        tbody {
+            line-height: 0;
+        }
+    }
+
+    .calendar-title {
+        display: none;
+    }
+
+    tr {
+        line-height: 0;
+    }
+
+    .btn-sm, .btn-group-sm > .btn, .btn-group-sm > .btn {
+        padding: 10px;
+    }
 }
