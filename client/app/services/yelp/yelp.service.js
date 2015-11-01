@@ -23,14 +23,12 @@ angular.module('triviziApp')
                 var params = {
                     callback: 'angular.callbacks._0',
                     location: $scope.specificLocation,
-                    //location: "San Francisco, CA",
                     oauth_consumer_key: 'It7SzzcpMmTfsU7bxbZiPw', //Consumer Key
                     oauth_token: 'E2_s5173SJ-RmPScZzJLSNE0AWJ4JenK', //Token
                     oauth_timestamp: new Date().getTime(),
                     oauth_nonce: randomString(32, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'),
                     oauth_signature_method: "HMAC-SHA1",
-                    //term: $scope.category + " hotels"
-                    term: "romantic hotel"
+                    term: $scope.category + " hotels"
                 };
                 var consumerSecret = 'hx3mjwkagLri20JlyU_cFsLfrzs'; //Consumer Secret
                 var tokenSecret = 'QNdFlqR89D3PdzBKVrGj4p9_Ucg'; //Token Secret
