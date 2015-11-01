@@ -2,14 +2,33 @@
 (function() {
 
     function MainController($scope, $http, socket, $filter, ean, yelp) {
-
-        $scope.seekDeer = function() {
+        
+        $scope.storeSearchData=function(){
             $http.post('/api/things', {
                 name: "$" + $scope.budgetAmount + " | " + $scope.calendarArrive + " - " + $scope.calendarDepart + " | " + $scope.specificLocation
             });
             $scope.newThing = '';
+        }
+        
+        //category search
+        $scope.searchCategory = function(category){
+            console.log("clicking " +category);
+            $scope.storeSearchData();
+            $scope.category=category;
+        
+            $scope.searchCategory=yelp.yelpRequest($scope, function(data) {
+                console.log('callback');
+                console.log(data);
+                if (data.length > 0){
+                        $scope.panMap(data[0].id, data[0].markerId);
+                   }
+            });
+        }
+
+        //EAN Search
+        $scope.seekDeer = function() {
+            $scope.storeSearchData();
             ean.eanRequest($scope);
-            //yelp.yelpRequest($scope);
         };
         
         $scope.closeAllFilters = function() {

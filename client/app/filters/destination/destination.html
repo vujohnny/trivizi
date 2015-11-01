@@ -4,7 +4,7 @@
             <input id="navLocationField" class="destinationSpecific" type="text" ng-model="specificLocation" ng-change="emptyPlace()" placeholder="Los Angeles, CA">
         </li>
         <li class="destinationCategories" ng-repeat="places in typesOfPlaces">
-            <div class="destinationCategory {{places}}"><span>{{places}}</span></div>
+            <div class="destinationCategory {{places}}" ng-click="searchCategory(places)"><span>{{places}}</span></div>
         </li>
     </ul>
 </div>

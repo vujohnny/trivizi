@@ -32,7 +32,9 @@ angular.module('triviziApp')
 
                         //console.log(response.data);
                         $scope.deleteMarkers();
+                        $scope.respondProvider="ean";
                         $scope.resultsList = [];
+                        
                         $.each(response.data.HotelListResponse.HotelList.HotelSummary, function (k, v) {
 
                             var lat = v.latitude,
@@ -55,8 +57,9 @@ angular.module('triviziApp')
                             $scope.buildReturn(lat, lng, id, name, shortDescription, listImg, rating, ratingImg, ratingCount, rateAverage, roundedAverage, rateTotal, roundedTotal, link, listImgFall, totalNights);
 
                         }); // end each loop
-
-                        $scope.panMap($scope.resultsList[0].id, $scope.resultsList[0].markerId);
+                        if ($scope.resultsList.length > 0){
+                            $scope.panMap($scope.resultsList[0].id, $scope.resultsList[0].markerId);
+                        }
                     }); // end promise for http request	
             }
         }
