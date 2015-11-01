@@ -81,8 +81,7 @@ angular.module('triviziApp')
                             optimized: false,
                             map: map,
                             icon: myIcon,
-                            animation: google.maps.Animation.DROP,
-                            customInfo: "Marker A"
+                            animation: google.maps.Animation.DROP
                         });
                         markersArray.push(marker);
                     }
