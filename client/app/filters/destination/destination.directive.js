@@ -8,9 +8,9 @@ angular.module('triviziApp')
                 $scope.typesOfPlaces = ['romantic', 'tropical', 'party', 'family', 'pet friendly'];
 
                 $scope.catRomantic = [{
-                    city: 'Los Angeles, CA',
-                    lat: 34.0207504,
-                    lng: -118.6919151
+                    city: 'Cabo San Lucas',
+                    lat: 22.8963133,
+                    lng: -109.9680176
                 }, {
                     city: 'San Diego, CA',
                     lat: 32.8248175,
@@ -23,6 +23,10 @@ angular.module('triviziApp')
                     city: 'New York, NY',
                     lat: 40.7034947,
                     lng: -74.259861
+                }, {
+                    city: 'Cancún, Mexico',
+                    lat: 21.1215908,
+                    lng: -86.9194802
                 }];
 
                 $scope.yelpHold = function(type) {
@@ -31,8 +35,7 @@ angular.module('triviziApp')
                     $scope.deleteMarkers();
 
                     angular.forEach($scope.catRomantic, function(k, v) {
-                        //console.log(k.lat);
-                        $scope.markersDisplay(k.lat, k.lng);
+                        $scope.buildCatReturn(k.city, k.lat, k.lng);
                     });
                 }
 

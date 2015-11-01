@@ -147,6 +147,22 @@ angular.module('triviziApp')
 
                     }
 
+
+                    $scope.buildCatReturn = function(city, lat, lng) {
+
+                        google.maps.event.trigger($scope.googleMap, 'resize');
+
+                        $scope.markersDisplay(lat, lng);
+                        google.maps.event.addListener(marker, 'mouseover', (function(marker, i) {
+                            return function() {
+                                console.log(city);
+                                infowindow.setContent("<div id=\"" + city + "\" class=\"markerDisplay typography\"><span>" + city + "</span></div>");
+                                infowindow.open(map, marker);
+                            }
+                        })(marker, i));
+
+                    }
+
                 });
             },
             link: function($scope, $element, $attrs) {}
