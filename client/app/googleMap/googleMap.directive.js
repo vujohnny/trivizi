@@ -49,7 +49,7 @@ angular.module('triviziApp')
                     $scope.navLocationChanged = google.maps.event.addListener(navAutocomplete, 'place_changed', function(e) {
                         $scope.destination = navAutocomplete.getPlace();
                         $scope.specificLocation = $scope.destination.formatted_address;
-                        $scope.seekDeer($scope.destination.formatted_address);
+                        //$scope.seekDeer($scope.destination.formatted_address);
                     });
 
                     $scope.showMap = function() {
