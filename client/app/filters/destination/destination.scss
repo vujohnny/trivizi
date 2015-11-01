@@ -1,109 +1,122 @@
+// full container
+
 .destination {
     font-weight: normal;
     list-style: none;
     padding: 0;
     margin: 0;
-    
+    background: $salmon;
+    height: auto;
+
     ::-webkit-input-placeholder {
         color: $light-salmon;
     }
+
     :-moz-placeholder {
         /* Firefox 18- */
         color: $light-salmon;
     }
+
     ::-moz-placeholder {
         /* Firefox 19+ */
         color: $light-salmon;
     }
+
     :-ms-input-placeholder {
         color: $light-salmon;
     }
-    
+
     .destinationSpecific {
         width: 100%;
         padding: .5em .8em;
-        background: #e3005a;
+        background: $salmon;
         border: 0;
         outline: 0;
         color: #ffffff;
         font-size: 2em;
     }
-    
-    .destinationCategories {
-        width: 100%;
 
-        .destinationCategory {
-            color: #ffffff;
-            text-align: center;
-            text-transform: capitalize;
+    #destinationCategoryContainer {
+        float: right;
+        text-align: center;
+        width: 40%;
+        background: $medium-grey;
+
+        .destinationCategories {
             width: 100%;
-            height: 10vw;
-            display: table;
-            cursor: pointer;
-            
-            @media screen and (max-width: $break-phone) {
-                height: 20vw;
-            }
-            
-            span {
-                display: table-cell;
-                vertical-align: middle;
-                font-size: 3.5em;
-                font-weight: 600;
-                
-                @media screen and (max-width: $break-phone) {
-                    font-size: 2em;
-                }
-                
+            padding: 1em;
+
+            .btn {
+                color: #000000;
+                text-transform: capitalize;
+                cursor: pointer;
+                width: 100%;
             }
         }
-        
-        .romantic {
-            background: url('../assets/images/categories/romantic.jpg') no-repeat 0 0;
-            background-size: cover;
-        }
-        
-        .tropical {
-            background: url('../assets/images/categories/tropical.jpg') no-repeat 0 0;
-            background-size: cover;
-        }
-        
-        .party {
-            background: url('../assets/images/categories/party.jpg') no-repeat 0 0;
-            background-size: cover;
-        }
-        
-        .family {
-            background: url('../assets/images/categories/family.jpg') no-repeat 0 0;
-            background-size: cover;
-        }
-        
     }
-    
-    
 }
 
 .pac-container {
-    
+    width: 30% !important;
+
     .pac-icon {
         display: none;
     }
-    
+
     .pac-matched {
         color: $salmon;
     }
-    
+
     .pac-item-query {
         font-size: 2em;
         display: block;
         clear: both;
     }
-    
+
     .pac-item {
         color: $medium-grey;
         font-size: 1em;
         padding: 1em 1.5em;
         cursor: pointer;
     }
-        
+}
+
+// intro container
+
+.destinationSpecific {
+    color: #000000;
+}
+
+#destinationIntroDetailsContainer {
+    position: absolute;
+    padding: 0;
+    font-weight: normal;
+
+    ::-webkit-input-placeholder {
+        color: $light-salmon;
+    }
+
+    :-moz-placeholder {
+        /* Firefox 18- */
+        color: $light-salmon;
+    }
+
+    ::-moz-placeholder {
+        /* Firefox 19+ */
+        color: $light-salmon;
+    }
+
+    :-ms-input-placeholder {
+        color: $light-salmon;
+    }
+
+    input {
+        background: $salmon;
+        border: 0;
+        outline: 0;
+        padding: 0 .8em;
+        color: #ffffff;
+        font-size: .7em;
+        width: 20vw;
+    }
 }

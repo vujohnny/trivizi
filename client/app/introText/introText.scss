@@ -2,7 +2,7 @@
     .introParagraph {
         display: block;
         padding: 0;
-        width: 50%;
+        width: 60%;
         margin: 30vh auto 0 auto;
         margin: 15vh auto 0 auto;
         font-size: 2em;
@@ -13,7 +13,7 @@
             position: absolute;
             top: -20px;
             font-size: 1em;
-            margin-left: 13vw;
+            margin-left: 10.5vw;
 
             .fa {
                 font-size: 2em;
@@ -25,70 +25,6 @@
             cursor: pointer;
             display: inline-block;
             font-weight: bold;
-        }
-
-        .adultCountContainer {
-            position: absolute;
-            z-index: 0;
-            float: none;
-            margin-left: 0;
-            width: auto;
-            margin-top: 0;
-            .adultCount {
-                div{
-                    padding: 1em;
-                    width: auto;
-                    font-weight: normal;
-                    line-height: 0;
-                    font-size: 0.6em;
-                }
-            }
-        }
-
-        #arrivalIntroDetailsContainer, #departureIntroDetailsContainer {
-            position: absolute;
-            width: 25vw;
-            min-width: 310px;
-            margin-left: -7vw;
-            padding: 0;
-
-            .calendar {
-                padding-top: 0;
-            }
-
-            .upTriangle {
-                margin-left: 50%;
-            }
-
-            table {
-                thead {
-                    tr {
-                        font-size: .4em;
-
-                        th {
-                            small {
-                                padding: 20px 10px;
-                            }
-                        }
-                    }
-                }
-
-                tbody {
-                    line-height: 0;
-                }
-            }
-
-            .calendar-title {
-                display: none;
-            }
-
-            tr {
-                line-height: 0;
-            }
-
-            .btn-sm, .btn-group-sm > .btn, .btn-group-sm > .btn {
-                padding: 10px;
-            }
         }
     }
 
@@ -103,23 +39,4 @@
             color: #ffffff;
         }
     }
-}
-
-.destinationSpecific {
-    color: #000000;
-}
-
-.introCustomDrop {
-    position: absolute;
-    width: 30vw;
-    margin-left: -13vw;
-}
-
-#budgetIntroDetailsContainer {
-    rzslider {
-        width: 100%;
-        margin: 15px auto;
-    }
-
-    //position: absolute;
 }

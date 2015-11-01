@@ -44,10 +44,12 @@ angular.module('triviziApp')
                             styles: snazzyMap
                         });
 
+                    $scope.googleMap = map;
+
                     $scope.navLocationChanged = google.maps.event.addListener(navAutocomplete, 'place_changed', function(e) {
                         $scope.destination = navAutocomplete.getPlace();
                         $scope.specificLocation = $scope.destination.formatted_address;
-                        $scope.seekDeer($scope.destination.formatted_address);
+                        //$scope.seekDeer($scope.destination.formatted_address);
                     });
 
                     $scope.showMap = function() {
@@ -79,8 +81,7 @@ angular.module('triviziApp')
                             optimized: false,
                             map: map,
                             icon: myIcon,
-                            animation: google.maps.Animation.DROP,
-                            customInfo: "Marker A"
+                            animation: google.maps.Animation.DROP
                         });
                         markersArray.push(marker);
                     }
@@ -113,7 +114,9 @@ angular.module('triviziApp')
                     $scope.buildReturn = function(lat, lng, id, name, shortDescription, listImg, rating, ratingImg, ratingCount, rateAverage, roundedAverage, rateTotal, roundedTotal, link, listImgFall, totalNights) {
 
                         //console.log($scope.priceSlider);
-                        if (rateTotal < $scope.priceSlider && $scope.resultsList.length < 20) {
+                        google.maps.event.trigger($scope.googleMap, 'resize');
+
+                        if (rateAverage < $scope.priceSlider && $scope.resultsList.length < 20) {
 
                             // map markers and pan map to city
                             $scope.markersDisplay(lat, lng);
@@ -141,6 +144,22 @@ angular.module('triviziApp')
                             });
 
                         } else {}
+
+                    }
+
+
+                    $scope.buildCatReturn = function(city, lat, lng) {
+
+                        google.maps.event.trigger($scope.googleMap, 'resize');
+
+                        $scope.markersDisplay(lat, lng);
+                        google.maps.event.addListener(marker, 'mouseover', (function(marker, i) {
+                            return function() {
+                                console.log(city);
+                                infowindow.setContent("<div id=\"" + city + "\" class=\"markerDisplay typography\"><span>" + city + "</span></div>");
+                                infowindow.open(map, marker);
+                            }
+                        })(marker, i));
 
                     }
 

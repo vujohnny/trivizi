@@ -6,7 +6,7 @@
 
         <div class="introSelect" ng-click="budgetIntroDetails = ! budgetIntroDetails; destinationIntroDetails=false; arrivalIntroDetails=false; departureIntroDetails=false; adultDetails=false">
             ${{priceSlider}}<span class="caret"></span>
-            <div id="budgetIntroDetailsContainer" class="customDrop introCustomDrop" ng-show="budgetIntroDetails">
+            <div id="budgetIntroDetailsContainer" class="customDrop" ng-show="budgetIntroDetails">
                 <div class="upTriangle">
                     <i class="fa fa-caret-up"></i>
                 </div>
@@ -17,8 +17,14 @@
         and I want to go somewhere
 
         <div class="introSelect">
-            <span class="placeHolderLocation" ng-click="destinationIntroDetails = ! destinationIntroDetails; budgetIntroDetails=false; arrivalIntroDetails=false; departureIntroDetails=false; adultDetails=false">Romantic</span>{{specificIntroLocation}}<span class="caret"></span>
-            <div id="destinatioIntronDetailsContainer" class="customDrop" ng-show="destinationIntroDetails">
+            <span ng-click="destinationIntroDetails = ! destinationIntroDetails; budgetIntroDetails=false; arrivalIntroDetails=false; departureIntroDetails=false; adultDetails=false">
+                <span class="placeHolderLocation">Romantic</span>
+                {{specificIntroLocation}}<span class="caret"></span>
+            </span>
+            <div id="destinationIntroDetailsContainer" class="customDrop" ng-show="destinationIntroDetails">
+                <div class="upTriangle">
+                    <i class="fa fa-caret-up"></i>
+                </div>
                 <input id="navIntroLocationField" class="destinationSpecific" type="text" ng-model="specificIntroLocation" ng-change="emptyPlace()" placeholder="Los Angeles, CA">
             </div>
         </div>
@@ -60,5 +66,5 @@
 
     </div>
 
-    <button class="btn btn-default intro-button" ng-click="introSubmit()">Let's do this!</button>
+    <button class="btn btn-default intro-button" ng-click="introText=false; fullText=true;">Let's do this!</button>
 </div>
