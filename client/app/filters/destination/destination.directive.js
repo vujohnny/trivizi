@@ -4,7 +4,7 @@ angular.module('triviziApp')
         return {
             templateUrl: 'app/filters/destination/destination.html',
             restrict: 'EA',
-            link: function($scope, $element, $attrs) {
+            controller: function($scope, $element, $attrs, ean, yelp) {
                 $scope.typesOfPlaces = ['romantic', 'tropical', 'party', 'family', 'pet friendly'];
 
                 $scope.catRomantic = [{
@@ -29,19 +29,21 @@ angular.module('triviziApp')
                     lng: -86.9194802
                 }];
 
-                $scope.yelpHold = function(type) {
-                    //console.log(type);
-                    //console.log($scope.catRomantic[0].lat);
-                    $scope.deleteMarkers();
+                $scope.yelpHold = function(category) {
 
+                    $scope.deleteMarkers();
+                    $scope.category = category;
+                    
                     angular.forEach($scope.catRomantic, function(k, v) {
                         $scope.buildCatReturn(k.city, k.lat, k.lng);
                     });
+
                 }
 
                 $scope.emptyPlace = function() {
                     $('.placeHolderLocation').remove();
                 }
-            }
+            },
+            link: function($scope, $element, $attrs) {}
         };
     });

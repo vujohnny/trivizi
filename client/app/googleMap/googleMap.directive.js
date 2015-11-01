@@ -5,7 +5,7 @@ angular.module('triviziApp')
         return {
             templateUrl: 'app/googleMap/googleMap.html',
             restrict: 'EA',
-            controller: function($scope, $timeout) {
+            controller: function($scope, $timeout, yelp, ean) {
                 $timeout(function() {
                     var resultsItem = ".results",
                         resultsHotelItem = ".hotel-item",
@@ -153,11 +153,21 @@ angular.module('triviziApp')
                         google.maps.event.trigger($scope.googleMap, 'resize');
 
                         $scope.markersDisplay(lat, lng);
+                        
                         google.maps.event.addListener(marker, 'mouseover', (function(marker, i) {
                             return function() {
-                                console.log(city);
                                 infowindow.setContent("<div id=\"" + city + "\" class=\"markerDisplay typography\"><span>" + city + "</span></div>");
                                 infowindow.open(map, marker);
+                            }
+                        })(marker, i));
+
+                        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                            return function() {
+
+                                $scope.specificLocation = city;
+                                console.log($scope.specificLocation);
+
+                                yelp.yelpRequest();
                             }
                         })(marker, i));
 
