@@ -133,10 +133,10 @@ angular.module('triviziApp')
 
                         map = new google.maps.Map(document.getElementById('googleMap'), {
                             center: {
-                                lat: 38.4740022,
-                                lng: -95.426484
+                                lat: 20.393736,
+                                lng: -46.268002
                             },
-                            zoom: 3,
+                            zoom: 2,
                             mapTypeControl: false,
                             zoomControl: true,
                             scaleControl: true,
@@ -259,7 +259,7 @@ angular.module('triviziApp')
                     $scope.buildCatReturn = function (city, lat, lng) {
 
                         google.maps.event.trigger($scope.googleMap, 'resize');
-                        map.setZoom(3);
+                        map.setZoom(2);
                         $scope.markersDisplay(lat, lng);
 
                         google.maps.event.addListener(marker, 'mouseover', (function (marker, i) {

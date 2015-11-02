@@ -8,25 +8,33 @@ angular.module('triviziApp')
                 $scope.typesOfPlaces = ['romantic', 'tropical', 'party', 'family', 'pet friendly'];
 
                 $scope.catRomantic = [{
-                    city: 'Cabo San Lucas',
-                    lat: 22.8963133,
-                    lng: -109.9680176
+                    city: 'Venice, Italy',
+                    lat: 45.4536617,
+                    lng: 11.9707408
                 }, {
-                    city: 'San Diego, CA',
-                    lat: 32.8248175,
-                    lng: -117.3753462
+                    city: 'Paris, France',
+                    lat: 48.8588377,
+                    lng: 2.2775172
                 }, {
-                    city: 'San Francisco, CA',
-                    lat: 37.757815,
-                    lng: -122.5076397
+                    city: 'Prague, Czech Republic',
+                    lat: 50.0595854,
+                    lng: 14.3255409
                 }, {
-                    city: 'New York, NY',
-                    lat: 40.7034947,
-                    lng: -74.259861
+                    city: 'Lisbon, Portugal',
+                    lat: 38.7436057,
+                    lng: -9.2302438
                 }, {
-                    city: 'Cancún, Mexico',
-                    lat: 21.1215908,
-                    lng: -86.9194802
+                    city: 'Napa Valley, CA, USA',
+                    lat: 38.4294863,
+                    lng: -122.7010186
+                }, {
+                    city: 'Kahului, HI, USA',
+                    lat: 20.87505,
+                    lng: -156.4914596
+                }, {
+                    city: 'Buenos Aires, Argentina',
+                    lat: -34.6158037,
+                    lng: -58.5033605
                 }];
 
                 $scope.yelpHold = function(category) {
