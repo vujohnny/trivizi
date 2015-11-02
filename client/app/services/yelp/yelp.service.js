@@ -39,7 +39,6 @@ angular.module('triviziApp')
                     params: params
                 }).success(function(response) {
                     //success callback
-                    //console.log(response.businesses);
                     $scope.respondProvider = "yelp";
                     $scope.yelpResults = [];
                     angular.forEach(response.businesses, function(k, v) {

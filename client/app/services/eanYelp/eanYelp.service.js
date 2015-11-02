@@ -6,12 +6,12 @@ angular.module('triviziApp')
 
         return {
             eanYelpRequest: function ($scope, data) {
-                //console.log("inside EAN service");
-                //console.log(data);
+
                 $scope.closeAllFilters();
-                
+                $scope.deleteMarkers();
+                $scope.resultsList = [];
+
                 $.each(data, function (k, v) {
-                    //console.log(v.propertyName + " " + v.postalCode);
                     var httpMethod = 'GET';
                     var url = 'http://api.ean.com/ean-services/rs/hotel/v3/list?callback=JSON_CALLBACK';
                     var params = {
@@ -32,8 +32,6 @@ angular.module('triviziApp')
                     $http.jsonp(url, {
                             params: params
                         }).success(function (response) {
-                            //console.log(response);
-                            $scope.deleteMarkers();
                             $scope.respondProvider = "ean";
 
                             if (response.HotelListResponse.EanWsError) {
@@ -67,8 +65,7 @@ angular.module('triviziApp')
                         console.log("error");
                     });
                 });
-                console.log("Johnny");
-                console.log($scope.resultsList);
+
                 if ($scope.resultsList.length > 0) {
                     $scope.panMap($scope.resultsList[0].id, $scope.resultsList[0].markerId);
                 }

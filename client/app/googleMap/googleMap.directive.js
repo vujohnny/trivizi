@@ -210,8 +210,9 @@ angular.module('triviziApp')
                     $scope.panMap = function (id, firstMarker) {
                         var place = $scope.destination;
                         if (place.geometry.viewport) {
-                            map.setCenter(firstMarker.getPosition());
+                            //map.setCenter(firstMarker.getPosition());
                             google.maps.event.trigger(firstMarker, 'click');
+                            map.fitBounds(place.geometry.viewport);
                             map.setZoom(13);
                         } else {
                             map.setCenter(place.geometry.location);
@@ -249,10 +250,8 @@ angular.module('triviziApp')
                                 markerId: marker,
                                 totalNights: totalNights
                             });
-                            
-                            console.log($scope.resultsList);
 
-                        } 
+                        }
 
                     }
 
@@ -260,7 +259,7 @@ angular.module('triviziApp')
                     $scope.buildCatReturn = function (city, lat, lng) {
 
                         google.maps.event.trigger($scope.googleMap, 'resize');
-
+                        map.setZoom(3);
                         $scope.markersDisplay(lat, lng);
 
                         google.maps.event.addListener(marker, 'mouseover', (function (marker, i) {
@@ -272,14 +271,10 @@ angular.module('triviziApp')
 
                         google.maps.event.addListener(marker, 'click', (function (marker, i) {
                             return function () {
-
                                 $scope.specificLocation = city;
                                 yelp.yelpRequest($scope, function (data) {
-                                    $scope.resultsList = [];
                                     eanYelp.eanYelpRequest($scope, data);
-
                                 });
-
                             }
                         })(marker, i));
 
