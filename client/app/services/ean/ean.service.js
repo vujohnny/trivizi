@@ -59,7 +59,8 @@ angular.module('triviziApp')
                         $scope.buildReturn(lat, lng, id, name, shortDescription, listImg, rating, ratingImg, ratingCount, rateAverage, roundedAverage, rateTotal, roundedTotal, link, listImgFall, totalNights);
 
                     }); // end each loop
-                    console.log($scope.resultsList);
+                    //console.log($scope.resultsList);
+                    console.log("only EAN call and return, no Yelp");
                     if ($scope.resultsList.length > 0) {
                         $scope.panMap($scope.resultsList[0].id, $scope.resultsList[0].markerId);
                     }
