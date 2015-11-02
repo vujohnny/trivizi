@@ -8,14 +8,10 @@ angular.module('triviziApp')
          * if getting cross origin error install 
          * http://bit.ly/1zhiKzg 
          */
+        
         return {
             eanRequest: function ($scope) {
                 $scope.closeAllFilters();
-                
-                if ($scope.propertyName === undefined && $scope.postalCode === undefined) {
-                    $scope.propertyName = "";
-                    $scope.postalCode = "";
-                } 
                 
                 var httpMethod = 'GET';
                 var url = 'http://api.ean.com/ean-services/rs/hotel/v3/list?callback=JSON_CALLBACK';
@@ -29,9 +25,7 @@ angular.module('triviziApp')
                     "departureDate": "11/21/2015", //"11/20/2015", //$scope.calendarDepart,
                     "curencyCode": "USD",
                     "numberOfResults": "200",
-                    "room1": $scope.numberOfAdults,
-                    "propertyName": $scope.propertyName,
-                    "postalCode": $scope.postalCode                    
+                    "room1": $scope.numberOfAdults                  
                 }
 
                 $http.jsonp(url, {

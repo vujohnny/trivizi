@@ -39,7 +39,7 @@ angular.module('triviziApp')
                     params: params
                 }).success(function(response) {
                     //success callback
-                    console.log(response.businesses);
+                    //console.log(response.businesses);
                     $scope.respondProvider = "yelp";
                     $scope.yelpResults = [];
                     angular.forEach(response.businesses, function(k, v) {
@@ -54,17 +54,20 @@ angular.module('triviziApp')
                             rating = k.rating,
                             ratingImg = k.rating_img_url,
                             ratingCount = k.review_count,
-                            link = k.url.replace(/&amp;/g, '&');
+                            link = k.url.replace(/&amp;/g, '&'),
+                            postalCode = k.location.postal_code ;
+        
 
                         $scope.yelpResults.push({
-                            name: name,
+                            propertyName: name,
                             id: id,
                             image: listImg,
                             imageFall: listImgFall,
                             rating: rating,
                             ratingImg: ratingImg,
                             ratingCount: ratingCount,
-                            link: link
+                            link: link,
+                            postalCode: postalCode
                         });
 
                     }); // end each loop

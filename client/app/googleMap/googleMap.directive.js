@@ -5,7 +5,7 @@ angular.module('triviziApp')
         return {
             templateUrl: 'app/googleMap/googleMap.html',
             restrict: 'EA',
-            controller: function ($scope, $timeout, yelp, ean) {
+            controller: function ($scope, $timeout, yelp, ean, eanYelp) {
                 $timeout(function () {
                     var resultsItem = ".results",
                         resultsHotelItem = ".hotel-item",
@@ -249,8 +249,10 @@ angular.module('triviziApp')
                                 markerId: marker,
                                 totalNights: totalNights
                             });
+                            
+                            console.log($scope.resultsList);
 
-                        } else {}
+                        } 
 
                     }
 
@@ -272,12 +274,10 @@ angular.module('triviziApp')
                             return function () {
 
                                 $scope.specificLocation = city;
-                                console.log($scope.specificLocation);
-
                                 yelp.yelpRequest($scope, function (data) {
-                                    console.log('callback');
-                                    //console.log(data);
-                                   
+                                    $scope.resultsList = [];
+                                    eanYelp.eanYelpRequest($scope, data);
+
                                 });
 
                             }
