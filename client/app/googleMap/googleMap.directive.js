@@ -235,6 +235,13 @@ angular.module('triviziApp')
                                     $scope.highlightResult(id);
                                 }
                             })(marker, i));
+                            
+                            google.maps.event.addListener(marker, 'mouseover', (function (marker, i) {
+                                return function () {
+                                    infowindow.setContent("<div id=\"" + id + "\" class=\"markerDisplay typography\"><span class=\"markerTotal\">$" + roundedTotal + "</span></div>");
+                                    infowindow.open(map, marker);
+                                }
+                            })(marker, i));
 
                             // build navigation list
                             $scope.resultsList.push({
