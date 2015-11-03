@@ -5,9 +5,9 @@ angular.module('triviziApp')
             templateUrl: 'app/filters/destination/destination.html',
             restrict: 'EA',
             controller: function($scope, $element, $attrs, ean, yelp) {
-                $scope.typesOfPlaces = ['romantic', 'tropical', 'party', 'family', 'pet friendly'];
+                $scope.typesOfPlaces = ['romantic', 'party', 'family', 'pet friendly', 'tropical'];
 
-                $scope.catRomantic = [{
+                var romanticList = [{
                     city: 'Venice, Italy',
                     lat: 45.4536617,
                     lng: 11.9707408
@@ -36,13 +36,44 @@ angular.module('triviziApp')
                     lat: -34.6158037,
                     lng: -58.5033605
                 }];
+                
+                var partyList = [{
+                    city: 'Cabo San Lucas',
+                    lat: 22.8963133,
+                    lng: -109.9680176
+                }, {
+                    city: 'San Diego, CA',
+                    lat: 32.8248175,
+                    lng: -117.3753462
+                }, {
+                    city: 'New York, NY',
+                    lat: 40.7034947,
+                    lng: -74.259861
+                }, {
+                    city: 'Cancún, Mexico',
+                    lat: 21.1215908,
+                    lng: -86.9194802
+                }, {
+                    city: 'Las Vegas, NV',
+                    lat: 36.1249185,
+                    lng: -115.315085
+                }, {
+                    city: 'New Orleans, LA',
+                    lat: 30.0218762,
+                    lng: -90.0231687
+                }, {
+                    city: 'Amsterdam, Netherlands',
+                    lat: 52.3746329,
+                    lng: 4.7585316
+                }];
 
                 $scope.yelpHold = function(category) {
 
                     $scope.deleteMarkers();
                     $scope.category = category;
+                    var currentCategoryList = eval(category+"List");
                     
-                    angular.forEach($scope.catRomantic, function(k, v) {
+                    angular.forEach(currentCategoryList, function(k, v) {
                         $scope.buildCatReturn(k.city, k.lat, k.lng);
                     });
 
