@@ -78,9 +78,10 @@ angular.module('triviziApp')
                     });
 
                 }
-
+                
+                //jquery
                 $scope.changeText = function(category) {
-                    $('.placeHolderLocation').remove();
+                    //$('.placeHolderLocation').remove();
                     $('.cityPlaceHolder').hide();
                     $('.switchSomewhere').empty().html('somewhere');
                     $('.categoryPlaceHolder').show().empty().append($scope.category);

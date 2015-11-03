@@ -156,6 +156,10 @@ angular.module('triviziApp')
                     $scope.navLocationChanged = google.maps.event.addListener(navAutocomplete, 'place_changed', function (e) {
                         $scope.destination = navAutocomplete.getPlace();
                         $scope.specificLocation = $scope.destination.formatted_address;
+                        
+                        //jquery
+                        $('.cityPlaceHolder').show();
+                        $('.categoryPlaceHolder').hide();
                         //$scope.seekDeer($scope.destination.formatted_address);
                     });
 

@@ -12,9 +12,14 @@
 
     <div class="filterBlock col-lg-4" ng-click="destinationDetails = ! destinationDetails; budgetDetails=false; arrivalDetails=false; departureDetails=false; adultDetails=false">
         <div class="filterTitle">Where:</div>
-        <div class="salmon">
-            <span class="placeHolderLocation">Romantic</span> {{ specificLocation | limitTo: 20 }}{{specificLocation.length > 12 ? '...' : ''}}
-        </div>
+        <span class="placeHolderLocation salmon">
+            Romantic
+        </span>
+        <span class="cityPlaceHolder salmon">
+            {{ specificLocation | limitTo: 20 }}{{specificLocation.length > 12 ? '...' : ''}}
+        </span>
+        <span class="categoryPlaceHolder salmon">
+        </span>
         <div class="upTriangle" ng-show="destinationDetails">
             <i class="fa fa-caret-up"></i>
         </div>
