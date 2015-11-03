@@ -86,7 +86,6 @@ angular.module('triviziApp')
                     $('.categoryPlaceHolder').show().empty().append($scope.category);
                     $scope.destinationIntroDetails = false;
                 }
-                
                 $scope.emptyPlace = function() {
                     $('.placeHolderLocation').remove();
                 }

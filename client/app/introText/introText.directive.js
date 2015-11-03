@@ -17,6 +17,8 @@ angular.module('triviziApp')
                     $scope.destination = navIntroAutocomplete.getPlace();
                     $scope.specificLocation = $scope.destination.formatted_address;
                     $scope.seekDeer($scope.destination.formatted_address);
+                    
+                    
                     $scope.destinationIntroDetails = false;
                     $scope.emptyPlace();
                     $('.cityPlaceHolder').show();
@@ -26,9 +28,7 @@ angular.module('triviziApp')
 
             },
             link: function($scope, $element, $attrs, ean) {
-
                 $scope.introText = true;
-
                 $scope.introSubmit = function() {
                     $scope.seekDeer();
                 }

@@ -18,7 +18,9 @@
 
         <div class="introSelect">
             <span ng-click="destinationIntroDetails = ! destinationIntroDetails; budgetIntroDetails=false; arrivalIntroDetails=false; departureIntroDetails=false; adultDetails=false">
-                <span class="placeHolderLocation">romantic</span>
+                <span class="placeHolderLocation">
+                    romantic
+                </span>
                 <span class="cityPlaceHolder">
                     {{ specificLocation | limitTo: 20 }}{{specificLocation.length > 12 ? '...' : ''}}
                 </span>
