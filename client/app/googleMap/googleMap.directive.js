@@ -226,7 +226,6 @@ angular.module('triviziApp')
                     $scope.buildReturn = function (lat, lng, id, name, shortDescription, listImg, rating, ratingImg, ratingCount, rateAverage, roundedAverage, rateTotal, roundedTotal, link, listImgFall, totalNights) {
 
                         //console.log($scope.priceSlider);
-                        google.maps.event.trigger($scope.googleMap, 'resize');
 
                         if (rateAverage < $scope.priceSlider && $scope.resultsList.length < 20) {
 
@@ -261,8 +260,9 @@ angular.module('triviziApp')
                                 markerId: marker,
                                 totalNights: totalNights
                             });
-
                         }
+                        
+                        google.maps.event.trigger($scope.googleMap, 'resize');
 
                     }
 
