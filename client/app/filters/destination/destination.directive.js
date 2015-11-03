@@ -68,7 +68,7 @@ angular.module('triviziApp')
                 }];
 
                 $scope.yelpHold = function(category) {
-
+                    
                     $scope.deleteMarkers();
                     $scope.category = category;
                     var currentCategoryList = eval(category+"List");
@@ -79,6 +79,14 @@ angular.module('triviziApp')
 
                 }
 
+                $scope.changeText = function(category) {
+                    $('.placeHolderLocation').remove();
+                    $('.cityPlaceHolder').hide();
+                    $('.switchSomewhere').empty().html('somewhere');
+                    $('.categoryPlaceHolder').show().empty().append($scope.category);
+                    $scope.destinationIntroDetails = false;
+                }
+                
                 $scope.emptyPlace = function() {
                     $('.placeHolderLocation').remove();
                 }

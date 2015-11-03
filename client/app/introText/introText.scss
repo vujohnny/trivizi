@@ -1,25 +1,32 @@
+intro-text {
+    background: url("../assets/images/world-map.jpg") no-repeat 0 0;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    display: block;
+}
+
 .introContainer {
     .introParagraph {
         display: block;
         padding: 0;
-        width: 60%;
-        margin: 30vh auto 0 auto;
-        margin: 15vh auto 0 auto;
+        width: 40%;
+        margin: 10vw auto 0 auto;
         font-size: 2em;
         color: $dark-grey;
         line-height: 1.7em;
-
+        @media screen and (max-width: $break-phone) {
+            width: 95%;
+        }
         .upTriangle {
             position: absolute;
             top: -20px;
             font-size: 1em;
             margin-left: 10.5vw;
-
             .fa {
                 font-size: 2em;
             }
         }
-
         .introSelect {
             color: $salmon;
             cursor: pointer;
@@ -27,13 +34,12 @@
             font-weight: bold;
         }
     }
-
     .intro-button {
         color: $salmon;
         border-color: $salmon;
         padding: 1em 6em;
-        margin-top: 2em;
-
+        margin-top: 3em;
+        background-color: transparent;
         &:hover {
             background-color: $light-salmon;
             color: #ffffff;

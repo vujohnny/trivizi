@@ -2,7 +2,7 @@
 	<div class="row destination">
 		<input id="navLocationField" class="destinationSpecific" type="text" ng-model="specificLocation" ng-change="emptyPlace()" placeholder="Los Angeles, CA">
 		<div id="destinationCategoryContainer" ng-show="specificLocation.length"> <!--ng-show="specificLocation.length"-->
-			<pre>or type of place:</pre>
+			<div class="destinationCategoryTitle">or type of place:</div>
 			<div class="destinationCategories" ng-repeat="places in typesOfPlaces">
 				<button class="btn btn-default" ng-click="yelpHold(places)"><i class="fa fa-hand-peace-o"></i> {{places}}</button>
 			</div>

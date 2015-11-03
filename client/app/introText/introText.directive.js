@@ -18,6 +18,10 @@ angular.module('triviziApp')
                     $scope.specificLocation = $scope.destination.formatted_address;
                     $scope.seekDeer($scope.destination.formatted_address);
                     $scope.destinationIntroDetails = false;
+                    $scope.emptyPlace();
+                    $('.cityPlaceHolder').show();
+                    $('.categoryPlaceHolder').hide();
+                    $('.switchSomewhere').empty().html('to');
                 });
 
             },
