@@ -21,7 +21,7 @@
         color: $light-salmon;
     }
     .destinationSpecific {
-        width: 100%;
+        width: 60%;
         padding: .5em .8em;
         background: $salmon;
         border: 0;
@@ -33,6 +33,7 @@
         float: right;
         text-align: center;
         width: 40%;
+        margin-top: 65px;
         background: $dark-grey;
         .destinationCategories {
             width: 100%;
