@@ -1,12 +1,12 @@
 'use strict';
 
 angular.module('triviziApp')
-    .directive('googleMap', function() {
+    .directive('googleMap', function () {
         return {
             templateUrl: 'app/googleMap/googleMap.html',
             restrict: 'EA',
-            controller: function($scope, $timeout) {
-                $timeout(function() {
+            controller: function ($scope, $timeout, yelp, ean, eanYelp) {
+                $timeout(function () {
                     var resultsItem = ".results",
                         resultsHotelItem = ".hotel-item",
                         resultsContainer = "#results-container",
@@ -22,14 +22,121 @@ angular.module('triviziApp')
                         },
                         navInput = document.getElementById('navLocationField'),
                         navAutocomplete = new google.maps.places.Autocomplete(navInput, options),
-                        snazzyMap = [{"featureType":"water","elementType":"geometry","stylers":[{"color":"#a0d6d1"},{"lightness":17}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#dedede"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#dedede"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#dedede"},{"lightness":18}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":16}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#f1f1f1"},{"lightness":21}]},{"elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#ffffff"},{"lightness":16}]},{"elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#333333"},{"lightness":40}]},{"elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#f2f2f2"},{"lightness":19}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#fefefe"},{"lightness":20}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#fefefe"},{"lightness":17},{"weight":1.2}]}],
+                        snazzyMap = [{
+                            "featureType": "water",
+                            "elementType": "geometry",
+                            "stylers": [{
+                                "color": "#a0d6d1"
+                            }, {
+                                "lightness": 17
+                            }]
+                        }, {
+                            "featureType": "landscape",
+                            "elementType": "geometry",
+                            "stylers": [{
+                                "color": "#ffffff"
+                            }, {
+                                "lightness": 20
+                            }]
+                        }, {
+                            "featureType": "road.highway",
+                            "elementType": "geometry.fill",
+                            "stylers": [{
+                                "color": "#dedede"
+                            }, {
+                                "lightness": 17
+                            }]
+                        }, {
+                            "featureType": "road.highway",
+                            "elementType": "geometry.stroke",
+                            "stylers": [{
+                                "color": "#dedede"
+                            }, {
+                                "lightness": 29
+                            }, {
+                                "weight": 0.2
+                            }]
+                        }, {
+                            "featureType": "road.arterial",
+                            "elementType": "geometry",
+                            "stylers": [{
+                                "color": "#dedede"
+                            }, {
+                                "lightness": 18
+                            }]
+                        }, {
+                            "featureType": "road.local",
+                            "elementType": "geometry",
+                            "stylers": [{
+                                "color": "#ffffff"
+                            }, {
+                                "lightness": 16
+                            }]
+                        }, {
+                            "featureType": "poi",
+                            "elementType": "geometry",
+                            "stylers": [{
+                                "color": "#f1f1f1"
+                            }, {
+                                "lightness": 21
+                            }]
+                        }, {
+                            "elementType": "labels.text.stroke",
+                            "stylers": [{
+                                "visibility": "on"
+                            }, {
+                                "color": "#ffffff"
+                            }, {
+                                "lightness": 16
+                            }]
+                        }, {
+                            "elementType": "labels.text.fill",
+                            "stylers": [{
+                                "saturation": 36
+                            }, {
+                                "color": "#333333"
+                            }, {
+                                "lightness": 40
+                            }]
+                        }, {
+                            "elementType": "labels.icon",
+                            "stylers": [{
+                                "visibility": "off"
+                            }]
+                        }, {
+                            "featureType": "transit",
+                            "elementType": "geometry",
+                            "stylers": [{
+                                "color": "#f2f2f2"
+                            }, {
+                                "lightness": 19
+                            }]
+                        }, {
+                            "featureType": "administrative",
+                            "elementType": "geometry.fill",
+                            "stylers": [{
+                                "color": "#fefefe"
+                            }, {
+                                "lightness": 20
+                            }]
+                        }, {
+                            "featureType": "administrative",
+                            "elementType": "geometry.stroke",
+                            "stylers": [{
+                                "color": "#fefefe"
+                            }, {
+                                "lightness": 17
+                            }, {
+                                "weight": 1.2
+                            }]
+                        }],
 
                         map = new google.maps.Map(document.getElementById('googleMap'), {
                             center: {
-                                lat: 38.4740022,
-                                lng: -95.426484
+                                lat: 20.393736,
+                                lng: -46.268002
                             },
-                            zoom: 3,
+                            zoom: 2,
                             mapTypeControl: false,
                             zoomControl: true,
                             scaleControl: true,
@@ -46,20 +153,24 @@ angular.module('triviziApp')
 
                     $scope.googleMap = map;
 
-                    $scope.navLocationChanged = google.maps.event.addListener(navAutocomplete, 'place_changed', function(e) {
+                    $scope.navLocationChanged = google.maps.event.addListener(navAutocomplete, 'place_changed', function (e) {
                         $scope.destination = navAutocomplete.getPlace();
                         $scope.specificLocation = $scope.destination.formatted_address;
+                        
+                        //jquery
+                        $('.cityPlaceHolder').show();
+                        $('.categoryPlaceHolder').hide();
                         //$scope.seekDeer($scope.destination.formatted_address);
                     });
 
-                    $scope.showMap = function() {
-                        $(".intro-text").fadeOut("slow", function() {
+                    $scope.showMap = function () {
+                        $(".intro-text").fadeOut("slow", function () {
                             $("#googleMap").css("visibility", "visible");
-                            $("#results-container, .top-menu").fadeIn("slow", function() {});
+                            $("#results-container, .top-menu").fadeIn("slow", function () {});
                         });
                     }
 
-                    $scope.highlightResult = function(hotelId, hotelLat, hotelLng) {
+                    $scope.highlightResult = function (hotelId, hotelLat, hotelLng) {
                         var selectedId = hotelId;
                         $(resultsItem + " " + resultsHotelItem + " .hotel-item-container").removeClass("activeResult");
                         $(".btn-book").removeClass("btn-on");
@@ -73,7 +184,7 @@ angular.module('triviziApp')
                         }, 500);
                     }
 
-                    $scope.markersDisplay = function(lat, lng) {
+                    $scope.markersDisplay = function (lat, lng) {
                         marker = new google.maps.Marker({
                             position: {
                                 lat, lng
@@ -86,7 +197,7 @@ angular.module('triviziApp')
                         markersArray.push(marker);
                     }
 
-                    $scope.deleteMarkers = function() {
+                    $scope.deleteMarkers = function () {
                         for (var i = 0; i < markersArray.length; i++) {
                             markersArray[i].setMap(null);
                         }
@@ -94,37 +205,44 @@ angular.module('triviziApp')
                         $(resultsItem).empty();
                     }
 
-                    $scope.highlightMarker = function(hotelMarker) {
+                    $scope.highlightMarker = function (hotelMarker) {
                         google.maps.event.trigger(hotelMarker, 'click');
                         map.setCenter(hotelMarker.getPosition());
                         map.setZoom(13);
                     }
 
-                    $scope.panMap = function(id, firstMarker) {
+                    $scope.panMap = function (id, firstMarker) {
                         var place = $scope.destination;
                         if (place.geometry.viewport) {
-                            map.setCenter(firstMarker.getPosition());
+                            //map.setCenter(firstMarker.getPosition());
                             google.maps.event.trigger(firstMarker, 'click');
+                            map.fitBounds(place.geometry.viewport);
                             map.setZoom(13);
                         } else {
                             map.setCenter(place.geometry.location);
                         }
                     }
 
-                    $scope.buildReturn = function(lat, lng, id, name, shortDescription, listImg, rating, ratingImg, ratingCount, rateAverage, roundedAverage, rateTotal, roundedTotal, link, listImgFall, totalNights) {
+                    $scope.buildReturn = function (lat, lng, id, name, shortDescription, listImg, rating, ratingImg, ratingCount, rateAverage, roundedAverage, rateTotal, roundedTotal, link, listImgFall, totalNights) {
 
                         //console.log($scope.priceSlider);
-                        google.maps.event.trigger($scope.googleMap, 'resize');
 
                         if (rateAverage < $scope.priceSlider && $scope.resultsList.length < 20) {
 
                             // map markers and pan map to city
                             $scope.markersDisplay(lat, lng);
-                            google.maps.event.addListener(marker, 'click', (function(marker, i) {
-                                return function() {
+                            google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                                return function () {
                                     infowindow.setContent("<div id=\"" + id + "\" class=\"markerDisplay typography\"><span class=\"markerTotal\">$" + roundedTotal + "</span> <span class=\"medium-grey\">|</span> <img src=\"" + ratingImg + "\" class=\"ratingImg\"></div>");
                                     infowindow.open(map, marker);
                                     $scope.highlightResult(id);
+                                }
+                            })(marker, i));
+                            
+                            google.maps.event.addListener(marker, 'mouseover', (function (marker, i) {
+                                return function () {
+                                    infowindow.setContent("<div id=\"" + id + "\" class=\"markerDisplay typography\"><span class=\"markerTotal\">$" + roundedTotal + "</span></div>");
+                                    infowindow.open(map, marker);
                                 }
                             })(marker, i));
 
@@ -142,22 +260,32 @@ angular.module('triviziApp')
                                 markerId: marker,
                                 totalNights: totalNights
                             });
-
-                        } else {}
+                        }
+                        
+                        google.maps.event.trigger($scope.googleMap, 'resize');
 
                     }
 
 
-                    $scope.buildCatReturn = function(city, lat, lng) {
+                    $scope.buildCatReturn = function (city, lat, lng) {
 
                         google.maps.event.trigger($scope.googleMap, 'resize');
-
+                        map.setZoom(2);
                         $scope.markersDisplay(lat, lng);
-                        google.maps.event.addListener(marker, 'mouseover', (function(marker, i) {
-                            return function() {
-                                console.log(city);
+
+                        google.maps.event.addListener(marker, 'mouseover', (function (marker, i) {
+                            return function () {
                                 infowindow.setContent("<div id=\"" + city + "\" class=\"markerDisplay typography\"><span>" + city + "</span></div>");
                                 infowindow.open(map, marker);
+                            }
+                        })(marker, i));
+
+                        google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                            return function () {
+                                $scope.specificLocation = city;
+                                yelp.yelpRequest($scope, function (data) {
+                                    eanYelp.eanYelpRequest($scope, data);
+                                });
                             }
                         })(marker, i));
 
@@ -165,6 +293,6 @@ angular.module('triviziApp')
 
                 });
             },
-            link: function($scope, $element, $attrs) {}
+            link: function ($scope, $element, $attrs) {}
         };
     });

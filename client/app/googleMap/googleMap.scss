@@ -11,9 +11,16 @@
 .markerDisplay {
     font-weight: bold;
     font-size: 1.4em;
-
     .ratingImg {
         margin: 5px 0;
         width: 5em;
+    }
+}
+
+#mapContain {
+    .singleLogo {
+        position: absolute;
+        z-index: 1;
+        right: 2em;
     }
 }

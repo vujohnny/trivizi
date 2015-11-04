@@ -6,8 +6,10 @@ angular.module('triviziApp')
             templateUrl: 'app/fullText/fullText.html',
             restrict: 'EA',
             link: function ($scope, $element, $attrs) {
+                
+                //jquery
                 $scope.fullScreenList = function () {
-
+                    
                     if ($('#sideContain').hasClass('col-sm-6') == true) {
                         $('#fullList').removeClass('fullListPush');
                         $('#fullList').addClass('fullListPull');

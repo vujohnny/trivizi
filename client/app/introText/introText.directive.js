@@ -17,14 +17,18 @@ angular.module('triviziApp')
                     $scope.destination = navIntroAutocomplete.getPlace();
                     $scope.specificLocation = $scope.destination.formatted_address;
                     $scope.seekDeer($scope.destination.formatted_address);
+                    
+                    
                     $scope.destinationIntroDetails = false;
+                    $scope.emptyPlace();
+                    $('.cityPlaceHolder').show();
+                    $('.categoryPlaceHolder').hide();
+                    $('.switchSomewhere').empty().html('to');
                 });
 
             },
             link: function($scope, $element, $attrs, ean) {
-
                 $scope.introText = true;
-
                 $scope.introSubmit = function() {
                     $scope.seekDeer();
                 }

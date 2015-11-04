@@ -15,8 +15,6 @@ angular.module('triviziApp')
         return {
             yelpRequest: function($scope, callback) {
                 // See http://www.yelp.com/developers/documentation/v2/search_api 
-                $scope.closeAllFilters();
-
                 var httpMethod = 'GET';
                 var url = 'http://api.yelp.com/v2/search?callback=JSON_CALLBACK';
                 var options = {
@@ -30,7 +28,7 @@ angular.module('triviziApp')
                     oauth_timestamp: new Date().getTime(),
                     oauth_nonce: randomString(32, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'),
                     oauth_signature_method: "HMAC-SHA1",
-                    term: $scope.category + "hotels"
+                    term: $scope.category + " hotels"
                 };
                 var consumerSecret = 'hx3mjwkagLri20JlyU_cFsLfrzs'; //Consumer Secret
                 var tokenSecret = 'QNdFlqR89D3PdzBKVrGj4p9_Ucg'; //Token Secret
@@ -41,7 +39,7 @@ angular.module('triviziApp')
                     params: params
                 }).success(function(response) {
                     //success callback
-                    //console.log(response.businesses);
+                    console.log("EAN and YELP "+$scope.category+" hotels for $"+$scope.priceSlider+" in "+$scope.specificLocation+"");
                     $scope.respondProvider = "yelp";
                     $scope.yelpResults = [];
                     angular.forEach(response.businesses, function(k, v) {
@@ -56,19 +54,21 @@ angular.module('triviziApp')
                             rating = k.rating,
                             ratingImg = k.rating_img_url,
                             ratingCount = k.review_count,
-                            link = k.url.replace(/&amp;/g, '&');
+                            link = k.url.replace(/&amp;/g, '&'),
+                            postalCode = k.location.postal_code ;
+        
 
                         $scope.yelpResults.push({
-                            name: name,
+                            propertyName: name,
                             id: id,
                             image: listImg,
                             imageFall: listImgFall,
                             rating: rating,
                             ratingImg: ratingImg,
                             ratingCount: ratingCount,
-                            link: link
+                            link: link,
+                            postalCode: postalCode
                         });
-
 
                     }); // end each loop
 

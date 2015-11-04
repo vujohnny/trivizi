@@ -1,7 +1,7 @@
 'use strict';
 (function() {
 
-    function MainController($scope, $http, socket, $filter, ean, yelp) {
+    function MainController($scope, $http, socket, $filter, ean, yelp, eanYelp) {
         
         $scope.storeSearchData=function(){
             $http.post('/api/things', {
@@ -12,15 +12,12 @@
         
         //category search
         $scope.searchCategory = function(category){
-            console.log("clicking " +category);
             $scope.storeSearchData();
             $scope.category=category;
         
             $scope.searchCategory=yelp.yelpRequest($scope, function(data) {
-                console.log('callback');
-                console.log(data);
                 if (data.length > 0){
-                        $scope.panMap(data[0].id, data[0].markerId);
+                        //$scope.panMap(data[0].id, data[0].markerId);
                    }
             });
         }
