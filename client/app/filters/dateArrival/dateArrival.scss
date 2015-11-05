@@ -64,6 +64,8 @@ tbody {
 .btn.disabled, .btn[disabled], fieldset[disabled] .btn {
     color: $border-grey;
     opacity: 1;
+    cursor: not-allowed;
+    pointer-events: all !important; 
 }
 
 .when-calendar table .btn-info.active {
