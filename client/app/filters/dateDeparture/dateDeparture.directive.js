@@ -6,8 +6,12 @@ angular.module('triviziApp')
             templateUrl: 'app/filters/dateDeparture/dateDeparture.html',
             restrict: 'EA',
             controller: function ($scope, $element, $attrs, $filter) {
+
+                var defaultDate = new Date();
+                var defaultDateDaysToAdd = 2;
+
                 $scope.departDate = {
-                    defaultValue: new Date(),
+                    defaultValue: defaultDate.setDate(defaultDate.getDate() + defaultDateDaysToAdd),
                     minDate: new Date() - 1,
                     maxDate: new Date().setFullYear(new Date().getFullYear() + 2),
                     showweeks: false,
@@ -16,8 +20,9 @@ angular.module('triviziApp')
 
                 $scope.departureChange = function () {
                     $scope.calendarDepart = $filter('date')($scope.departDate.defaultValue, 'MM/dd/yyyy');
-                    $scope.seekDeer();
+                    //$scope.seekDeer();
                 }
+                
             },
             link: function ($scope, $element, $attrs, $filter) {}
         };

@@ -67,7 +67,6 @@ angular.module('triviziApp')
 
                     }); // end each loop
                     //console.log($scope.resultsList);
-                    console.log("only EAN call and return, no Yelp");
                     if ($scope.resultsList.length > 0) {
                         $scope.panMap($scope.resultsList[0].id, $scope.resultsList[0].markerId);
                     }
