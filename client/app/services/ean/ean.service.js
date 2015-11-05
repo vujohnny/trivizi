@@ -19,7 +19,8 @@ angular.module('triviziApp')
                     "apiKey": "70303auc6h8hqutunreio3u8pl",
                     "minorRev": "99",
                     "locale": "en_US",
-                    "cid": "55505", //490388
+                    "cid": "55505", //490388 is test one
+                    "sig": "4b83e71715138ba357d30b1b753d11b2",
                     "destinationString": $scope.specificLocation,
                     "arrivalDate": "11/19/2015", //"11/19/2015", //$scope.calendarArrive,
                     "departureDate": "11/21/2015", //"11/20/2015", //$scope.calendarDepart,
