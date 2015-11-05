@@ -70,8 +70,8 @@ angular.module('triviziApp')
                     }
                     else {
                         $scope.yelpHold($scope.category);
-                    }                    
-                    
+                    }             
+                                        
                 }
             },
             link: function ($scope) {}

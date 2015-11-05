@@ -25,7 +25,7 @@ angular.module('triviziApp')
                     "apiKey": apiKey,
                     "minorRev": "99",
                     "locale": "en_US",
-                    "cid": cid,
+                    "cid": cid, //55505
                     "sig": sig,
                     "destinationString": $scope.specificLocation,
                     "arrivalDate": $scope.calendarArrive, //"11/19/2015", //$scope.calendarArrive,
@@ -39,7 +39,7 @@ angular.module('triviziApp')
                     params: params
                 }).success(function (response) {
 
-                    //console.log(response);
+                    console.log(response);
                     $scope.deleteMarkers();
                     $scope.respondProvider = "ean";
                     $scope.resultsList = [];

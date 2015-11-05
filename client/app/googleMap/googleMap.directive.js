@@ -265,9 +265,7 @@ angular.module('triviziApp')
                                 totalNights: totalNights
                             });
                         }
-                        
-                        google.maps.event.trigger($scope.googleMap, 'resize');
-
+                                                
                     }
 
 
@@ -275,6 +273,7 @@ angular.module('triviziApp')
 
                         map.setZoom(2);
                         $scope.markersDisplay(lat, lng);
+                        map.setCenter(new google.maps.LatLng(lat, lng));
                         google.maps.event.trigger($scope.googleMap, 'resize');
 
                         google.maps.event.addListener(marker, 'mouseover', (function (marker, i) {
@@ -287,6 +286,9 @@ angular.module('triviziApp')
                         google.maps.event.addListener(marker, 'click', (function (marker, i) {
                             return function () {
                                 $scope.specificLocation = city;
+                                
+                                //jquery
+                                $('.placeHolderLocation').empty();
                                 
                                 /*
                                 using just ean call for now
