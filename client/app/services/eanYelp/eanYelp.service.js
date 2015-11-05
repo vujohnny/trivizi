@@ -21,8 +21,8 @@ angular.module('triviziApp')
                         "cid": "55505", //490388 is test one
                         "sig": "4b83e71715138ba357d30b1b753d11b2",
                         "destinationString": $scope.specificLocation,
-                        "arrivalDate": "11/19/2015", //"11/19/2015", //$scope.calendarArrive,
-                        "departureDate": "11/21/2015", //"11/20/2015", //$scope.calendarDepart,
+                        "arrivalDate": $scope.calendarArrive, //"11/19/2015", //$scope.calendarArrive,
+                        "departureDate": $scope.calendarDepart, //"11/20/2015", //$scope.calendarDepart,
                         "curencyCode": "USD",
                         "numberOfResults": "200",
                         "room1": $scope.numberOfAdults,
