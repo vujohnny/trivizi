@@ -18,7 +18,7 @@ angular.module('triviziApp')
                     $scope.specificLocation = $scope.destination.formatted_address;
                     $scope.seekDeer($scope.destination.formatted_address);
                     
-                    
+                    //jquery
                     $scope.destinationIntroDetails = false;
                     $scope.emptyPlace();
                     $('.cityPlaceHolder').show();
