@@ -11,16 +11,22 @@ angular.module('triviziApp')
         
         return {
             eanRequest: function ($scope) {
-                $scope.closeAllFilters();
+                
+                
+                var timeStamp = Math.floor(Date.now() / 1000);
+                var apiKey = "70303auc6h8hqutunreio3u8pl";
+                var cid = "490388";
+                var shared = "adfgo2dqlsv14";
+                var sig = md5(apiKey + shared + timeStamp);
                 
                 var httpMethod = 'GET';
                 var url = 'http://api.ean.com/ean-services/rs/hotel/v3/list?callback=JSON_CALLBACK';
                 var params = {
-                    "apiKey": "70303auc6h8hqutunreio3u8pl",
+                    "apiKey": apiKey,
                     "minorRev": "99",
                     "locale": "en_US",
-                    "cid": "55505", //490388 is test one
-                    "sig": "4b83e71715138ba357d30b1b753d11b2",
+                    "cid": cid,
+                    "sig": sig,
                     "destinationString": $scope.specificLocation,
                     "arrivalDate": $scope.calendarArrive, //"11/19/2015", //$scope.calendarArrive,
                     "departureDate": $scope.calendarDepart, //"11/20/2015", //$scope.calendarDepart,
