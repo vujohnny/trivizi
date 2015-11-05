@@ -16,7 +16,7 @@ angular.module('triviziApp')
 
                 $scope.departureChange = function () {
                     $scope.calendarDepart = $filter('date')($scope.departDate.defaultValue, 'MM/dd/yyyy');
-                    //$scope.seekDeer();
+                    $scope.seekDeer();
                 }
             },
             link: function ($scope, $element, $attrs, $filter) {}

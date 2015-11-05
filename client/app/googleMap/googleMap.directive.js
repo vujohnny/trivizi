@@ -160,7 +160,7 @@ angular.module('triviziApp')
                         //jquery
                         $('.cityPlaceHolder').show();
                         $('.categoryPlaceHolder').hide();
-                        //$scope.seekDeer($scope.destination.formatted_address);
+                        $scope.seekDeer($scope.destination.formatted_address);
                     });
 
                     $scope.showMap = function () {
