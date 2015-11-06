@@ -265,6 +265,8 @@ angular.module('triviziApp')
                                 totalNights: totalNights
                             });
                         }
+                        
+                        google.maps.event.trigger($scope.googleMap, 'resize');
                                                 
                     }
 
