@@ -14,6 +14,7 @@ angular.module('triviziApp')
                 var familyList = [];
 
                 $scope.yelpHold = function (category) {
+                    $scope.specificLocation="";
                     $scope.deleteMarkers();
                     $scope.category = category;
                     $http.get('/app/filters/destination/categoryData/' + category + '.json')
