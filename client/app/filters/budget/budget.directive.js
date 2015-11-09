@@ -8,12 +8,7 @@ angular.module('triviziApp')
             link: function ($scope, $element, $attrs) {
                 $scope.priceSlider = 125;
                 $scope.$on("slideEnded", function () {
-                    if ($scope.category) {
-                        $scope.searchCategory();
-                    } else {
-                        $scope.seekDeer();
-                    }
-
+                    $scope.seekDeer();
                 });
                 $scope.$watch("priceSlider", function () {
                     //console.log($scope.priceSlider);
