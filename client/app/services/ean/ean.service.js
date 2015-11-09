@@ -11,18 +11,25 @@ angular.module('triviziApp')
         
         return {
             eanRequest: function ($scope) {
-                $scope.closeAllFilters();
+                
+                
+                var timeStamp = Math.floor(Date.now() / 1000);
+                var apiKey = "70303auc6h8hqutunreio3u8pl";
+                var cid = "490388";
+                var shared = "adfgo2dqlsv14";
+                var sig = md5(apiKey + shared + timeStamp);
                 
                 var httpMethod = 'GET';
                 var url = 'http://api.ean.com/ean-services/rs/hotel/v3/list?callback=JSON_CALLBACK';
                 var params = {
-                    "apiKey": "70303auc6h8hqutunreio3u8pl",
+                    "apiKey": apiKey,
                     "minorRev": "99",
                     "locale": "en_US",
-                    "cid": "55505", //490388
+                    "cid": cid, //55505
+                    "sig": sig,
                     "destinationString": $scope.specificLocation,
-                    "arrivalDate": "11/19/2015", //"11/19/2015", //$scope.calendarArrive,
-                    "departureDate": "11/21/2015", //"11/20/2015", //$scope.calendarDepart,
+                    "arrivalDate": $scope.calendarArrive, //"11/19/2015", //$scope.calendarArrive,
+                    "departureDate": $scope.calendarDepart, //"11/20/2015", //$scope.calendarDepart,
                     "curencyCode": "USD",
                     "numberOfResults": "200",
                     "room1": $scope.numberOfAdults                  
@@ -32,7 +39,7 @@ angular.module('triviziApp')
                     params: params
                 }).success(function (response) {
 
-                    //console.log(response);
+                    console.log(response);
                     $scope.deleteMarkers();
                     $scope.respondProvider = "ean";
                     $scope.resultsList = [];
@@ -60,7 +67,6 @@ angular.module('triviziApp')
 
                     }); // end each loop
                     //console.log($scope.resultsList);
-                    console.log("only EAN call and return, no Yelp");
                     if ($scope.resultsList.length > 0) {
                         $scope.panMap($scope.resultsList[0].id, $scope.resultsList[0].markerId);
                     }

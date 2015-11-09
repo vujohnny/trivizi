@@ -1,0 +1,231 @@
+[
+    {
+        "city": "Dominican Republic, Caribbean",
+        "lat": 18.735693,
+        "lng": 18.735693
+    },{
+        "city": "Playa del Carmen, Yucatan Peninsula, Mexico",
+        "lat": 20.629559,
+        "lng": -87.073885
+    },{
+        "city": "Maui, Hawaii, United States",
+        "lat": 20.798363,
+        "lng": -156.331925
+    },{
+        "city": "Cancun, Yucatan Peninsula, Mexico",
+        "lat": 21.161908,
+        "lng": -86.851528
+    },{
+        "city": "Puerto Vallarta, Mexico",
+        "lat": 20.653407,
+        "lng": -105.225332
+    },{
+        "city": "Miami Beach, Florida, United States",
+        "lat": 25.790654,
+        "lng": -80.130045
+    },{
+        "city": "Phuket, Thailand",
+        "lat": 7.951933,
+        "lng": 98.338088
+    },{
+        "city": "U.S. Virgin Islands, Caribbean",
+        "lat": 18.335765,
+        "lng": -64.896335
+    },{
+        "city": "Cabo San Lucas, Mexico",
+        "lat": 22.890533,
+        "lng": -109.916737
+    },{
+        "city": "Kauai, Hawaii, United States",
+        "lat": 21.966108,
+        "lng": -159.573791
+    },{
+        "city": "Cozumel, Yucatan Peninsula, Mexico",
+        "lat": 20.422984,
+        "lng": -86.922343
+    },{
+        "city": "San Diego, California, United States",
+        "lat": 32.715738,
+        "lng": -117.161084
+    },{
+        "city": "Sydney, New South Wales, Australia",
+        "lat": -33.867487,
+        "lng": 151.206990
+    },{
+        "city": "Tulum, Yucatan Peninsula, Mexico",
+        "lat": 20.211419,
+        "lng": -87.465350
+    },{
+        "city": "Jamaica, Caribbean",
+        "lat": 18.109581,
+        "lng": -77.297508
+    },{
+        "city": "Fort Lauderdale, Florida, United States",
+        "lat": 26.122439,
+        "lng": -80.137317
+    },{
+        "city": "Bora Bora, French Polynesia",
+        "lat": -16.500413,
+        "lng": -151.741490
+    },{
+        "city": "Ko Samui, Surat Thani Province, Thailand",
+        "lat": 9.521416,
+        "lng": 100.048214
+    },{
+        "city": "Aruba, Caribbean",
+        "lat": 12.521110,
+        "lng": -69.968338
+    },{
+        "city": "Nice, France",
+        "lat": 43.710173,
+        "lng": 7.261953
+    },{
+        "city": "Myrtle Beach, South Carolina, United States",
+        "lat": 33.689060,
+        "lng": -78.886694
+    },{
+        "city": "San Jose del Cabo, Mexico",
+        "lat": 23.063656,
+        "lng": -109.702438
+    },{
+        "city": "Barbados, Caribbean",
+        "lat": 13.193887,
+        "lng": -59.543198
+    },{
+        "city": "Bali, Indonesia",
+        "lat": -8.409518,
+        "lng": 115.188916
+    },{
+        "city": "Boracay, Philippines",
+        "lat": 11.967350,
+        "lng": 121.924759
+    },{
+        "city": "St. Lucia, Caribbean",
+        "lat": 13.909444,
+        "lng": -60.978893
+    },{
+        "city": "Santorini, South Aegean, Greece",
+        "lat": 36.416649,
+        "lng": 25.432447
+    },{
+        "city": "Grand Cayman, Caribbean",
+        "lat": 28.402861,
+        "lng": -80.673225
+    },{
+        "city": "Virginia Beach, Virginia, United States",
+        "lat": 36.852926,
+        "lng": -75.977985
+    },{
+        "city": "Corfu, Ionian Islands, Greece",
+        "lat": 39.624984,
+        "lng": 19.922346
+    },{
+        "city": "Crete, Greece",
+        "lat": 35.240117,
+        "lng": 24.809269
+    },{
+        "city": "Tenerife, Canary Islands, Spain",
+        "lat": 28.463630,
+        "lng": -16.251847
+    },{
+        "city": "Maldives",
+        "lat": 1.977247,
+        "lng": 73.536103
+    },{
+        "city": "Marbella, Spain",
+        "lat": 36.510071,
+        "lng": -4.882447
+    },{
+        "city": "Mykonos, South Aegean, Greece",
+        "lat": 37.446719,
+        "lng": 25.328862
+    },{
+        "city": "Balearic Islands, Spain",
+        "lat": 39.534179,
+        "lng": 2.857710
+    },{
+        "city": "Malaga, Spain",
+        "lat": 36.721261,
+        "lng": -4.421266
+    },{
+        "city": "Rio de Janeiro, Brazil",
+        "lat": -22.906847,
+        "lng": -43.172896
+    },{
+        "city": "Margarita Island, Venezuela",
+        "lat": 10.997072,
+        "lng": -63.911330
+    },{
+        "city": "Lamu Island, Coast Province, Kenya",
+        "lat": -2.290435,
+        "lng": 40.867747
+    },{
+        "city": "Mar del Plata, Argentina",
+        "lat": -38.005477,
+        "lng": -57.542611
+    },{
+        "city": "Camps Bay, Western Cape, South Africa",
+        "lat": -33.951298,
+        "lng": 18.383098
+    },{
+        "city": "Durban, KwaZulu-Natal, South Africa",
+        "lat": -29.858680,
+        "lng": 31.021840
+    },{
+        "city": "Vina del Mar, Valparaiso Region, Chile",
+        "lat": -33.015348,
+        "lng": -71.550028
+    },{
+        "city": "Moorea, French Polynesia",
+        "lat": -17.538843,
+        "lng": -149.829523
+    },{
+        "city": "Essaouira, Morocco",
+        "lat": 31.508493,
+        "lng": -9.759504
+    },{
+        "city": "Byron Bay, New South Wales, Australia",
+        "lat": -28.644162,
+        "lng": 153.612379
+    },{
+        "city": "Great Barrier Reef, Queensland, Australia",
+        "lat": -16.447284,
+        "lng": 145.817350
+    },{
+        "city": "Malindi, Coast Province, Kenya",
+        "lat": -3.219186,
+        "lng": 40.116891
+    },{
+        "city": "Seychelles",
+        "lat": -4.679574,
+        "lng": 55.491977
+    },{
+        "city": "Surfers Paradise, Australia",
+        "lat": -28.001171,
+        "lng": 153.428317
+    },{
+        "city": "Manzanillo, Mexico",
+        "lat": 19.113809,
+        "lng": -104.338462
+    },{
+        "city": "Andalucia, Spain",
+        "lat": 37.544271,
+        "lng": -4.727753
+    },{
+        "city": "Balearic Islands, Spain",
+        "lat": 39.534179,
+        "lng": 2.857710
+    },{
+        "city": "St. Kitts, Caribbean",
+        "lat": 27.774940,
+        "lng": -82.393768
+    },{
+        "city": "Bahamas, Caribbean",
+        "lat": 25.034280,
+        "lng": -77.396280
+    },{
+        "city": "Acapulco, Mexico",
+        "lat": 16.853109,
+        "lng": -99.823653
+    }
+]

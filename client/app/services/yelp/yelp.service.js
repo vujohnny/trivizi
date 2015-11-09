@@ -39,7 +39,7 @@ angular.module('triviziApp')
                     params: params
                 }).success(function(response) {
                     //success callback
-                    console.log("EAN and YELP "+$scope.category+" hotels for $"+$scope.priceSlider+" in "+$scope.specificLocation+"");
+                    //console.log("EAN and YELP "+$scope.category+" hotels for $"+$scope.priceSlider+" in "+$scope.specificLocation+"");
                     $scope.respondProvider = "yelp";
                     $scope.yelpResults = [];
                     angular.forEach(response.businesses, function(k, v) {

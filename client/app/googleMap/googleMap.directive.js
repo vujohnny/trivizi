@@ -160,7 +160,7 @@ angular.module('triviziApp')
                         //jquery
                         $('.cityPlaceHolder').show();
                         $('.categoryPlaceHolder').hide();
-                        //$scope.seekDeer($scope.destination.formatted_address);
+                        $scope.seekDeer($scope.destination.formatted_address);
                     });
 
                     $scope.showMap = function () {
@@ -208,16 +208,20 @@ angular.module('triviziApp')
                     $scope.highlightMarker = function (hotelMarker) {
                         google.maps.event.trigger(hotelMarker, 'click');
                         map.setCenter(hotelMarker.getPosition());
-                        map.setZoom(13);
+                        map.setZoom(14);
                     }
 
                     $scope.panMap = function (id, firstMarker) {
                         var place = $scope.destination;
                         if (place.geometry.viewport) {
-                            //map.setCenter(firstMarker.getPosition());
+                            //map.fitBounds(place.geometry.viewport);
+                            //map.setZoom(13);
+                            
+                            map.setCenter(firstMarker.getPosition());
+                            map.setZoom(12);
+                            
                             google.maps.event.trigger(firstMarker, 'click');
-                            map.fitBounds(place.geometry.viewport);
-                            map.setZoom(13);
+                            
                         } else {
                             map.setCenter(place.geometry.location);
                         }
@@ -263,15 +267,16 @@ angular.module('triviziApp')
                         }
                         
                         google.maps.event.trigger($scope.googleMap, 'resize');
-
+                                                
                     }
 
 
                     $scope.buildCatReturn = function (city, lat, lng) {
 
-                        google.maps.event.trigger($scope.googleMap, 'resize');
                         map.setZoom(2);
                         $scope.markersDisplay(lat, lng);
+                        map.setCenter(new google.maps.LatLng(lat, lng));
+                        google.maps.event.trigger($scope.googleMap, 'resize');
 
                         google.maps.event.addListener(marker, 'mouseover', (function (marker, i) {
                             return function () {
@@ -283,9 +288,31 @@ angular.module('triviziApp')
                         google.maps.event.addListener(marker, 'click', (function (marker, i) {
                             return function () {
                                 $scope.specificLocation = city;
+                                
+                                //jquery
+                                $('.placeHolderLocation').empty();
+                                
+                                /*
+                                using just ean call for now
+                                getting better results
+                                */
+                                
+                                $scope.seekDeer();
+                                
+                                /*
+                                we might have to remove the yelp call and just ean
+                                yelp is not returning enough results and limits the return
+                                by running a filter against ean, we dont need a 
+                                romantic hotel in a romantic city
+                                we might need to use tripadviosr api foer this
+                                type of an idea instead of yelp
+                                */
+                                
+                                /*
                                 yelp.yelpRequest($scope, function (data) {
                                     eanYelp.eanYelpRequest($scope, data);
                                 });
+                                */
                             }
                         })(marker, i));
 
