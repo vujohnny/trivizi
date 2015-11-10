@@ -252,6 +252,8 @@ angular.module('triviziApp')
 
                             // build navigation list
                             $scope.resultsList.push({
+                                lat: lat,
+                                lng: lng,
                                 id: id,
                                 name: name,
                                 listImg: listImg,

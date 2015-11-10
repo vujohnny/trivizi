@@ -30,9 +30,18 @@
 
         //EAN Search
         $scope.seekDeer = function () {
-            if ($scope.resultsList.length > 0 && $scope.priceSlider<$scope.priceSliderOld) {
+            if ($scope.resultsList.length > 0 && $scope.priceSlider < $scope.priceSliderOld) {
                 //If the resultList is there we shouldn't have to research or call the API again if it's just a price change unless it's a location change.
-                console.log($scope.resultsList);
+                $scope.deleteMarkers();
+                $scope.resultsList = $scope.resultsList
+                    .filter(function (el) {
+                        return el.roundedAverage <= $scope.priceSlider;
+                    });
+                $.each($scope.resultsList, function (k,v) {
+                    $scope.markersDisplay(v.lat, v.lng);
+                });
+                $scope.panMap($scope.resultsList[0].id, $scope.resultsList[0].markerId);
+
             } else if ($scope.specificLocation) {
                 $scope.closeAllFilters();
                 $scope.storeSearchData();
