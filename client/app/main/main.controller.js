@@ -30,19 +30,19 @@
 
         //EAN Search
         $scope.seekDeer = function () {
-            $scope.$watch('specificLocation', function (newValue, oldValue) {
-                if ($scope.resultsList && newValue == oldValue) {
-                    //If the resultList is there we shouldn't have to research or call the API again if it's just a price change unless it's a location change.
-                    console.log('being watched oldValue:', oldValue, 'newValue:', newValue);
-                } else if ($scope.specificLocation) {
-                    $scope.closeAllFilters();
-                    $scope.storeSearchData();
-                    ean.eanRequest($scope);
-                }
-            }, true);
-
-
+            if ($scope.resultsList.length > 0 && $scope.priceSlider<$scope.priceSliderOld) {
+                //If the resultList is there we shouldn't have to research or call the API again if it's just a price change unless it's a location change.
+                console.log($scope.resultsList);
+            } else if ($scope.specificLocation) {
+                $scope.closeAllFilters();
+                $scope.storeSearchData();
+                ean.eanRequest($scope);
+            }
         };
+
+        $scope.clearResults = function () {
+            $scope.resultsList = [];
+        }
 
         $scope.closeAllFilters = function () {
             $scope.destinationDetails = false;

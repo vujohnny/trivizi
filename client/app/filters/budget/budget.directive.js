@@ -10,8 +10,9 @@ angular.module('triviziApp')
                 $scope.$on("slideEnded", function () {
                     $scope.seekDeer();
                 });
-                $scope.$watch("priceSlider", function () {
+                $scope.$watch("priceSlider", function (newValue, oldValue) {
                     //console.log($scope.priceSlider);
+                    $scope.priceSliderOld=oldValue;
                 });
             }
         };

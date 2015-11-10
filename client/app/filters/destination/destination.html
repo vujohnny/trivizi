@@ -1,6 +1,6 @@
 <div class="filterValue">
 	<div class="row destination">
-		<input id="navLocationField" class="destinationSpecific" type="text" ng-model="specificLocation" ng-change="emptyPlace()" placeholder="Los Angeles, CA">
+		<input id="navLocationField" class="destinationSpecific" type="text" ng-model="specificLocation" placeholder="Los Angeles, CA" ng-change="clearResults()">
 		<div id="destinationCategoryContainer" ng-show="specificLocation.length">
 			<div class="destinationCategoryTitle">or type of place:</div>
 			<div class="destinationCategories" ng-repeat="places in typesOfPlaces">
