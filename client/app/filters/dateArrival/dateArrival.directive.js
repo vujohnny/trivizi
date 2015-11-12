@@ -6,6 +6,7 @@ angular.module('triviziApp')
             templateUrl: 'app/filters/dateArrival/dateArrival.html',
             restrict: 'EA',
             controller: function ($scope, $element, $attrs, $filter) {
+                
                 $scope.arriveDate = {
                     defaultValue: new Date(),
                     minDate: new Date() - 1,
@@ -16,9 +17,11 @@ angular.module('triviziApp')
 
                 $scope.arrivalChange = function () {
                     $scope.calendarArrive = $filter('date')($scope.arriveDate.defaultValue, 'MM/dd/yyyy');
-                    //$scope.seekDeer();
+                    $scope.seekDeer();
                     //$scope.departureDetails = true;
                 }
+                
+                $scope.calendarArrive = $filter('date')($scope.arriveDate.defaultValue, 'MM/dd/yyyy');
             },
             link: function ($scope, $element, $attrs, $filter) {}
         };

@@ -1,0 +1,223 @@
+[
+    {
+        "city": "Rome, Italy",
+        "lat": 41.902783,
+        "lng": 12.496366
+    },{
+        "city": "New York City, United States",
+        "lat": 39.962598,
+        "lng": -76.727745
+    },{
+        "city": "Paris, France",
+        "lat": 48.856614,
+        "lng": 2.352222
+    },{
+        "city": "London, England, United Kingdom",
+        "lat": 51.507351,
+        "lng": -0.127758
+    },{
+        "city": "Athens, Attica, Greece",
+        "lat": 37.983917,
+        "lng": 23.729360
+    },{
+        "city": "Cairo, Egypt",
+        "lat": 30.044420,
+        "lng": 31.235712
+    },{
+        "city": "Bangkok, Thailand",
+        "lat": 13.756331,
+        "lng": 100.501765
+    },{
+        "city": "Venice, Italy",
+        "lat": 45.440847,
+        "lng": 12.315515
+    },{
+        "city": "Jerusalem, Israel",
+        "lat": 31.768319,
+        "lng": 35.213710
+    },{
+        "city": "Machu Picchu, Peru",
+        "lat": -13.163141,
+        "lng": -72.544963
+    },{
+        "city": "Boston, Massachusetts, United States",
+        "lat": 42.360082,
+        "lng": -71.058880
+    },{
+        "city": "Amsterdam, North Holland Province, The Netherlands",
+        "lat": 52.370216,
+        "lng": 4.895168
+    },{
+        "city": "Prague, Czech Republic",
+        "lat": 50.075538,
+        "lng": 14.437800
+    },{
+        "city": "Washington DC, District of Columbia, United States",
+        "lat": 38.907192,
+        "lng": -77.036871
+    },{
+        "city": "Florence, Italy",
+        "lat": 43.769560,
+        "lng": 11.255814
+    },{
+        "city": "Montreal, Canada",
+        "lat": 45.501689,
+        "lng": -73.567256
+    },{
+        "city": "Berlin, Germany",
+        "lat": 52.520007,
+        "lng": 13.404954
+    },{
+        "city": "Singapore, Singapore",
+        "lat": 1.280094,
+        "lng": 103.850949
+    },{
+        "city": "San Francisco, California, United States",
+        "lat": 37.774929,
+        "lng": -122.419416
+    },{
+        "city": "San Juan, Puerto Rico, Caribbean",
+        "lat": 18.466334,
+        "lng": -66.105722
+    },{
+        "city": "Dublin, Ireland",
+        "lat": 53.349805,
+        "lng": -6.260310
+    },{
+        "city": "Sydney, New South Wales, Australia",
+        "lat": -33.867487,
+        "lng": 151.206990
+    },{
+        "city": "Buenos Aires, Argentina",
+        "lat": -34.603684,
+        "lng": -58.381559
+    },{
+        "city": "Vancouver, British Columbia, Canada",
+        "lat": 49.282729,
+        "lng": -123.120738
+    },{
+        "city": "New Orleans, Louisiana, United States",
+        "lat": 29.951066,
+        "lng": -90.071532
+    },{
+        "city": "Tulum, Yucatan Peninsula, Mexico",
+        "lat": 20.211419,
+        "lng": -87.465350
+    },{
+        "city": "Dominican Republic, Caribbean",
+        "lat": 18.735693,
+        "lng": -70.162651
+    },{
+        "city": "Istanbul, Turkey",
+        "lat": 41.008238,
+        "lng": 28.978359
+    },{
+        "city": "Madrid, Spain",
+        "lat": 40.416775,
+        "lng": -3.703790
+    },{
+        "city": "Jamaica, Caribbean",
+        "lat": 18.109581,
+        "lng": -77.297508
+    },{
+        "city": "Honolulu, Hawaii, United States",
+        "lat": 21.306944,
+        "lng": -157.858333
+    },{
+        "city": "San Antonio, Texas, United States",
+        "lat": 29.424122,
+        "lng": -98.493628
+    },{
+        "city": "Quebec City, Quebec, Canada",
+        "lat": 46.803283,
+        "lng": -71.242796
+    },{
+        "city": "Barbados, Caribbean",
+        "lat": 13.193887,
+        "lng": -59.543198
+    },{
+        "city": "Bali, Indonesia",
+        "lat": -8.409518,
+        "lng": 115.188916
+    },{
+        "city": "Melbourne, Australia",
+        "lat": -37.814107,
+        "lng": 144.963280
+    },{
+        "city": "Vienna, Austria",
+        "lat": 48.208174,
+        "lng": 16.373819
+    },{
+        "city": "Mexico City, Mexico",
+        "lat": 19.432608,
+        "lng": -99.133208
+    },{
+        "city": "Tokyo, Japan",
+        "lat": 35.709026,
+        "lng": 139.731992
+    },{
+        "city": "New Delhi, India",
+        "lat": 28.613939,
+        "lng": 77.209021
+    },{
+        "city": "Mumbai, India",
+        "lat": 19.075984,
+        "lng": 72.877656
+    },{
+        "city": "Kyoto, Japan",
+        "lat": 35.011636,
+        "lng": 135.768029
+    },{
+        "city": "Lima, Peru",
+        "lat": -12.046374,
+        "lng": -77.042793
+    },{
+        "city": "Edinburgh, United Kingdom",
+        "lat": 55.953252,
+        "lng": -3.188267
+    },{
+        "city": "Santiago, Chile",
+        "lat": -33.448890,
+        "lng": -70.669265
+    },{
+        "city": "Auckland, New Zealand",
+        "lat": -36.848460,
+        "lng": 174.763332
+    },{
+        "city": "Osaka, Japan",
+        "lat": 34.693738,
+        "lng": 135.502165
+    },{
+        "city": "Christchurch, New Zealand",
+        "lat": -43.532054,
+        "lng": 172.636225
+    },{
+        "city": "Toronto, Canada",
+        "lat": 43.653226,
+        "lng": -79.383184
+    },{
+        "city": "Fes, Morocco",
+        "lat": 34.018125,
+        "lng": -5.007845
+    },{
+        "city": "Wellington, New Zealand",
+        "lat": -41.286460,
+        "lng": 174.776236
+    },{
+        "city": "Kolkata, India",
+        "lat": 22.572646,
+        "lng": 88.363895
+    },{
+        "city": "Nepal, Punjab, India",
+        "lat": 31.8282647,
+        "lng": 74.6906852
+    },{
+        "city": "Brasilia, Brazil",
+        "lat": -15.794229,
+        "lng": -47.882166
+    },{
+        "city": "Bhutan, Bihar, India",
+        "lat": 26.2187173,
+        "lng": 85.5072442
+    }
+]

@@ -22,114 +22,7 @@ angular.module('triviziApp')
                         },
                         navInput = document.getElementById('navLocationField'),
                         navAutocomplete = new google.maps.places.Autocomplete(navInput, options),
-                        snazzyMap = [{
-                            "featureType": "water",
-                            "elementType": "geometry",
-                            "stylers": [{
-                                "color": "#a0d6d1"
-                            }, {
-                                "lightness": 17
-                            }]
-                        }, {
-                            "featureType": "landscape",
-                            "elementType": "geometry",
-                            "stylers": [{
-                                "color": "#ffffff"
-                            }, {
-                                "lightness": 20
-                            }]
-                        }, {
-                            "featureType": "road.highway",
-                            "elementType": "geometry.fill",
-                            "stylers": [{
-                                "color": "#dedede"
-                            }, {
-                                "lightness": 17
-                            }]
-                        }, {
-                            "featureType": "road.highway",
-                            "elementType": "geometry.stroke",
-                            "stylers": [{
-                                "color": "#dedede"
-                            }, {
-                                "lightness": 29
-                            }, {
-                                "weight": 0.2
-                            }]
-                        }, {
-                            "featureType": "road.arterial",
-                            "elementType": "geometry",
-                            "stylers": [{
-                                "color": "#dedede"
-                            }, {
-                                "lightness": 18
-                            }]
-                        }, {
-                            "featureType": "road.local",
-                            "elementType": "geometry",
-                            "stylers": [{
-                                "color": "#ffffff"
-                            }, {
-                                "lightness": 16
-                            }]
-                        }, {
-                            "featureType": "poi",
-                            "elementType": "geometry",
-                            "stylers": [{
-                                "color": "#f1f1f1"
-                            }, {
-                                "lightness": 21
-                            }]
-                        }, {
-                            "elementType": "labels.text.stroke",
-                            "stylers": [{
-                                "visibility": "on"
-                            }, {
-                                "color": "#ffffff"
-                            }, {
-                                "lightness": 16
-                            }]
-                        }, {
-                            "elementType": "labels.text.fill",
-                            "stylers": [{
-                                "saturation": 36
-                            }, {
-                                "color": "#333333"
-                            }, {
-                                "lightness": 40
-                            }]
-                        }, {
-                            "elementType": "labels.icon",
-                            "stylers": [{
-                                "visibility": "off"
-                            }]
-                        }, {
-                            "featureType": "transit",
-                            "elementType": "geometry",
-                            "stylers": [{
-                                "color": "#f2f2f2"
-                            }, {
-                                "lightness": 19
-                            }]
-                        }, {
-                            "featureType": "administrative",
-                            "elementType": "geometry.fill",
-                            "stylers": [{
-                                "color": "#fefefe"
-                            }, {
-                                "lightness": 20
-                            }]
-                        }, {
-                            "featureType": "administrative",
-                            "elementType": "geometry.stroke",
-                            "stylers": [{
-                                "color": "#fefefe"
-                            }, {
-                                "lightness": 17
-                            }, {
-                                "weight": 1.2
-                            }]
-                        }],
+                        snazzyMap = [{"featureType":"water","elementType":"geometry","stylers":[{"color":"#e9e9e9"},{"lightness":17}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#f5f5f5"},{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ffffff"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#ffffff"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":18}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":16}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#f5f5f5"},{"lightness":21}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#dedede"},{"lightness":21}]},{"elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#ffffff"},{"lightness":16}]},{"elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#333333"},{"lightness":40}]},{"elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#f2f2f2"},{"lightness":19}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#fefefe"},{"lightness":20}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#fefefe"},{"lightness":17},{"weight":1.2}]}],
 
                         map = new google.maps.Map(document.getElementById('googleMap'), {
                             center: {
@@ -160,7 +53,7 @@ angular.module('triviziApp')
                         //jquery
                         $('.cityPlaceHolder').show();
                         $('.categoryPlaceHolder').hide();
-                        //$scope.seekDeer($scope.destination.formatted_address);
+                        $scope.seekDeer($scope.destination.formatted_address);
                     });
 
                     $scope.showMap = function () {
@@ -208,16 +101,20 @@ angular.module('triviziApp')
                     $scope.highlightMarker = function (hotelMarker) {
                         google.maps.event.trigger(hotelMarker, 'click');
                         map.setCenter(hotelMarker.getPosition());
-                        map.setZoom(13);
+                        map.setZoom(14);
                     }
 
                     $scope.panMap = function (id, firstMarker) {
                         var place = $scope.destination;
                         if (place.geometry.viewport) {
-                            //map.setCenter(firstMarker.getPosition());
+                            //map.fitBounds(place.geometry.viewport);
+                            //map.setZoom(13);
+                            
+                            map.setCenter(firstMarker.getPosition());
+                            map.setZoom(12);
+                            
                             google.maps.event.trigger(firstMarker, 'click');
-                            map.fitBounds(place.geometry.viewport);
-                            map.setZoom(13);
+                            
                         } else {
                             map.setCenter(place.geometry.location);
                         }
@@ -263,15 +160,16 @@ angular.module('triviziApp')
                         }
                         
                         google.maps.event.trigger($scope.googleMap, 'resize');
-
+                                                
                     }
 
 
                     $scope.buildCatReturn = function (city, lat, lng) {
 
-                        google.maps.event.trigger($scope.googleMap, 'resize');
                         map.setZoom(2);
                         $scope.markersDisplay(lat, lng);
+                        map.setCenter(new google.maps.LatLng(lat, lng));
+                        google.maps.event.trigger($scope.googleMap, 'resize');
 
                         google.maps.event.addListener(marker, 'mouseover', (function (marker, i) {
                             return function () {
@@ -283,9 +181,31 @@ angular.module('triviziApp')
                         google.maps.event.addListener(marker, 'click', (function (marker, i) {
                             return function () {
                                 $scope.specificLocation = city;
+                                
+                                //jquery
+                                $('.placeHolderLocation').empty();
+                                
+                                /*
+                                using just ean call for now
+                                getting better results
+                                */
+                                
+                                $scope.seekDeer();
+                                
+                                /*
+                                we might have to remove the yelp call and just ean
+                                yelp is not returning enough results and limits the return
+                                by running a filter against ean, we dont need a 
+                                romantic hotel in a romantic city
+                                we might need to use tripadviosr api foer this
+                                type of an idea instead of yelp
+                                */
+                                
+                                /*
                                 yelp.yelpRequest($scope, function (data) {
                                     eanYelp.eanYelpRequest($scope, data);
                                 });
+                                */
                             }
                         })(marker, i));
 

@@ -6,7 +6,7 @@ angular.module('triviziApp')
             templateUrl: 'app/filters/budget/budget.html',
             restrict: 'EA',
             link: function ($scope, $element, $attrs) {
-                $scope.priceSlider = 50;
+                $scope.priceSlider = 125;
                 $scope.$on("slideEnded", function () {
                     $scope.seekDeer();
                 });
