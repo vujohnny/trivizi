@@ -16,6 +16,43 @@
     color: $light-salmon;
 }
 
+.pac-container {
+    width: 38% !important;
+    font-family: $font-stack !important;
+    background: $dark-grey;
+    border-top: 0;
+    border-right: 1px solid $darkest-grey;
+
+    .pac-icon {
+        display: none;
+    }
+
+    .pac-matched {
+        color: $salmon;
+    }
+
+    .pac-item-query {
+        font-size: 2em;
+        color: #ffffff;
+        font-weight: bold;
+        display: block;
+        clear: both;
+    }
+
+    .pac-item {
+        color: #ffffff;
+        font-size: 1em;
+        padding: .8em 1.5em;
+        cursor: pointer;
+        border-top: 0;
+        border-bottom: 1px solid $darkest-grey;
+
+        &:hover {
+            background-color: $darkest-grey;
+        }
+    }
+}
+
 // full container
 .destination {
     font-weight: normal;
@@ -79,43 +116,6 @@
     }
 }
 
-.pac-container {
-    width: 38% !important;
-    font-family: $font-stack !important;
-    background: $dark-grey;
-    border-top: 0;
-    border-right: 1px solid $darkest-grey;
-
-    .pac-icon {
-        display: none;
-    }
-
-    .pac-matched {
-        color: $salmon;
-    }
-
-    .pac-item-query {
-        font-size: 2em;
-        color: #ffffff;
-        font-weight: bold;
-        display: block;
-        clear: both;
-    }
-
-    .pac-item {
-        color: #ffffff;
-        font-size: 1em;
-        padding: .8em 1.5em;
-        cursor: pointer;
-        border-top: 0;
-        border-bottom: 1px solid $darkest-grey;
-
-        &:hover {
-            background-color: $darkest-grey;
-        }
-    }
-}
-
 // intro container
 .destinationSpecific {
     color: #000000;
@@ -141,7 +141,7 @@
         padding: 0 .8em;
         color: #ffffff;
         font-size: .7em;
-        width: 100%;
+        width: 60%;
         float: left;
     }
 
@@ -161,7 +161,7 @@
                 padding: .1em;
                 background-color: $border-grey;
                 border-radius: 2px;
-                font-size: 1.3vw;
+                font-size: .5em;
                 font-weight: bold;
                 margin: .7em .5em;
 
@@ -176,5 +176,18 @@
     .destinationCategoryTitle {
         font-size: .5em;
         font-weight: 700;
+        background-color: $salmon;
+        background: -webkit-linear-gradient(left, $salmon, $light-salmon);
+
+        /* For Safari 5.1 to 6.0 */
+        background: -o-linear-gradient(right, $salmon, $light-salmon);
+
+        /* For Opera 11.1 to 12.0 */
+        background: -moz-linear-gradient(right, $salmon, $light-salmon);
+
+        /* For Firefox 3.6 to 15 */
+        background: linear-gradient(to right, $salmon, $light-salmon);
+
+        /* Standard syntax (must be last) */
     }
 }
