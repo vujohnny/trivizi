@@ -29,7 +29,7 @@ angular.module('triviziApp')
                                 lat: 20.393736,
                                 lng: -46.268002
                             },
-                            zoom: 2,
+                            zoom: 4,
                             mapTypeControl: false,
                             zoomControl: true,
                             scaleControl: true,
@@ -124,7 +124,7 @@ angular.module('triviziApp')
 
                         //console.log($scope.priceSlider);
 
-                        if (rateAverage < $scope.priceSlider && $scope.resultsList.length < 20) {
+                        if (rateAverage < $scope.priceSlider && $scope.resultsList.length < 40) {
 
                             // map markers and pan map to city
                             $scope.markersDisplay(lat, lng);
@@ -166,7 +166,7 @@ angular.module('triviziApp')
 
                     $scope.buildCatReturn = function (city, lat, lng) {
 
-                        map.setZoom(2);
+                        map.setZoom(3);
                         $scope.markersDisplay(lat, lng);
                         map.setCenter(new google.maps.LatLng(lat, lng));
                         google.maps.event.trigger($scope.googleMap, 'resize');

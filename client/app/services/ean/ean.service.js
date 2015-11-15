@@ -23,7 +23,7 @@ angular.module('triviziApp')
                 var url = 'http://api.ean.com/ean-services/rs/hotel/v3/list?callback=JSON_CALLBACK';
                 var params = {
                     "apiKey": apiKey,
-                    "minorRev": "99",
+                    "minorRev": "28",
                     "locale": "en_US",
                     "cid": cid, //55505
                     "sig": sig,

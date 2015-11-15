@@ -1,5 +1,16 @@
 #budgetDetailsContainer {
     min-height: 100px;
+
+    .rz-pointer {
+        width: 40px;
+        height: 40px;
+        border-radius: 20px;
+        top: -17px;
+    }
+
+    .rz-bar {
+        height: 5px !important;
+    }
 }
 
 #budgetIntroDetailsContainer {
@@ -7,13 +18,15 @@
     width: 25vw;
     margin-left: -10vw;
     padding: 0 20px;
-    
+
     .priceSliderContainer {
         width: 100%;
     }
+
     rzslider {
         margin: 15px auto;
     }
+
     rzslider span.rz-pointer {
         top: -9px;
         width: 22px;
@@ -34,9 +47,12 @@
 }
 
 rzslider {
-
     .rz-bubble {
         display: none;
+    }
+
+    .rz-bar {
+        background-color: #444444 !important;
     }
 
     .rz-pointer {
@@ -50,4 +66,5 @@ rzslider {
     .rz-active:after {
         background-color: #ffffff !important;
     }
+
 }

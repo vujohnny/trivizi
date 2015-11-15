@@ -1,6 +1,6 @@
 <div class="row typography top-menu">
 
-    <div class="filterBlock col-lg-2" ng-click="budgetDetails = ! budgetDetails; destinationDetails=false; arrivalDetails=false; departureDetails=false; adultDetails=false">
+    <div class="filterBlock col-lg-2" ng-class="{'filterBlockActive': budgetDetails==true}" ng-click="budgetDetails = ! budgetDetails; destinationDetails=false; arrivalDetails=false; departureDetails=false; adultDetails=false">
         <div class="filterTitle">Nightly Budget:</div>
         <div class="salmon">
             ${{priceSlider}}
@@ -10,7 +10,7 @@
         </div>
     </div>
 
-    <div class="filterBlock col-lg-4" ng-click="destinationDetails = ! destinationDetails; budgetDetails=false; arrivalDetails=false; departureDetails=false; adultDetails=false">
+    <div class="filterBlock col-lg-4" ng-class="{'filterBlockActive': destinationDetails==true}" ng-click="destinationDetails = ! destinationDetails; budgetDetails=false; arrivalDetails=false; departureDetails=false; adultDetails=false">
         <div class="filterTitle">Where:</div>
         <span class="placeHolderLocation salmon">
             Romantic
@@ -25,7 +25,7 @@
         </div>
     </div>
 
-    <div class="filterBlock col-lg-2" ng-click="adultDetails = ! adultDetails; budgetDetails=false; destinationDetails=false; arrivalDetails=false; departureDetails=false">
+    <div class="filterBlock col-lg-2" ng-class="{'filterBlockActive': adultDetails==true}" ng-click="adultDetails = ! adultDetails; budgetDetails=false; destinationDetails=false; arrivalDetails=false; departureDetails=false">
         <div class="filterTitle">For:</div>
         <div class="salmon">
             <div class="totalGuest"></div>
@@ -35,7 +35,7 @@
         </div>
     </div>
 
-    <div class="filterBlock col-lg-2" ng-click="arrivalDetails = ! arrivalDetails; budgetDetails=false; destinationDetails=false; departureDetails=false; adultDetails=false">
+    <div class="filterBlock col-lg-2" ng-class="{'filterBlockActive': arrivalDetails==true}" ng-click="arrivalDetails = ! arrivalDetails; budgetDetails=false; destinationDetails=false; departureDetails=false; adultDetails=false">
         <div class="filterTitle">From:</div>
         <div class="salmon">
             {{arriveDate.defaultValue | date:'EEE, MMM dd' }}
@@ -45,7 +45,7 @@
         </div>
     </div>
 
-    <div class="filterBlock col-lg-2" ng-click="arrivalDetails=false; departureDetails = ! departureDetails; budgetDetails=false; destinationDetails=false; adultDetails=false">
+    <div class="filterBlock col-lg-2" ng-class="{'filterBlockActive': departureDetails==true}" ng-click="arrivalDetails=false; departureDetails = ! departureDetails; budgetDetails=false; destinationDetails=false; adultDetails=false">
         <div class="filterTitle">To:</div>
         <div class="salmon">
             {{departDate.defaultValue | date:'EEE, MMM dd' }}
@@ -58,7 +58,7 @@
 </div>
 
 
-<div class="row typography">
+<div class="widgetContainer row typography">
 
     <div id="budgetDetailsContainer" class="customDrop" ng-show="budgetDetails">
         <budget></budget>
