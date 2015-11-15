@@ -1,22 +1,32 @@
+.widgetContainer {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+}
+
 .filterBlock {
     border: 1px solid $border-grey;
     border-left: 0;
-    //padding: .8em;
-    padding: 2em 2em 2em 1.5em;
+    padding: 2em .5em 2em 1.5em;
     background-color: #ffffff;
-    
+
     .categoryPlaceHolder {
         text-transform: capitalize;
     }
-    
+
     .filterTitle {
         font-size: .7em;
+        color: $darkest-grey;
     }
 
     &:hover {
         background-color: $highlight-grey;
         cursor: pointer;
     }
+}
+
+.filterBlockActive {
+    background-color: $border-grey;
 }
 
 .customDrop {
@@ -27,21 +37,24 @@
 
 .upTriangle {
     text-align: center;
+
     .fa {
         color: $salmon;
         font-size: 3em;
         position: absolute;
-        margin-top: -10px;
+        margin-top: 1px;
         margin-left: -10px;
-//        @media screen and (max-width: $break-phone) {
-//            display: none;
-//        }
-//        @media screen and (max-width: $break-tablet) {
-//            display: none;
-//        }
+
+        //        @media screen and (max-width: $break-phone) {
+        //            display: none;
+        //        }
+        //        @media screen and (max-width: $break-tablet) {
+        //            display: none;
+        //        }
+   
     }
 }
 
 #arrivalDetailsContainer, #departureDetailsContainer, #destinationDetailsContainer, #adultDetailsContainer {
-	padding: 0;
+    padding: 0;
 }

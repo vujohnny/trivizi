@@ -4,15 +4,15 @@
     position: absolute;
     z-index: 1;
     float: left;
-    margin-left: -1em;
+    margin-left: -21px;
     width: 100%;
-    margin-top: 15px;
+    margin-top: 29px;
     .adultCount {
         div {
             font-size: 1em;
             background: $light-grey;
             outline: 1px solid $border-grey;
-            padding: 2em;
+            padding: 1em;
             cursor: pointer;
             color: #000000;
             text-align: center;
