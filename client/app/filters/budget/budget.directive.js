@@ -12,6 +12,7 @@ angular.module('triviziApp')
 
                 $scope.$on("slideEnded", function() {
                     $scope.seekDeer();
+                    $scope.closeAllFilters();
                 });
 
                 $scope.$watch("priceSlider", function() {

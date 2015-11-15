@@ -4,10 +4,10 @@
 
 <div class="introContainer text-center">
     <div class="introParagraph">
-        My nightly budget is
+        <span class="customSize ultra-light">My nightly budget is</span>
 
         <div class="introSelect" ng-click="budgetIntroDetails=true; overlayMask=true">
-            ${{priceSlider.value}}<span class="caret"></span>
+            <span class="customSize">${{priceSlider.value}}<span class="caret"></span></span>
             <div id="budgetIntroDetailsContainer" class="customDrop" ng-show="budgetIntroDetails">
                 <div class="upTriangle">
                     <i class="fa fa-caret-up"></i>
@@ -16,14 +16,16 @@
             </div>
         </div>
 
-        and I want to go <span class="switchSomewhere">somewhere</span>
+        <span class="customSize ultra-light">and I want to go <span class="switchSomewhere">somewhere</span></span>
 
         <div class="introSelect">
-            <span ng-click="destinationIntroDetails=true; overlayMask=true">
+            <span ng-click="destinationIntroDetails=true; overlayMask=true; inputFun()">
                 <span class="destinationTitle salmon">
-                    {{ specificLocation | limitTo: 20 }}{{specificLocation.length > 12 ? '...' : ''}} 
+                    <span class="customSize">
+                        {{ specificLocation | limitTo: 20 }}{{specificLocation.length > 12 ? '...' : ''}} 
                     
-                    {{category}}
+                        {{category}}
+                    </span>
                 </span>
                 <span class="caret"></span>
             </span>
@@ -31,31 +33,31 @@
                 <div class="upTriangle">
                     <i class="fa fa-caret-up"></i>
                 </div>
-                <input id="navIntroLocationField" class="destinationSpecific" type="text" ng-model="specificIntroLocation" placeholder="Los Angeles, CA">
-                <div id="destinationCategoryContainer"> <!--ng-show="specificIntroLocation.length"-->
-                    <div class="destinationCategoryTitle">or Category:</div>
+                <input id="navIntroLocationField" class="destinationSpecific" type="text" ng-model="specificIntroLocation" placeholder="Los Angeles, CA" autofocus>
+                <div id="destinationCategoryContainer" ng-class="{'shortCatContain': specificIntroLocation.length}"> <!--ng-show="specificIntroLocation.length"-->
+<!--                    <div class="destinationCategoryTitle">or Category:</div>-->
                     <div class="destinationCategories" ng-repeat="places in typesOfPlaces">
-                        <div class="categoryButton" ng-click="yelpHold(places.title); changeText(places.title)"><i class="fa fa-{{places.icon}}"></i> {{places.title}}</div>
+                        <div class="categoryButton {{places.title}}" ng-click="yelpHold(places.title); changeText(places.title)" ng-class="{'activeCategory':$first}"><i class="fa fa-{{places.icon}}"></i> {{places.title}}</div>
                     </div>
                 </div>
             </div>
         </div>
 
-        for
+        <span class="customSize">for</span>
 
         <div class="introSelect" ng-click="adultDetails=true; overlayMask=true">
             <div class="salmon">
-                <span class="totalGuest"></span><span class="caret"></span>
+                <span class="totalGuest customSize"></span><span class="caret"></span>
             </div>
             <div id="adultDetailsContainer" ng-show="adultDetails">
                 <headcount></headcount>
             </div>
         </div>
 
-        from
+        <span class="customSize ultra-light">from</span>
 
         <div class="introSelect">
-            <span ng-click="arrivalIntroDetails=true; overlayMask=true">{{arriveDate.defaultValue | date:'MMMM dd' }}</span><span class="caret"></span>
+            <span ng-click="arrivalIntroDetails=true; overlayMask=true"><span class="customSize">{{arriveDate.defaultValue | date:'MMMM dd' }}</span></span><span class="caret"></span>
             <div id="arrivalIntroDetailsContainer" class="customDrop" ng-show="arrivalIntroDetails">
                 <div class="upTriangle">
                     <i class="fa fa-caret-up"></i>
@@ -64,10 +66,10 @@
             </div>
         </div>
 
-        to
+        <span class="customSize ultra-light">to</span>
 
         <div class="introSelect">
-            <span ng-click="departureIntroDetails=true; overlayMask=true">{{departDate.defaultValue | date:'MMMM dd' }}</span><span class="caret"></span>
+            <span ng-click="departureIntroDetails=true; overlayMask=true"><span class="customSize">{{departDate.defaultValue | date:'MMMM dd' }}</span></span><span class="caret"></span>
             <div id="departureIntroDetailsContainer" class="customDrop" ng-show="departureIntroDetails">
                 <div class="upTriangle">
                     <i class="fa fa-caret-up"></i>

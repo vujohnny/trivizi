@@ -176,14 +176,15 @@
         padding: 0 .8em;
         color: #ffffff;
         font-size: .7em;
-        width: 60%;
+        width: 100%;
         float: left;
+        height: 55px;
     }
 
     #destinationCategoryContainer {
         float: right;
         text-align: center;
-        width: 40%;
+        width: 100%;
         background: $dark-grey;
 
         .destinationCategories {
@@ -205,7 +206,16 @@
                     color: #fff;
                 }
             }
+            
+            .activeCategory {
+                background-color: $darkest-grey;
+                color: #ffffff;
+            }
         }
+    }
+    
+    .shortCatContain {
+        width: 40% !important;
     }
 
     .destinationCategoryTitle {

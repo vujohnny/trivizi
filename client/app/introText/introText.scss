@@ -18,13 +18,17 @@ intro-text {
     .introParagraph {
         display: block;
         padding: 0;
-        width: 40%;
-        margin: 10vw auto 0 auto;
+        width: 60%;
+        margin: 7vw auto 0 auto;
         font-size: 2em;
         color: $dark-grey;
         line-height: 1.7em;
         @media screen and (max-width: $break-phone) {
             width: 95%;
+        }
+        .customSize {
+            font-size: 1.5em;
+            line-height: 1.5em;
         }
         .upTriangle {
             position: absolute;
