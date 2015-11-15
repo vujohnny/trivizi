@@ -10,10 +10,6 @@
     padding: 2em .5em 2em 1.5em;
     background-color: #ffffff;
 
-    .categoryPlaceHolder {
-        text-transform: capitalize;
-    }
-
     .filterTitle {
         font-size: .7em;
         color: $darkest-grey;
@@ -22,6 +18,12 @@
     &:hover {
         background-color: $highlight-grey;
         cursor: pointer;
+    }
+
+    .destinationTitle {
+        min-height: 1.4em;
+        display: block;
+        text-transform: capitalize;
     }
 }
 
