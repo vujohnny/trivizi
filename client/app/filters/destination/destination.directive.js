@@ -5,20 +5,19 @@ angular.module('triviziApp')
             templateUrl: 'app/filters/destination/destination.html',
             restrict: 'EA',
             controller: function ($scope, $http, $element, $attrs, ean, yelp) {
-                
-                $scope.typesOfPlaces = 
-                [{
-                    title: 'romantic', 
+
+                $scope.typesOfPlaces = [{
+                    title: 'romantic',
                     icon: 'heart'
                 }, {
-                    title: 'tropical', 
+                    title: 'tropical',
                     icon: 'sun-o'
                 }, {
-                    title: 'sexy', 
+                    title: 'sexy',
                     icon: 'glass'
                 }, {
-                    title: 'cultural', 
-                    icon: 'graduation-cap' 
+                    title: 'cultural',
+                    icon: 'graduation-cap'
                 }, {
                     title: 'family',
                     icon: 'users'
@@ -32,16 +31,18 @@ angular.module('triviziApp')
                 $scope.yelpHold = function (category) {
                     $scope.deleteMarkers();
                     $scope.category = category;
-                    $http.get('/app/filters/destination/categoryData/' + category + '.json')
+                    $http.get('/api/category/')
                         .then(function (location) {
-                            var currentCategoryList = location.data;
+                            var currentCategoryList = location.data.filter(function (eq) {
+                                return eq.category === category;
+                            });
                             angular.forEach(currentCategoryList, function (k, v) {
                                 $scope.buildCatReturn(k.city, k.lat, k.lng);
                             });
 
                         });
                 }
-                
+
                 // intro text auto complete and submit
                 var options = {
                         types: ['geocode']
@@ -49,7 +50,7 @@ angular.module('triviziApp')
                     navIntroInput = document.getElementById('navIntroLocationField'),
                     navIntroAutocomplete = new google.maps.places.Autocomplete(navIntroInput, options);
 
-                $scope.navIntroLocationChanged = google.maps.event.addListener(navIntroAutocomplete, 'place_changed', function(e) {
+                $scope.navIntroLocationChanged = google.maps.event.addListener(navIntroAutocomplete, 'place_changed', function (e) {
                     $scope.destination = navIntroAutocomplete.getPlace();
                     $scope.category = null;
                     $scope.specificLocation = $scope.destination.formatted_address;
@@ -57,15 +58,15 @@ angular.module('triviziApp')
                     $scope.destinationIntroDetails = false;
                     $scope.emptyPlace();
 
-                            // jquery
-                            $('.switchSomewhere').empty().html('to');
+                    // jquery
+                    $('.switchSomewhere').empty().html('to');
                 });
 
                 //jquery
                 $scope.changeText = function (category) {
 
-                            // jquery
-                            $('.switchSomewhere').empty().html('somewhere');
+                    // jquery
+                    $('.switchSomewhere').empty().html('somewhere');
 
                     $scope.specificLocation = null;
                     $scope.destinationIntroDetails = false;
@@ -73,22 +74,21 @@ angular.module('triviziApp')
                 $scope.emptyPlace = function () {
                     $scope.category = null;
                 }
-                
+
                 $scope.introText = true;
                 $scope.category = $scope.typesOfPlaces[0].title;
-                
-                $scope.introSubmit = function() {
 
-                            //jquery
-                            $('.pac-container').addClass('full-pac-container');
-                    
-                    if(!$scope.category) {
+                $scope.introSubmit = function () {
+
+                    //jquery
+                    $('.pac-container').addClass('full-pac-container');
+
+                    if (!$scope.category) {
                         $scope.seekDeer();
-                    }
-                    else {
+                    } else {
                         $scope.yelpHold($scope.category);
-                    }             
-                                        
+                    }
+
                 }
             },
             link: function ($scope) {}
