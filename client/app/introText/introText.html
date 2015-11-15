@@ -18,13 +18,10 @@
 
         <div class="introSelect">
             <span ng-click="destinationIntroDetails = ! destinationIntroDetails; budgetIntroDetails=false; arrivalIntroDetails=false; departureIntroDetails=false; adultDetails=false">
-                <span class="placeHolderLocation">
-                    romantic
-                </span>
-                <span class="cityPlaceHolder">
-                    {{ specificLocation | limitTo: 20 }}{{specificLocation.length > 12 ? '...' : ''}}
-                </span>
-                <span class="categoryPlaceHolder">
+                <span class="destinationTitle salmon">
+                    {{ specificLocation | limitTo: 20 }}{{specificLocation.length > 12 ? '...' : ''}} 
+                    
+                    {{category}}
                 </span>
                 <span class="caret"></span>
             </span>
@@ -34,9 +31,9 @@
                 </div>
                 <input id="navIntroLocationField" class="destinationSpecific" type="text" ng-model="specificIntroLocation" placeholder="Los Angeles, CA">
                 <div id="destinationCategoryContainer" ng-show="specificIntroLocation.length">
-                    <div class="destinationCategoryTitle">or type of place:</div>
+                    <div class="destinationCategoryTitle">Category:</div>
                     <div class="destinationCategories" ng-repeat="places in typesOfPlaces">
-                        <button class="btn btn-default" ng-click="yelpHold(places); changeText(places)">{{places}}</button>
+                        <div class="categoryButton" ng-click="yelpHold(places.title); changeText(places.title)"><i class="fa fa-{{places.icon}}"></i> {{places.title}}</div>
                     </div>
                 </div>
             </div>

@@ -14,6 +14,7 @@
         <div class="filterTitle">Where:</div>
         <span class="destinationTitle salmon">
             {{ specificLocation | limitTo: 20 }}{{specificLocation.length > 12 ? '...' : ''}} 
+            
             {{category}}
         </span>
         <div class="upTriangle" ng-show="destinationDetails">

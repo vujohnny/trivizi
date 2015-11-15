@@ -6,7 +6,23 @@ angular.module('triviziApp')
             restrict: 'EA',
             controller: function ($scope, $http, $element, $attrs, ean, yelp) {
                 
-                $scope.typesOfPlaces = ['romantic', 'tropical', 'sexy', 'cultural', 'family'];
+                $scope.typesOfPlaces = 
+                [{
+                    title: 'romantic', 
+                    icon: 'heart'
+                }, {
+                    title: 'tropical', 
+                    icon: 'sun-o'
+                }, {
+                    title: 'sexy', 
+                    icon: 'glass'
+                }, {
+                    title: 'cultural', 
+                    icon: 'graduation-cap' 
+                }, {
+                    title: 'family',
+                    icon: 'users'
+                }];
 
                 var tropicalList = [];
                 var sexyList = [];
@@ -59,7 +75,7 @@ angular.module('triviziApp')
                 }
                 
                 $scope.introText = true;
-                $scope.category = $scope.typesOfPlaces[0];
+                $scope.category = $scope.typesOfPlaces[0].title;
                 
                 $scope.introSubmit = function() {
                     

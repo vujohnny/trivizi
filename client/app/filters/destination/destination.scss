@@ -1,27 +1,36 @@
+::-webkit-input-placeholder {
+    color: $light-salmon;
+}
+
+:-moz-placeholder {
+    /* Firefox 18- */
+    color: $light-salmon;
+}
+
+::-moz-placeholder {
+    /* Firefox 19+ */
+    color: $light-salmon;
+}
+
+:-ms-input-placeholder {
+    color: $light-salmon;
+}
+
 // full container
 .destination {
     font-weight: normal;
     list-style: none;
     padding: 0;
     margin: 0;
-    background: $salmon;
+    background: $dark-grey;
     height: auto;
-    ::-webkit-input-placeholder {
-        color: $light-salmon;
+
+    .row-fluid {
+        background-color: $dark-grey;
     }
-    :-moz-placeholder {
-        /* Firefox 18- */
-        color: $light-salmon;
-    }
-    ::-moz-placeholder {
-        /* Firefox 19+ */
-        color: $light-salmon;
-    }
-    :-ms-input-placeholder {
-        color: $light-salmon;
-    }
+
     .destinationSpecific {
-        width: 60%;
+        width: 100%;
         padding: .5em .8em;
         background: $salmon;
         border: 0;
@@ -29,44 +38,81 @@
         color: #ffffff;
         font-size: 2em;
     }
-    #destinationCategoryContainer {
-        float: right;
+
+    #categoryContainer {
+        width: 100%;
+    }
+
+    #categoryItemContainer {
+        width: 35%;
+        background: #323232;
         text-align: center;
-        width: 40%;
-        margin-top: 65px;
-        background: $dark-grey;
+        float: right;
+
         .destinationCategories {
             width: 100%;
-            padding: 1em;
-            .btn {
-                color: #000000;
+            padding: .3em 1em;
+
+            .categoryButton {
                 text-transform: capitalize;
+                color: $dark-grey;
                 cursor: pointer;
-                width: 70%;
+                padding: 1em;
+                margin-bottom: 4px;
+                background-color: $border-grey;
+                border-radius: 2px;
+                font-size: 1.3em;
+                font-weight: bold;
+
+                &:hover {
+                    background-color: $salmon;
+                    color: #fff;
+                }
             }
         }
+    }
+
+    .destinationCategoryTitle {
+        font-size: 1.3em;
+        font-weight: 700;
+        padding: 1.5em 1.5em 1.2em 1.5em;
     }
 }
 
 .pac-container {
-    //width: 30% !important;
+    width: 38% !important;
     font-family: $font-stack !important;
+    background: $dark-grey;
+    border-top: 0;
+    border-right: 1px solid $darkest-grey;
+
     .pac-icon {
         display: none;
     }
+
     .pac-matched {
         color: $salmon;
     }
+
     .pac-item-query {
         font-size: 2em;
+        color: #ffffff;
+        font-weight: bold;
         display: block;
         clear: both;
     }
+
     .pac-item {
-        color: $medium-grey;
+        color: #ffffff;
         font-size: 1em;
-        padding: 1em 1.5em;
+        padding: .8em 1.5em;
         cursor: pointer;
+        border-top: 0;
+        border-bottom: 1px solid $darkest-grey;
+
+        &:hover {
+            background-color: $darkest-grey;
+        }
     }
 }
 
@@ -82,9 +128,12 @@
     width: 35vw;
     min-width: 330px;
     margin-left: -12vw;
+    background-color: $dark-grey;
+
     .upTriangle {
         margin-left: 16.5vw;
     }
+
     input {
         background: $salmon;
         border: 0;
@@ -92,26 +141,40 @@
         padding: 0 .8em;
         color: #ffffff;
         font-size: .7em;
-        width: 60%;
+        width: 100%;
         float: left;
     }
+
     #destinationCategoryContainer {
         float: right;
         text-align: center;
         width: 40%;
-        margin-top: 47px;
         background: $dark-grey;
+
         .destinationCategories {
             width: 100%;
-            .btn {
-                color: #000000;
+
+            .categoryButton {
                 text-transform: capitalize;
+                color: $dark-grey;
                 cursor: pointer;
-                width: 70%;
+                padding: .1em;
+                background-color: $border-grey;
+                border-radius: 2px;
+                font-size: 1.3vw;
+                font-weight: bold;
+                margin: .7em .5em;
+
+                &:hover {
+                    background-color: $salmon;
+                    color: #fff;
+                }
             }
         }
     }
+
     .destinationCategoryTitle {
         font-size: .5em;
+        font-weight: 700;
     }
 }
