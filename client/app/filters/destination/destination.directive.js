@@ -78,6 +78,9 @@ angular.module('triviziApp')
                 $scope.category = $scope.typesOfPlaces[0].title;
                 
                 $scope.introSubmit = function() {
+
+                    //jquery
+                    $('.pac-container').addClass('full-pac-container');
                     
                     if(!$scope.category) {
                         $scope.seekDeer();

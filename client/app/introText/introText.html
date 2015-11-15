@@ -4,7 +4,7 @@
     <div class="introParagraph">
         My nightly budget is
 
-        <div class="introSelect" ng-click="budgetIntroDetails = ! budgetIntroDetails; destinationIntroDetails=false; arrivalIntroDetails=false; departureIntroDetails=false; adultDetails=false">
+        <div class="introSelect" ng-click="budgetIntroDetails = ! budgetIntroDetails; destinationIntroDetails=false; arrivalIntroDetails=false; departureIntroDetails=false; adultDetails=false; reDraw()">
             ${{priceSlider.value}}<span class="caret"></span>
             <div id="budgetIntroDetailsContainer" class="customDrop" ng-show="budgetIntroDetails">
                 <div class="upTriangle">

@@ -19,7 +19,12 @@ angular.module('triviziApp')
                 });
 
                 $timeout(function () { 
-                    console.log('edgar');
+                    $scope.$broadcast('reCalcViewDimensions');
+                    console.log('budget broadcast');
+                });
+
+                $scope.reDraw = function() {
+                    console.log('somethin');
                     $scope.$broadcast('reCalcViewDimensions');
                 }
 

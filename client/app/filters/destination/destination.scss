@@ -17,11 +17,45 @@
 }
 
 .pac-container {
-    width: 38% !important;
+    width: 21% !important;
     font-family: $font-stack !important;
     background: $dark-grey;
     border-top: 0;
     border-right: 1px solid $darkest-grey;
+
+    .pac-icon {
+        display: none;
+    }
+
+    .pac-matched {
+        color: $salmon;
+    }
+
+    .pac-item-query {
+        font-size: 1.2em;
+        color: #ffffff;
+        font-weight: bold;
+        display: block;
+        clear: both;
+        margin-bottom: -9px !important;
+    }
+
+    .pac-item {
+        color: #ffffff;
+        font-size: 1em;
+        padding: 0em 1.5em .3em;
+        cursor: pointer;
+        border-top: 0;
+        border-bottom: 1px solid $darkest-grey;
+
+        &:hover {
+            background-color: $darkest-grey;
+        }
+    }
+}
+
+.full-pac-container {
+    width: 38% !important;
 
     .pac-icon {
         display: none;
@@ -37,6 +71,7 @@
         font-weight: bold;
         display: block;
         clear: both;
+        margin-bottom: auto !important;
     }
 
     .pac-item {
