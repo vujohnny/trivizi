@@ -6,7 +6,23 @@ angular.module('triviziApp')
             restrict: 'EA',
             controller: function ($scope, $http, $element, $attrs, ean, yelp) {
                 
-                $scope.typesOfPlaces = ['romantic', 'tropical', 'sexy', 'cultural', 'family'];
+                $scope.typesOfPlaces = 
+                [{
+                    title: 'romantic', 
+                    icon: 'heart'
+                }, {
+                    title: 'tropical', 
+                    icon: 'sun-o'
+                }, {
+                    title: 'sexy', 
+                    icon: 'glass'
+                }, {
+                    title: 'cultural', 
+                    icon: 'graduation-cap' 
+                }, {
+                    title: 'family',
+                    icon: 'users'
+                }];
 
                 var tropicalList = [];
                 var sexyList = [];
@@ -35,35 +51,36 @@ angular.module('triviziApp')
 
                 $scope.navIntroLocationChanged = google.maps.event.addListener(navIntroAutocomplete, 'place_changed', function(e) {
                     $scope.destination = navIntroAutocomplete.getPlace();
-                    $scope.category = undefined;
+                    $scope.category = null;
                     $scope.specificLocation = $scope.destination.formatted_address;
                     $scope.seekDeer($scope.destination.formatted_address);
-                    
-                    //jquery
                     $scope.destinationIntroDetails = false;
                     $scope.emptyPlace();
-                    $('.cityPlaceHolder').show();
-                    $('.categoryPlaceHolder').hide();
-                    $('.switchSomewhere').empty().html('to');
+
+                            // jquery
+                            $('.switchSomewhere').empty().html('to');
                 });
 
                 //jquery
                 $scope.changeText = function (category) {
-                    $('.placeHolderLocation').remove();
-                    $('.cityPlaceHolder').hide();
-                    $('.switchSomewhere').empty().html('somewhere');
-                    $('.categoryPlaceHolder').show().empty().append($scope.category);
+
+                            // jquery
+                            $('.switchSomewhere').empty().html('somewhere');
+
+                    $scope.specificLocation = null;
                     $scope.destinationIntroDetails = false;
                 }
                 $scope.emptyPlace = function () {
-                    $('.placeHolderLocation').remove();
+                    $scope.category = null;
                 }
                 
                 $scope.introText = true;
-                $scope.category = $scope.typesOfPlaces[0];
-                //console.log($scope.typesOfPlaces[0]);
+                $scope.category = $scope.typesOfPlaces[0].title;
                 
                 $scope.introSubmit = function() {
+
+                            //jquery
+                            $('.pac-container').addClass('full-pac-container');
                     
                     if(!$scope.category) {
                         $scope.seekDeer();

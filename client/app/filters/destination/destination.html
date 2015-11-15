@@ -1,10 +1,12 @@
 <div class="filterValue">
 	<div class="row destination">
 		<input id="navLocationField" class="destinationSpecific" type="text" ng-model="specificLocation" ng-change="emptyPlace()" placeholder="Los Angeles, CA">
-		<div id="destinationCategoryContainer" ng-show="specificLocation.length">
-			<div class="destinationCategoryTitle">or type of place:</div>
-			<div class="destinationCategories" ng-repeat="places in typesOfPlaces">
-				<button class="btn btn-default" ng-click="yelpHold(places); changeText(places)">{{places}}</button>
+		<div id="categoryContainer">
+			<div id="categoryItemContainer" ng-show="specificLocation.length">
+				<div class="destinationCategoryTitle">Categories</div>
+				<div class="destinationCategories" ng-repeat="places in typesOfPlaces">
+					<div class="categoryButton" ng-click="yelpHold(places.title); changeText(places.title)"><i class="fa fa-{{places.icon}}"></i> {{places.title}}</div>
+				</div>
 			</div>
 		</div>
 	</div>

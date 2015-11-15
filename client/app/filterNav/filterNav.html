@@ -1,9 +1,9 @@
 <div class="row typography top-menu">
 
-    <div class="filterBlock col-lg-2" ng-class="{'filterBlockActive': budgetDetails==true}" ng-click="budgetDetails = ! budgetDetails; destinationDetails=false; arrivalDetails=false; departureDetails=false; adultDetails=false">
+    <div class="filterBlock col-lg-2" ng-class="{'filterBlockActive': budgetDetails==true}" ng-click="budgetDetails = ! budgetDetails; destinationDetails=false; arrivalDetails=false; departureDetails=false; adultDetails=false;">
         <div class="filterTitle">Nightly Budget:</div>
         <div class="salmon">
-            ${{priceSlider}}
+            ${{priceSlider.value}}
         </div>
         <div class="upTriangle" ng-show="budgetDetails">
             <i class="fa fa-caret-up"></i>
@@ -12,13 +12,10 @@
 
     <div class="filterBlock col-lg-4" ng-class="{'filterBlockActive': destinationDetails==true}" ng-click="destinationDetails = ! destinationDetails; budgetDetails=false; arrivalDetails=false; departureDetails=false; adultDetails=false">
         <div class="filterTitle">Where:</div>
-        <span class="placeHolderLocation salmon">
-            Romantic
-        </span>
-        <span class="cityPlaceHolder salmon">
-            {{ specificLocation | limitTo: 20 }}{{specificLocation.length > 12 ? '...' : ''}}
-        </span>
-        <span class="categoryPlaceHolder salmon">
+        <span class="destinationTitle salmon">
+            {{ specificLocation | limitTo: 20 }}{{specificLocation.length > 12 ? '...' : ''}} 
+
+            {{category}}
         </span>
         <div class="upTriangle" ng-show="destinationDetails">
             <i class="fa fa-caret-up"></i>
@@ -63,7 +60,7 @@
     <div id="budgetDetailsContainer" class="customDrop" ng-show="budgetDetails">
         <budget></budget>
         <span class="budgetValue typography">
-            ${{priceSlider}}
+            ${{priceSlider.value}}
         </span>
     </div>
 

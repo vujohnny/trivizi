@@ -49,33 +49,30 @@ angular.module('triviziApp')
                     $scope.navLocationChanged = google.maps.event.addListener(navAutocomplete, 'place_changed', function (e) {
                         $scope.destination = navAutocomplete.getPlace();
                         $scope.specificLocation = $scope.destination.formatted_address;
-                        
-                        //jquery
-                        $('.cityPlaceHolder').show();
-                        $('.categoryPlaceHolder').hide();
                         $scope.seekDeer($scope.destination.formatted_address);
                     });
 
-                    $scope.showMap = function () {
-                        $(".intro-text").fadeOut("slow", function () {
-                            $("#googleMap").css("visibility", "visible");
-                            $("#results-container, .top-menu").fadeIn("slow", function () {});
-                        });
-                    }
+                                //jquery
+                                $scope.showMap = function () {
+                                    $(".intro-text").fadeOut("slow", function () {
+                                        $("#googleMap").css("visibility", "visible");
+                                        $("#results-container, .top-menu").fadeIn("slow", function () {});
+                                    });
+                                }
+                                //jquery
+                                $scope.highlightResult = function (hotelId, hotelLat, hotelLng) {
+                                    var selectedId = hotelId;
+                                    $(resultsItem + " " + resultsHotelItem + " .hotel-item-container").removeClass("activeResult");
+                                    $(".btn-book").removeClass("btn-on");
+                                    $(resultsItem + " #" + selectedId + " .hotel-item-container").addClass("activeResult");
+                                    $(resultsItem + " #" + selectedId + " .hotelInfoContainer .btn-book").addClass("btn-on");
 
-                    $scope.highlightResult = function (hotelId, hotelLat, hotelLng) {
-                        var selectedId = hotelId;
-                        $(resultsItem + " " + resultsHotelItem + " .hotel-item-container").removeClass("activeResult");
-                        $(".btn-book").removeClass("btn-on");
-                        $(resultsItem + " #" + selectedId + " .hotel-item-container").addClass("activeResult");
-                        $(resultsItem + " #" + selectedId + " .hotelInfoContainer .btn-book").addClass("btn-on");
-
-                        var highlightResult = document.getElementById(selectedId);
-                        var topPos = highlightResult.offsetTop - 25;
-                        $(resultsContainer).animate({
-                            scrollTop: topPos
-                        }, 500);
-                    }
+                                    var highlightResult = document.getElementById(selectedId);
+                                    var topPos = highlightResult.offsetTop - 25;
+                                    $(resultsContainer).animate({
+                                        scrollTop: topPos
+                                    }, 500);
+                                }
 
                     $scope.markersDisplay = function (lat, lng) {
                         marker = new google.maps.Marker({
@@ -122,9 +119,9 @@ angular.module('triviziApp')
 
                     $scope.buildReturn = function (lat, lng, id, name, shortDescription, listImg, rating, ratingImg, ratingCount, rateAverage, roundedAverage, rateTotal, roundedTotal, link, listImgFall, totalNights) {
 
-                        //console.log($scope.priceSlider);
+                        //console.log($scope.priceSlider.value);
 
-                        if (rateAverage < $scope.priceSlider && $scope.resultsList.length < 40) {
+                        if (rateAverage < $scope.priceSlider.value && $scope.resultsList.length < 40) {
 
                             // map markers and pan map to city
                             $scope.markersDisplay(lat, lng);
