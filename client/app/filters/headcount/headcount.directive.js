@@ -14,6 +14,8 @@ angular.module('triviziApp')
                 
                 $scope.adultCountSet = function (adults) {
                     $scope.numberOfAdults = adults;
+
+                    //jquery 
                     $(".totalGuest").html($scope.numberOfAdults);
                     $scope.seekDeer();
                 }

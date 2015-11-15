@@ -119,7 +119,7 @@ angular.module('triviziApp')
 
                     $scope.buildReturn = function (lat, lng, id, name, shortDescription, listImg, rating, ratingImg, ratingCount, rateAverage, roundedAverage, rateTotal, roundedTotal, link, listImgFall, totalNights) {
 
-                        console.log($scope.priceSlider.value);
+                        //console.log($scope.priceSlider.value);
 
                         if (rateAverage < $scope.priceSlider.value && $scope.resultsList.length < 40) {
 

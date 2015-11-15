@@ -7,7 +7,6 @@ angular.module('triviziApp')
         return {
             eanYelpRequest: function ($scope, data) {
 
-                $scope.closeAllFilters();
                 $scope.deleteMarkers();
                 $scope.resultsList = [];
 

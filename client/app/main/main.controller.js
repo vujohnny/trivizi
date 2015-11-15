@@ -28,7 +28,7 @@
             if (!$scope.specificLocation) {
                 console.log('location empty');
             } else {
-                $scope.closeAllFilters();
+                //$scope.closeAllFilters();
                 $scope.storeSearchData();
                 ean.eanRequest($scope);
             }
@@ -40,6 +40,7 @@
             $scope.budgetDetails = false;
             $scope.arrivalDetails = false;
             $scope.departureDetails = false;
+            $scope.overlayMask = false;
             //$scope.adultDetails=false;  
         };
 

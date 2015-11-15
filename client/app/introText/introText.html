@@ -1,10 +1,12 @@
 <navbar></navbar>
 
+<div class="introMask" ng-show="overlayMask" ng-click="budgetIntroDetails=false; destinationIntroDetails=false; arrivalIntroDetails=false; departureIntroDetails=false; adultDetails=false; overlayMask=false"></div>
+
 <div class="introContainer text-center">
     <div class="introParagraph">
         My nightly budget is
 
-        <div class="introSelect" ng-click="budgetIntroDetails = ! budgetIntroDetails; destinationIntroDetails=false; arrivalIntroDetails=false; departureIntroDetails=false; adultDetails=false; reDraw()">
+        <div class="introSelect" ng-click="budgetIntroDetails=true; overlayMask=true">
             ${{priceSlider.value}}<span class="caret"></span>
             <div id="budgetIntroDetailsContainer" class="customDrop" ng-show="budgetIntroDetails">
                 <div class="upTriangle">
@@ -17,7 +19,7 @@
         and I want to go <span class="switchSomewhere">somewhere</span>
 
         <div class="introSelect">
-            <span ng-click="destinationIntroDetails = ! destinationIntroDetails; budgetIntroDetails=false; arrivalIntroDetails=false; departureIntroDetails=false; adultDetails=false">
+            <span ng-click="destinationIntroDetails=true; overlayMask=true">
                 <span class="destinationTitle salmon">
                     {{ specificLocation | limitTo: 20 }}{{specificLocation.length > 12 ? '...' : ''}} 
                     
@@ -41,7 +43,7 @@
 
         for
 
-        <div class="introSelect" ng-click="adultDetails = ! adultDetails; budgetIntroDetails=false; destinationDetails=false; arrivalIntroDetails=false; destinationIntroDetails=false">
+        <div class="introSelect" ng-click="adultDetails=true; overlayMask=true">
             <div class="salmon">
                 <span class="totalGuest"></span><span class="caret"></span>
             </div>
@@ -53,7 +55,7 @@
         from
 
         <div class="introSelect">
-            <span ng-click="arrivalIntroDetails = ! arrivalIntroDetails; budgetIntroDetails=false; destinationIntroDetails=false; departureIntroDetails=false; adultDetails=false">{{arriveDate.defaultValue | date:'MMMM dd' }}</span><span class="caret"></span>
+            <span ng-click="arrivalIntroDetails=true; overlayMask=true">{{arriveDate.defaultValue | date:'MMMM dd' }}</span><span class="caret"></span>
             <div id="arrivalIntroDetailsContainer" class="customDrop" ng-show="arrivalIntroDetails">
                 <div class="upTriangle">
                     <i class="fa fa-caret-up"></i>
@@ -65,7 +67,7 @@
         to
 
         <div class="introSelect">
-            <span ng-click="arrivalIntroDetails=false; departureIntroDetails = ! departureIntroDetails; budgetIntroDetails=false; destinationIntroDetails=false; adultDetails=false">{{departDate.defaultValue | date:'MMMM dd' }}</span><span class="caret"></span>
+            <span ng-click="departureIntroDetails=true; overlayMask=true">{{departDate.defaultValue | date:'MMMM dd' }}</span><span class="caret"></span>
             <div id="departureIntroDetailsContainer" class="customDrop" ng-show="departureIntroDetails">
                 <div class="upTriangle">
                     <i class="fa fa-caret-up"></i>
@@ -78,3 +80,4 @@
 
     <button class="btn btn-default intro-button" ng-click="introText=false; fullText=true; introSubmit()">Let's do this!</button>
 </div>
+
