@@ -5,14 +5,25 @@ angular.module('triviziApp')
         return {
             templateUrl: 'app/filters/budget/budget.html',
             restrict: 'EA',
-            link: function ($scope, $element, $attrs) {
-                $scope.priceSlider = 125;
+            controller: function ($scope, $timeout) {
+                $scope.priceSlider = {
+                    value: 125
+                };
+
                 $scope.$on("slideEnded", function () {
                     $scope.seekDeer();
                 });
+
                 $scope.$watch("priceSlider", function () {
                     //console.log($scope.priceSlider);
                 });
-            }
+
+                $timeout(function () { 
+                    console.log('edgar');
+                    $scope.$broadcast('reCalcViewDimensions');
+                }
+
+            },
+            link: function ($scope, $timeout) {}
         };
     });
