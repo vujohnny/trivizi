@@ -210,18 +210,18 @@
 
     .destinationCategoryTitle {
         font-size: .5em;
-        font-weight: 700;
+        font-weight: 400;
         background-color: $salmon;
-        background: -webkit-linear-gradient(left, $salmon, $light-salmon);
-
-        /* For Safari 5.1 to 6.0 */
-        background: -o-linear-gradient(right, $salmon, $light-salmon);
-
-        /* For Opera 11.1 to 12.0 */
-        background: -moz-linear-gradient(right, $salmon, $light-salmon);
-
-        /* For Firefox 3.6 to 15 */
-        background: linear-gradient(to right, $salmon, $light-salmon);
+//        background: -webkit-linear-gradient(left, $salmon, $light-salmon);
+//
+//        /* For Safari 5.1 to 6.0 */
+//        background: -o-linear-gradient(right, $salmon, $light-salmon);
+//
+//        /* For Opera 11.1 to 12.0 */
+//        background: -moz-linear-gradient(right, $salmon, $light-salmon);
+//
+//        /* For Firefox 3.6 to 15 */
+//        background: linear-gradient(to right, $salmon, $light-salmon);
 
         /* Standard syntax (must be last) */
     }
