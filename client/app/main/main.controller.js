@@ -28,6 +28,7 @@
             if (!$scope.specificLocation) {
                 console.log('location empty');
             } else {
+                $scope.closeAllFilters();
                 $scope.storeSearchData();
                 ean.eanRequest($scope);
             }
