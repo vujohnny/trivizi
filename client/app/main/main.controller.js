@@ -26,7 +26,8 @@
         $scope.seekDeer = function () {
                         
             if (!$scope.specificLocation) {
-                console.log('location empty');
+                //console.log('location empty');
+                $scope.closeAllFilters();
             } else {
                 $scope.closeAllFilters();
                 $scope.storeSearchData();
@@ -36,22 +37,17 @@
         };
 
         $scope.closeAllFilters = function () {
-            console.log('close all');
-            
+            //console.log('close all');
             $scope.budgetIntroDetails=false; 
             $scope.destinationIntroDetails=false; 
             $scope.arrivalIntroDetails=false; 
             $scope.departureIntroDetails=false; 
-            
             $scope.destinationDetails = false;
             $scope.budgetDetails = false;
             $scope.arrivalDetails = false;
             $scope.departureDetails = false;
-            ;
-            
             //$scope.adultDetails=false;  
-            $scope.overlayMask = false
-            
+            $scope.overlayMask = false;
             
         };
 

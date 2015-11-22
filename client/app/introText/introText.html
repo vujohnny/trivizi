@@ -6,7 +6,7 @@
     <div class="introParagraph">
         <span class="customSize ultra-light">My nightly budget is</span>
 
-        <div class="introSelect" ng-click="budgetIntroDetails=true; overlayMask=true">
+        <div class="introSelect" ng-click="budgetIntroDetails = ! budgetIntroDetails; overlayMask=true">
             <span class="customSize">${{priceSlider.value}}<span class="caret"></span></span>
             <div id="budgetIntroDetailsContainer" class="customDrop" ng-show="budgetIntroDetails">
                 <div class="upTriangle">
@@ -45,7 +45,7 @@
 
         <span class="customSize">for</span>
 
-        <div class="introSelect" ng-click="adultDetails=true; overlayMask=true">
+        <div class="introSelect" ng-click="adultDetails = ! adultDetails; budgetIntroDetails=false; destinationDetails=false; arrivalIntroDetails=false; destinationIntroDetails=false; overlayMask=true">
             <div class="salmon">
                 <span class="totalGuest customSize"></span><span class="caret"></span>
             </div>
