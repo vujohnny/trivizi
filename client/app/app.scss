@@ -54,6 +54,10 @@ $break-tablet: 1200px;
     color: $salmon;
 }
 
+.ultra-light {
+    font-weight: 100;
+}
+
 // Component styles are injected through grunt
 // injector
 @import 'admin/admin.scss';

@@ -58,15 +58,34 @@ angular.module('triviziApp')
                     $scope.destinationIntroDetails = false;
                     $scope.emptyPlace();
 
-                    // jquery
-                    $('.switchSomewhere').empty().html('to');
+                            // jquery
+                           $('.switchSomewhere').empty().html('to');
+                           // $('.destinationCategories div').removeClass('activeCategory');
+                           // $('#destinationCategoryContainer').removeClass('shortCatContain');
                 });
 
-                //jquery
-                $scope.changeText = function (category) {
 
-                    // jquery
-                    $('.switchSomewhere').empty().html('somewhere');
+                $scope.inputFun = function() {
+                    //console.log('edgar');
+                    focus('#navIntroLocationField');
+                    $('#navIntroLocationField').focus();
+                    $('#navIntroLocationField').val('');
+                }
+                
+                $scope.changeText = function (category) {
+                    
+                    console.log(category);
+                    
+                            // jquery
+                            if(category == 'family') {
+                                $('#ifFamily').html('friendly');
+                            }
+                            else {
+                                $('#ifFamily').empty();
+                            }
+                            $('.switchSomewhere').empty().html('somewhere');
+                            $('.destinationCategories div').removeClass('activeCategory');
+                            $('.'+category+'').addClass('activeCategory');
 
                     $scope.specificLocation = null;
                     $scope.destinationIntroDetails = false;
