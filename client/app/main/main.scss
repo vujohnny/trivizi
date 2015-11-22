@@ -1,6 +1,9 @@
 html, body{
     height: 100%;
     overflow:hidden;
+    @media screen and (max-width: $break-phone) {
+        overflow: auto;
+    }
 }
 
 select::-ms-expand {
@@ -26,5 +29,6 @@ input::-webkit-inner-spin-button {
 
 .caret {
     color: $salmon;
+    margin-top: -10px;
 }
 
