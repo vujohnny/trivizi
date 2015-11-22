@@ -9,6 +9,8 @@
                 budget: $scope.priceSlider.value,
                 activeDate: $scope.calendarArrive,
                 departDate: $scope.calendarDepart,
+                category: $scope.category,
+                headCount: $scope.numberOfAdults,
                 specificLocation: $scope.specificLocation
             });
             $scope.newThing = '';
