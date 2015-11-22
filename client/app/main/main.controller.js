@@ -15,15 +15,21 @@
         }
 
         //category search
-        $scope.searchCategory = function (category) {
-            $scope.storeSearchData();
-            $scope.category = category;
+        $scope.searchCategory = function () {
+            if ($scope.category) {
+                $scope.storeSearchData();
+                /*
+                $scope.searchCategory = yelp.yelpRequest($scope, function (data) {
+                    if (data.length > 0) {
+                        //$scope.panMap(data[0].id, data[0].markerId);
+                    }
+                });
+                */
 
-            $scope.searchCategory = yelp.yelpRequest($scope, function (data) {
-                if (data.length > 0) {
-                    //$scope.panMap(data[0].id, data[0].markerId);
-                }
-            });
+                yelp.yelpRequest($scope, function (data) {
+                    eanYelp.eanYelpRequest($scope, data);
+                });
+            }
         }
 
         //EAN Search
@@ -37,8 +43,11 @@
                 $scope.storeSearchData();
                 ean.eanRequest($scope);
             }
-
         };
+
+        $scope.clearResults = function () {
+            $scope.resultsList = [];
+        }
 
         $scope.closeAllFilters = function () {
             //console.log('close all');
