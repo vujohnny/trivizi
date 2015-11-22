@@ -1,29 +1,31 @@
-.fullListPush {
+@mixin pullArrow {
     position: absolute;
-    margin-top: 68px;
     z-index: 1;
-    right: -37px;
-    background-color: #fafafa;
+    background-color: #323232;
     padding: 10px;
     font-size: 1.2em;
-    color: $grey;
+    color: #ffffff;
     cursor: pointer;
+}
+
+.fullListPush {
+    @include pullArrow;
+
+    margin-top: 90px;
+    right: -33px;
+
     @media screen and (max-width: $break-tablet) {
-        display:none;
+        display: none;
     }
 }
 
 .fullListPull {
-    position: absolute;
-    margin-top: 68px;
-    z-index: 1;
+    @include pullArrow;
+
+    margin-top: 92px;
     right: 0;
-    background-color: #fafafa;
-    padding: 10px;
-    font-size: 1.2em;
-    color: $grey;
-    cursor: pointer;   
+
     @media screen and (max-width: $break-tablet) {
-        display:none;
+        display: none;
     }
 }
