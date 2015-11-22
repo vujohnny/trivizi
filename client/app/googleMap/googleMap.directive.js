@@ -18,7 +18,7 @@ angular.module('triviziApp')
                         markersArray = [],
 
                         options = {
-                            types: ['geocode']
+                            types: ['(regions)']
                         },
                         navInput = document.getElementById('navLocationField'),
                         navAutocomplete = new google.maps.places.Autocomplete(navInput, options),

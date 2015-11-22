@@ -46,7 +46,7 @@ angular.module('triviziApp')
 
                 // intro text auto complete and submit
                 var options = {
-                        types: ['geocode']
+                        types: ['regions']
                     },
                     navIntroInput = document.getElementById('navIntroLocationField'),
                     navIntroAutocomplete = new google.maps.places.Autocomplete(navIntroInput, options);
