@@ -67,7 +67,6 @@ angular.module('triviziApp')
 
 
                 $scope.inputFun = function() {
-                    //console.log('edgar');
                     focus('#navIntroLocationField');
                     $('#navIntroLocationField').focus();
                     $('#navIntroLocationField').val('');
