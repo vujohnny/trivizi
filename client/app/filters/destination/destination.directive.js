@@ -59,9 +59,9 @@ angular.module('triviziApp')
                     $scope.emptyPlace();
 
                             // jquery
-//                            $('.switchSomewhere').empty().html('to');
-//                            $('.destinationCategories div').removeClass('activeCategory');
-//                            $('#destinationCategoryContainer').removeClass('shortCatContain');
+                           $('.switchSomewhere').empty().html('to');
+                           // $('.destinationCategories div').removeClass('activeCategory');
+                           // $('#destinationCategoryContainer').removeClass('shortCatContain');
                 });
 
 
