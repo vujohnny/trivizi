@@ -6,7 +6,7 @@
     <div class="col-lg-12">
       <h1 class="page-header">Features:</h1>
       <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in db.awesomeThings">
-        <li><a href="#" tooltip="{{thing.budget}}">{{thing.timeStamp | date:'yyyy-MM-dd HH:mm:ss'}}|{{thing.budget|currency:"USD$":0}}|{{thing.activeDate|date : format : timezone}}|{{thing.departDate|date : format : timezone}}|{{thing.specificLocation}}|{{thing.active}}<button type="button" class="close" ng-click="db.deleteThing(thing)">&times;</button></a></li>
+        <li><a href="#" tooltip="{{thing.budget}}">{{thing.timeStamp | date:'yyyy-MM-dd HH:mm:ss'}}|{{thing.budget|currency:"USD$":0}}|{{thing.activeDate|date : format : timezone}}|{{thing.departDate|date : format : timezone}}|{{thing.specificLocation}}|{{thing.category}}|{{thing.headCount}}|{{thing.active}}<button type="button" class="close" ng-click="db.deleteThing(thing)">&times;</button></a></li>
       </ul>
     </div>
   </div>

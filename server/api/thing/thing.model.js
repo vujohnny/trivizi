@@ -9,6 +9,8 @@ var ThingSchema = new Schema({
     activeDate: Date,
     departDate: Date,
     specificLocation: String,
+    category: String,
+    headCount: Number,
     active: Boolean
 });
 
