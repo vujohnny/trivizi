@@ -5,7 +5,11 @@
 
         $scope.storeSearchData = function () {
             $http.post('/api/things', {
-                name: "$" + $scope.budgetAmount + " | " + $scope.calendarArrive + " - " + $scope.calendarDepart + " | " + $scope.specificLocation
+                timeStamp: new Date(),
+                budget: $scope.priceSlider.value,
+                activeDate: $scope.calendarArrive,
+                departDate: $scope.calendarDepart,
+                specificLocation: $scope.specificLocation
             });
             $scope.newThing = '';
         }
