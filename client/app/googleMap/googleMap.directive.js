@@ -195,7 +195,7 @@ angular.module('triviziApp')
                                 getting better results
                                 */
                                 
-                                //$scope.seekDeer();
+                                $scope.seekDeer();
                                 
                                 /*
                                 we might have to remove the yelp call and just ean
@@ -206,10 +206,11 @@ angular.module('triviziApp')
                                 type of an idea instead of yelp
                                 */
                                 
-                                
+                                /*
                                 yelp.yelpRequest($scope, function (data) {
                                     eanYelp.eanYelpRequest($scope, data);
                                 });
+                                */
                                 
                             }
                         })(marker, i));
