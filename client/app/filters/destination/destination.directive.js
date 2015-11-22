@@ -77,6 +77,12 @@ angular.module('triviziApp')
                     console.log(category);
                     
                             // jquery
+                            if(category == 'family') {
+                                $('#ifFamily').html('friendly');
+                            }
+                            else {
+                                $('#ifFamily').empty();
+                            }
                             $('.switchSomewhere').empty().html('somewhere');
                             $('.destinationCategories div').removeClass('activeCategory');
                             $('.'+category+'').addClass('activeCategory');
