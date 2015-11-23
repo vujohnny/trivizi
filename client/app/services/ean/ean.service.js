@@ -12,7 +12,6 @@ angular.module('triviziApp')
         return {
             eanRequest: function ($scope) {
                 
-                
                 var timeStamp = Math.floor(Date.now() / 1000);
                 var apiKey = "70303auc6h8hqutunreio3u8pl";
                 var cid = "490388";
@@ -31,15 +30,14 @@ angular.module('triviziApp')
                     "arrivalDate": $scope.calendarArrive, //"11/19/2015", //$scope.calendarArrive,
                     "departureDate": $scope.calendarDepart, //"11/20/2015", //$scope.calendarDepart,
                     "curencyCode": "USD",
-                    "numberOfResults": "200",
+                    "numberOfResults": "20",
                     "room1": $scope.numberOfAdults                  
                 }
 
                 $http.jsonp(url, {
                     params: params
-                }).success(function (response) {
-                    console.log("calling ean");
-                    //console.log(response);
+                }).success(function (response) {                
+                    console.log(response);
                     $scope.deleteMarkers();
                     $scope.respondProvider = "ean";
                     $scope.resultsList = [];

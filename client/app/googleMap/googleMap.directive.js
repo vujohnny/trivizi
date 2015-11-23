@@ -284,17 +284,11 @@ angular.module('triviziApp')
                         if (place.geometry.viewport) {
                             //map.fitBounds(place.geometry.viewport);
                             //map.setZoom(13);
-
                             map.setCenter(firstMarker.getPosition());
                             map.setZoom(12);
-
                             google.maps.event.trigger(firstMarker, 'click');
-
-                            console.log('something1');
-
                         } else {
                             map.setCenter(place.geometry.location);
-                            console.log('something2');
                         }
                     }
 
