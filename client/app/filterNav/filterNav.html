@@ -1,55 +1,62 @@
 <div class="row typography top-menu">
 
-    <div class="filterBlock col-lg-2" ng-class="{'filterBlockActive': budgetDetails==true}" ng-click="budgetDetails = ! budgetDetails; destinationDetails=false; arrivalDetails=false; departureDetails=false; adultDetails=false;">
-        <div class="filterTitle">Nightly Budget:</div>
-        <div class="salmon">
-            ${{priceSlider.value}}
+    <div class="col-lg-10 no-padding">
+        <div class="filterBlock col-lg-2" ng-class="{'filterBlockActive': budgetDetails==true}" ng-click="budgetDetails = ! budgetDetails; destinationDetails=false; arrivalDetails=false; departureDetails=false; adultDetails=false;">
+            <div class="filterTitle">Nightly Budget:</div>
+            <div class="bindedValue salmon">
+                ${{priceSlider.value}}
+            </div>
+            <div class="upTriangle" ng-show="budgetDetails">
+                <i class="fa fa-caret-up"></i>
+            </div>
         </div>
-        <div class="upTriangle" ng-show="budgetDetails">
-            <i class="fa fa-caret-up"></i>
-        </div>
-    </div>
 
-    <div class="filterBlock col-lg-4" ng-class="{'filterBlockActive': destinationDetails==true}" ng-click="destinationDetails = ! destinationDetails; budgetDetails=false; arrivalDetails=false; departureDetails=false; adultDetails=false">
-        <div class="filterTitle">Where:</div>
-        <span class="destinationTitle salmon">
-            {{ specificLocation | limitTo: 20 }}{{specificLocation.length > 12 ? '...' : ''}} 
+        <div class="filterBlock col-lg-4" ng-class="{'filterBlockActive': destinationDetails==true}" ng-click="destinationDetails = ! destinationDetails; budgetDetails=false; arrivalDetails=false; departureDetails=false; adultDetails=false">
+            <div class="filterTitle">Where:</div>
+            <span class="bindedValue destinationTitle salmon">
+            {{ specificLocation | limitTo: 30 }}{{specificLocation.length > 12 ? '...' : ''}} 
 
             {{category}}
         </span>
-        <div class="upTriangle" ng-show="destinationDetails">
-            <i class="fa fa-caret-up"></i>
+            <div class="upTriangle" ng-show="destinationDetails">
+                <i class="fa fa-caret-up"></i>
+            </div>
+        </div>
+
+        <div class="filterBlock col-lg-2" ng-class="{'filterBlockActive': adultDetails==true}" ng-click="adultDetails = ! adultDetails; budgetDetails=false; destinationDetails=false; arrivalDetails=false; departureDetails=false">
+            <div class="filterTitle">For:</div>
+            <div class="bindedValue salmon">
+                <div class="totalGuest"></div>
+            </div>
+            <div id="adultDetailsContainer" ng-show="adultDetails">
+                <headcount></headcount>
+            </div>
+        </div>
+
+        <div class="filterBlock col-lg-2" ng-class="{'filterBlockActive': arrivalDetails==true}" ng-click="arrivalDetails = ! arrivalDetails; budgetDetails=false; destinationDetails=false; departureDetails=false; adultDetails=false">
+            <div class="filterTitle">From:</div>
+            <div class="bindedValue salmon">
+                {{arriveDate.defaultValue | date:'EEE, MMM dd' }}
+            </div>
+            <div class="upTriangle" ng-show="arrivalDetails">
+                <i class="fa fa-caret-up"></i>
+            </div>
+        </div>
+
+        <div class="filterBlock col-lg-2" ng-class="{'filterBlockActive': departureDetails==true}" ng-click="arrivalDetails=false; departureDetails = ! departureDetails; budgetDetails=false; destinationDetails=false; adultDetails=false">
+            <div class="filterTitle">To:</div>
+            <div class="bindedValue salmon">
+                {{departDate.defaultValue | date:'EEE, MMM dd' }}
+            </div>
+            <div class="upTriangle" ng-show="departureDetails">
+                <i class="fa fa-caret-up"></i>
+            </div>
         </div>
     </div>
+    <!-- end top nav filters -->
 
-    <div class="filterBlock col-lg-2" ng-class="{'filterBlockActive': adultDetails==true}" ng-click="adultDetails = ! adultDetails; budgetDetails=false; destinationDetails=false; arrivalDetails=false; departureDetails=false">
-        <div class="filterTitle">For:</div>
-        <div class="salmon">
-            <div class="totalGuest"></div>
-        </div>
-        <div id="adultDetailsContainer" ng-show="adultDetails">
-            <headcount></headcount>
-        </div>
-    </div>
-
-    <div class="filterBlock col-lg-2" ng-class="{'filterBlockActive': arrivalDetails==true}" ng-click="arrivalDetails = ! arrivalDetails; budgetDetails=false; destinationDetails=false; departureDetails=false; adultDetails=false">
-        <div class="filterTitle">From:</div>
-        <div class="salmon">
-            {{arriveDate.defaultValue | date:'EEE, MMM dd' }}
-        </div>
-        <div class="upTriangle" ng-show="arrivalDetails">
-            <i class="fa fa-caret-up"></i>
-        </div>
-    </div>
-
-    <div class="filterBlock col-lg-2" ng-class="{'filterBlockActive': departureDetails==true}" ng-click="arrivalDetails=false; departureDetails = ! departureDetails; budgetDetails=false; destinationDetails=false; adultDetails=false">
-        <div class="filterTitle">To:</div>
-        <div class="salmon">
-            {{departDate.defaultValue | date:'EEE, MMM dd' }}
-        </div>
-        <div class="upTriangle" ng-show="departureDetails">
-            <i class="fa fa-caret-up"></i>
-        </div>
+    <div class="col-lg-2 text-center">
+        <img src="assets/images/logo.svg" class="singleLogo"><br>
     </div>
 
 </div>

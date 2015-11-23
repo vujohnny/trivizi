@@ -29,9 +29,12 @@ angular.module('triviziApp')
                 var familyList = [];
 
                 $scope.yelpHold = function (category) {
-                    $scope.specificLocation="";
+                    $scope.specificLocation=null;
                     $scope.deleteMarkers();
                     $scope.category = category;
+                    $scope.fullMap();
+                    $scope.closeAllFilters();
+                    
                     $http.get('/api/category/')
                         .then(function (location) {
                             var currentCategoryList = location.data.filter(function (eq) {
@@ -59,10 +62,10 @@ angular.module('triviziApp')
                     $scope.destinationIntroDetails = false;
                     $scope.emptyPlace();
 
-                            // jquery
-                           $('.switchSomewhere').empty().html('to');
-                           // $('.destinationCategories div').removeClass('activeCategory');
-                           // $('#destinationCategoryContainer').removeClass('shortCatContain');
+                    // jquery
+                   $('.switchSomewhere').empty().html('to');
+                   // $('.destinationCategories div').removeClass('activeCategory');
+                   // $('#destinationCategoryContainer').removeClass('shortCatContain');
                 });
 
 
@@ -76,16 +79,16 @@ angular.module('triviziApp')
                     
                     console.log(category);
                     
-                            // jquery
-                            if(category == 'family') {
-                                $('#ifFamily').html('friendly');
-                            }
-                            else {
-                                $('#ifFamily').empty();
-                            }
-                            $('.switchSomewhere').empty().html('somewhere');
-                            $('.destinationCategories div').removeClass('activeCategory');
-                            $('.'+category+'').addClass('activeCategory');
+                    // jquery
+                    if(category == 'family') {
+                        $('#ifFamily').html('friendly');
+                    }
+                    else {
+                        $('#ifFamily').empty();
+                    }
+                    $('.switchSomewhere').empty().html('somewhere');
+                    $('.destinationCategories div').removeClass('activeCategory');
+                    $('.'+category+'').addClass('activeCategory');
 
                     $scope.specificLocation = null;
                     $scope.destinationIntroDetails = false;
@@ -100,12 +103,14 @@ angular.module('triviziApp')
                 $scope.introSubmit = function () {
 
                     //jquery
+                    // adding different class to google auto complete to style separately 
                     $('.pac-container').addClass('full-pac-container');
 
                     if (!$scope.category) {
                         $scope.seekDeer();
                     } else {
                         $scope.yelpHold($scope.category);
+                        $scope.fullMap();
                     }
 
                 }

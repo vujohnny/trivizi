@@ -228,6 +228,7 @@ angular.module('triviziApp')
                         $scope.destination = navAutocomplete.getPlace();
                         $scope.specificLocation = $scope.destination.formatted_address;
                         $scope.seekDeer($scope.destination.formatted_address);
+                        $scope.halfMap();
                     });
 
                     //jquery
@@ -237,7 +238,8 @@ angular.module('triviziApp')
                                 $("#results-container, .top-menu").fadeIn("slow", function () {});
                             });
                         }
-                        //jquery
+                    
+                    //jquery
                     $scope.highlightResult = function (hotelId, hotelLat, hotelLng) {
                         var selectedId = hotelId;
                         $(resultsItem + " " + resultsHotelItem + " .hotel-item-container").removeClass("activeResult");
@@ -250,6 +252,33 @@ angular.module('triviziApp')
                         $(resultsContainer).animate({
                             scrollTop: topPos
                         }, 500);
+                    }
+                    
+                    //jquery
+                    $scope.fullMap = function() {
+                        console.log('full map clicked');
+                        
+                        $('#googleMap').css("height",$(window).height());
+                        $('#googleMap').css("width",$(window).width());
+                        google.maps.event.trigger($scope.googleMap, 'resize');
+                        
+                        $('#sideContain').hide();
+                        $('#mapContain').removeClass('col-sm-5');
+                        $('#mapContain').addClass('col-sm-12');
+                    }
+                    
+                    //jquery
+                    $scope.halfMap = function() {
+                        console.log('half map clicked');
+                        
+                        $('#sideContain').show();
+                        $('#mapContain').addClass('col-sm-5');
+                        $('#mapContain').removeClass('col-sm-12');
+                        
+                        $('#googleMap').css("height",$(window).height());
+                        $('#googleMap').css("width","100%");
+                        google.maps.event.trigger($scope.googleMap, 'resize');
+
                     }
 
                     $scope.markersDisplay = function (lat, lng) {
@@ -365,9 +394,10 @@ angular.module('triviziApp')
                                 */
 
                                 $scope.seekDeer();
+                                $scope.halfMap();
                                 
                                 map.setCenter(new google.maps.LatLng(lat, lng));
-                                map.setZoom(10);
+                                map.setZoom(12);
 
                                 /*
                                     we might have to remove the yelp call and just ean

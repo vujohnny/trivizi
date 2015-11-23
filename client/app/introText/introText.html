@@ -35,8 +35,7 @@
                     <i class="fa fa-caret-up"></i>
                 </div>
                 <input id="navIntroLocationField" class="destinationSpecific" type="text" ng-model="specificIntroLocation" placeholder="Specific city, or..." autofocus>
-                <div id="destinationCategoryContainer" ng-class="{'shortCatContain': specificIntroLocation.length}"> <!--ng-show="specificIntroLocation.length"-->
-<!--                    <div class="destinationCategoryTitle">or Category:</div>-->
+                <div id="destinationCategoryContainer" ng-class="{'shortCatContain': specificIntroLocation.length}"> 
                     <div class="destinationCategories" ng-repeat="places in typesOfPlaces">
                         <div class="categoryButton {{places.title}}" ng-click="yelpHold(places.title); changeText(places.title)" ng-class="{'activeCategory':$first}"><i class="fa fa-{{places.icon}}"></i> {{places.title}}</div>
                     </div>
