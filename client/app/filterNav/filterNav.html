@@ -1,17 +1,13 @@
 <div class="row typography top-menu">
 
-    <div class="col-lg-10 no-padding">
-        <div class="filterBlock col-lg-2" ng-class="{'filterBlockActive': budgetDetails==true}" ng-click="budgetDetails = ! budgetDetails; destinationDetails=false; arrivalDetails=false; departureDetails=false; adultDetails=false;">
-            <div class="filterTitle">Nightly Budget:</div>
-            <div class="bindedValue salmon">
-                ${{priceSlider.value}}
-            </div>
-            <div class="upTriangle" ng-show="budgetDetails">
-                <i class="fa fa-caret-up"></i>
-            </div>
-        </div>
+    <div class="col-lg-2 col-lg-push-10 text-center">
+        <img src="assets/images/logo.svg" class="singleLogo">
+    </div>
+    <!-- end logo -->
 
-        <div class="filterBlock col-lg-4" ng-class="{'filterBlockActive': destinationDetails==true}" ng-click="destinationDetails = ! destinationDetails; budgetDetails=false; arrivalDetails=false; departureDetails=false; adultDetails=false">
+    <div class="col-lg-10 col-lg-pull-2 no-padding">
+        
+        <div class="filterBlock col-lg-4 col-lg-push-2" ng-class="{'filterBlockActive': destinationDetails==true}" ng-click="destinationDetails = ! destinationDetails; budgetDetails=false; arrivalDetails=false; departureDetails=false; adultDetails=false">
             <div class="filterTitle">Where:</div>
             <span class="bindedValue destinationTitle salmon">
             {{ specificLocation | limitTo: 30 }}{{specificLocation.length > 12 ? '...' : ''}} 
@@ -21,9 +17,19 @@
             <div class="upTriangle" ng-show="destinationDetails">
                 <i class="fa fa-caret-up"></i>
             </div>
+        </div>        
+
+        <div class="filterBlock col-xs-6 col-lg-2 col-lg-pull-4" ng-class="{'filterBlockActive': budgetDetails==true}" ng-click="budgetDetails = ! budgetDetails; destinationDetails=false; arrivalDetails=false; departureDetails=false; adultDetails=false;">
+            <div class="filterTitle">Nightly Budget:</div>
+            <div class="bindedValue salmon">
+                ${{priceSlider.value}}
+            </div>
+            <div class="upTriangle" ng-show="budgetDetails">
+                <i class="fa fa-caret-up"></i>
+            </div>
         </div>
 
-        <div class="filterBlock col-lg-2" ng-class="{'filterBlockActive': adultDetails==true}" ng-click="adultDetails = ! adultDetails; budgetDetails=false; destinationDetails=false; arrivalDetails=false; departureDetails=false">
+        <div class="filterBlock col-xs-6 col-lg-2" ng-class="{'filterBlockActive': adultDetails==true}" ng-click="adultDetails = ! adultDetails; budgetDetails=false; destinationDetails=false; arrivalDetails=false; departureDetails=false">
             <div class="filterTitle">For:</div>
             <div class="bindedValue salmon">
                 <div class="totalGuest"></div>
@@ -33,7 +39,7 @@
             </div>
         </div>
 
-        <div class="filterBlock col-lg-2" ng-class="{'filterBlockActive': arrivalDetails==true}" ng-click="arrivalDetails = ! arrivalDetails; budgetDetails=false; destinationDetails=false; departureDetails=false; adultDetails=false">
+        <div class="filterBlock col-xs-6 col-lg-2" ng-class="{'filterBlockActive': arrivalDetails==true}" ng-click="arrivalDetails = ! arrivalDetails; budgetDetails=false; destinationDetails=false; departureDetails=false; adultDetails=false">
             <div class="filterTitle">From:</div>
             <div class="bindedValue salmon">
                 {{arriveDate.defaultValue | date:'EEE, MMM dd' }}
@@ -43,7 +49,7 @@
             </div>
         </div>
 
-        <div class="filterBlock col-lg-2" ng-class="{'filterBlockActive': departureDetails==true}" ng-click="arrivalDetails=false; departureDetails = ! departureDetails; budgetDetails=false; destinationDetails=false; adultDetails=false">
+        <div class="filterBlock col-xs-6 col-lg-2" ng-class="{'filterBlockActive': departureDetails==true}" ng-click="arrivalDetails=false; departureDetails = ! departureDetails; budgetDetails=false; destinationDetails=false; adultDetails=false">
             <div class="filterTitle">To:</div>
             <div class="bindedValue salmon">
                 {{departDate.defaultValue | date:'EEE, MMM dd' }}
@@ -55,9 +61,7 @@
     </div>
     <!-- end top nav filters -->
 
-    <div class="col-lg-2 text-center">
-        <img src="assets/images/logo.svg" class="singleLogo"><br>
-    </div>
+
 
 </div>
 
