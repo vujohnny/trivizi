@@ -38,8 +38,8 @@ angular.module('triviziApp')
                 $http.jsonp(url, {
                     params: params
                 }).success(function (response) {
-
-                    console.log(response);
+                    console.log("calling ean");
+                    //console.log(response);
                     $scope.deleteMarkers();
                     $scope.respondProvider = "ean";
                     $scope.resultsList = [];

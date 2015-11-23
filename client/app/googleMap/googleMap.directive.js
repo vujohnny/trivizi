@@ -18,7 +18,7 @@ angular.module('triviziApp')
                         markersArray = [],
 
                         options = {
-                            types: ['geocode']
+                            types: ['(regions)']
                         },
                         navInput = document.getElementById('navLocationField'),
                         navAutocomplete = new google.maps.places.Autocomplete(navInput, options),
@@ -324,6 +324,8 @@ angular.module('triviziApp')
 
                             // build navigation list
                             $scope.resultsList.push({
+                                lat: lat,
+                                lng: lng,
                                 id: id,
                                 name: name,
                                 listImg: listImg,
@@ -387,6 +389,7 @@ angular.module('triviziApp')
                                         eanYelp.eanYelpRequest($scope, data);
                                     });
                                 */
+                                
                             }
                         })(marker, i));
 

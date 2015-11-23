@@ -16,6 +16,7 @@ angular.module('triviziApp')
 
                 $scope.$watch("priceSlider", function() {
                     //console.log($scope.priceSlider);
+                    $scope.priceSliderOld=oldValue;
                 });
 
                 // $timeout(function() {
