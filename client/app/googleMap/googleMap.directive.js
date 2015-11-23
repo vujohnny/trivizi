@@ -22,7 +22,185 @@ angular.module('triviziApp')
                         },
                         navInput = document.getElementById('navLocationField'),
                         navAutocomplete = new google.maps.places.Autocomplete(navInput, options),
-                        snazzyMap = [{"featureType":"all","elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#333333"},{"lightness":40}]},{"featureType":"all","elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#ffffff"},{"lightness":16}]},{"featureType":"all","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#fefefe"},{"lightness":20}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#fefefe"},{"lightness":17},{"weight":1.2}]},{"featureType":"administrative.country","elementType":"geometry.stroke","stylers":[{"color":"#ededed"}]},{"featureType":"administrative.country","elementType":"labels.text.fill","stylers":[{"color":"#323232"}]},{"featureType":"administrative.province","elementType":"geometry.stroke","stylers":[{"color":"#dddddd"}]},{"featureType":"administrative.province","elementType":"labels.text.fill","stylers":[{"color":"#323232"}]},{"featureType":"administrative.locality","elementType":"labels.text.fill","stylers":[{"color":"#323232"}]},{"featureType":"administrative.neighborhood","elementType":"labels.text.fill","stylers":[{"color":"#323232"}]},{"featureType":"administrative.land_parcel","elementType":"labels.text.fill","stylers":[{"color":"#323232"}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#f5f5f5"},{"lightness":20}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#f5f5f5"},{"lightness":21}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#dedede"},{"lightness":21}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#bfbfbf"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#ffffff"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":18}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"color":"#dddddd"}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":16}]},{"featureType":"road.local","elementType":"geometry.fill","stylers":[{"color":"#dddddd"}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#f2f2f2"},{"lightness":19}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#e9e9e9"},{"lightness":17}]},{"featureType":"water","elementType":"geometry.fill","stylers":[{"color":"#79c9e8"}]}],
+                        snazzyMap = [{
+                            "featureType": "all",
+                            "elementType": "labels.text.fill",
+                            "stylers": [{
+                                "saturation": 36
+                            }, {
+                                "color": "#333333"
+                            }, {
+                                "lightness": 40
+                            }]
+                        }, {
+                            "featureType": "all",
+                            "elementType": "labels.text.stroke",
+                            "stylers": [{
+                                "visibility": "on"
+                            }, {
+                                "color": "#ffffff"
+                            }, {
+                                "lightness": 16
+                            }]
+                        }, {
+                            "featureType": "all",
+                            "elementType": "labels.icon",
+                            "stylers": [{
+                                "visibility": "off"
+                            }]
+                        }, {
+                            "featureType": "administrative",
+                            "elementType": "geometry.fill",
+                            "stylers": [{
+                                "color": "#fefefe"
+                            }, {
+                                "lightness": 20
+                            }]
+                        }, {
+                            "featureType": "administrative",
+                            "elementType": "geometry.stroke",
+                            "stylers": [{
+                                "color": "#fefefe"
+                            }, {
+                                "lightness": 17
+                            }, {
+                                "weight": 1.2
+                            }]
+                        }, {
+                            "featureType": "administrative.country",
+                            "elementType": "geometry.stroke",
+                            "stylers": [{
+                                "color": "#ededed"
+                            }]
+                        }, {
+                            "featureType": "administrative.country",
+                            "elementType": "labels.text.fill",
+                            "stylers": [{
+                                "color": "#323232"
+                            }]
+                        }, {
+                            "featureType": "administrative.province",
+                            "elementType": "geometry.stroke",
+                            "stylers": [{
+                                "color": "#dddddd"
+                            }]
+                        }, {
+                            "featureType": "administrative.province",
+                            "elementType": "labels.text.fill",
+                            "stylers": [{
+                                "color": "#323232"
+                            }]
+                        }, {
+                            "featureType": "administrative.locality",
+                            "elementType": "labels.text.fill",
+                            "stylers": [{
+                                "color": "#323232"
+                            }]
+                        }, {
+                            "featureType": "administrative.neighborhood",
+                            "elementType": "labels.text.fill",
+                            "stylers": [{
+                                "color": "#323232"
+                            }]
+                        }, {
+                            "featureType": "administrative.land_parcel",
+                            "elementType": "labels.text.fill",
+                            "stylers": [{
+                                "color": "#323232"
+                            }]
+                        }, {
+                            "featureType": "landscape",
+                            "elementType": "geometry",
+                            "stylers": [{
+                                "color": "#f5f5f5"
+                            }, {
+                                "lightness": 20
+                            }]
+                        }, {
+                            "featureType": "poi",
+                            "elementType": "geometry",
+                            "stylers": [{
+                                "color": "#f5f5f5"
+                            }, {
+                                "lightness": 21
+                            }]
+                        }, {
+                            "featureType": "poi.park",
+                            "elementType": "geometry",
+                            "stylers": [{
+                                "color": "#dedede"
+                            }, {
+                                "lightness": 21
+                            }]
+                        }, {
+                            "featureType": "road.highway",
+                            "elementType": "geometry.fill",
+                            "stylers": [{
+                                "color": "#bfbfbf"
+                            }, {
+                                "lightness": 17
+                            }]
+                        }, {
+                            "featureType": "road.highway",
+                            "elementType": "geometry.stroke",
+                            "stylers": [{
+                                "color": "#ffffff"
+                            }, {
+                                "lightness": 29
+                            }, {
+                                "weight": 0.2
+                            }]
+                        }, {
+                            "featureType": "road.arterial",
+                            "elementType": "geometry",
+                            "stylers": [{
+                                "color": "#ffffff"
+                            }, {
+                                "lightness": 18
+                            }]
+                        }, {
+                            "featureType": "road.arterial",
+                            "elementType": "geometry.fill",
+                            "stylers": [{
+                                "color": "#dddddd"
+                            }]
+                        }, {
+                            "featureType": "road.local",
+                            "elementType": "geometry",
+                            "stylers": [{
+                                "color": "#ffffff"
+                            }, {
+                                "lightness": 16
+                            }]
+                        }, {
+                            "featureType": "road.local",
+                            "elementType": "geometry.fill",
+                            "stylers": [{
+                                "color": "#dddddd"
+                            }]
+                        }, {
+                            "featureType": "transit",
+                            "elementType": "geometry",
+                            "stylers": [{
+                                "color": "#f2f2f2"
+                            }, {
+                                "lightness": 19
+                            }]
+                        }, {
+                            "featureType": "water",
+                            "elementType": "geometry",
+                            "stylers": [{
+                                "color": "#e9e9e9"
+                            }, {
+                                "lightness": 17
+                            }]
+                        }, {
+                            "featureType": "water",
+                            "elementType": "geometry.fill",
+                            "stylers": [{
+                                "color": "#79c9e8"
+                            }]
+                        }],
 
                         map = new google.maps.Map(document.getElementById('googleMap'), {
                             center: {
@@ -52,27 +230,27 @@ angular.module('triviziApp')
                         $scope.seekDeer($scope.destination.formatted_address);
                     });
 
-                                //jquery
-                                $scope.showMap = function () {
-                                    $(".intro-text").fadeOut("slow", function () {
-                                        $("#googleMap").css("visibility", "visible");
-                                        $("#results-container, .top-menu").fadeIn("slow", function () {});
-                                    });
-                                }
-                                //jquery
-                                $scope.highlightResult = function (hotelId, hotelLat, hotelLng) {
-                                    var selectedId = hotelId;
-                                    $(resultsItem + " " + resultsHotelItem + " .hotel-item-container").removeClass("activeResult");
-                                    $(".btn-book").removeClass("btn-on");
-                                    $(resultsItem + " #" + selectedId + " .hotel-item-container").addClass("activeResult");
-                                    $(resultsItem + " #" + selectedId + " .hotelInfoContainer .btn-book").addClass("btn-on");
+                    //jquery
+                    $scope.showMap = function () {
+                            $(".intro-text").fadeOut("slow", function () {
+                                $("#googleMap").css("visibility", "visible");
+                                $("#results-container, .top-menu").fadeIn("slow", function () {});
+                            });
+                        }
+                        //jquery
+                    $scope.highlightResult = function (hotelId, hotelLat, hotelLng) {
+                        var selectedId = hotelId;
+                        $(resultsItem + " " + resultsHotelItem + " .hotel-item-container").removeClass("activeResult");
+                        $(".btn-book").removeClass("btn-on");
+                        $(resultsItem + " #" + selectedId + " .hotel-item-container").addClass("activeResult");
+                        $(resultsItem + " #" + selectedId + " .hotelInfoContainer .btn-book").addClass("btn-on");
 
-                                    var highlightResult = document.getElementById(selectedId);
-                                    var topPos = highlightResult.offsetTop - 25;
-                                    $(resultsContainer).animate({
-                                        scrollTop: topPos
-                                    }, 500);
-                                }
+                        var highlightResult = document.getElementById(selectedId);
+                        var topPos = highlightResult.offsetTop - 25;
+                        $(resultsContainer).animate({
+                            scrollTop: topPos
+                        }, 500);
+                    }
 
                     $scope.markersDisplay = function (lat, lng) {
                         marker = new google.maps.Marker({
@@ -106,14 +284,17 @@ angular.module('triviziApp')
                         if (place.geometry.viewport) {
                             //map.fitBounds(place.geometry.viewport);
                             //map.setZoom(13);
-                            
+
                             map.setCenter(firstMarker.getPosition());
                             map.setZoom(12);
-                            
+
                             google.maps.event.trigger(firstMarker, 'click');
-                            
+
+                            console.log('something1');
+
                         } else {
                             map.setCenter(place.geometry.location);
+                            console.log('something2');
                         }
                     }
 
@@ -128,23 +309,18 @@ angular.module('triviziApp')
                             google.maps.event.addListener(marker, 'click', (function (marker, i) {
                                 return function () {
                                     //infowindow.setContent("<div id=\"" + id + "\" class=\"markerDisplay typography\"><span class=\"markerTotal\">$" + roundedTotal + "</span> <span class=\"medium-grey\" style=\"display: none;\">|</span> <img src=\"" + ratingImg + "\" class=\"ratingImg\" style=\"display: none;\"></div>");
-                                    infowindow.setContent("<div id=\""+id+"\" class=\"markerDisplay typography\"><div class=\"windowLeftContainer typography\"><div class=\"markerTotal\">$"+roundedTotal+"</div><div class=\"windowTitle\">"+name+"</div></div><img src=\"http://images.travelnow.com/"+listImg+"\" class=\"windowImg\"></div>");
+                                    infowindow.setContent("<div id=\"" + id + "\" class=\"markerDisplay typography\"><div class=\"windowLeftContainer typography\"><div class=\"markerTotal\">$" + roundedTotal + "</div><div class=\"windowTitle\">" + name + "</div></div><img src=\"http://images.travelnow.com/" + listImgFall + "\" class=\"windowImg\"></div>");
                                     infowindow.open(map, marker);
                                     $scope.highlightResult(id);
                                 }
                             })(marker, i));
-                            
-                            /*
-                                for mouse hover functions
-                            */
-                            /*
+
                             google.maps.event.addListener(marker, 'mouseover', (function (marker, i) {
                                 return function () {
-                                    infowindow.setContent("<div id=\""+id+"\" class=\"markerDisplay typography\"><span class=\"markerTotal\">$"+roundedTotal+"</span></div>");
+                                    infowindow.setContent("<div id=\"" + id + "\" class=\"markerDisplay typography\"><div class=\"windowLeftContainer typography\"><div class=\"markerTotal\">$" + roundedTotal + "</div><div class=\"windowTitle\">" + name + "</div></div><img src=\"http://images.travelnow.com/" + listImgFall + "\" class=\"windowImg\"></div>");
                                     infowindow.open(map, marker);
                                 }
                             })(marker, i));
-                            */
 
                             // build navigation list
                             $scope.resultsList.push({
@@ -163,9 +339,9 @@ angular.module('triviziApp')
                                 totalNights: totalNights
                             });
                         }
-                        
+
                         google.maps.event.trigger($scope.googleMap, 'resize');
-                                                
+
                     }
 
 
@@ -173,6 +349,7 @@ angular.module('triviziApp')
 
                         map.setZoom(3);
                         $scope.markersDisplay(lat, lng);
+
                         map.setCenter(new google.maps.LatLng(lat, lng));
                         google.maps.event.trigger($scope.googleMap, 'resize');
 
@@ -186,30 +363,31 @@ angular.module('triviziApp')
                         google.maps.event.addListener(marker, 'click', (function (marker, i) {
                             return function () {
                                 $scope.specificLocation = city;
-                                
-                                //jquery
-                                $('.placeHolderLocation').empty();
-                                
+                                $scope.category = null;
+
                                 /*
-                                using just ean call for now
-                                getting better results
+                                    using just ean call for now
+                                    getting better results
                                 */
-                                
+
                                 $scope.seekDeer();
                                 
+                                map.setCenter(new google.maps.LatLng(lat, lng));
+                                map.setZoom(10);
+
                                 /*
-                                we might have to remove the yelp call and just ean
-                                yelp is not returning enough results and limits the return
-                                by running a filter against ean, we dont need a 
-                                romantic hotel in a romantic city
-                                we might need to use tripadviosr api foer this
-                                type of an idea instead of yelp
+                                    we might have to remove the yelp call and just ean
+                                    yelp is not returning enough results and limits the return
+                                    by running a filter against ean, we dont need a 
+                                    romantic hotel in a romantic city
+                                    we might need to use tripadviosr api foer this
+                                    type of an idea instead of yelp
                                 */
-                                
+
                                 /*
-                                yelp.yelpRequest($scope, function (data) {
-                                    eanYelp.eanYelpRequest($scope, data);
-                                });
+                                    yelp.yelpRequest($scope, function (data) {
+                                        eanYelp.eanYelpRequest($scope, data);
+                                    });
                                 */
                                 
                             }
