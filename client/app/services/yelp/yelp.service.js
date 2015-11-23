@@ -19,7 +19,6 @@ angular.module('triviziApp')
 
                 var x = 0;
                 while (x <= 200) {
-                    console.log(x);
                     // See http://www.yelp.com/developers/documentation/v2/search_api 
                     var httpMethod = 'GET';
                     var url = 'http://api.yelp.com/v2/search?callback=JSON_CALLBACK';
