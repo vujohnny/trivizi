@@ -3,22 +3,35 @@
     <div class="col-lg-2 col-lg-push-10 text-center">
         <img src="assets/images/logo.svg" class="singleLogo">
     </div>
-    <!-- end logo -->
 
     <div class="col-lg-10 col-lg-pull-2 no-padding">
-        
+
+
+        <!-- destination filter -->
+        <!-- destination filter block -->
         <div class="filterBlock col-lg-4 col-lg-push-2" ng-class="{'filterBlockActive': destinationDetails==true}" ng-click="destinationDetails = ! destinationDetails; budgetDetails=false; arrivalDetails=false; departureDetails=false; adultDetails=false">
             <div class="filterTitle">Where:</div>
             <span class="bindedValue destinationTitle salmon">
-            {{ specificLocation | limitTo: 30 }}{{specificLocation.length > 12 ? '...' : ''}} 
+                    {{ specificLocation | limitTo: 30 }}{{specificLocation.length > 12 ? '...' : ''}} 
 
-            {{category}}
-        </span>
+                    {{category}}
+                </span>
             <div class="upTriangle" ng-show="destinationDetails">
                 <i class="fa fa-caret-up"></i>
             </div>
-        </div>        
+        </div>
 
+        <!-- destination filter drop down -->
+        <div class="widgetContainer tier1 row typography">
+            <div id="destinationDetailsContainer" class="customDrop" ng-show="destinationDetails">
+                <destination></destination>
+            </div>
+        </div>
+        <!-- end destination filter-->
+
+
+        <!-- budget filter -->
+        <!-- budget filter block -->
         <div class="filterBlock col-xs-6 col-lg-2 col-lg-pull-4" ng-class="{'filterBlockActive': budgetDetails==true}" ng-click="budgetDetails = ! budgetDetails; destinationDetails=false; arrivalDetails=false; departureDetails=false; adultDetails=false;">
             <div class="filterTitle">Nightly Budget:</div>
             <div class="bindedValue salmon">
@@ -29,16 +42,35 @@
             </div>
         </div>
 
+        <!-- budget filter drop down -->
+        <div class="widgetContainer row typography">
+            <div id="budgetDetailsContainer" class="customDrop" ng-show="budgetDetails">
+                <budget></budget>
+                <span class="budgetValue typography">
+                        ${{priceSlider.value}}
+                    </span>
+            </div>
+        </div>
+        <!-- end budget filter-->
+
+
+        <!-- head count filter -->
+        <!-- head count filter block -->
         <div class="filterBlock col-xs-6 col-lg-2" ng-class="{'filterBlockActive': adultDetails==true}" ng-click="adultDetails = ! adultDetails; budgetDetails=false; destinationDetails=false; arrivalDetails=false; departureDetails=false">
             <div class="filterTitle">For:</div>
             <div class="bindedValue salmon">
                 <div class="totalGuest"></div>
             </div>
+            <!-- head count drop down -->
             <div id="adultDetailsContainer" ng-show="adultDetails">
                 <headcount></headcount>
             </div>
         </div>
+        <!-- end head count filter-->
 
+
+        <!-- arrival calendar filter -->
+        <!-- arrival calendar filter block -->
         <div class="filterBlock col-xs-6 col-lg-2" ng-class="{'filterBlockActive': arrivalDetails==true}" ng-click="arrivalDetails = ! arrivalDetails; budgetDetails=false; destinationDetails=false; departureDetails=false; adultDetails=false">
             <div class="filterTitle">From:</div>
             <div class="bindedValue salmon">
@@ -49,6 +81,16 @@
             </div>
         </div>
 
+        <!-- arrival calendar drop down -->
+        <div class="widgetContainer tier2 row typography">
+            <div id="arrivalDetailsContainer" class="customDrop" ng-show="arrivalDetails">
+                <date-arrival></date-arrival>
+            </div>
+        </div>
+        <!-- end arrival calendar filter-->
+
+        <!-- departure calendar filter -->
+        <!-- departure calendar filter block -->
         <div class="filterBlock col-xs-6 col-lg-2" ng-class="{'filterBlockActive': departureDetails==true}" ng-click="arrivalDetails=false; departureDetails = ! departureDetails; budgetDetails=false; destinationDetails=false; adultDetails=false">
             <div class="filterTitle">To:</div>
             <div class="bindedValue salmon">
@@ -58,33 +100,50 @@
                 <i class="fa fa-caret-up"></i>
             </div>
         </div>
+
+        <!-- departure calendar drop down -->
+        <div class="widgetContainer tier2 row typography">
+            <div id="departureDetailsContainer" class="customDrop" ng-show="departureDetails">
+                <date-departure></date-departure>
+            </div>
+        </div>
+        <!-- end departure calendar filter-->
+
+
     </div>
     <!-- end top nav filters -->
-
-
-
 </div>
+<!-- end top nav filters row -->
+
 
 
 <div class="widgetContainer row typography">
 
+    <!--
     <div id="budgetDetailsContainer" class="customDrop" ng-show="budgetDetails">
         <budget></budget>
         <span class="budgetValue typography">
             ${{priceSlider.value}}
         </span>
     </div>
+-->
 
+    <!--
     <div id="destinationDetailsContainer" class="customDrop" ng-show="destinationDetails">
         <destination></destination>
     </div>
+-->
 
+    <!--
     <div id="arrivalDetailsContainer" class="customDrop" ng-show="arrivalDetails">
         <date-arrival></date-arrival>
     </div>
+-->
 
+    <!--
     <div id="departureDetailsContainer" class="customDrop" ng-show="departureDetails">
         <date-departure></date-departure>
     </div>
+-->
 
 </div>
