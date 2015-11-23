@@ -256,8 +256,6 @@ angular.module('triviziApp')
                     
                     //jquery
                     $scope.fullMap = function() {
-                        console.log('full map clicked');
-                        
                         $('#googleMap').css("height",$(window).height());
                         $('#googleMap').css("width",$(window).width());
                         google.maps.event.trigger($scope.googleMap, 'resize');
@@ -269,8 +267,6 @@ angular.module('triviziApp')
                     
                     //jquery
                     $scope.halfMap = function() {
-                        console.log('half map clicked');
-                        
                         $('#sideContain').show();
                         $('#mapContain').addClass('col-sm-5');
                         $('#mapContain').removeClass('col-sm-12');
@@ -278,7 +274,6 @@ angular.module('triviziApp')
                         $('#googleMap').css("height",$(window).height());
                         $('#googleMap').css("width","100%");
                         google.maps.event.trigger($scope.googleMap, 'resize');
-
                     }
 
                     $scope.markersDisplay = function (lat, lng) {

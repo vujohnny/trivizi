@@ -6,8 +6,6 @@
         /*
             if mobile skip intro text
         */
-        $scope.scroll = 0;
-
         if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
             $scope.introText = false;
             $scope.fullText = true;
