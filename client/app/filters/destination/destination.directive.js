@@ -97,7 +97,6 @@ angular.module('triviziApp')
                     $scope.category = null;
                 }
 
-                $scope.introText = true;
                 $scope.category = $scope.typesOfPlaces[0].title;
 
                 $scope.introSubmit = function () {
