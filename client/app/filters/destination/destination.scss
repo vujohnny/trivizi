@@ -22,15 +22,12 @@
     background: $dark-grey;
     border-top: 0;
     border-right: 1px solid $darkest-grey;
-
     .pac-icon {
         display: none;
     }
-
     .pac-matched {
         color: $salmon;
     }
-
     .pac-item-query {
         font-size: 1.2em;
         color: #ffffff;
@@ -39,7 +36,6 @@
         clear: both;
         margin-bottom: -9px !important;
     }
-
     .pac-item {
         color: #ffffff;
         font-size: 1em;
@@ -47,7 +43,6 @@
         cursor: pointer;
         border-top: 0;
         border-bottom: 1px solid $darkest-grey;
-
         &:hover {
             background-color: $darkest-grey;
         }
@@ -55,16 +50,16 @@
 }
 
 .full-pac-container {
-    width: 38% !important;
-
+    width: 65% !important;
+    @media screen and (max-width: $break-tablet) {
+        width: 100% !important;
+    }
     .pac-icon {
         display: none;
     }
-
     .pac-matched {
         color: $salmon;
     }
-
     .pac-item-query {
         font-size: 2em;
         color: #ffffff;
@@ -73,7 +68,6 @@
         clear: both;
         margin-bottom: auto !important;
     }
-
     .pac-item {
         color: #ffffff;
         font-size: 1em;
@@ -81,7 +75,6 @@
         cursor: pointer;
         border-top: 0;
         border-bottom: 1px solid $darkest-grey;
-
         &:hover {
             background-color: $darkest-grey;
         }
@@ -96,46 +89,43 @@
     margin: 0;
     background: $dark-grey;
     height: auto;
-
     .row-fluid {
         background-color: $dark-grey;
     }
-
     .destinationSpecific {
         width: 100%;
-        padding: 1em .8em;
+        padding: 1.1em .8em;
         background: $salmon;
         border: 0;
         outline: 0;
         color: #ffffff;
         font-size: 2em;
     }
-
     #categoryContainer {
         width: 100%;
+        padding-top: 20px;
     }
-
     #categoryItemContainer {
         width: 35%;
+        @media screen and (max-width: $break-tablet) {
+            width: 100% !important;
+        }
         background: #323232;
         text-align: center;
         float: right;
-
         .destinationCategories {
             width: 100%;
             padding: .3em 1em;
-
             .categoryButton {
                 text-transform: capitalize;
                 color: $dark-grey;
                 cursor: pointer;
                 padding: 1em;
-                margin-bottom: 4px;
+                margin-bottom: 13px;
                 background-color: $border-grey;
                 border-radius: 2px;
                 font-size: 1.3em;
                 font-weight: bold;
-
                 &:hover {
                     background-color: $salmon;
                     color: #fff;
@@ -143,7 +133,6 @@
             }
         }
     }
-
     .destinationCategoryTitle {
         font-size: 1.3em;
         font-weight: 700;
@@ -164,11 +153,9 @@
     min-width: 330px;
     margin-left: -12vw;
     background-color: $dark-grey;
-
     .upTriangle {
         margin-left: 16.5vw;
     }
-
     input {
         background: $salmon;
         border: 0;
@@ -180,16 +167,13 @@
         float: left;
         height: 55px;
     }
-
     #destinationCategoryContainer {
         float: right;
         text-align: center;
         width: 100%;
         background: $dark-grey;
-
         .destinationCategories {
             width: 100%;
-
             .categoryButton {
                 text-transform: capitalize;
                 color: $dark-grey;
@@ -200,39 +184,34 @@
                 font-size: .5em;
                 font-weight: bold;
                 margin: .7em .5em;
-
                 &:hover {
                     background-color: $salmon;
                     color: #fff;
                 }
             }
-            
             .activeCategory {
                 background-color: $darkest-grey;
                 color: #ffffff;
             }
         }
     }
-    
     .shortCatContain {
         width: 40% !important;
     }
-
     .destinationCategoryTitle {
         font-size: .5em;
         font-weight: 400;
         background-color: $salmon;
-//        background: -webkit-linear-gradient(left, $salmon, $light-salmon);
-//
-//        /* For Safari 5.1 to 6.0 */
-//        background: -o-linear-gradient(right, $salmon, $light-salmon);
-//
-//        /* For Opera 11.1 to 12.0 */
-//        background: -moz-linear-gradient(right, $salmon, $light-salmon);
-//
-//        /* For Firefox 3.6 to 15 */
-//        background: linear-gradient(to right, $salmon, $light-salmon);
-
+        //        background: -webkit-linear-gradient(left, $salmon, $light-salmon);
+        //
+        //        /* For Safari 5.1 to 6.0 */
+        //        background: -o-linear-gradient(right, $salmon, $light-salmon);
+        //
+        //        /* For Opera 11.1 to 12.0 */
+        //        background: -moz-linear-gradient(right, $salmon, $light-salmon);
+        //
+        //        /* For Firefox 3.6 to 15 */
+        //        background: linear-gradient(to right, $salmon, $light-salmon);
         /* Standard syntax (must be last) */
     }
 }

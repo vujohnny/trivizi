@@ -3,6 +3,20 @@
 
     function MainController($scope, $http, socket, $filter, ean, yelp, eanYelp) {
 
+        /*
+            if mobile skip intro text
+        */
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            $scope.introText = false;
+            $scope.fullText = true;
+        } else {
+            $scope.introText = true;
+            $scope.fullText = false;
+        }
+
+        /*
+            store database
+        */
         $scope.storeSearchData = function () {
             $http.post('/api/things', {
                 timeStamp: new Date(),
@@ -16,10 +30,13 @@
             $scope.newThing = '';
         }
 
-        //category search
+        /*
+            category search
+        */
         $scope.searchCategory = function () {
             if ($scope.category) {
                 $scope.storeSearchData();
+
                 /*
                 $scope.searchCategory = yelp.yelpRequest($scope, function (data) {
                     if (data.length > 0) {
@@ -34,9 +51,10 @@
             }
         }
 
-        //EAN Search
+        /*
+            ean search
+        */
         $scope.seekDeer = function () {
-                        
             if (!$scope.specificLocation) {
                 //console.log('location empty');
                 $scope.closeAllFilters();
@@ -53,17 +71,16 @@
 
         $scope.closeAllFilters = function () {
             //console.log('close all');
-            $scope.budgetIntroDetails=false; 
-            $scope.destinationIntroDetails=false; 
-            $scope.arrivalIntroDetails=false; 
-            $scope.departureIntroDetails=false; 
+            $scope.budgetIntroDetails = false;
+            $scope.destinationIntroDetails = false;
+            $scope.arrivalIntroDetails = false;
+            $scope.departureIntroDetails = false;
             $scope.destinationDetails = false;
             $scope.budgetDetails = false;
             $scope.arrivalDetails = false;
             $scope.departureDetails = false;
             //$scope.adultDetails=false;  
             $scope.overlayMask = false;
-            
         };
 
     }

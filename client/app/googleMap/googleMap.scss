@@ -1,12 +1,15 @@
 #googleMap {
     height: 110vh;
+    width: 100% !important; //make goole maps 100% width
 }
 
-#googleMap {
-    @media screen and (max-width: $break-phone) {
-        display: none !important;
+/*
+    #googleMap {
+        @media screen and (max-width: $break-phone) {
+            display: none !important;
+        }
     }
-}
+*/
 
 .markerDisplay {
     font-weight: bold;

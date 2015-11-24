@@ -2,8 +2,7 @@
 	<div class="row destination">
 		<input id="navLocationField" class="destinationSpecific" type="text" ng-model="specificLocation" ng-change="emptyPlace()" placeholder="Specific city, or..." autofocus>
 		<div id="categoryContainer">
-			<div id="categoryItemContainer" ng-show="specificLocation.length">
-				<div class="destinationCategoryTitle">Categories</div>
+			<div id="categoryItemContainer"> <!--ng-show="specificLocation.length"-->
 				<div class="destinationCategories" ng-repeat="places in typesOfPlaces">
 					<div class="categoryButton" ng-click="yelpHold(places.title); changeText(places.title)"><i class="fa fa-{{places.icon}}"></i> {{places.title}}</div>
 				</div>

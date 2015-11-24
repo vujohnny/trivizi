@@ -1,6 +1,11 @@
 .singleLogo {
-    margin-top: 2em;
-    width: 7em;
+    margin-top: 3em;
+    margin-bottom: 1.5em;
+    width: 8em;
+    @media screen and (max-width: $break-tablet) {
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
 }
 
 .navbar-default {

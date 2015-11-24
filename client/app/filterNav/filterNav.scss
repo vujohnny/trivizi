@@ -1,7 +1,66 @@
-.widgetContainer {
-    position: absolute;
-    z-index: 1;
+filter-nav {
+    position: fixed;
+    top: 0;
+    display: block;
     width: 100%;
+    z-index: 2;
+    background: #ffffff;
+}
+
+.drawerDown {
+    display: none;
+    i {
+        font-size: 2em;
+        cursor: pointer;
+        margin-bottom: 10px;
+        &:hover {
+            color: $salmon;
+        }
+    }
+    @media screen and (max-width: $break-tablet) {
+        display: block;
+    }
+}
+
+.menuOpen {
+    color: $salmon;
+}
+
+@media only screen and (min-width: $break-desktop) {
+    #filterNavContainer {
+        display: block !important;
+    }
+}
+
+#sideContain,
+mapContain {
+    margin-top: 95px;
+}
+
+.widgetContainer {
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    top: 100px;
+    @media screen and (max-width: $break-tablet) {
+        position: absolute;
+        z-index: 2;
+        width: 100%;
+        top: auto;
+        margin-top: 100px;
+    }
+}
+
+.tier1 {
+    @media screen and (max-width: $break-tablet) {
+        margin-top: 0pc;
+    }
+}
+
+.tier2 {
+    @media screen and (max-width: $break-tablet) {
+        margin-top: 200px;
+    }
 }
 
 .filterBlock {
@@ -9,17 +68,18 @@
     border-left: 0;
     padding: 2em .5em 2em 1.5em;
     background-color: #ffffff;
-
     .filterTitle {
-        font-size: .7em;
+        font-size: .9em; //.7
         color: $darkest-grey;
     }
-
+    .bindedValue {
+        font-weight: 600;
+        font-size: 1.2em;
+    }
     &:hover {
         background-color: $highlight-grey;
         cursor: pointer;
     }
-
     .destinationTitle {
         min-height: 1.4em;
         display: block;
@@ -39,24 +99,24 @@
 
 .upTriangle {
     text-align: center;
-
     .fa {
         color: $salmon;
         font-size: 3em;
         position: absolute;
-        margin-top: 1px;
+        margin-top: 3px;
         margin-left: -10px;
-
         //        @media screen and (max-width: $break-phone) {
         //            display: none;
         //        }
         //        @media screen and (max-width: $break-tablet) {
         //            display: none;
         //        }
-   
     }
 }
 
-#arrivalDetailsContainer, #departureDetailsContainer, #destinationDetailsContainer, #adultDetailsContainer {
+#arrivalDetailsContainer,
+#departureDetailsContainer,
+#destinationDetailsContainer,
+#adultDetailsContainer {
     padding: 0;
 }

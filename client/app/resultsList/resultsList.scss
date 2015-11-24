@@ -1,3 +1,10 @@
+/* 
+    to disable tripadvisor
+*/
+.ratingValid {
+    //display: none;
+}
+
 #noResultsList{
     color:white;
     font-size: 2em;
@@ -15,21 +22,11 @@
     margin: 15px -300px 15px 15px;
 
     .hotel-item {
-        /*
-        // for col-md-6 layout
         height: auto;
         padding: 15px;
         margin: 0 auto;
         position: relative;
         cursor: pointer;
-        */
-        height: 537px;
-        padding: 15px;
-        margin: 0 auto;
-        position: relative;
-        cursor: pointer;
-        width: 393px;
-        float: left;
 
         .hotel-item-container {
             background-color: #ffffff;
@@ -60,9 +57,7 @@
 
                 .hotelImg {
                     width: 100%;
-                    // for col-md-6 layout
-                    //height: 20vw;
-                    height: 290px;
+                    height: 20vw;
                     display: block;
 
                     @media screen and (max-width: $break-phone) {
@@ -178,6 +173,19 @@
                     }
                 }
             }
+        }
+    }
+    
+    /*
+        for pulled out list
+    */
+    .hotel-item-full {
+        height: 537px;
+        width: 350px;
+        float: left;
+        
+        .hotelImg {
+            height: 290px !important;
         }
     }
 

@@ -228,16 +228,18 @@ angular.module('triviziApp')
                         $scope.destination = navAutocomplete.getPlace();
                         $scope.specificLocation = $scope.destination.formatted_address;
                         $scope.seekDeer($scope.destination.formatted_address);
+                        $scope.halfMap();
                     });
 
                     //jquery
                     $scope.showMap = function () {
                             $(".intro-text").fadeOut("slow", function () {
                                 $("#googleMap").css("visibility", "visible");
-                                $("#results-container, .top-menu").fadeIn("slow", function () {});
+                                $("#results-container, #top-menu").fadeIn("slow", function () {});
                             });
                         }
-                        //jquery
+                    
+                    //jquery
                     $scope.highlightResult = function (hotelId, hotelLat, hotelLng) {
                         var selectedId = hotelId;
                         $(resultsItem + " " + resultsHotelItem + " .hotel-item-container").removeClass("activeResult");
@@ -250,6 +252,28 @@ angular.module('triviziApp')
                         $(resultsContainer).animate({
                             scrollTop: topPos
                         }, 500);
+                    }
+                    
+                    //jquery
+                    $scope.fullMap = function() {
+                        $('#googleMap').css("height",$(window).height());
+                        $('#googleMap').css("width",$(window).width());
+                        google.maps.event.trigger($scope.googleMap, 'resize');
+                        
+                        $('#sideContain').hide();
+                        $('#mapContain').removeClass('col-sm-5');
+                        $('#mapContain').addClass('col-sm-12');
+                    }
+                    
+                    //jquery
+                    $scope.halfMap = function() {
+                        $('#sideContain').show();
+                        $('#mapContain').addClass('col-sm-5');
+                        $('#mapContain').removeClass('col-sm-12');
+                        
+                        $('#googleMap').css("height",$(window).height());
+                        $('#googleMap').css("width","100%");
+                        google.maps.event.trigger($scope.googleMap, 'resize');
                     }
 
                     $scope.markersDisplay = function (lat, lng) {
@@ -284,17 +308,11 @@ angular.module('triviziApp')
                         if (place.geometry.viewport) {
                             //map.fitBounds(place.geometry.viewport);
                             //map.setZoom(13);
-
                             map.setCenter(firstMarker.getPosition());
                             map.setZoom(12);
-
                             google.maps.event.trigger(firstMarker, 'click');
-
-                            console.log('something1');
-
                         } else {
                             map.setCenter(place.geometry.location);
-                            console.log('something2');
                         }
                     }
 
@@ -306,10 +324,12 @@ angular.module('triviziApp')
 
                             // map markers and pan map to city
                             $scope.markersDisplay(lat, lng);
+                            var markerWindow = "<div id=\"" + id + "\" class=\"markerDisplay typography\"><div class=\"windowLeftContainer typography\"><div class=\"markerTotal\">$" + roundedTotal + "</div><div class=\"windowTitle\">" + name + "</div><img src=\"" + ratingImg + "\" class=\"ratingImg ratingValid\"></div><img src=\"http://images.travelnow.com/" + listImgFall + "\" class=\"windowImg\"></div>";
+                            
                             google.maps.event.addListener(marker, 'click', (function (marker, i) {
                                 return function () {
                                     //infowindow.setContent("<div id=\"" + id + "\" class=\"markerDisplay typography\"><span class=\"markerTotal\">$" + roundedTotal + "</span> <span class=\"medium-grey\" style=\"display: none;\">|</span> <img src=\"" + ratingImg + "\" class=\"ratingImg\" style=\"display: none;\"></div>");
-                                    infowindow.setContent("<div id=\"" + id + "\" class=\"markerDisplay typography\"><div class=\"windowLeftContainer typography\"><div class=\"markerTotal\">$" + roundedTotal + "</div><div class=\"windowTitle\">" + name + "</div></div><img src=\"http://images.travelnow.com/" + listImgFall + "\" class=\"windowImg\"></div>");
+                                    infowindow.setContent(markerWindow);
                                     infowindow.open(map, marker);
                                     $scope.highlightResult(id);
                                 }
@@ -317,7 +337,7 @@ angular.module('triviziApp')
 
                             google.maps.event.addListener(marker, 'mouseover', (function (marker, i) {
                                 return function () {
-                                    infowindow.setContent("<div id=\"" + id + "\" class=\"markerDisplay typography\"><div class=\"windowLeftContainer typography\"><div class=\"markerTotal\">$" + roundedTotal + "</div><div class=\"windowTitle\">" + name + "</div></div><img src=\"http://images.travelnow.com/" + listImgFall + "\" class=\"windowImg\"></div>");
+                                    infowindow.setContent(markerWindow);
                                     infowindow.open(map, marker);
                                 }
                             })(marker, i));
@@ -371,9 +391,10 @@ angular.module('triviziApp')
                                 */
 
                                 $scope.seekDeer();
+                                $scope.halfMap();
                                 
                                 map.setCenter(new google.maps.LatLng(lat, lng));
-                                map.setZoom(10);
+                                map.setZoom(12);
 
                                 /*
                                     we might have to remove the yelp call and just ean

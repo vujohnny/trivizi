@@ -20,9 +20,11 @@ angular.module('triviziApp')
                         $('#sideContain').removeClass('col-sm-6');
                         $('#sideContain').addClass('col-sm-12');
 
-                        //$('.results .hotel-item').removeClass('col-sm-6');
-                        //$('.results .hotel-item').addClass('col-sm-3');
+                        $('.results .hotel-item').removeClass('col-sm-6');
+                        $('.results .hotel-item').addClass('hotel-item-full');
+                        
                         $('#googleMap, navbar').css('visibility', 'hidden');
+                        
                     } else {
                         $('#fullList').removeClass('fullListPull');
                         $('#fullList').addClass('fullListPush');
@@ -33,9 +35,11 @@ angular.module('triviziApp')
                         $('#sideContain').addClass('col-sm-6');
                         $('#sideContain').removeClass('col-sm-12');
 
-                        //$('.results .hotel-item').addClass('col-sm-6');
-                        //$('.results .hotel-item').removeClass('col-sm-3');
+                        $('.results .hotel-item').addClass('col-sm-6');
+                        $('.results .hotel-item').removeClass('hotel-item-full');
+                        
                         $('#googleMap, navbar').css('visibility', 'visible');
+                        
                     }
 
                 }
