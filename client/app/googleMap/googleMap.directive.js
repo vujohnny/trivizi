@@ -324,7 +324,7 @@ angular.module('triviziApp')
 
                             // map markers and pan map to city
                             $scope.markersDisplay(lat, lng);
-                            var markerWindow = "<div id=\"" + id + "\" class=\"markerDisplay typography\"><div class=\"windowLeftContainer typography\"><div class=\"markerTotal\">$" + roundedTotal + "</div><div class=\"windowTitle\">" + name + "</div><img src=\"" + ratingImg + "\" class=\"ratingImg\"></div><img src=\"http://images.travelnow.com/" + listImgFall + "\" class=\"windowImg\"></div>";
+                            var markerWindow = "<div id=\"" + id + "\" class=\"markerDisplay typography\"><div class=\"windowLeftContainer typography\"><div class=\"markerTotal\">$" + roundedTotal + "</div><div class=\"windowTitle\">" + name + "</div><img src=\"" + ratingImg + "\" class=\"ratingImg ratingValid\"></div><img src=\"http://images.travelnow.com/" + listImgFall + "\" class=\"windowImg\"></div>";
                             
                             google.maps.event.addListener(marker, 'click', (function (marker, i) {
                                 return function () {
