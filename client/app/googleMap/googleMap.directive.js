@@ -235,7 +235,7 @@ angular.module('triviziApp')
                     $scope.showMap = function () {
                             $(".intro-text").fadeOut("slow", function () {
                                 $("#googleMap").css("visibility", "visible");
-                                $("#results-container, .top-menu").fadeIn("slow", function () {});
+                                $("#results-container, #top-menu").fadeIn("slow", function () {});
                             });
                         }
                     

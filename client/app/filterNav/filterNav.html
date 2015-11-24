@@ -1,10 +1,11 @@
-<div class="row typography top-menu">
+<div id="top-menu" class="row typography">
 
     <div class="col-lg-2 col-lg-push-10 text-center">
         <img src="assets/images/logo.svg" class="singleLogo">
+        <div class="drawerDown menuOpen"><i class="fa fa-arrow-circle-down" ng-click="menuDrawer()"></i></div>
     </div>
 
-    <div class="col-lg-10 col-lg-pull-2 no-padding">
+    <div id="filterNavContainer" class="col-lg-10 col-lg-pull-2 no-padding">
 
 
         <!-- destination filter -->
@@ -114,36 +115,3 @@
     <!-- end top nav filters -->
 </div>
 <!-- end top nav filters row -->
-
-
-
-<div class="widgetContainer row typography">
-
-    <!--
-    <div id="budgetDetailsContainer" class="customDrop" ng-show="budgetDetails">
-        <budget></budget>
-        <span class="budgetValue typography">
-            ${{priceSlider.value}}
-        </span>
-    </div>
--->
-
-    <!--
-    <div id="destinationDetailsContainer" class="customDrop" ng-show="destinationDetails">
-        <destination></destination>
-    </div>
--->
-
-    <!--
-    <div id="arrivalDetailsContainer" class="customDrop" ng-show="arrivalDetails">
-        <date-arrival></date-arrival>
-    </div>
--->
-
-    <!--
-    <div id="departureDetailsContainer" class="customDrop" ng-show="departureDetails">
-        <date-departure></date-departure>
-    </div>
--->
-
-</div>

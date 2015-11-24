@@ -5,6 +5,18 @@ angular.module('triviziApp')
         return {
             templateUrl: 'app/filterNav/filterNav.html',
             restrict: 'EA',
-            link: function($scope, $element, $attrs) {}
+            link: function($scope, $element, $attrs) {
+                /*
+                    for drawer slider down
+                */
+                $scope.menuDrawer = function() {
+                    
+                    //jquery
+                    $('#filterNavContainer').slideToggle();
+                    $(".drawerDown").toggleClass("menuOpen");
+                    //$scope.menuOpen = true;
+                    
+                }
+            }
         };
     });
