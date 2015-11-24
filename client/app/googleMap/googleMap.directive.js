@@ -324,10 +324,12 @@ angular.module('triviziApp')
 
                             // map markers and pan map to city
                             $scope.markersDisplay(lat, lng);
+                            var markerWindow = "<div id=\"" + id + "\" class=\"markerDisplay typography\"><div class=\"windowLeftContainer typography\"><div class=\"markerTotal\">$" + roundedTotal + "</div><div class=\"windowTitle\">" + name + "</div><img src=\"" + ratingImg + "\" class=\"ratingImg\"></div><img src=\"http://images.travelnow.com/" + listImgFall + "\" class=\"windowImg\"></div>";
+                            
                             google.maps.event.addListener(marker, 'click', (function (marker, i) {
                                 return function () {
                                     //infowindow.setContent("<div id=\"" + id + "\" class=\"markerDisplay typography\"><span class=\"markerTotal\">$" + roundedTotal + "</span> <span class=\"medium-grey\" style=\"display: none;\">|</span> <img src=\"" + ratingImg + "\" class=\"ratingImg\" style=\"display: none;\"></div>");
-                                    infowindow.setContent("<div id=\"" + id + "\" class=\"markerDisplay typography\"><div class=\"windowLeftContainer typography\"><div class=\"markerTotal\">$" + roundedTotal + "</div><div class=\"windowTitle\">" + name + "</div></div><img src=\"http://images.travelnow.com/" + listImgFall + "\" class=\"windowImg\"></div>");
+                                    infowindow.setContent(markerWindow);
                                     infowindow.open(map, marker);
                                     $scope.highlightResult(id);
                                 }
@@ -335,7 +337,7 @@ angular.module('triviziApp')
 
                             google.maps.event.addListener(marker, 'mouseover', (function (marker, i) {
                                 return function () {
-                                    infowindow.setContent("<div id=\"" + id + "\" class=\"markerDisplay typography\"><div class=\"windowLeftContainer typography\"><div class=\"markerTotal\">$" + roundedTotal + "</div><div class=\"windowTitle\">" + name + "</div></div><img src=\"http://images.travelnow.com/" + listImgFall + "\" class=\"windowImg\"></div>");
+                                    infowindow.setContent(markerWindow);
                                     infowindow.open(map, marker);
                                 }
                             })(marker, i));

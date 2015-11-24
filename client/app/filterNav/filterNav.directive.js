@@ -14,7 +14,6 @@ angular.module('triviziApp')
                     //jquery
                     $('#filterNavContainer').slideToggle();
                     $(".drawerDown").toggleClass("menuOpen");
-                    //$scope.menuOpen = true;
                     
                 }
             }
