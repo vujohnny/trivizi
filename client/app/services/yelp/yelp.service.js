@@ -14,7 +14,7 @@ angular.module('triviziApp')
         }
         return {
             yelpRequest: function ($scope, callback) {
-                console.log("EAN and YELP " + $scope.category + " hotels for $" + $scope.priceSlider + " in " + $scope.specificLocation + "");
+                //console.log("EAN and YELP " + $scope.category + " hotels for $" + $scope.priceSlider + " in " + $scope.specificLocation + "");
                 $scope.yelpResults = [];
 
                 var x = 0;
@@ -45,7 +45,7 @@ angular.module('triviziApp')
                             params: params
                         }).success(function (response) {
                             //success callback
-                            console.log(response);
+                            //console.log(response);
                             $scope.respondProvider = "yelp";
                             angular.forEach(response.businesses, function (k, v) {
 
@@ -76,12 +76,12 @@ angular.module('triviziApp')
                                 });
 
                             }); // end each loop
-                            console.log($scope.yelpResults.length);
+                            //console.log($scope.yelpResults.length);
                             callback($scope.yelpResults);
                         })
                         .error(function (response, status) {
                             //error callback
-                            console.log(response, status);
+                            //console.log(response, status);
                             if ($scope.yelpResults.length <= 0) {
                                 $scope.seekDeer();
                             }
