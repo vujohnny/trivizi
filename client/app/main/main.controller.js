@@ -9,9 +9,11 @@
         if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
             $scope.introText = false;
             $scope.fullText = true;
+            $scope.hideMap = true;
         } else {
             $scope.introText = true;
             $scope.fullText = false;
+            $scope.hideMap = false;
         }
 
         /*
@@ -58,12 +60,24 @@
             if (!$scope.specificLocation) {
                 //console.log('location empty');
                 $scope.closeAllFilters();
+
+                if($scope.hideMap == false) {
+                    //jquery
+                    console.log('mobile 1');
+                    $('google-map').hide();
+                }
+
             } else {
                 $scope.closeAllFilters();
                 $scope.storeSearchData();
                 ean.eanRequest($scope);
-                //jquery
-                $('google-map').hide();
+
+                if($scope.hideMap == true) {
+                    //jquery
+                    console.log('mobile 2');
+                    $('google-map').hide();
+                }
+                
             }
         };
 
