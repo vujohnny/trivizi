@@ -62,6 +62,8 @@
                 $scope.closeAllFilters();
                 $scope.storeSearchData();
                 ean.eanRequest($scope);
+                //jquery
+                $('google-map').hide();
             }
         };
 
