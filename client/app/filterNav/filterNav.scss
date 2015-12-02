@@ -5,6 +5,17 @@ filter-nav {
     width: 100%;
     z-index: 2;
     background: #ffffff;
+    @media screen and (max-width: $break-tablet) {
+        position: absolute;
+    }
+}
+
+.logoContainer {
+    @media screen and (max-width: $break-tablet) {
+        text-align: left;
+        height: 90px;
+        padding-top: 15px;
+    }
 }
 
 .drawerDown {
@@ -19,6 +30,9 @@ filter-nav {
     }
     @media screen and (max-width: $break-tablet) {
         display: block;
+        float: right;
+        margin-top: .9em;
+        clear: both;
     }
 }
 
@@ -29,6 +43,17 @@ filter-nav {
 @media only screen and (min-width: $break-desktop) {
     #filterNavContainer {
         display: block !important;
+        @media screen and (max-width: $break-tablet) {
+            position: absolute;
+            width: 100%;
+        }
+    }
+}
+
+#filterNavContainer {
+    @media screen and (max-width: $break-tablet) {
+        position: absolute;
+        width: 100%;
     }
 }
 
@@ -42,6 +67,7 @@ mapContain {
     z-index: 2;
     width: 100%;
     top: 100px;
+    left: 0;
     @media screen and (max-width: $break-tablet) {
         position: absolute;
         z-index: 2;

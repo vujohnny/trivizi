@@ -24,11 +24,10 @@
                     <span class="customSize">
                         {{ specificLocation | limitTo: 20 }}{{specificLocation.length > 12 ? '...' : ''}} 
                     
-                        {{category}}
-                        <span id="ifFamily"></span>
+                        {{category}}<span id="ifFamily"></span><span class="caret" style="margin-top: 0;"></span>
                     </span>
                 </span>
-                <span class="caret"></span>
+                
             </span>
             <div id="destinationIntroDetailsContainer" class="customDrop" ng-show="destinationIntroDetails">
                 <div class="upTriangle">
@@ -43,7 +42,7 @@
             </div>
         </div>
 
-        <span class="customSize">for</span>
+        <span class="customSize ultra-light">for</span>
 
         <div class="introSelect" ng-click="adultDetails = ! adultDetails; budgetIntroDetails=false; destinationDetails=false; arrivalIntroDetails=false; destinationIntroDetails=false; overlayMask=true">
             <div class="salmon">

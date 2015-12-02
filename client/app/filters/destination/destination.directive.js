@@ -77,11 +77,11 @@ angular.module('triviziApp')
                 
                 $scope.changeText = function (category) {
                     
-                    console.log(category);
+                    //console.log(category);
                     
                     // jquery
                     if(category == 'family') {
-                        $('#ifFamily').html('friendly');
+                        $('#ifFamily').html(' friendly');
                     }
                     else {
                         $('#ifFamily').empty();

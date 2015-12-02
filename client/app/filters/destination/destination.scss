@@ -1,27 +1,34 @@
 ::-webkit-input-placeholder {
-    color: $light-salmon;
+    color: #ffffff;
+    opacity: .7;
 }
 
 :-moz-placeholder {
     /* Firefox 18- */
-    color: $light-salmon;
+    color: #ffffff;
+    opacity: .7;
 }
 
 ::-moz-placeholder {
     /* Firefox 19+ */
-    color: $light-salmon;
+    color: #ffffff;
+    opacity: .7;
 }
 
 :-ms-input-placeholder {
-    color: $light-salmon;
+    color: #ffffff;
+    opacity: .7;
 }
 
 .pac-container {
     width: 21% !important;
+    @media screen and (max-width: $break-tablet) {
+        width: 100% !important;
+    }
     font-family: $font-stack !important;
     background: $dark-grey;
     border-top: 0;
-    border-right: 1px solid $darkest-grey;
+    border-right: 1px solid #3c3c3c;
     .pac-icon {
         display: none;
     }
@@ -42,9 +49,9 @@
         padding: 0em 1.5em .3em;
         cursor: pointer;
         border-top: 0;
-        border-bottom: 1px solid $darkest-grey;
+        border-bottom: 1px solid #3c3c3c;
         &:hover {
-            background-color: $darkest-grey;
+            background-color: #3c3c3c;
         }
     }
 }
@@ -74,9 +81,9 @@
         padding: .8em 1.5em;
         cursor: pointer;
         border-top: 0;
-        border-bottom: 1px solid $darkest-grey;
+        border-bottom: 1px solid #3c3c3c;
         &:hover {
-            background-color: $darkest-grey;
+            background-color: #3c3c3c;
         }
     }
 }

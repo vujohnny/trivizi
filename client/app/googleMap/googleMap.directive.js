@@ -367,6 +367,9 @@ angular.module('triviziApp')
 
                     $scope.buildCatReturn = function (city, lat, lng) {
 
+                        //jquery
+                        $('google-map').show();
+
                         map.setZoom(3);
                         $scope.markersDisplay(lat, lng);
 
