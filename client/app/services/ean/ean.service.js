@@ -14,7 +14,7 @@ angular.module('triviziApp')
                 
                 var timeStamp = Math.floor(Date.now() / 1000);
                 var apiKey = "70303auc6h8hqutunreio3u8pl";
-                var cid = "55505"; //490388
+                var cid = "490388"; //55505
                 var shared = "adfgo2dqlsv14";
                 var sig = md5(apiKey + shared + timeStamp);
                 
